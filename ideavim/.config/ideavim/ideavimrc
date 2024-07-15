@@ -1,0 +1,26 @@
+""" Map leader to space ---------------------
+let mapleader=","
+
+set ideajoin
+set surround
+set commentary
+set multiple-cursors
+set history=1000
+set visualbell
+" set noerrorbells
+set incsearch " Highlight search results when typing
+set hlsearch " Highlight search results
+set relativenumber " relative numbers
+set scrolloff=3 " Display at least 3 lines around you cursor
+set ignorecase " Ignore case when searching
+set smartcase " If there is an uppercase in your search term
+
+
+""" Keymaps ---------------------------------
+inoremap jk <esc>
+nnoremap - :action ActivateProjectToolWindow<cr>
+nnoremap <leader>ff :action SearchEverywhere<CR>
+nnoremap gd :action GotoDeclaration<CR>
+nnoremap gr :action FindUsages<CR>
+nnoremap gi :action GotoImplementation<CR>
+nnoremap gc :action CommentByLineComment<CR>
