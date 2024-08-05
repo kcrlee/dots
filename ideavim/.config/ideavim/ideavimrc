@@ -15,7 +15,6 @@ set scrolloff=3 " Display at least 3 lines around you cursor
 set ignorecase " Ignore case when searching
 set smartcase " If there is an uppercase in your search term
 
-
 """ Keymaps ---------------------------------
 inoremap jk <esc>
 nnoremap - :action ActivateProjectToolWindow<cr>
