@@ -32,23 +32,6 @@ vim.api.nvim_create_autocmd({ "BufWinLeave" }, {
 	end,
 })
 
--- toggle concealing in md between insert and normal modes
-vim.api.nvim_create_augroup("markdown_conceal", { clear = true })
-vim.api.nvim_create_autocmd("InsertEnter", {
-	pattern = "*.md",
-	group = "markdown_conceal",
-	callback = function()
-		vim.opt_local.conceallevel = 0
-	end,
-})
-vim.api.nvim_create_autocmd("InsertLeave", {
-	pattern = "*.md",
-	group = "markdown_conceal",
-	callback = function()
-		vim.opt_local.conceallevel = 2
-	end,
-})
-
 ------------------------------------------------latex setup------------------------------------------------
 
 vim.api.nvim_create_augroup("latex_settings", { clear = true })
