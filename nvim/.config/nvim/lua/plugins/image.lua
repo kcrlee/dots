@@ -1,6 +1,5 @@
 return {
 	"3rd/image.nvim",
-	lazy = true,
 	config = function()
 		-- default config
 		require("image").setup({
