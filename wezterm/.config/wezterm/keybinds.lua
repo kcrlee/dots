@@ -21,7 +21,7 @@ function keybind_config.get_keybinds()
 			action = wezterm.action.TogglePaneZoomState,
 		},
 
-		-- Spawning a new split left-right)
+		-- Spawning a new split (left-right)
 		{
 			key = "|",
 			mods = "ALT|SHIFT",
