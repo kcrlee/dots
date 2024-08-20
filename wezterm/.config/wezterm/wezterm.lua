@@ -17,12 +17,12 @@ local ssh_domains = {
 }
 local config = {
 	ssh_domains = ssh_domains,
-	-- window_background_opacity = 0.75,
-	macos_window_background_blur = 15,
+	window_background_opacity = 0.75,
+	-- macos_window_background_blur = 15,
 	window_decorations = "RESIZE",
-	-- hide_tab_bar_if_only_one_tab = true,
+	hide_tab_bar_if_only_one_tab = true,
 	automatically_reload_config = true,
-	enable_wayland = true,
+	-- enable_wayland = true,
 	font = font_config.get_fonts(),
 	font_size = 14.0,
 	keys = keybind_config.get_keybinds(),
