@@ -8,7 +8,6 @@ return {
 		null_ls.setup({
 			sources = {
 				-- me no know tab or space good or line or newline. let compooper decide for me
-				-- null_ls.builtins.formatting.ktlint,
 				null_ls.builtins.formatting.stylua,
 				null_ls.builtins.formatting.clang_format,
 				null_ls.builtins.formatting.prettierd,
