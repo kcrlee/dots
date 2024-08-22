@@ -11,27 +11,27 @@ function keybind_config.get_keybinds()
 		-- Closing the current split
 		{
 			key = "w",
-			mods = "ALT|SHIFT",
+			mods = "ALT",
 			action = act({ CloseCurrentPane = { confirm = true } }),
 		},
 
 		{
-			key = "p",
-			mods = "ALT|SHIFT",
+			key = "z",
+			mods = "ALT",
 			action = wezterm.action.TogglePaneZoomState,
 		},
 
 		-- Spawning a new split (left-right)
 		{
-			key = "|",
-			mods = "ALT|SHIFT",
+			key = "o",
+			mods = "ALT",
 			action = act({ SplitHorizontal = { domain = "CurrentPaneDomain" } }),
 		},
 
 		-- Spawning a new split (top-down)
 		{
-			key = "Enter",
-			mods = "ALT|SHIFT",
+			key = "p",
+			mods = "ALT",
 			action = act({ SplitVertical = { domain = "CurrentPaneDomain" } }),
 		},
 		-- Cycle through splits
