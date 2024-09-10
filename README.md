@@ -40,3 +40,6 @@ or to create a symlink of a single program's config files:
 stow dirname
 
 ```
+
+## Popos Window Management (i3-like)
+https://github.com/pop-os/shell/issues/142#issuecomment-663079699
