@@ -109,6 +109,12 @@ return {
 					end,
 				})
 			end,
+			["harper-ls"] = function()
+				local lspconfig = require("lspconfig")
+				lspconfig.harper_ls.setup({
+					filetypes = { "markdown" }
+				})
+			end,
 		})
 
 		local cmp_select = { behavior = cmp.SelectBehavior.Select }
