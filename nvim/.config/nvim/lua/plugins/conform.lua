@@ -4,6 +4,7 @@ return {
 	opts = {
 		quiet = true,
 		formatters_by_ft = {
+			lua = { "stylua" },
 			typescript = { "prettierd" },
 			typescriptreact = { "prettierd" },
 			javascript = { "prettierd" },
