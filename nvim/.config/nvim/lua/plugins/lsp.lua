@@ -30,12 +30,13 @@ return {
 		require("mason").setup()
 		require("mason-lspconfig").setup({
 			ensure_installed = {
-				-- "clangd",
-				-- "html",
-				-- "lua_ls",
-				-- "marksman",
-				-- "rust_analyzer",
-				-- "tsserver",
+				"clangd",
+				"html",
+				"lua_ls",
+				"marksman",
+				"rust_analyzer",
+				"tsserver",
+				"lua_ls"
 			},
 			handlers = {
 				function(server_name) -- default handler (optional)
