@@ -1,6 +1,22 @@
 -------------------------------------------------  General ----------------------------------------
 vim.api.nvim_create_autocmd("BufEnter", { command = [[set formatoptions-=cro]] })
 
+-------------------------------------------------  Formatting + Linting --------------------------------------
+vim.api.nvim_create_autocmd("BufWritePre", {
+	pattern = "*",
+	callback = function(args)
+		require("conform").format({ bufnr = args.buf })
+	end,
+})
+
+local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
+
+vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
+	group = lint_augroup,
+	callback = function()
+		require('lint').try_lint()
+	end,
+})
 -------------------------------------------------  CUDA files --------------------------------------
 local commentGroup = vim.api.nvim_create_augroup("cuda_settings", { clear = true })
 vim.api.nvim_create_autocmd("FileType", {
@@ -187,18 +203,18 @@ else
 
 	local function create_wezterm_splitpane()
 		local id = vim.system(
-			{ "wezterm", "cli", "split-pane", "--right", "--percent", "40" },
-			{ text = true },
-			function(p)
-				if p.code ~= 0 then
-					vim.notify(
-						"Failed to create a split pane. \n" .. p.stderr,
-						vim.logs.levels.ERROR,
-						{ title = "Wezterm" }
-					)
+				{ "wezterm", "cli", "split-pane", "--right", "--percent", "40" },
+				{ text = true },
+				function(p)
+					if p.code ~= 0 then
+						vim.notify(
+							"Failed to create a split pane. \n" .. p.stderr,
+							vim.logs.levels.ERROR,
+							{ title = "Wezterm" }
+						)
+					end
 				end
-			end
-		)
+			)
 			:wait()
 
 		local stripped_id = string.gsub(id.stdout, "%s+", "")
