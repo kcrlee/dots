@@ -11,7 +11,7 @@ export PATH="$PATH:$ANDROID_HOME/tools/bin"
 export PATH="$PATH:$ANDROID_HOME/platform-tools"
 export PATH="$PATH:/home/kyle/.local/bin"
 export PATH="$HOME/.amplify/bin:$PATH"
-
+export SUDO_EDITOR="$HOME/.local/share/bob/nvim-bin/nvim"
 ZSH_THEME="robbyrussell"
 plugins=(git)
 source $ZSH/oh-my-zsh.sh
