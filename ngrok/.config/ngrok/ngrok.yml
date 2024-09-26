@@ -8,3 +8,13 @@ tunnels:
     addr: http://localhost:3000
     proto: http
     subdomain: leedev
+version: 3
+endpoints:
+  - name: httpbin
+    url: https://alan-httpbin.ngrok.dev
+    upstream:
+      url: 8080
+  - name: demo
+    url: https://demo.inconshreveable.com
+    upstream:
+      url: 8181
