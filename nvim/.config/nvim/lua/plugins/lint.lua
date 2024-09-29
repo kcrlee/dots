@@ -2,14 +2,10 @@ return {
 	"mfussenegger/nvim-lint",
 	event = { "BufReadPre", "BufNewFile" },
 	config = function()
-		local lint = require('lint')
+		local lint = require("lint")
 		lint.linters_by_ft = {
-			-- javascript = { "eslint_d" },
-			-- typescript = { "eslint_d" },
-			-- javascriptreact = { "eslint_d" },
-			-- typescriptreact = { "eslint_d" },
 			lua = { "luacheck" },
-			bash = { "shellcheck" }
+			bash = { "shellcheck" },
 		}
 		local eslint = lint.linters.eslint_d
 		eslint.args = {
@@ -22,5 +18,5 @@ return {
 				return vim.api.nvim_buf_get_name(0)
 			end,
 		}
-	end
+	end,
 }
