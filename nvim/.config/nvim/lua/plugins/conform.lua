@@ -19,6 +19,7 @@ return {
 			graphql = { "prettierd" },
 			sh = { "beautysh" },
 			bash = { "beautysh" },
+			haskell = { "ormolu" },
 			zsh = { "beautysh" },
 		},
 		format_on_save = function(bufnr)

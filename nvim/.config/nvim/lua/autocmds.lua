@@ -14,7 +14,7 @@ local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
 vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
 	group = lint_augroup,
 	callback = function()
-		require('lint').try_lint()
+		require("lint").try_lint()
 	end,
 })
 -------------------------------------------------  CUDA files --------------------------------------
@@ -178,7 +178,7 @@ if is_tmux then
 		-- return ":VimuxRunCommand('" .. command .. " . bufname("%")')<cr>"
 		local command = filetype_commands[filetype]
 		local buffer_name = vim.fn.expand("%") -- Get the name of the current buffer
-		print("buffer name", buffer_name)
+		-- print("buffer name", buffer_name)
 		return ":VimuxRunCommand('" .. command:gsub("%%", buffer_name) .. "')<cr>"
 	end
 
@@ -203,18 +203,18 @@ else
 
 	local function create_wezterm_splitpane()
 		local id = vim.system(
-				{ "wezterm", "cli", "split-pane", "--right", "--percent", "40" },
-				{ text = true },
-				function(p)
-					if p.code ~= 0 then
-						vim.notify(
-							"Failed to create a split pane. \n" .. p.stderr,
-							vim.logs.levels.ERROR,
-							{ title = "Wezterm" }
-						)
-					end
+			{ "wezterm", "cli", "split-pane", "--right", "--percent", "40" },
+			{ text = true },
+			function(p)
+				if p.code ~= 0 then
+					vim.notify(
+						"Failed to create a split pane. \n" .. p.stderr,
+						vim.logs.levels.ERROR,
+						{ title = "Wezterm" }
+					)
 				end
-			)
+			end
+		)
 			:wait()
 
 		local stripped_id = string.gsub(id.stdout, "%s+", "")
