@@ -35,8 +35,8 @@ return {
 				"lua_ls",
 				"marksman",
 				"rust_analyzer",
-				"tsserver",
-				"lua_ls"
+				"ts_ls",
+				"lua_ls",
 			},
 			handlers = {
 				function(server_name) -- default handler (optional)
@@ -113,7 +113,7 @@ return {
 			["harper-ls"] = function()
 				local lspconfig = require("lspconfig")
 				lspconfig.harper_ls.setup({
-					filetypes = { "markdown" }
+					filetypes = { "markdown" },
 				})
 			end,
 		})
