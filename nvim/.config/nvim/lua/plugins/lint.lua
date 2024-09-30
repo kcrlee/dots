@@ -4,7 +4,6 @@ return {
 	config = function()
 		local lint = require("lint")
 		lint.linters_by_ft = {
-			lua = { "luacheck" },
 			bash = { "shellcheck" },
 		}
 		local eslint = lint.linters.eslint_d

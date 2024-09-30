@@ -7,7 +7,7 @@ return {
 			-- require("vscode").setup({
 			-- 	transparent = true,
 			-- })
-
+			--
 			-- vim.cmd("colorscheme vscode")
 			-- vim.api.nvim_set_hl(0, "NotifyBackground", { bg = "#000000", ctermbg = "NONE" })
 		end,
@@ -60,7 +60,7 @@ return {
 			})
 
 			-- setup must be called before loading
-			vim.cmd("colorscheme kanagawa-dragon")
+			-- vim.cmd("colorscheme kanagawa")
 		end,
 	},
 	{
@@ -69,16 +69,35 @@ return {
 		priority = 1000,
 		opts = {},
 		config = function()
-			-- vim.cmd("colorscheme flexoki-dark")
-			-- vim.api.nvim_set_hl(0, "NotifyBackground", { bg = "#000000", ctermbg = "NONE" })
-			-- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-			-- vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
-			-- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-			-- vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "none", ctermbg = "NONE" })
-			-- vim.api.nvim_set_hl(0, "SignColumn", { bg = "none", ctermbg = "NONE" })
-			-- vim.api.nvim_set_hl(0, "StatusLine", { bg = "none", ctermbg = "NONE" })
-			-- vim.api.nvim_set_hl(0, "StatusLineNC", { bg = "none", ctermbg = "NONE" })
-			-- vim.api.nvim_set_hl(0, "TabLineFill", { bg = "none", ctermbg = "NONE" })
+			-- 	vim.cmd("colorscheme flexoki-dark")
+			-- 	vim.api.nvim_set_hl(0, "NotifyBackground", { bg = "#000000", ctermbg = "NONE" })
+			-- 	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+			-- 	vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
+			-- 	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+			-- 	vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "none", ctermbg = "NONE" })
+			-- 	vim.api.nvim_set_hl(0, "SignColumn", { bg = "none", ctermbg = "NONE" })
+			-- 	vim.api.nvim_set_hl(0, "StatusLine", { bg = "none", ctermbg = "NONE" })
+			-- 	vim.api.nvim_set_hl(0, "StatusLineNC", { bg = "none", ctermbg = "NONE" })
+			-- 	vim.api.nvim_set_hl(0, "TabLineFill", { bg = "none", ctermbg = "NONE" })
+		end,
+	},
+	{
+		"Yazeed1s/minimal.nvim",
+		lazy = false,
+		priority = 1000,
+		opts = {},
+		config = function()
+			vim.cmd([[colorscheme minimal-base16]])
+			vim.api.nvim_set_hl(0, "NotifyBackground", { bg = "#000000", ctermbg = "NONE" })
+			vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+			vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
+			vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+			vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "none", ctermbg = "NONE" })
+			vim.api.nvim_set_hl(0, "SignColumn", { bg = "none", ctermbg = "NONE" })
+			vim.api.nvim_set_hl(0, "StatusLine", { bg = "none", ctermbg = "NONE" })
+			vim.api.nvim_set_hl(0, "StatusLineNC", { bg = "none", ctermbg = "NONE" })
+			vim.api.nvim_set_hl(0, "TabLineFill", { bg = "none", ctermbg = "NONE" })
+			vim.api.nvim_set_hl(0, "Gutter", { bg = "none", ctermbg = "NONE" })
 		end,
 	},
 }
