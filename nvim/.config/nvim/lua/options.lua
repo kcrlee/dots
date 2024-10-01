@@ -1,7 +1,6 @@
 local set = vim.opt
 
 --wrap lines
-
 set.wrap = true
 set.textwidth = 80
 -- 1 tab = 4 spaces
@@ -11,9 +10,8 @@ set.shiftwidth = 4
 
 -- sets relative and absolute line numbers
 set.nu = true
-set.relativenumber = true
-vim.o.statuscolumn = "%s %l %r "
-
+-- set.rnu = true
+set.statuscolumn = "%l %r"
 -- spelling. See autocmds.lua for more
 set.spelllang = "en_us"
 
