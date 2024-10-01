@@ -9,9 +9,10 @@ set.softtabstop = 4
 set.shiftwidth = 4
 
 -- sets relative and absolute line numbers
+
 set.nu = true
--- set.rnu = true
-set.statuscolumn = "%l %r"
+set.rnu = true
+set.statuscolumn = "%=%{v:lnum} %{v:relnum}"
 -- spelling. See autocmds.lua for more
 set.spelllang = "en_us"
 
