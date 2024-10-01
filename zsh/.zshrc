@@ -2,7 +2,6 @@
 
 export ZSH="$HOME/.oh-my-zsh"
 export PATH="$PATH:[directory]"
-export PATH="$HOME/.ghcup/bin/ghc:$PATH"
 export PATH="$PATH:/home/kyle/.local/share/bob/nvim-bin"
 export ANDROID_HOME="$HOME/Android/Sdk"
 export SUDO_EDITOR="$HOME/.local/share/bob/nvim-bin/nvim"
@@ -37,7 +36,6 @@ function chpwd-osc7-pwd() {
     (( ZSH_SUBSHELL )) || osc7-pwd
 }
 add-zsh-hook -Uz chpwd chpwd-osc7-pwd
-
 
 
 [ -f "/home/kyle/.ghcup/env" ] && . "/home/kyle/.ghcup/env" # ghcup-env
