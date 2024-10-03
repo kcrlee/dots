@@ -17,6 +17,7 @@ return {
 			markdown = { "prettierd" },
 			yaml = { "prettierd" },
 			graphql = { "prettierd" },
+			go = { "goimports", "gofmt" },
 			sh = { "beautysh" },
 			bash = { "beautysh" },
 			haskell = { "ormolu" },
