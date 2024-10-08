@@ -4,7 +4,11 @@ return {
 	config = function()
 		local lint = require("lint")
 		lint.linters_by_ft = {
+			lua = { "luacheck" },
 			bash = { "shellcheck" },
+			javascript = { "eslint_d" },
+			typescriptreact = { "eslint_d" },
+			javascriptreact = { "eslint_d" },
 		}
 		local eslint = lint.linters.eslint_d
 		eslint.args = {

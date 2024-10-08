@@ -1,8 +1,7 @@
-# Path to your oh-my-zsh installation.
-
 export ZSH="$HOME/.oh-my-zsh"
 export PATH="$PATH:[directory]"
 export PATH="$PATH:/home/kyle/.local/share/bob/nvim-bin"
+export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
 export ANDROID_HOME="$HOME/Android/Sdk"
 export SUDO_EDITOR="$HOME/.local/share/bob/nvim-bin/nvim"
 ZSH_THEME="robbyrussell"
@@ -37,5 +36,7 @@ function chpwd-osc7-pwd() {
 }
 add-zsh-hook -Uz chpwd chpwd-osc7-pwd
 
+
+alias air="/home/kyle/go/bin/air"
 
 [ -f "/home/kyle/.ghcup/env" ] && . "/home/kyle/.ghcup/env" # ghcup-env
