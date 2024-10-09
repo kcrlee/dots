@@ -37,6 +37,7 @@ return {
 				"rust_analyzer",
 				"ts_ls",
 				"lua_ls",
+				"eslint",
 			},
 			handlers = {
 				function(server_name) -- default handler (optional)
@@ -44,6 +45,20 @@ return {
 						capabilities = capabilities,
 					})
 				end,
+
+				["eslint"] = function()
+					local lspconfig = require("lspconfig")
+					lspconfig.eslint.setup({
+						capabilities = capabilities,
+						on_attach = function(client, bufnr)
+							vim.api.nvim_create_autocmd("BufWritePre", {
+								buffer = bufnr,
+								command = "EslintFixAll",
+							})
+						end,
+					})
+				end,
+
 				["clangd"] = function()
 					local lspconfig = require("lspconfig")
 					lspconfig.clangd.setup({
