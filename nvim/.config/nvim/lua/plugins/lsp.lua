@@ -1,3 +1,5 @@
+local util = require("util")
+
 return {
 	"neovim/nvim-lspconfig",
 	dependencies = {
@@ -43,15 +45,6 @@ return {
 				function(server_name) -- default handler (optional)
 					require("lspconfig")[server_name].setup({
 						capabilities = capabilities,
-					})
-				end,
-
-				["eslint"] = function()
-					local lspconfig = require("lspconfig")
-					lspconfig.eslint.setup({
-						settings = {
-							workingDirectory = { mode = "location" },
-						},
 					})
 				end,
 
@@ -150,7 +143,6 @@ return {
 			sources = cmp.config.sources({
 				{ name = "nvim_lsp" },
 				{ name = "luasnip" }, -- For luasnip users.
-				{ name = "supermaven" },
 			}, {
 				{ name = "buffer" },
 			}),
