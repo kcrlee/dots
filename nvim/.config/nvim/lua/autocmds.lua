@@ -104,7 +104,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 -- disable adding comment on new line
 ------------------------------------------------ LSP setup ------------------------------------------------------------------------------------
 vim.o.updatetime = 250
-vim.cmd([[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]])
+-- vim.cmd([[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]])
 local augroup = vim.api.nvim_create_augroup
 local LSPGroup = augroup("LSPGroup", {})
 local autocmd = vim.api.nvim_create_autocmd
@@ -128,7 +128,7 @@ autocmd("LspAttach", {
 		vim.keymap.set("n", "<leader>vws", function()
 			vim.lsp.buf.workspace_symbol()
 		end, opts)
-		vim.keymap.set("n", "<leader>vd", function()
+		vim.keymap.set("n", "M", function()
 			vim.diagnostic.open_float()
 		end, opts)
 		vim.keymap.set("n", "<leader>vca", function()
