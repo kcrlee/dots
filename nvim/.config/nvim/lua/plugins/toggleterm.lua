@@ -27,7 +27,7 @@ return {
 		end
 
 		local task = Terminal:new({
-			cmd = "task list",
+			cmd = "taskwarrior-tui",
 			direction = "float",
 			float_opts = {
 				border = "double",
