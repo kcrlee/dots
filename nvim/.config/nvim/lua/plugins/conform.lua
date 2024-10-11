@@ -18,10 +18,11 @@ return {
 			yaml = { "prettierd" },
 			graphql = { "prettierd" },
 			go = { "goimports", "gofmt" },
-			sh = { "beautysh" },
-			bash = { "beautysh" },
+			sh = { "shfmt" },
+			bash = { "shfmt" },
+
 			haskell = { "ormolu" },
-			zsh = { "beautysh" },
+			zsh = { "shfmt" },
 		},
 		format_on_save = function(bufnr)
 			-- Disable autoformat for files in a certain path
@@ -75,10 +76,10 @@ return {
 			return args
 		end
 
-		conform.formatters.beautysh = {
-			prepend_args = function()
-				return { "--indent-size", "2", "--force-function-style", "fnpar" }
-			end,
-		}
+		-- conform.formatters.shfmt = {
+		-- 	prepend_args = function()
+		-- 		return { "--indent-size", "2", "--force-function-style", "fnpar" }
+		-- 	end,
+		-- }
 	end,
 }

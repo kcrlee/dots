@@ -1,4 +1,4 @@
-# Personal Dotfiles repo
+# Personal Dotfiles repo + Install Script
 
 Config files for:
 
@@ -42,4 +42,9 @@ stow dirname
 ```
 
 ## Popos Window Management (i3-like)
+
 https://github.com/pop-os/shell/issues/142#issuecomment-663079699
+
+## Install Script
+
+The install script only supports **Fedora**.
