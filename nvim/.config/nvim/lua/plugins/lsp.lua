@@ -42,18 +42,9 @@ return {
 				"eslint",
 				"cssls",
 				"bashls",
-				"prettierd",
-				"shfmt",
 				"svelte",
-				"stylua",
-				"yq",
-				"texlab",
-				"jq",
-				"black",
 				"gopls",
-				"html-lsp",
 				"pyright",
-				"shellcheck",
 			},
 			handlers = {
 				function(server_name) -- default handler (optional)
