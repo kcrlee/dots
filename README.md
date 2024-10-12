@@ -41,6 +41,11 @@ stow dirname
 
 ```
 
+
+## keyd
+
+[Build from source](https://github.com/rvaiya/keyd) and restart
+
 ## Popos Window Management (i3-like)
 
 https://github.com/pop-os/shell/issues/142#issuecomment-663079699
