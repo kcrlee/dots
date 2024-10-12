@@ -53,7 +53,7 @@ return {
 				"gopls",
 				"html-lsp",
 				"pyright",
-				"shellcheck"
+				"shellcheck",
 			},
 			handlers = {
 				function(server_name) -- default handler (optional)
