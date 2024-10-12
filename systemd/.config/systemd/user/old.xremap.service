@@ -1,6 +1,0 @@
-[Unit]
-Description=xremap
-
-[Service]
-; Restart=always
-ExecStart=xremap /home/kyle/.config/xremap/config.yml --watch
