@@ -5,7 +5,8 @@ export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
 export ANDROID_HOME="$HOME/Android/Sdk"
 export SUDO_EDITOR="$HOME/.local/share/bob/nvim-bin/nvim"
 ZSH_THEME="robbyrussell"
-plugins=(git direnv)
+plugins=(git direnv fzf)
+
 source $ZSH/oh-my-zsh.sh
 
 
@@ -13,6 +14,8 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+export FZF_DEFAULT_COMMAND='fd --type f | fzf-tmux -p --reverse'
+# export FZF_DEFAULT_OPTS="--inline-info --preview 'bat --color=always {}'"
 # fzf key bindings
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
