@@ -168,7 +168,7 @@ local filetype_commands = {
 	typescript = "ts-node %",
 	haskell = "stack build && stack test",
 	lua = "lua %",
-	rust = "cargo run",
+	rust = "rustc %",
 	-- Add more filetypes and commands as needed
 }
 

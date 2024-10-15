@@ -25,6 +25,7 @@ local config = {
 	enable_wayland = true,
 	font = font_config.get_fonts(),
 	font_size = 16.0,
+	color_scheme = "Dark+",
 	-- keys = keybind_config.get_keybinds(),
 	exit_behavior = "Hold",
 	default_prog = { "/bin/zsh", "-l" },
