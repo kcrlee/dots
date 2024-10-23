@@ -14,9 +14,21 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-export FZF_DEFAULT_COMMAND='fd --type f | fzf-tmux -p --reverse'
-# export FZF_DEFAULT_OPTS="--inline-info --preview 'bat --color=always {}'"
 # fzf key bindings
+
+FZF_FD_OPTS="--hidden --follow --exclude '.git'"
+export FZF_DEFAULT_COMMAND="fd ${FZF_FD_OPTS}"
+export FZF_CTRL_T_COMMAND="fd ${FZF_FD_OPTS}"
+export FZF_ALT_C_COMMAND="fd --type d ${FZF_FD_OPTS}"
+
+_fzf_compgen_path() {
+    fd ${FZF_FD_OPTS} . "${1}"
+}
+
+_fzf_compgen_dir() {
+    fd --type d ${FZF_FD_OPTS} . "${1}"
+}
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # pnpm
