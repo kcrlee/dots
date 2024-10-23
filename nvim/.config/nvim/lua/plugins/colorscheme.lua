@@ -1,18 +1,26 @@
 return {
-	{
-		"mofiqul/vscode.nvim",
-		lazy = false,
-		priority = 1000,
-		config = function()
-			require("vscode").setup({
-				transparent = true,
-			})
+	"mofiqul/vscode.nvim",
+	lazy = false,
+	priority = 1000,
+	config = function()
+		require("vscode").setup({
+			transparent = true,
+		})
 
-			vim.cmd("colorscheme vscode")
-			vim.api.nvim_set_hl(0, "NotifyBackground", { bg = "#000000", ctermbg = "NONE" })
-		end,
-	},
+		vim.cmd("colorscheme vscode")
+		vim.api.nvim_set_hl(0, "NotifyBackground", { bg = "#000000", ctermbg = "NONE" })
+	end,
 }
+-- {
+-- 	dir = "~/dev/neovim/colors.nvim",
+-- 	dev = true,
+-- 	config = function()
+-- 		require('vscode').setup({})
+-- 		vim.cmd('colorscheme vscode')
+-- 	end
+-- }
+
+-- }
 -- -- Default options:
 -- return {
 -- 	"ellisonleao/gruvbox.nvim",
