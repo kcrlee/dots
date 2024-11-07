@@ -29,6 +29,7 @@ local config = {
 	-- keys = keybind_config.get_keybinds(),
 	exit_behavior = "Hold",
 	default_prog = { "/bin/zsh", "-l" },
+	-- disable_default_key_bindings = true,
 }
 
 local host_os = utils.detect_host_os()
