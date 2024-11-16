@@ -26,3 +26,6 @@ vim.opt.grepformat = "%f:%l:%c:%m"
 
 -- terminal colors
 vim.o.termguicolors = true
+
+-- no swapfiles
+vim.opt.swapfile = false
