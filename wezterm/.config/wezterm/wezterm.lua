@@ -24,12 +24,12 @@ local config = {
 	automatically_reload_config = true,
 	-- enable_wayland = true,
 	font = font_config.get_fonts(),
-	font_size = 18.0,
+	font_size = 16.0,
 	-- color_scheme = "Dark+",
-	-- keys = keybind_config.get_keybinds(),
+	keys = keybind_config.get_keybinds(),
 	exit_behavior = "Hold",
 	default_prog = { "/bin/zsh", "-l" },
-	-- disable_default_key_bindings = true,
+	disable_default_key_bindings = true,
 }
 
 local host_os = utils.detect_host_os()
