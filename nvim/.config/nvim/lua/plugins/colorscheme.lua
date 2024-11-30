@@ -49,20 +49,17 @@ return {
 -- 			palette_overrides = {},
 -- 			overrides = {
 -- 				OilDir = { fg = "#83a598" },
--- 				Keyword = { fg = "#d3869b" },
--- 				-- -- ["@keyword.return"] = { fg = "#d3869b" },
--- 				-- -- ["@keyword.typescript"] = { fg = "#83a598" },
 -- 			},
--- 			dim_inactive = false,
--- 			transparent_mode = true,
+-- 			-- dim_inactive = false,
+-- 			-- transparent_mode = false,
 -- 		})
 --
 -- 		vim.cmd("colorscheme gruvbox")
 --
--- 		vim.api.nvim_set_hl(0, "NotifyBackground", { bg = "#000000", ctermbg = "NONE" })
+-- 		-- vim.api.nvim_set_hl(0, "NotifyBackground", { bg = "#000000", ctermbg = "NONE" })
 -- 	end,
 -- }
-
+--
 -- return {
 -- 	{
 -- 		"nvchad/ui",

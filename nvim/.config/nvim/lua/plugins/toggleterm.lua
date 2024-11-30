@@ -26,8 +26,8 @@ return {
 			lazygit:toggle()
 		end
 
-		local task = Terminal:new({
-			cmd = "taskwarrior-tui",
+		local scratchTerm = Terminal:new({
+			cmd = "zsh",
 			direction = "float",
 			float_opts = {
 				border = "double",
@@ -43,11 +43,16 @@ return {
 			end,
 		})
 
-		function _task_toggle()
-			task:toggle()
+		function _scratchTerm_toggle()
+			scratchTerm:toggle()
 		end
 
 		vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true })
-		vim.api.nvim_set_keymap("n", "<leader>t", "<cmd>lua _task_toggle()<CR>", { noremap = true, silent = true })
+		vim.api.nvim_set_keymap(
+			"n",
+			"<leader>t",
+			"<cmd>lua _scratchTerm_toggle()<CR>",
+			{ noremap = true, silent = true }
+		)
 	end,
 }
