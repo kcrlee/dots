@@ -1,5 +1,8 @@
 local set = vim.opt
 
+set.splitright = true
+set.splitbelow = true
+
 --wrap lines
 set.wrap = true
 set.textwidth = 80
