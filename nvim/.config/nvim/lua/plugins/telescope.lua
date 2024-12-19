@@ -9,7 +9,8 @@ return {
 			},
 		},
 		config = function(_)
-			require("telescope").setup({
+			local telescope = require("telescope")
+			telescope.setup({
 				extensions = {
 					fzf = {
 						fuzzy = true,
@@ -20,7 +21,7 @@ return {
 				},
 			})
 			-- To get fzf loaded and working with telescope, you need to call the load function
-			require("telescope").load_extension("fzf")
+			telescope.load_extension("fzf")
 
 			-- set keymaps
 			local builtin = require("telescope.builtin")
@@ -30,7 +31,7 @@ return {
 			vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
 			vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
 			vim.keymap.set("n", "<leader>fd", builtin.diagnostics, {})
-			vim.keymap.set("n", "<leader>fn", require("telescope").extensions.notify.notify, {})
+			vim.keymap.set("n", "<leader>fn", telescope.extensions.notify.notify, {})
 		end,
 	},
 }

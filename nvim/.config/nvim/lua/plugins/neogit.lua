@@ -8,6 +8,9 @@ return {
 	},
 	config = function()
 		local neogit = require("neogit")
-		vim.keymap.set("n", "<leader>g", neogit.open, {})
+		local function open_neogit_cwd()
+			neogit.open({ cwd = vim.fn.expand("%:p:h") })
+		end
+		vim.keymap.set("n", "<leader>g", open_neogit_cwd, {})
 	end,
 }
