@@ -1,0 +1,13 @@
+# colors, opacity, etc.
+theme = Dark+
+background-opacity = 0.95
+window-theme=ghostty
+window-decoration = false
+
+# font
+font-family = JetBrains Mono NF -liga -calt
+font-size = 16
+
+# modules
+config-file = ./keybinds/config
+
