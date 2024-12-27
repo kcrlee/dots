@@ -8,6 +8,5 @@ window-decoration = false
 font-family = JetBrains Mono NF -liga -calt
 font-size = 16
 
-# modules
-config-file = ./keybinds/config
 
+window-inherit-working-directory=true
