@@ -1,12 +1,12 @@
 # colors, opacity, etc.
 theme = Dark+
-background-opacity = 0.95
+background-opacity = 0.75
+background-blur-radius=21
 window-theme=ghostty
 window-decoration = false
+window-inherit-working-directory=true
 
 # font
 font-family = JetBrains Mono NF -liga -calt
 font-size = 16
 
-
-window-inherit-working-directory=true
