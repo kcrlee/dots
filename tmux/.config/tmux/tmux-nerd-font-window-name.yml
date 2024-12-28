@@ -6,7 +6,7 @@ config:
 
 icons:
   zsh: "" # overwrite with your own symbol (Nerd Font icon, emoji, whatever!)
-  nvim: ""
+  nvim: ""
   vim: ""
   tmux: ""
   fish: ""
