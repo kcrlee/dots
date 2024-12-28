@@ -1,9 +1,8 @@
 # opacity, etc.
 theme = Iterm2 Dark Background
-# theme = Dark+
 background-opacity = 0.75
 background-blur-radius=21
-#
+
 # window properties
 window-theme=ghostty
 window-decoration = false
@@ -13,9 +12,11 @@ window-padding-x = 4,4
 window-padding-y = 4,4
 
 # font
-font-family = JetBrains Mono NF -liga -calt
-font-size = 16
+font-family = "JetBrains Mono Bold"
+font-family-bold = "JetBrains Mono ExtraBold"
+font-family-italic = "JetBrains Mono Bold Italic"
+font-family-bold-italic = "JetBrains Mono ExtraBold Italic"
 
-# theme
-# background = FFFFFF
-# foreground = c6d0f5
+
+font-size = 16
+font-feature = -calt
