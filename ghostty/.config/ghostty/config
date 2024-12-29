@@ -1,11 +1,24 @@
-# opacity, etc.
+# background
 theme = Iterm2 Dark Background
 background-opacity = 0.75
 background-blur-radius=21
 
+
+# splits
+unfocused-split-opacity = 0.85
+keybind = alt+shift+h=goto_split:left
+keybind = alt+shift+j=goto_split:bottom
+keybind = alt+shift+k=goto_split:top
+keybind = alt+shift+l=goto_split:right
+
+
+keybind = alt+shift+p=new_split:right
+keybind = alt+shift+o=new_split:down
+keybind = alt+shift+w=close_surface
+
+
 # window properties
 window-theme=ghostty
-window-decoration = false
 window-inherit-working-directory=true
 macos-titlebar-style = hidden
 window-padding-x = 4,4
@@ -16,7 +29,5 @@ font-family = "JetBrains Mono Bold"
 font-family-bold = "JetBrains Mono ExtraBold"
 font-family-italic = "JetBrains Mono Bold Italic"
 font-family-bold-italic = "JetBrains Mono ExtraBold Italic"
-
-
 font-size = 16
 font-feature = -calt

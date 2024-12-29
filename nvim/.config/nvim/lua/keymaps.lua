@@ -10,3 +10,4 @@ vim.keymap.set("n", "<leader>vh", ":split <Enter>")
 
 -- vimtex
 vim.keymap.set("n", "<leader>vc", ":VimtexCompile <Enter>")
+vim.keymap.set("n", "<leader>i", ":Inspect <Enter>")
