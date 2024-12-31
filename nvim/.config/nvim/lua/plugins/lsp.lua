@@ -119,11 +119,9 @@ return {
 					end,
 				})
 			end,
-			["harper-ls"] = function()
+			["glsl_analyzer"] = function()
 				local lspconfig = require("lspconfig")
-				lspconfig.harper_ls.setup({
-					filetypes = { "markdown" },
-				})
+				lspconfig.glsl_analyzer.setup({})
 			end,
 		})
 

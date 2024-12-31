@@ -9,7 +9,7 @@ return {
 			typescriptreact = { "prettierd" },
 			javascript = { "prettierd" },
 			javascriptreact = { "prettierd" },
-			json = { "jq" },
+			json = { "prettierd" },
 			python = { "black" },
 			html = { "prettierd" },
 			css = { "prettierd" },
@@ -20,7 +20,6 @@ return {
 			go = { "goimports", "gofmt" },
 			sh = { "shfmt" },
 			bash = { "shfmt" },
-
 			haskell = { "ormolu" },
 			zsh = { "shfmt" },
 		},
