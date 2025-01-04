@@ -4,7 +4,8 @@ return {
 	-- Optional dependencies
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = function()
-		require("oil").setup({
+		local oil = require("oil")
+		oil.setup({
 			-- Oil will take over directory buffers (e.g. `vim .` or `:e src/`)
 			-- Set to false if you still want to use netrw.
 			default_file_explorer = true,
@@ -181,7 +182,12 @@ return {
 				border = "rounded",
 			},
 		})
-	end,
 
-	vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" }),
+		local function toggle_oil_float()
+			return oil.toggle_float(nil)
+		end
+		vim.keymap.set("n", "-", toggle_oil_float, { desc = "Open Oil Float" })
+
+		-- vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+	end,
 }
