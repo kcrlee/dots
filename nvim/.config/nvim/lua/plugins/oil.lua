@@ -182,12 +182,6 @@ return {
 				border = "rounded",
 			},
 		})
-
-		local function toggle_oil_float()
-			return oil.toggle_float(nil)
-		end
-		vim.keymap.set("n", "-", toggle_oil_float, { desc = "Open Oil Float" })
-
-		-- vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+		vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 	end,
 }
