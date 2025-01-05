@@ -9,16 +9,17 @@ return {
 			winopts = {},
 			fzf = {
 				["ctrl-z"] = "abort",
+				["ctrl-q"] = "select-all+accept",
 			},
 			actions = {
 				files = {
 					["default"] = actions.file_edit_or_qf,
 					["ctrl-s"] = actions.file_split,
 					["ctrl-v"] = actions.file_vsplit,
-					-- ["ctrl-t"] = actions.file_tabedit,
 				},
 			},
 		})
+		require("fzf-lua").register_ui_select()
 		vim.api.nvim_set_keymap("n", "<leader>ff", [[<Cmd>lua require"fzf-lua".files()<CR>]], {})
 		vim.api.nvim_set_keymap("n", "<leader>ff", [[<Cmd>lua require"fzf-lua".files()<CR>]], {})
 		vim.api.nvim_set_keymap("n", "<leader>fb", [[<Cmd>lua require"fzf-lua".buffers()<CR>]], {})
