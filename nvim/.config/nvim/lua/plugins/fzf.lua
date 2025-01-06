@@ -5,7 +5,6 @@ return {
 		local fzf_lua = require("fzf-lua")
 		local actions = require("fzf-lua").actions
 		fzf_lua.setup({
-			"telescope",
 			winopts = {},
 			fzf = {
 				["ctrl-z"] = "abort",

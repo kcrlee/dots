@@ -1,5 +1,4 @@
 local u = require("functions.utils")
-
 -- Globals
 function _G.P(...)
 	local objects = {}
