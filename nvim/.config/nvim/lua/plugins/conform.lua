@@ -4,19 +4,20 @@ return {
 	opts = {
 		quiet = true,
 		formatters_by_ft = {
+			astro = { "prettier" },
 			lua = { "stylua" },
-			typescript = { "prettierd" },
-			typescriptreact = { "prettierd" },
-			javascript = { "prettierd" },
-			javascriptreact = { "prettierd" },
-			json = { "prettierd" },
+			typescript = { "prettier" },
+			typescriptreact = { "prettier" },
+			javascript = { "prettier" },
+			javascriptreact = { "prettier" },
+			json = { "prettier" },
 			python = { "black" },
-			html = { "prettierd" },
-			css = { "prettierd" },
-			scss = { "prettierd" },
-			markdown = { "prettierd" },
-			yaml = { "prettierd" },
-			graphql = { "prettierd" },
+			html = { "prettier" },
+			css = { "prettier" },
+			scss = { "prettier" },
+			markdown = { "prettier" },
+			yaml = { "prettier" },
+			graphql = { "prettier" },
 			go = { "goimports", "gofmt" },
 			sh = { "shfmt" },
 			bash = { "shfmt" },
@@ -40,7 +41,7 @@ return {
 
 		-- Customize prettier args
 		require("conform.formatters.prettier").args = function(_, ctx)
-			local prettier_roots = { ".prettierrc", ".prettierrc.json", "prettier.config.js" }
+			local prettier_roots = { ".prettierrc", ".prettierrc.json", "prettier.config.js", ".prettierrc.mjs" }
 			local args = { "--stdin-filepath", "$FILENAME" }
 			local config_path = vim.fn.stdpath("config")
 

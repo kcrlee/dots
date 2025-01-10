@@ -123,6 +123,11 @@ return {
 				local lspconfig = require("lspconfig")
 				lspconfig.glsl_analyzer.setup({})
 			end,
+
+			["astro"] = function()
+				local lspconfig = require("lspconfig")
+				lspconfig.astro.setup({})
+			end,
 		})
 
 		local cmp_select = { behavior = cmp.SelectBehavior.Select }
