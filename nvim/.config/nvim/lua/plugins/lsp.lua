@@ -31,6 +31,7 @@ return {
 		require("fidget").setup({})
 		require("mason").setup()
 		require("mason-lspconfig").setup({
+			automatic_installation = false,
 			ensure_installed = {
 				"clangd",
 				"html",
@@ -81,22 +82,6 @@ return {
 					})
 				end,
 			},
-
-			["kotlin_language_server"] = function()
-				local lspconfig = require("lspconfig")
-				lspconfig.hls.setup({
-					capabilities = capabilities,
-				})
-			end,
-			["hls"] = function()
-				local lspconfig = require("lspconfig")
-				lspconfig.hls.setup({
-					capabilities = capabilities,
-					settings = {
-						formattingProviders = { "ormolu" },
-					},
-				})
-			end,
 			["pyright"] = function()
 				local lspconfig = require("lspconfig")
 				lspconfig.pyright.setup({
