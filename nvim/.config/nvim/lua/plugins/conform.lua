@@ -4,7 +4,7 @@ return {
 	opts = {
 		quiet = true,
 		formatters_by_ft = {
-			astro = { "prettier" },
+			astro = { "deno_fmt" },
 			lua = { "stylua" },
 			typescript = { "deno_fmt" },
 			typescriptreact = { "deno_fmt" },
