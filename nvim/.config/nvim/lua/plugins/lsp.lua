@@ -119,10 +119,6 @@ return {
 					end,
 				})
 			end,
-			["glsl_analyzer"] = function()
-				local lspconfig = require("lspconfig")
-				lspconfig.glsl_analyzer.setup({})
-			end,
 
 			["astro"] = function()
 				local lspconfig = require("lspconfig")
