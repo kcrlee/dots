@@ -1,5 +1,4 @@
 local util = require("util")
-
 return {
 	"neovim/nvim-lspconfig",
 	dependencies = {

@@ -68,6 +68,7 @@ vim.api.nvim_create_autocmd({ "BufWinLeave" }, {
 		vim.opt_local.spell = false
 	end,
 })
+
 ------------------------------------------------ Haskell setup ------------------------------------------------
 --special settings for haskell because semantic white space languages are a PITA
 vim.api.nvim_create_augroup("haskell_settings", { clear = true })
