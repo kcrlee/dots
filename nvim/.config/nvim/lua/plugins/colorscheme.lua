@@ -1,7 +1,8 @@
 return {
-	"KyleLee95/code-minimal",
+	-- dir = "~/dev/personal/tomorrow-min",
+	"KyleLee95/tomorrow-min",
 	lazy = false,
 	config = function()
-		vim.cmd("colorscheme code-minimal")
+		vim.cmd("colorscheme tomorrow-min")
 	end,
 }

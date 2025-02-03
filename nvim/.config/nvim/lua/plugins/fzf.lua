@@ -5,18 +5,19 @@ return {
 		local fzf_lua = require("fzf-lua")
 		local actions = require("fzf-lua").actions
 		fzf_lua.setup({
-			winopts = {},
-			fzf = {
-				["ctrl-z"] = "abort",
-				["ctrl-q"] = "select-all+accept",
-			},
-			actions = {
-				files = {
-					["default"] = actions.file_edit_or_qf,
-					["ctrl-s"] = actions.file_split,
-					["ctrl-v"] = actions.file_vsplit,
-				},
-			},
+			{ "telescope" },
+			-- winopts = {},
+			-- fzf = {
+			-- 	["ctrl-z"] = "abort",
+			-- 	["ctrl-q"] = "select-all+accept",
+			-- },
+			-- actions = {
+			-- 	files = {
+			-- 		["default"] = actions.file_edit_or_qf,
+			-- 		["ctrl-s"] = actions.file_split,
+			-- 		["ctrl-v"] = actions.file_vsplit,
+			-- 	},
+			-- },
 		})
 		require("fzf-lua").register_ui_select()
 		vim.api.nvim_set_keymap("n", "<leader>ff", [[<Cmd>lua require"fzf-lua".files()<CR>]], {})
