@@ -2,12 +2,12 @@ return {
 	"MeanderingProgrammer/render-markdown.nvim",
 	opts = {
 		code = {
-			sign = false,
+			sign = true,
 			width = "block",
 			right_pad = 1,
 		},
 		heading = {
-			sign = false,
+			sign = true,
 			icons = {},
 		},
 		checkbox = {
