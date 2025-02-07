@@ -76,10 +76,10 @@ return {
 			return args
 		end
 
-		-- conform.formatters.shfmt = {
-		-- 	prepend_args = function()
-		-- 		return { "--indent-size", "2", "--force-function-style", "fnpar" }
-		-- 	end,
-		-- }
+		conform.formatters.deno_fmt = {
+			append_args = function()
+				return { "--no-semicolons" }
+			end,
+		}
 	end,
 }

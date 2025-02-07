@@ -1,6 +1,4 @@
-# background-opacity = 0.75
-# background-blur-radius=21
-
+theme="Tomorrow Night"
 
 # splits
 unfocused-split-opacity = 0.85
