@@ -1,5 +1,5 @@
 return {
-	dir = "~/dev/personal/tomorrow-min",
+	dir = "~/dev/personal/nvim-plugins/tomorrow-min",
 	-- "KyleLee95/tomorrow-min",
 	lazy = false,
 	config = function()
