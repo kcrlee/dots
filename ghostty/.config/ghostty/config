@@ -1,4 +1,5 @@
-theme="Tomorrow Night"
+# Move the file colorscheme file to where ghostty pulls the colorschemes from
+theme="Tomorrow Night Custom"
 
 # splits
 unfocused-split-opacity = 0.85
