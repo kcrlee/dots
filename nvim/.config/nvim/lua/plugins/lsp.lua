@@ -123,6 +123,11 @@ return {
 				local lspconfig = require("lspconfig")
 				lspconfig.astro.setup({})
 			end,
+
+			["sqls"] = function()
+				local lspconfig = require("lspconfig")
+				lspconfig.sqls.setup({})
+			end,
 		})
 
 		local cmp_select = { behavior = cmp.SelectBehavior.Select }

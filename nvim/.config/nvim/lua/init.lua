@@ -1,7 +1,4 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
--- put this in your main init.lua file ( before lazy setup )
--- vim.g.loaded_netrw = 1
--- vim.g.loaded_netrwPlugin = 1
 
 if not vim.loop.fs_stat(lazypath) then
 	vim.fn.system({

@@ -3,10 +3,7 @@ vim.g.mapleader = ","
 
 vim.keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<cr>")
 vim.keymap.set("n", "<F12>", ":UndotreeToggle <Enter>")
-
---Splits
-vim.keymap.set("n", "<leader>vs", ":vs <Enter>")
-vim.keymap.set("n", "<leader>vh", ":split <Enter>")
+vim.keymap.set({ "n", "v" }, "<leader>a", "<cmd>CodeCompanionChat Toggle<cr>", { noremap = true, silent = true })
 
 -- vimtex
 vim.keymap.set("n", "<leader>vc", ":VimtexCompile <Enter>")
