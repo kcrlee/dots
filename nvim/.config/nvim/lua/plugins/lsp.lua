@@ -27,50 +27,6 @@ return {
 			cmp_lsp.default_capabilities()
 		)
 
-		local lsp_config = require('lspconfig')
-		-- lsp_config.lua_ls.setup({
-		--
-		-- 	capabilities = capabilities,
-		-- })
-		--
-		-- lsp_config.ts_ls.setup({
-		-- 	root_dir = lsp_config.util.root_pattern("package.json"),
-		-- 	single_file = true,
-		-- })
-		--
-		-- lsp_config.html.setup({
-		-- 	configurationSection = { "html", "css", "javascript", },
-		-- 	embeddedLanguages = {
-		-- 		css = true,
-		-- 		scss = true,
-		-- 		javascript = true,
-		-- 		typescript = true,
-		-- 		typescriptreact = true,
-		-- 		javascriptreact = true
-		-- 	},
-		-- })
-		--
-		-- lsp_config.tailwindcss.setup({
-		-- 	capabilities = capabilities
-		-- })
-		--
-		-- lsp_config.sqls.setup({
-		-- 	cmd = { 'sqls' },
-		-- 	filetypes = { 'sql', 'mysql' },
-		-- 	single_file_support = true,
-		-- 	root_dir = util.root_pattern('package.json', 'package-lock.json', 'pnpm-lock'),
-		-- 	capabilities = capabilities,
-		-- 	settings = {
-		-- 		sqls = {
-		-- 			formatting = true
-		-- 		}
-		-- 	}
-		-- })
-
-
-
-
-
 		require("fidget").setup({})
 		require("mason").setup()
 		require("mason-lspconfig").setup({

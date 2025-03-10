@@ -38,5 +38,6 @@
   "ts-error-translator.nvim": { "branch": "main", "commit": "47e5ba89f71b9e6c72eaaaaa519dd59bd6897df4" },
   "typst-preview.nvim": { "branch": "master", "commit": "00ff6829030f302e8ff24d0e3a68625dd1a3ac40" },
   "undotree": { "branch": "master", "commit": "76c4e32d8f1aa493bb68d4a3fcd3c700395c303c" },
+  "vim-dadbod": { "branch": "master", "commit": "9f0ca8bcef704659820a95c3bbd2c262583a66a1" },
   "vimtex": { "branch": "master", "commit": "cf6b84775624582d7422715ee46b0a63b53cee38" }
 }
