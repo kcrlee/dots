@@ -5,8 +5,7 @@ return {
 		quiet = true,
 		formatters_by_ft = {
 			astro = { "deno_fmt" },
-			sql = { "sqlfluff" },
-			pgsql = { "sqlfluff" },
+			sql = { "sqlfmt" },
 			lua = { "stylua" },
 			typescript = { "deno_fmt" },
 			typescriptreact = { "deno_fmt" },
@@ -26,24 +25,12 @@ return {
 			haskell = { "ormolu" },
 			zsh = { "shfmt" },
 		},
-		formatters = {
-			sqlfluff = {
-				command = "sqlfluff",
-				args = { "format", "--dialect=postgres", "-" },
-				stdin = true,
-				cwd = function()
-					return vim.fn.getcwd()
-				end,
-			},
-		},
-
 		format_on_save = function(bufnr)
 			-- Disable autoformat for files in a certain path
 			local bufname = vim.api.nvim_buf_get_name(bufnr)
 			if bufname:match("/node_modules/") then
 				return
 			end
-
 			return { timeout_ms = 1000, lsp_fallback = true }
 		end,
 		format_after_save = { lsp_fallback = true },

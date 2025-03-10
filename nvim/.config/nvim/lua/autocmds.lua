@@ -270,3 +270,17 @@ else
 		end,
 	})
 end
+
+--- Sql FLuff
+vim.api.nvim_create_augroup("sql_settings", { clear = true })
+
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+	pattern = { "*.sql" },
+	group = "sql_settings",
+	callback = function(args)
+		-- Format first
+		require("conform").format({ bufnr = args.buf })
+		-- Then run the linter
+		require("lint").try_lint()
+	end,
+})
