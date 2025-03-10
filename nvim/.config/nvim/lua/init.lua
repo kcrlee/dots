@@ -1,5 +1,4 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-
 if not vim.loop.fs_stat(lazypath) then
 	vim.fn.system({
 		"git",
@@ -32,7 +31,7 @@ require("lazy").setup({
 	},
 	lockfile = vim.fn.stdpath("config") .. "/lazy-lock.json", -- lockfile generated after running update.
 	defaults = {
-		lazy = false, -- should plugins be lazy-loaded?
+		lazy = false,                                      -- should plugins be lazy-loaded?
 		version = nil,
 		-- version = "*", -- enable this to try installing the latest stable versions of plugins
 	},
@@ -65,3 +64,7 @@ require("lazy").setup({
 	},
 	state = vim.fn.stdpath("state") .. "/lazy/state.json", -- state info for checker and other things
 })
+
+vim.g.markdown_fenced_languages = {
+	"ts=typescript"
+}
