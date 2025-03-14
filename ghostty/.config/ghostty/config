@@ -3,15 +3,14 @@ theme="Tomorrow Night Custom"
 
 # splits
 unfocused-split-opacity = 0.85
-keybind = alt+shift+h=goto_split:left
-keybind = alt+shift+j=goto_split:bottom
-keybind = alt+shift+k=goto_split:top
-keybind = alt+shift+l=goto_split:right
+keybind = alt+shift+]=goto_split:next
+keybind = alt+shift+[=goto_split:previous
 
 
 keybind = alt+shift+p=new_split:right
 keybind = alt+shift+o=new_split:down
 keybind = alt+shift+w=close_surface
+
 
 
 # window properties
