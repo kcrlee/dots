@@ -1,5 +1,5 @@
 return {
-	dir = "/Users/kyle/dev/personal/nvim-plugins/rubber",
+	-- dir = "/Users/kyle/dev/personal/nvim-plugins/rubber",
 	-- cmd = { "RubberOpen", "RubberToggle", "RubberClose", "RubberRefresh" },
 	-- keys = {
 	-- 	{ "rt", ":RubberToggle", desc = "Toggle Rubber" },

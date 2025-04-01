@@ -44,7 +44,6 @@ return {
 				"svelte",
 				"gopls",
 				"pyright",
-				"sqls",
 			},
 			handlers = {
 				function(server_name) -- default handler (optional)
