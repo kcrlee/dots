@@ -4,6 +4,8 @@ export PATH="$PATH:/home/kyle/.local/share/bob/nvim-bin"
 export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
 export ANDROID_HOME="$HOME/Android/Sdk"
 export SUDO_EDITOR="$HOME/.local/share/bob/nvim-bin/nvim"
+export FLYCTL_INSTALL="/home/kyle/.fly"
+export PATH="$FLYCTL_INSTALL/bin:$PATH"
 ZSH_THEME="robbyrussell"
 plugins=(git direnv fzf)
 
