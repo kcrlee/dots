@@ -12,6 +12,7 @@ return {
 		"hrsh7th/cmp-path",
 		"hrsh7th/cmp-cmdline",
 		"hrsh7th/nvim-cmp",
+		"uga-rosa/cmp-dictionary",
 		"L3MON4D3/LuaSnip",
 		"saadparwaiz1/cmp_luasnip",
 		"j-hui/fidget.nvim",
@@ -49,6 +50,17 @@ return {
 				function(server_name) -- default handler (optional)
 					require("lspconfig")[server_name].setup({
 						capabilities = capabilities,
+					})
+				end,
+
+				["sourcekit"] = function()
+					local lspconfig = require("lspconfig")
+					lspconfig.sourcekit.setup({
+						capabilities = {
+							workspace = {
+								didChangeWatchedFIles = { dynamicRegistration = true },
+							},
+						},
 					})
 				end,
 
