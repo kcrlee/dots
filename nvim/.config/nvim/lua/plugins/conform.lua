@@ -4,6 +4,7 @@ return {
 	opts = {
 		quiet = true,
 		formatters_by_ft = {
+			swift = { "swiftformat" },
 			astro = { "deno_fmt" },
 			sql = { "sqlfmt" },
 			lua = { "stylua" },

@@ -3,6 +3,7 @@ return {
 	event = { "BufReadPre", "BufNewFile", "BufWritePost	" },
 	opts = {
 		linters = {
+			swift = { "swiftlint" },
 			sqlfluff = {
 				args = {
 					"lint",

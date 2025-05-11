@@ -28,122 +28,70 @@ return {
 			cmp_lsp.default_capabilities()
 		)
 
-		require("fidget").setup({})
-		require("mason").setup()
-		require("mason-lspconfig").setup({
-			automatic_installation = false,
-			ensure_installed = {
-				"clangd",
-				"html",
-				"marksman",
-				"rust_analyzer",
-				"ts_ls",
-				"lua_ls",
-				"eslint",
-				"cssls",
-				"bashls",
-				"svelte",
-				"gopls",
-				"pyright",
+		local lspconfig = require("lspconfig")
+		lspconfig.sourcekit.setup({
+			filetypes = { "swift", "c", "cpp", "objective-c", "objc", "objective-cpp" },
+			root_dir = lspconfig.util.root_pattern(".git", "Package.swift"),
+			capabilities = {
+				workspace = {
+					didChangeWatchedFIles = { dynamicRegistration = true },
+				},
 			},
-			handlers = {
-				function(server_name) -- default handler (optional)
-					require("lspconfig")[server_name].setup({
-						capabilities = capabilities,
-					})
-				end,
+		})
 
-				["sourcekit"] = function()
-					local lspconfig = require("lspconfig")
-					lspconfig.sourcekit.setup({
-						root_dir = lspconfig.util.root_pattern(".git", "Package.swift"),
-						capabilities = {
-							workspace = {
-								didChangeWatchedFIles = { dynamicRegistration = true },
-							},
-						},
-					})
-				end,
+		lspconfig.clangd.setup({
+			capabilities = capabilities,
+		})
 
-				["clangd"] = function()
-					local lspconfig = require("lspconfig")
-					lspconfig.clangd.setup({
-						capabilities = capabilities,
-					})
-				end,
+		lspconfig.lua_ls.setup({
+			capabilities = capabilities,
+		})
 
-				["kotlin_language_server"] = function()
-					local lspconfig = require("lspconfig")
-					lspconfig.lua_ls.setup({
-						capabilities = capabilities,
-					})
-				end,
+		lspconfig.denols.setup({
+			root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
+		})
 
-				["denols"] = function()
-					local lspconfig = require("lspconfig")
-					lspconfig.denols.setup({
-						root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
-					})
-				end,
+		lspconfig.ts_ls.setup({
+			root_dir = lspconfig.util.root_pattern("package.json"),
+			single_file_support = false,
+		})
 
-				["ts_ls"] = function()
-					local lspconfig = require("lspconfig")
-					lspconfig.ts_ls.setup({
-						root_dir = lspconfig.util.root_pattern("package.json"),
-						single_file_support = false,
-					})
-				end,
-
-				["lua_ls"] = function()
-					local lspconfig = require("lspconfig")
-					lspconfig.lua_ls.setup({
-						capabilities = capabilities,
-						settings = {
-							Lua = {
-								diagnostics = {
-									globals = { "vim", "it", "describe", "before_each", "after_each" },
-								},
-							},
-						},
-					})
-				end,
-			},
-			["pyright"] = function()
-				local lspconfig = require("lspconfig")
-				lspconfig.pyright.setup({
-					capabilities = capabilities,
-					settings = {
-						python = {
-							analysis = {
-								autoSearchPaths = true,
-								diagnosticMode = "workspace",
-							},
-						},
+		lspconfig.lua_ls.setup({
+			capabilities = capabilities,
+			settings = {
+				Lua = {
+					diagnostics = {
+						globals = { "vim", "it", "describe", "before_each", "after_each" },
 					},
-				})
-			end,
+				},
+			},
+		})
+		lspconfig.pyright.setup({
+			capabilities = capabilities,
+			settings = {
+				python = {
+					analysis = {
+						autoSearchPaths = true,
+						diagnosticMode = "workspace",
+					},
+				},
+			},
+		})
 
-			["tsserver"] = function()
-				local lspconfig = require("lspconfig")
-				lspconfig.tsserver.setup({
-					on_attach = function(client)
-						client.resolved_capabilities.document_formatting = false
-					end,
-				})
-			end,
-
-			["astro"] = function()
-				local lspconfig = require("lspconfig")
-				lspconfig.astro.setup({})
-			end,
-
-			["sqls"] = function()
-				local lspconfig = require("lspconfig")
-				lspconfig.sqls.setup({
-					capabilities = capabilities,
-				})
+		lspconfig.ts_ls.setup({
+			on_attach = function(client)
+				client.resolved_capabilities.document_formatting = false
 			end,
 		})
+
+		lspconfig.astro.setup({})
+
+		lspconfig.sqls.setup({
+			capabilities = capabilities,
+		})
+
+		require("fidget").setup({})
+		require("mason").setup()
 		local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
 		cmp.setup({
