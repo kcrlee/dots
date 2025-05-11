@@ -30,6 +30,7 @@ return {
 
 		local lspconfig = require("lspconfig")
 		lspconfig.sourcekit.setup({
+			cmd = { "/usr/bin/sourcekit-lsp" },
 			filetypes = { "swift", "c", "cpp", "objective-c", "objc", "objective-cpp" },
 			root_dir = lspconfig.util.root_pattern(".git", "Package.swift"),
 			capabilities = {
