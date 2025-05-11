@@ -56,6 +56,7 @@ return {
 				["sourcekit"] = function()
 					local lspconfig = require("lspconfig")
 					lspconfig.sourcekit.setup({
+						root_dir = lspconfig.util.root_pattern(".git", "Package.swift"),
 						capabilities = {
 							workspace = {
 								didChangeWatchedFIles = { dynamicRegistration = true },
