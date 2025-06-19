@@ -40,6 +40,9 @@ return {
 			},
 		})
 
+		lspconfig.gopls.setup({
+			capabilities = capabilities,
+		})
 		lspconfig.clangd.setup({
 			capabilities = capabilities,
 		})
@@ -63,6 +66,20 @@ return {
 				},
 			},
 		})
+
+		lspconfig.shopify_theme_ls.setup({
+			capabilities = capabilities,
+			root_dir = lspconfig.util.root_pattern({
+				".shopifyignore",
+				".theme-check.yml",
+				".theme-check.yaml",
+				"shopify.theme.toml",
+			}),
+		})
+		lspconfig.tailwindcss.setup({
+			capabilities = capabilities,
+			root_dir = lspconfig.util.root_pattern("package.json"),
+		})
 		lspconfig.pyright.setup({
 			capabilities = capabilities,
 			settings = {
@@ -80,14 +97,14 @@ return {
 			root_dir = lspconfig.util.root_pattern("package.json"),
 			single_file_support = false,
 		})
-		-- lspconfig.ts_ls.setup({
-		-- on_attach = function(client)
-		-- 	client.resolved_capabilities.document_formatting = false
-		-- end,
-		-- })
 
+		lspconfig.svelte.setup({
+			capabilities = capabilities,
+			cmd = { "svelteserver", "--stdio" },
+			filetypes = { "svelte" },
+			root_dir = lspconfig.util.root_pattern("package.json"),
+		})
 		lspconfig.astro.setup({})
-
 		lspconfig.sqls.setup({
 			capabilities = capabilities,
 		})

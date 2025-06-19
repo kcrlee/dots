@@ -15,6 +15,7 @@ return {
 			json = { "deno_fmt" },
 			python = { "black" },
 			html = { "deno_fmt" },
+			svelte = { "deno_fmt" },
 			css = { "deno_fmt" },
 			scss = { "deno_fmt" },
 			markdown = { "deno_fmt" },
