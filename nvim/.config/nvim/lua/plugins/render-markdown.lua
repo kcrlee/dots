@@ -11,7 +11,7 @@ return {
 			icons = {},
 		},
 		checkbox = {
-			enabled = false,
+			enabled = true,
 		},
 	},
 	ft = { "markdown", "norg", "rmd", "org" },
