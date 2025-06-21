@@ -1,6 +1,6 @@
 return {
 	"stevearc/conform.nvim",
-	event = "LspAttach",
+	event = { "BufWritePre" },
 	opts = {
 		quiet = true,
 		formatters_by_ft = {
@@ -12,7 +12,12 @@ return {
 			typescriptreact = { "deno_fmt" },
 			javascript = { "deno_fmt" },
 			javascriptreact = { "deno_fmt" },
-			json = { "deno_fmt" },
+			json = {
+				"deno_fmt",
+				"prettier",
+				"jq",
+				stop_after_first = true,
+			},
 			python = { "black" },
 			html = { "deno_fmt" },
 			svelte = { "deno_fmt" },

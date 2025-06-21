@@ -7,7 +7,6 @@ return {
 	opts = {},
 	config = function()
 		local highlight = {
-
 			"RainbowBlue",
 			"RainbowYellow",
 			"RainbowRed",
