@@ -5,7 +5,6 @@ return {
 	-- dependencies = { "JoosepAlviste/nvim-ts-context-commentstring" },
 	event = { "BufReadPost", "BufNewFile" },
 	config = function()
-		-- require("ts_context_commentstring").setup({})
 		local configs = require("nvim-treesitter.configs")
 		configs.setup({
 			ensure_installed = {
