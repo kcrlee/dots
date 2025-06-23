@@ -2,8 +2,6 @@ return {
 	"echasnovski/mini.nvim",
 	version = "*",
 	config = function()
-		local pairs = require("mini.pairs")
-		pairs.setup()
 		local hipatterns = require("mini.hipatterns")
 		hipatterns.setup({
 			highlighters = {

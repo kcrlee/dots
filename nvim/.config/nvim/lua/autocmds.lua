@@ -3,13 +3,13 @@
 vim.api.nvim_create_autocmd("BufEnter", { command = [[set formatoptions-=cro]] })
 
 -------------------------------------------------  Formatting + Linting --------------------------------------
--- vim.api.nvim_create_autocmd("BufWritePre", {
--- 	pattern = "*",
--- 	callback = function(args)
--- 		require("conform").format({ bufnr = args.buf })
--- 	end,
--- })
 
+-------------------------------------------------  Bash/Sh --------------------------------------
+vim.filetype.add({
+	extension = { env = "sh" },
+	filename = { [".env"] = "sh" },
+	pattern = { ["%.env%.[%w_.-]+"] = "sh" },
+})
 local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
 
 vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
