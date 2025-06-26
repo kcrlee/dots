@@ -92,6 +92,11 @@ return {
 			},
 		})
 
+		lspconfig.jsonls.setup({
+			capabilities = capabilities,
+			single_file_support = true,
+		})
+
 		lspconfig.ts_ls.setup({
 			capabilities = capabilities,
 			root_dir = lspconfig.util.root_pattern("package.json"),

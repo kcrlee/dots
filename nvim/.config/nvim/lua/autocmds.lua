@@ -3,13 +3,6 @@
 vim.api.nvim_create_autocmd("BufEnter", { command = [[set formatoptions-=cro]] })
 
 -------------------------------------------------  Formatting + Linting --------------------------------------
-
--------------------------------------------------  Bash/Sh --------------------------------------
-vim.filetype.add({
-	extension = { env = "sh" },
-	filename = { [".env"] = "sh" },
-	pattern = { ["%.env%.[%w_.-]+"] = "sh" },
-})
 local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
 
 vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
@@ -19,7 +12,23 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
 		pcall(tryLint)
 	end,
 })
--------------------------------------------------  CUDA files --------------------------------------
+
+-------------------------------------------------  Bash/Sh --------------------------------------
+vim.filetype.add({
+	extension = { env = "sh" },
+	filename = { [".env"] = "sh" },
+	pattern = { ["%.env%.[%w_.-]+"] = "sh" },
+})
+
+-------------------------------------------------  JSON/JSONL  --------------------------------------
+
+vim.filetype.add({
+	extension = { jsonl = "jsonl" },
+	filename = { [".jsonl"] = "jsonl" },
+	pattern = { [".*%.jsonl"] = "jsonl" },
+})
+
+-------------------------------------------------  CUDA  --------------------------------------
 local commentGroup = vim.api.nvim_create_augroup("cuda_settings", { clear = true })
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "cuda", "cu" },
@@ -32,7 +41,7 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
--------------------------------------------------  Markdown files --------------------------------------
+-------------------------------------------------  Markdown  --------------------------------------
 local markdownGroup = vim.api.nvim_create_augroup("markdown_settings", { clear = true })
 vim.api.nvim_create_autocmd("BufWinEnter", {
 	pattern = "*.md",
@@ -50,7 +59,7 @@ vim.api.nvim_create_autocmd({ "BufWinLeave" }, {
 	end,
 })
 
-------------------------------------------------latex setup------------------------------------------------
+------------------------------------------------latex ------------------------------------------------
 
 vim.api.nvim_create_augroup("latex_settings", { clear = true })
 vim.api.nvim_create_autocmd("BufWinEnter", {
@@ -69,7 +78,7 @@ vim.api.nvim_create_autocmd({ "BufWinLeave" }, {
 	end,
 })
 
------------------------------------------------- Haskell setup ------------------------------------------------
+------------------------------------------------ Haskell  ------------------------------------------------
 --special settings for haskell because semantic white space languages are a PITA
 vim.api.nvim_create_augroup("haskell_settings", { clear = true })
 vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
@@ -103,7 +112,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 })
 
 -- disable adding comment on new line
------------------------------------------------- LSP setup ------------------------------------------------------------------------------------
+------------------------------------------------ LSP  ------------------------------------------------------------------------------------
 vim.o.updatetime = 250
 -- vim.cmd([[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]])
 local augroup = vim.api.nvim_create_augroup

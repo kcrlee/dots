@@ -13,11 +13,12 @@ return {
 			javascript = { "deno_fmt" },
 			javascriptreact = { "deno_fmt" },
 			json = {
+				"jq",
 				"deno_fmt",
 				"prettier",
-				"jq",
 				stop_after_first = true,
 			},
+			jsonl = { "jq_compact" },
 			python = { "black" },
 			html = { "deno_fmt" },
 			svelte = { "deno_fmt" },
@@ -87,6 +88,13 @@ return {
 			append_args = function()
 				return { "--no-semicolons" }
 			end,
+		}
+
+		-- Create a custom formatter for JSONL files with -c flag
+		conform.formatters.jq_compact = {
+			command = "jq",
+			args = { "-c" },
+			stdin = true,
 		}
 	end,
 }
