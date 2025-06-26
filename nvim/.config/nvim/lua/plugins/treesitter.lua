@@ -21,6 +21,11 @@ return {
 				"html",
 				"javascript",
 				"typescript",
+				"json",
+			},
+			filetype_associations = {
+				jsonl = "json",
+				json_compact = "json",
 			},
 			highlight = { enable = true },
 			indent = { enable = true, ignore = { "python" } },
