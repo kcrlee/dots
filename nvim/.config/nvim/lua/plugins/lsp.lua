@@ -119,6 +119,11 @@ return {
 			capabilities = capabilities,
 		})
 
+		lspconfig.cspell_ls.setup({
+			capabilities = capabilities,
+			filetypes = { "go", "rust", "js", "ts", "html", "css", "json", "yaml", "markdown", "gitcommit" },
+			root_dir = require("lspconfig.util").root_pattern(".git", "package.json"),
+		})
 		require("fidget").setup({})
 		require("mason").setup()
 		local cmp_select = { behavior = cmp.SelectBehavior.Select }
