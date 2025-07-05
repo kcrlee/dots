@@ -43,4 +43,5 @@ return {
 		{ "<C-f>",       function() if not require("noice.lsp").scroll(4) then return "<c-f>" end end,  silent = true,              expr = true,              desc = "Scroll forward",  mode = { "i", "n", "s" } },
 		{ "<C-p>",       function() if not require("noice.lsp").scroll(-4) then return "<c-p>" end end, silent = true,              expr = true,              desc = "Scroll backward", mode = { "i", "n", "s" } },
 	},
+	config = function() end,
 }
