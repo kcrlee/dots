@@ -22,16 +22,14 @@ return {
 	sections = {
 		lualine_a = { "mode" },
 		lualine_b = { "branch", "diff", "diagnostics" },
-		lualine_c = { "filename", path = 4 },
+		lualine_c = {
+			"filename",
+			path = 4,
+		},
 		lualine_x = {
 			"encoding",
 			"fileformat",
 			"filetype",
-			{
-				require("noice").api.statusline.mode.get,
-				cond = require("noice").api.statusline.mode.has,
-				color = { fg = "#ff9e64" },
-			},
 		},
 		lualine_y = { "progress" },
 		lualine_z = { "location" },
