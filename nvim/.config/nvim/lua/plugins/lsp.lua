@@ -42,6 +42,11 @@ return {
 
 		lspconfig.gopls.setup({
 			capabilities = capabilities,
+			settings = {},
+		})
+
+		lspconfig.eslint.setup({
+			capabilities = capabilities,
 		})
 		lspconfig.clangd.setup({
 			capabilities = capabilities,
