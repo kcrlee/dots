@@ -85,6 +85,9 @@ return {
 			capabilities = capabilities,
 			root_dir = lspconfig.util.root_pattern("package.json"),
 		})
+		lspconfig.rust_analyzer.setup({
+			capabilities = capabilities,
+		})
 		lspconfig.pyright.setup({
 			capabilities = capabilities,
 			settings = {
