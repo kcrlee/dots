@@ -47,6 +47,12 @@ return {
 
 		lspconfig.eslint.setup({
 			capabilities = capabilities,
+			root_dir = lspconfig.util.root_pattern(
+				"package.json",
+				"eslint.config.mjs",
+				"eslint.config.js",
+				"tsconfig.json"
+			),
 		})
 		lspconfig.clangd.setup({
 			capabilities = capabilities,
