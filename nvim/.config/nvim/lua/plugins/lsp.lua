@@ -29,7 +29,8 @@ return {
 		)
 
 		local lspconfig = require("lspconfig")
-		lspconfig.exlixirls.setup({
+
+		lspconfig.elixirls.setup({
 			capabilities = capabilities,
 		})
 
@@ -125,8 +126,9 @@ return {
 			capabilities = capabilities,
 			cmd = { "svelteserver", "--stdio" },
 			filetypes = { "svelte" },
-			root_dir = lspconfig.util.root_pattern("package.json"),
+			root_dir = lspconfig.util.root_pattern("package.json", "svelete.config.js", "svelete.config.ts"),
 		})
+
 		lspconfig.astro.setup({})
 
 		lspconfig.sqls.setup({
