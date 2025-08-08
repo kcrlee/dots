@@ -29,6 +29,10 @@ return {
 		)
 
 		local lspconfig = require("lspconfig")
+		lspconfig.exlixirls.setup({
+			capabilities = capabilities,
+		})
+
 		lspconfig.sourcekit.setup({
 			cmd = { "/usr/bin/sourcekit-lsp" },
 			filetypes = { "swift", "c", "cpp", "objective-c", "objc", "objective-cpp" },
