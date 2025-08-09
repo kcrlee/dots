@@ -35,7 +35,7 @@ return {
 		lspconfig.sourcekit.setup({
 			cmd = { "/usr/bin/sourcekit-lsp" },
 			filetypes = { "swift", "c", "cpp", "objective-c", "objc", "objective-cpp" },
-			root_dir = lspconfig.util.root_pattern(".git", "Package.swift"),
+			root_dir = lspconfig.util.root_pattern({ ".git", "Package.swift" }),
 			capabilities = {
 				workspace = {
 					didChangeWatchedFIles = { dynamicRegistration = true },
@@ -50,6 +50,12 @@ return {
 
 		lspconfig.eslint.setup({
 			capabilities = capabilities,
+			root_dir = lspconfig.util.root_pattern({
+				"package.json",
+				"eslint.config.js",
+				"eslint.config.ts",
+				".eslintrc.js",
+			}),
 			root_markers = { "package.json" },
 			workspace_required = true,
 		})
@@ -57,6 +63,7 @@ return {
 		lspconfig.denols.setup({
 			capabilities = capabilities,
 			root_markers = { "deno.json, deno.jsonc" },
+			root_dir = lspconfig.util.root_pattern({ "deno.json", "deno.jsoc" }),
 			workspace_required = true,
 		})
 
