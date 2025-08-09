@@ -1,8 +1,6 @@
-local util = require("util")
 return {
 	"neovim/nvim-lspconfig",
 	dependencies = {
-
 		-- Install Servers with Mason
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
@@ -52,24 +50,22 @@ return {
 
 		lspconfig.eslint.setup({
 			capabilities = capabilities,
-			root_dir = lspconfig.util.root_pattern(
-				"package.json",
-				"eslint.config.mjs",
-				"eslint.config.js",
-				"tsconfig.json"
-			),
+			root_markers = { "package.json" },
+			workspace_required = true,
 		})
+
+		lspconfig.denols.setup({
+			capabilities = capabilities,
+			root_markers = { "deno.json, deno.jsonc" },
+			workspace_required = true,
+		})
+
 		lspconfig.clangd.setup({
 			capabilities = capabilities,
 		})
 
 		lspconfig.lua_ls.setup({
 			capabilities = capabilities,
-		})
-
-		lspconfig.denols.setup({
-			capabilities = capabilities,
-			root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
 		})
 
 		lspconfig.lua_ls.setup({
@@ -92,13 +88,29 @@ return {
 				"shopify.theme.toml",
 			}),
 		})
+
 		lspconfig.tailwindcss.setup({
 			capabilities = capabilities,
-			root_dir = lspconfig.util.root_pattern("package.json"),
+			root_markers = { "package.json" },
+			workspace_required = true,
 		})
+
+		lspconfig.ts_ls.setup({
+			capabilities = capabilities,
+			root_markers = { "package.json" },
+			workspace_required = true,
+			single_file_support = false,
+		})
+
+		lspconfig.jsonls.setup({
+			capabilities = capabilities,
+			single_file_support = true,
+		})
+
 		lspconfig.rust_analyzer.setup({
 			capabilities = capabilities,
 		})
+
 		lspconfig.pyright.setup({
 			capabilities = capabilities,
 			settings = {
@@ -109,17 +121,6 @@ return {
 					},
 				},
 			},
-		})
-
-		lspconfig.jsonls.setup({
-			capabilities = capabilities,
-			single_file_support = true,
-		})
-
-		lspconfig.ts_ls.setup({
-			capabilities = capabilities,
-			root_dir = lspconfig.util.root_pattern("package.json"),
-			single_file_support = false,
 		})
 
 		lspconfig.svelte.setup({
