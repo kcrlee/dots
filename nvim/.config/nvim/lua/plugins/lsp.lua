@@ -27,7 +27,9 @@ return {
 		)
 
 		local lspconfig = require("lspconfig")
-		-- (".local/share/nvim/mason/packages/elixir-ls")
+		lspconfig.hls.setup({
+			capabilities = capabilities,
+		})
 		lspconfig.elixirls.setup({
 			capabilities = capabilities,
 			cmd = { "/home/kyle/.local/share/nvim/mason/packages/elixir-ls/language_server.sh" },
