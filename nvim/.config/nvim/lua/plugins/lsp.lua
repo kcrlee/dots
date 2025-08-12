@@ -27,9 +27,11 @@ return {
 		)
 
 		local lspconfig = require("lspconfig")
-
+		-- (".local/share/nvim/mason/packages/elixir-ls")
 		lspconfig.elixirls.setup({
 			capabilities = capabilities,
+			cmd = { "/home/kyle/.local/share/nvim/mason/packages/elixir-ls/language_server.sh" },
+			filetypes = { "elixir", "eelixir", "heex", "surface" },
 		})
 
 		lspconfig.sourcekit.setup({
