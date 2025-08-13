@@ -2,7 +2,7 @@ return {
 	"neovim/nvim-lspconfig",
 	dependencies = {
 		-- Install Servers with Mason
-		"williamboman/mason.nvim",
+		"mason-org/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
 		-- Autocompletion
 		"hrsh7th/cmp-nvim-lsp",
@@ -88,12 +88,6 @@ return {
 
 		lspconfig.shopify_theme_ls.setup({
 			capabilities = capabilities,
-			root_dir = lspconfig.util.root_pattern({
-				".shopifyignore",
-				".theme-check.yml",
-				".theme-check.yaml",
-				"shopify.theme.toml",
-			}),
 		})
 
 		lspconfig.tailwindcss.setup({
