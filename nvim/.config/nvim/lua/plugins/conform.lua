@@ -18,6 +18,7 @@ return {
 				"prettier",
 				stop_after_first = true,
 			},
+			liquid = { "prettier" },
 			jsonl = { "jq_compact" },
 			python = { "black" },
 			html = { "deno_fmt" },
