@@ -31,4 +31,4 @@ vim.opt.grepformat = "%f:%l:%c:%m"
 vim.o.termguicolors = true
 
 -- no swapfiles
-vim.opt.swapfile = false
+vim.opt.swapfile = true
