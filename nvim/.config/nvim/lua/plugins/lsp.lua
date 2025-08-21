@@ -88,6 +88,21 @@ return {
 
 		lspconfig.shopify_theme_ls.setup({
 			capabilities = capabilities,
+			filetypes = { "liquid" },
+			root_dir = lspconfig.util.root_pattern({
+				".shopifyignore",
+				".theme-check.yml",
+				".theme-check.yaml",
+				"shopify.theme.toml",
+				"shopify.extension.toml",
+			}),
+			root_markers = {
+				".shopifyignore",
+				".theme-check.yml",
+				".theme-check.yaml",
+				"shopify.theme.toml",
+				"shopify.extension.toml",
+			},
 		})
 
 		lspconfig.tailwindcss.setup({
