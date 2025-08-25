@@ -172,6 +172,10 @@ return {
 			},
 		})
 
+		lspconfig.tinymist.setup({
+			capabilities = capabilities,
+		})
+
 		lspconfig.svelte.setup({
 			capabilities = capabilities,
 			cmd = { "svelteserver", "--stdio" },
