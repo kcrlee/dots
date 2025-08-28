@@ -27,9 +27,15 @@ return {
 		)
 
 		local lspconfig = require("lspconfig")
+
+		lspconfig.prismals.setup({
+			capabilities = capabilities,
+		})
+
 		lspconfig.hls.setup({
 			capabilities = capabilities,
 		})
+
 		lspconfig.elixirls.setup({
 			capabilities = capabilities,
 			cmd = { "/home/kyle/.local/share/nvim/mason/packages/elixir-ls/language_server.sh" },
