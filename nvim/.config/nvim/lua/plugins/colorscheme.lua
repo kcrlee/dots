@@ -13,3 +13,10 @@ return {
 -- 		vim.cmd.colorscheme("habamax.nvim")
 -- 	end,
 -- }
+
+-- return {
+-- 	"kepano/flexoki-neovim",
+-- 	config = function()
+-- 		vim.cmd("colorscheme flexoki-dark")
+-- 	end,
+-- }
