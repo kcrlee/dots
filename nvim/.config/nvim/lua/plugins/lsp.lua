@@ -28,6 +28,11 @@ return {
 
 		local lspconfig = require("lspconfig")
 
+		lspconfig.vue_ls.setup({
+			capabilities = capabilities,
+			filetypes = { "liquid" },
+		})
+
 		lspconfig.prismals.setup({
 			capabilities = capabilities,
 		})

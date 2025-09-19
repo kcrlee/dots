@@ -6,6 +6,16 @@ return {
 		vim.cmd("colorscheme tomorrow-min")
 	end,
 }
+
+-- return {
+-- 	"marko-cerovac/material.nvim",
+-- 	lazy = false,
+-- 	config = function()
+-- 		vim.g.material_style = "darker"
+-- 		vim.cmd("colorscheme material ")
+-- 	end,
+-- }
+
 -- return {
 -- 	"ntk148v/habamax.nvim",
 -- 	dependencies = { "rktjmp/lush.nvim" },
