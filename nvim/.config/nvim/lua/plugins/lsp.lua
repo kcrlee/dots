@@ -152,7 +152,7 @@ return {
 
 		lspconfig.html.setup({
 			capabilities = capabilities,
-			filetypes = { "html", "liquid" },
+			filetypes = { "html", "liquid", "svg" },
 		})
 		lspconfig.ts_ls.setup({
 			capabilities = capabilities,
