@@ -150,6 +150,10 @@ return {
 			},
 		})
 
+		lspconfig.html.setup({
+			capabilities = capabilities,
+			filetypes = { "html", "liquid" },
+		})
 		lspconfig.ts_ls.setup({
 			capabilities = capabilities,
 			root_markers = { "package.json" },
