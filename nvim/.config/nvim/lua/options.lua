@@ -4,8 +4,8 @@ set.splitright = true
 set.splitbelow = true
 
 --wrap lines
-set.wrap = true
-set.textwidth = 80
+set.wrap = false
+set.textwidth = 120
 -- 1 tab = 4 spaces
 set.tabstop = 4
 set.softtabstop = 4
