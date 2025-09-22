@@ -27,7 +27,7 @@ return {
 			scss = { "deno_fmt" },
 			markdown = { "deno_fmt" },
 			yaml = { "deno_fmt" },
-			graphql = { "deno_fmt" },
+			graphql = { "prettier" },
 			go = { "goimports", "gofmt" },
 			sh = { "shfmt" },
 			bash = { "shfmt" },
