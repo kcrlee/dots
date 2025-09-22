@@ -157,8 +157,6 @@ return {
 
 		lspconfig.html.setup({
 			capabilities = capabilities,
-			filetypes = { "html", "liquid", "svg" },
-		})
 			filetypes = { "html", "liquid" },
 			init_options = {
 				configurationSection = { "html", "css", "javascript" },
