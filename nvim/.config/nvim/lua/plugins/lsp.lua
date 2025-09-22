@@ -32,6 +32,11 @@ return {
 			capabilities = capabilities,
 		})
 
+		lspconfig.graphql.setup({
+			capabilities = capabilities,
+			filetypes = { "graphql", "typescriptreact", "javascriptreact", "typescript", "javascript" },
+		})
+
 		lspconfig.hls.setup({
 			capabilities = capabilities,
 		})
@@ -154,11 +159,22 @@ return {
 			capabilities = capabilities,
 			filetypes = { "html", "liquid", "svg" },
 		})
+			filetypes = { "html", "liquid" },
+			init_options = {
+				configurationSection = { "html", "css", "javascript" },
+				embeddedLanguages = {
+					css = true,
+					javascript = true,
+				},
+			},
+		})
+
 		lspconfig.ts_ls.setup({
 			capabilities = capabilities,
 			root_markers = { "package.json" },
 			workspace_required = true,
 			single_file_support = false,
+			filetypes = { "javascript", "typescript", "html", "liquid", "typescriptreact", "javascriptreact" },
 		})
 
 		lspconfig.jsonls.setup({
