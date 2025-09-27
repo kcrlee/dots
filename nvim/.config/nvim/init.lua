@@ -1,27 +1,20 @@
-local modules = { "options", "plugins"  }
-for _, mod in ipairs(modules) do
-	local ok, err = pcall(require, mod)
-	if not ok then
-		error(("Error loading %s...\n\n%s"):format(mod, err))
-	end
+local function gh(url)
+	return "https://github.com/" .. url
 end
 
-
-
-local function gh(url) return 'https://github.com/' .. url end
 local function add_plugin(plugins, opts)
 	opts = opts or {}
 	local function do_add(plugs)
 		vim.pack.add(plugs)
 		for _, plug in ipairs(plugs) do
-			if type(plug) == 'string' then
+			if type(plug) == "string" then
 				plug = { src = plug }
 			end
 			local name = plug.name or plug.src
 			name = vim.fs.basename(name)
-			name = name:gsub('%.n?vim', '')
-			name = name:gsub('%.', '-')
-			pcall(require, 'plugins.' .. name)
+			name = name:gsub("%.n?vim", "")
+			name = name:gsub("%.", "-")
+			pcall(require, "plugins." .. name)
 		end
 	end
 
@@ -29,51 +22,29 @@ local function add_plugin(plugins, opts)
 end
 
 add_plugin({
-	gh "neovim/nvim-lspconfig",
-	gh "nvim-lua/plenary.nvim",
-	gh "nvim-tree/nvim-web-devicons",
-	gh "stevearc/oil.nvim",
-	gh "RRethy/base16-nvim",
-	gh "mason-org/mason.nvim",
-	gh "nvim-treesitter/nvim-treesitter",
-	gh "NeogitOrg/neogit",
-	gh "RRethy/base16-nvim",
-	gh "stevearc/oil.nvim",
-	gh "stevearc/oil.nvim",
-	gh "ibhagwan/fzf-lua",
-	gh "folke/snacks.nvim",
-	gh "folke/trouble.nvim",
-	gh "folke/lazydev.nvim",
-	gh "saghen/blink.nvim"
+	gh("nvim-lua/plenary.nvim"),
+	gh("nvim-tree/nvim-web-devicons"),
+	gh("stevearc/oil.nvim"),
+	gh("kcrlee/tomorrow-min"),
+	gh("mason-org/mason.nvim"),
+	gh("nvim-treesitter/nvim-treesitter"),
+	gh("NeogitOrg/neogit"),
+	gh("stevearc/oil.nvim"),
+	gh("ibhagwan/fzf-lua"),
+	gh("folke/snacks.nvim"),
+	gh("folke/trouble.nvim"),
+	gh("folke/lazydev.nvim"),
+	gh("saghen/blink.nvim"),
 })
 
+vim.cmd("colorscheme tomorrow-min")
 
-
-
-
-
-vim.cmd('colorscheme base16-tomorrow-night')
-
--- Oil
-
-require('oil').setup({})
-
-
--- Treesitter
-require "nvim-treesitter.configs".setup({
-	ensure_installed = { highlight = { enable = true, } }
-})
-
--- Mason
-local mason = require('mason')
-mason.setup({})
-
-local fzf = require('fzf-lua')
-local map = vim.keymap.set
-map('n', '<leader>g', require('neogit').open)
-map("n", "<F12>", ":UndotreeToggle <Enter>")
-map("n", "<leader>vc", ":VimtexCompile <Enter>")
-map("n", "<leader>i", ":Inspect <Enter>")
-map('n', '<leader>ff', fzf.files)
-map('n', '<leader>fg', fzf.live_grep)
-map('n', '-', ":Oil<CR>")
+-- local fzf = require("fzf-lua")
+-- local map = vim.keymap.set
+-- map("n", "<leader>g", require("neogit").open)
+-- map("n", "<F12>", ":UndotreeToggle <Enter>")
+-- map("n", "<leader>vc", ":VimtexCompile <Enter>")
+-- map("n", "<leader>i", ":Inspect <Enter>")
+-- map("n", "<leader>ff", fzf.files)
+-- map("n", "<leader>fg", fzf.live_grep)
+-- map("n", "-", ":Oil<CR>")
