@@ -284,7 +284,7 @@ blink.setup({
 })
 
 local fzf = require("fzf-lua")
-fzf.setup({ 'fzf-native' })
+fzf.setup({ 'telescope' })
 
 local mason = require("mason")
 mason.setup({})
