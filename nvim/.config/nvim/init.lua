@@ -129,6 +129,10 @@ vim.pack.add({
 		build = 'cargo build --release',
 	},
 	{
+		src = "https://github.com/Kaiser-Yang/blink-cmp-dictionary",
+		name = "blink-cmp-dictionary"
+	},
+	{
 		src = "https://github.com/L3MON4D3/LuaSnip",
 		name = "luasnip"
 	},
@@ -220,18 +224,22 @@ blink.setup({
 		nerd_font_variant = "mono"
 	},
 	sources = {
-
 		default = { 'lsp', 'path', 'snippets', 'buffer' },
 		providers = {
-			buffer = {
+			dictionary = {
+				module = "blink-cmp-dictionary",
+				name = "Dict",
+				score_offset = 20,
+				enabled = true,
+				max_items = 8,
+				min_keyword_length = 3,
 				opts = {
-					get_bufnrs = function()
-						return vim.tbl_filter(function(bufnr)
-							return vim.bo[bufnr].buftype == ''
-						end, vim.api.nvim_list_bufs())
-					end
+					dictionary_directories = { vim.fn.expand("~/.config/nvim/dictionaries") },
 				}
+
+
 			}
+
 		}
 	},
 	completion = {
