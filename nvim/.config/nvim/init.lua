@@ -102,7 +102,12 @@ vim.pack.add({
 		name = "noice"
 	},
 	{
-		src = "https://github.com/projekt0n/github-nvim-theme",
+		src = "https://github.com/zenbones-theme/zenbones.nvim",
+		name = "zenbones"
+	},
+	{
+		src = "https://github.com/rktjmp/lush.nvim",
+		name = "lush"
 	},
 
 	{
@@ -130,15 +135,10 @@ vim.pack.add({
 		name = "friendly-snippets"
 	}
 })
-local theme = require('github-theme')
-theme.setup({
-	groups = {
-		all = {
-			Directory = { fg = "#9CDCFE" }
-		}
-	}
-})
-vim.cmd [[colorscheme github_dark_dimmed]]
+
+local theme = require('zenbones')
+vim.g.zenbones_darkness = "stark"
+vim.cmd [[colorscheme zenbones]]
 
 
 local snacks = require('snacks')
