@@ -166,20 +166,21 @@ noice.setup({
 })
 
 
-local plugin_view = require('plugin-view').setup()
+local plugin_view = require('plugin-view')
+plugin_view.setup()
 
-local unpack = require('unpack').setup()
-local unpack_path = vim.fn.stdpath("data") .. "/site/pack/managers/start/unpack"
-
-if not vim.uv.fs_stat(unpack_path) then
-	vim.fn.system({
-		'git',
-		'clone',
-		"--filter=blob:none",
-		'https://github.com/mezdelex/unpack',
-		unpack_path
-	})
-end
+-- local unpack = require('unpack').setup()
+-- local unpack_path = vim.fn.stdpath("data") .. "/site/pack/managers/start/unpack"
+--
+-- if not vim.uv.fs_stat(unpack_path) then
+-- 	vim.fn.system({
+-- 		'git',
+-- 		'clone',
+-- 		"--filter=blob:none",
+-- 		'https://github.com/mezdelex/unpack',
+-- 		unpack_path
+-- 	})
+-- end
 
 
 local blink = require('blink.cmp')
@@ -446,7 +447,7 @@ treesitter_ctx.setup({
 })
 
 local map = vim.keymap.set
-map("n", "<leader>p", function() require("plugin-view").open() end)
+map("n", "<leader>p", function() plugin_view.open() end)
 
 map("n", "<leader>g", require("neogit").open)
 
