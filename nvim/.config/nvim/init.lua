@@ -9,8 +9,9 @@ vim.o.termguicolors = true
 vim.opt.completeopt = { "menuone", "noselect", "popup" }
 
 -- UI
-vim.o.relativenumber = true
-vim.o.number = true
+--vim.o.nu = true
+vim.o.rnu = true
+vim.o.statuscolumn = "%=%{v:lnum} %{v:relnum} %s"
 vim.o.winborder = "rounded"
 vim.o.signcolumn = "yes"
 vim.o.cursorcolumn = false
@@ -167,10 +168,31 @@ local function setup_ts()
 	local ts = require('nvim-treesitter')
 	require("nvim-treesitter.configs").setup({
 		ensure_installed = {
-			"bash", "c", "dockerfile", "fish", "git_config", "git_rebase",
-			"gitattributes", "gitcommit", "gitignore", "go", "gomod", "gosum",
-			"html", "javascript", "json", "lua", "make", "markdown", "python",
-			"sql", "toml", "tsx", "typescript", "yaml", "zig",
+			"bash",
+			"c",
+			"dockerfile",
+			"fish",
+			"git_config",
+			"git_rebase",
+			"gitattributes",
+			"gitcommit",
+			"gitignore",
+			"go",
+			"gomod",
+			"gosum",
+			"html",
+			"javascript",
+			"json",
+			"lua",
+			"make",
+			"markdown",
+			"python",
+			"sql",
+			"toml",
+			"tsx",
+			"typescript",
+			"yaml",
+			"zig",
 		},
 		highlight = { enable = true },
 		indent = { enable = true },
