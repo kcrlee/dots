@@ -1,6 +1,4 @@
-local utils = require("utils")
-
--- Config
+-- General Config
 vim.o.spelllang = "en_us"
 vim.o.undofile = true
 vim.o.swapfile = false
@@ -8,12 +6,12 @@ vim.o.termguicolors = true
 vim.opt.completeopt = { "menuone", "noselect", "popup" }
 
 -- UI
---vim.o.nu = true
 vim.o.rnu = true
 vim.o.statuscolumn = "%=%{v:lnum} %{v:relnum} %s"
 vim.o.winborder = "rounded"
 vim.o.signcolumn = "yes"
 vim.o.cursorcolumn = false
+vim.o.scrolloff = 8 -- Ensures 8 lines above and below start/end of the file
 
 -- Splits
 vim.o.splitright = true
@@ -37,86 +35,93 @@ vim.g.mapleader = ","
 
 vim.pack.add({
 	{
-		src = "nvim-lua/plenary.nvim",
+		src = "https://github.com/nvim-lua/plenary.nvim",
 		name = "plenary"
 	},
 	{
 		src = "https://github.com/adriankarlen/plugin-view.nvim",
 		name = 'plugin-view'
 	},
+
 	{
 		src = "https://github.com/nvim-treesitter/nvim-treesitter",
 		version = "main",
 		name = 'nvim-treesitter'
 	},
 	{
-		src = "nvim-treesitter/nvim-treesitter-context",
+		src = "https://github.com/nvim-treesitter/nvim-treesitter-context",
 		name = "nvim-treesitter-context"
 	},
 
 	{
-		src = "neovim/nvim-lspconfig",
+		src = "https://github.com/neovim/nvim-lspconfig",
 		name = "nvim-lspconfig"
 	},
 
 	{
-		src = "nvim-tree/nvim-web-devicons",
+		src = "https://github.com/nvim-tree/nvim-web-devicons",
 		name = "nvim-web-devicons"
 	},
 	{
-		src = "NeogitOrg/neogit",
+		src = "https://github.com/NeogitOrg/neogit",
 		name = "neogit"
 	},
 	{
-		src = "mason-org/mason.nvim",
+		src = "https://github.com/mason-org/mason.nvim",
 		name = "mason.nvim"
 	},
 	{
-		src = "mbbill/undotree",
+		src = "https://github.com/mbbill/undotree",
 		name = "undotree"
 	},
 	{
-		src = "stevearc/oil.nvim",
+		src = "https://github.com/stevearc/oil.nvim",
 		name = "oil.nvim"
 	},
 	{
-		src = "ibhagwan/fzf-lua",
+		src = "https://github.com/ibhagwan/fzf-lua",
 		name = "fzf-lua"
 	},
 	{
-		src = "folke/snacks.nvim",
+		src = "https://github.com/folke/snacks.nvim",
 		name = "snack.nvim"
 	},
 	{
-		src = "folke/trouble.nvim",
+		src = "https://github.com/folke/trouble.nvim",
 		name = "trouble.nvim"
 	},
 	{
-		src = "folke/lazydev.nvim",
+		src = "https://github.com/folke/lazydev.nvim",
 		name = "lazydev.nvim"
 	},
 	{
-		src = "folke/noice.nvim",
+		src = "https://github.com/folke/noice.nvim",
 		name = "noice"
 	},
 	{
-		src = "folke/tokyonight.nvim",
+		src = "https://github.com/folke/tokyonight.nvim",
 	},
 
 	{
-		src = "MunifTanjim/nui.nvim",
+		src = "https://github.com/MunifTanjim/nui.nvim",
 		name = "nui.nvim"
 	},
 	{
-		src = "rcarriga/nvim-notify",
+		src = "https://github.com/rcarriga/nvim-notify",
 		name = "nvim-notify"
+	},
+
+	{
+		src = "https://github.com/L3MON4D3/LuaSnip",
+		name = "luasnip"
 	},
 	{
 		src = "https://github.com/saghen/blink.cmp",
 		name = "blink.cmp",
-		version = vim.version.range('1.*'),
+		version = vim.version.range('*'),
 		build = 'cargo build --release',
 	},
+
 	{
 		src = "https://github.com/rafamadriz/friendly-snippets",
 		name = "friendly-snippets"
@@ -196,6 +201,13 @@ blink.setup({
 		documentation = {
 			auto_show = true,
 			auto_show_delay_ms = 200,
+		},
+		menu = {
+			auto_show = true,
+			draw = {
+				treesitter = { "lsp" },
+				columns = { { "kind_icon", "label", "label_description", gap = 1 }, { "kind" } },
+			},
 		}
 	},
 	keymap = {
@@ -407,9 +419,8 @@ oil.setup({
 local neogit = require('neogit')
 neogit.setup({})
 
--- local lint = require("lint")
--- local conform = require("conform")
--- conform.setup({})
+local luasnip = require("luasnip.loaders.from_vscode").lazy_load()
+
 
 local treesitter_ctx = require("treesitter-context")
 treesitter_ctx.setup({
@@ -488,48 +499,46 @@ local function setup_lsp()
 	autocmd("LspAttach", {
 		group = augroup,
 		callback = function(args)
-			local bufopts = { noremap = true, silent = true, buffer = args.buf }
-			vim.keymap.set("n", "gd", function()
-				vim.lsp.buf.definition()
-			end, bufopts)
-			vim.keymap.set("n", "K", function()
-				vim.lsp.buf.hover()
-			end, bufopts)
-			vim.keymap.set("n", "<leader>vws", function()
-				vim.lsp.buf.workspace_symbol()
-			end, bufopts)
-			vim.keymap.set("n", "M", function()
-				vim.diagnostic.open_float()
-			end, bufopts)
-			vim.keymap.set("n", "<leader>vca", function()
-				vim.lsp.buf.code_action()
-			end, bufopts)
-			vim.keymap.set("n", "<leader>vrr", function()
-				vim.lsp.buf.references()
-			end, bufopts)
-			vim.keymap.set("n", "<leader>vrn", function()
-				vim.lsp.buf.rename()
-			end, bufopts)
-			vim.keymap.set("i", "<C-h>", function()
-				vim.lsp.buf.signature_help()
-			end, bufopts)
-
+			-- local bufopts = { noremap = true, silent = true, buffer = args.buf }
+			-- vim.keymap.set("n", "gd", function()
+			-- 	vim.lsp.buf.definition()
+			-- end, bufopts)
+			-- vim.keymap.set("n", "K", function()
+			-- 	vim.lsp.buf.hover()
+			-- end, bufopts)
+			-- vim.keymap.set("n", "<leader>vws", function()
+			-- 	vim.lsp.buf.workspace_symbol()
+			-- end, bufopts)
+			-- vim.keymap.set("n", "M", function()
+			-- 	vim.diagnostic.open_float()
+			-- end, bufopts)
+			-- vim.keymap.set("n", "<leader>vca", function()
+			-- 	vim.lsp.buf.code_action()
+			-- end, bufopts)
+			-- vim.keymap.set("n", "<leader>vrr", function()
+			-- 	vim.lsp.buf.references()
+			-- end, bufopts)
+			-- vim.keymap.set("n", "<leader>vrn", function()
+			-- 	vim.lsp.buf.rename()
+			-- end, bufopts)
+			-- vim.keymap.set("i", "<C-h>", function()
+			-- 	vim.lsp.buf.signature_help()
+			-- end, bufopts)
+			--
 			local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
-			local methods = vim.lsp.protocol.Methods
+			-- local methods = vim.lsp.protocol.Methods
+			--
+			-- if client:supports_method(methods.textDocument_completion) then
+			-- 	vim.lsp.completion.enable(true, client.id, args.buf, {
+			-- 		autotrigger = true,
+			-- 		convert = function(item)
+			-- 			-- Don't preselect any item
+			-- 			item.preselect = false
+			-- 			return item
+			-- 		end
+			-- 	})
+			-- end
 
-			if client:supports_method(methods.textDocument_completion) then
-				vim.lsp.completion.enable(true, client.id, args.buf, {
-					autotrigger = true,
-					convert = function(item)
-						-- Don't preselect any item
-						item.preselect = false
-						return item
-					end
-				})
-			end
-
-			-- lint
-			-- format
 			if not client:supports_method('textDocument/willSaveWaitUntil')
 				and client:supports_method('textDocument/formatting') then
 				vim.api.nvim_create_autocmd('BufWritePre', {
