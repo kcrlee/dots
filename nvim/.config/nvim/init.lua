@@ -42,7 +42,10 @@ vim.pack.add({
 		src = "https://github.com/adriankarlen/plugin-view.nvim",
 		name = 'plugin-view'
 	},
-
+	{
+		src = "https://github.com/mezdelex/unpack",
+		name = "unpack"
+	},
 	{
 		src = "https://github.com/nvim-treesitter/nvim-treesitter",
 		version = "main",
@@ -163,7 +166,20 @@ noice.setup({
 })
 
 
-local plugin_view = require('plugin-view').setup({})
+local plugin_view = require('plugin-view').setup()
+
+local unpack = require('unpack').setup()
+local unpack_path = vim.fn.stdpath("data") .. "/site/pack/managers/start/unpack"
+
+if not vim.uv.fs_stat(unpack_path) then
+	vim.fn.system({
+		'git',
+		'clone',
+		"--filter=blob:none",
+		'https://github.com/mezdelex/unpack',
+		unpack_path
+	})
+end
 
 
 local blink = require('blink.cmp')
