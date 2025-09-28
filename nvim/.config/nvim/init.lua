@@ -54,16 +54,19 @@ vim.pack.add({
 	utils.gh("mbbill/undotree"),
 
 	utils.gh("stevearc/oil.nvim"),
+	-- utils.gh("stevearc/conform.nvim"),
+	-- utils.gh("mfussenegger/nvim-lint"),
 
 	utils.gh("ibhagwan/fzf-lua"),
 
 	utils.gh("folke/snacks.nvim"),
 	utils.gh("folke/trouble.nvim"),
 	utils.gh("folke/lazydev.nvim"),
-	utils.gh("MunifTanjim/nui.nvim"),
-	utils.gh("rcarriga/nvim-notify"),
 	utils.gh("folke/noice.nvim"),
 	utils.gh("folke/tokyonight.nvim"),
+
+	utils.gh("MunifTanjim/nui.nvim"),
+	utils.gh("rcarriga/nvim-notify"),
 	{
 		src = "https://github.com/saghen/blink.cmp",
 		version = vim.version.range('1.*'),
@@ -87,14 +90,9 @@ snacks.setup({
 local trouble = require('trouble')
 trouble.setup({})
 
+
 local noice = require("noice")
 noice.setup({
-	-- routes = {
-	-- 	{
-	-- 		view = "notify",
-	-- 		filter = { event = "msg_showmode" },
-	-- 	},
-	-- },
 	lsp = {
 		-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
 		override = {
@@ -364,7 +362,6 @@ local neogit = require('neogit')
 neogit.setup({})
 
 -- local lint = require("lint")
-
 -- local conform = require("conform")
 -- conform.setup({})
 
