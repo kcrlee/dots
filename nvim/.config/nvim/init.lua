@@ -491,6 +491,7 @@ local function setup_lsp()
 	vim.lsp.enable({
 		"bashls",
 		"cssls",
+		"deno",
 		"eslint",
 		"gopls",
 		"html",
