@@ -1,6 +1,5 @@
 local utils = require("utils")
 
--- vim.cmd([[set mouse=]])
 -- Config
 vim.o.spelllang = "en_us"
 vim.o.undofile = true
@@ -39,7 +38,11 @@ vim.g.mapleader = ","
 vim.pack.add({
 	utils.gh("nvim-lua/plenary.nvim"),
 
-	{ src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
+	{
+		src = "https://github.com/nvim-treesitter/nvim-treesitter",
+		version = "main"
+	},
+
 	utils.gh("nvim-treesitter/nvim-treesitter-context"),
 
 	utils.gh("neovim/nvim-lspconfig"),
@@ -58,11 +61,14 @@ vim.pack.add({
 	utils.gh("folke/trouble.nvim"),
 	utils.gh("folke/lazydev.nvim"),
 	utils.gh("folke/tokyonight.nvim"),
-
-	utils.gh("saghen/blink.nvim"),
-
-	-- utils.gh("stevearc/conform.nvim"),
-	-- utils.gh("mfussenegger/nvim-lint")
+	{
+		src = "https://github.com/saghen/blink.cmp",
+		version = vim.version.range('1.*'),
+		build = 'cargo build --release',
+	},
+	{
+		src = "https://github.com/rafamadriz/friendly-snippets"
+	}
 })
 
 vim.cmd [[colorscheme tokyonight-storm]]
@@ -72,13 +78,67 @@ local snacks = require('snacks')
 snacks.setup({
 	image = { enabled = true },
 	bigfile = { enabled = true },
-	explorer = { enabled = true },
+	explorer = { enabled = false },
 })
 
 local trouble = require('trouble')
 trouble.setup({})
 
+local blink = require('blink.cmp')
+blink.setup({
+	fuzzy = {
+		implementation = 'prefer_rust',
+		frecency = {
+			enabled = true,
+		},
+		prebuilt_binaries = {
+			download = true,
+			force_version = "1.*"
+		}
+	},
 
+	signature = { enabled = true },
+	appearance = {
+		nerd_font_variant = "mono"
+	},
+	sources = {
+		default = { 'lsp', 'path', 'snippets', 'buffer' },
+		providers = {
+			buffer = {
+				opts = {
+					get_bufnrs = function()
+						return vim.tbl_filter(function(bufnr)
+							return vim.bo[bufnr].buftype == ''
+						end, vim.api.nvim_list_bufs())
+					end
+				}
+			}
+		}
+	},
+	completion = {
+		documentation = {
+			auto_show = true,
+			auto_show_delay_ms = 200,
+		}
+	},
+	keymap = {
+		preset = "default",
+		["<C-space>"] = {},
+		["<C-p>"] = {},
+		["<Tab>"] = {},
+		["<S-Tab>"] = {},
+		["<C-y>"] = { "show", "show_documentation", "hide_documentation" },
+		["<C-n>"] = { "select_and_accept" },
+		["<C-k>"] = { "select_prev", "fallback" },
+		["<C-j>"] = { "select_next", "fallback" },
+		["<C-b>"] = { "scroll_documentation_down", "fallback" },
+		["<C-f>"] = { "scroll_documentation_up", "fallback" },
+		["<C-l>"] = { "snippet_forward", "fallback" },
+		["<C-h>"] = { "snippet_backward", "fallback" },
+		-- ["<C-e>"] = { "hide" },
+	},
+
+})
 
 local fzf = require("fzf-lua")
 fzf.setup({ 'fzf-native' })
@@ -310,16 +370,17 @@ local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup("config", { clear = true })
 local function setup_lsp()
 	vim.lsp.enable({
+		"bashls",
 		"cssls",
 		"eslint",
 		"gopls",
 		"html",
 		"jsonls",
 		"lua_ls",
-		"pyright",
 		"shopify_theme_ls",
 		"svelte",
 		"tailwindcss",
+		"rust_analyzer",
 		"ts_ls",
 		"typos_lsp",
 		"html_lsp",

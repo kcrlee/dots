@@ -1,27 +1,7 @@
 local utils = {}
 
 function utils.gh(url)
-    return "https://github.com/" .. url
-end
-
-
-
-function utils.add_plugin(plugins, opts)
-    opts = opts or {}
-    local function do_add(plugs)
-        vim.pack.add(plugs)
-        for _, plug in ipairs(plugs) do
-            if type(plug) == "string" then
-                plug = { src = plug }
-            end
-            local name = plug.name or plug.src
-            name = vim.fs.basename(name)
-            name = name:gsub("%.n?vim", "")
-            name = name:gsub("%.", "-")
-            pcall(require, "plugins." .. name)
-        end
-    end
-    do_add(plugins)
+	return "https://github.com/" .. url
 end
 
 return utils
