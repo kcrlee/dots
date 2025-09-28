@@ -163,7 +163,7 @@ noice.setup({
 })
 
 
-
+local plugin_view = require('plugin-view').setup({})
 
 
 local blink = require('blink.cmp')
@@ -430,6 +430,7 @@ treesitter_ctx.setup({
 })
 
 local map = vim.keymap.set
+map("n", "<leader>p", function() require("plugin-view").open() end)
 
 map("n", "<leader>g", require("neogit").open)
 
