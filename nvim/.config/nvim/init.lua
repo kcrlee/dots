@@ -36,44 +36,90 @@ vim.opt.grepformat = "%f:%l:%c:%m"
 vim.g.mapleader = ","
 
 vim.pack.add({
-	utils.gh("nvim-lua/plenary.nvim"),
-
+	{
+		src = "nvim-lua/plenary.nvim",
+		name = "plenary"
+	},
+	{
+		src = "https://github.com/adriankarlen/plugin-view.nvim",
+		name = 'plugin-view'
+	},
 	{
 		src = "https://github.com/nvim-treesitter/nvim-treesitter",
-		version = "main"
+		version = "main",
+		name = 'nvim-treesitter'
+	},
+	{
+		src = "nvim-treesitter/nvim-treesitter-context",
+		name = "nvim-treesitter-context"
 	},
 
-	utils.gh("nvim-treesitter/nvim-treesitter-context"),
+	{
+		src = "neovim/nvim-lspconfig",
+		name = "nvim-lspconfig"
+	},
 
-	utils.gh("neovim/nvim-lspconfig"),
+	{
+		src = "nvim-tree/nvim-web-devicons",
+		name = "nvim-web-devicons"
+	},
+	{
+		src = "NeogitOrg/neogit",
+		name = "neogit"
+	},
+	{
+		src = "mason-org/mason.nvim",
+		name = "mason.nvim"
+	},
+	{
+		src = "mbbill/undotree",
+		name = "undotree"
+	},
+	{
+		src = "stevearc/oil.nvim",
+		name = "oil.nvim"
+	},
+	{
+		src = "ibhagwan/fzf-lua",
+		name = "fzf-lua"
+	},
+	{
+		src = "folke/snacks.nvim",
+		name = "snack.nvim"
+	},
+	{
+		src = "folke/trouble.nvim",
+		name = "trouble.nvim"
+	},
+	{
+		src = "folke/lazydev.nvim",
+		name = "lazydev.nvim"
+	},
+	{
+		src = "folke/noice.nvim",
+		name = "noice"
+	},
+	{
+		src = "folke/tokyonight.nvim",
+	},
 
-	utils.gh("nvim-tree/nvim-web-devicons"),
-	utils.gh("NeogitOrg/neogit"),
-
-	utils.gh("mason-org/mason.nvim"),
-	utils.gh("mbbill/undotree"),
-
-	utils.gh("stevearc/oil.nvim"),
-	-- utils.gh("stevearc/conform.nvim"),
-	-- utils.gh("mfussenegger/nvim-lint"),
-
-	utils.gh("ibhagwan/fzf-lua"),
-
-	utils.gh("folke/snacks.nvim"),
-	utils.gh("folke/trouble.nvim"),
-	utils.gh("folke/lazydev.nvim"),
-	utils.gh("folke/noice.nvim"),
-	utils.gh("folke/tokyonight.nvim"),
-
-	utils.gh("MunifTanjim/nui.nvim"),
-	utils.gh("rcarriga/nvim-notify"),
+	{
+		src = "MunifTanjim/nui.nvim",
+		name = "nui.nvim"
+	},
+	{
+		src = "rcarriga/nvim-notify",
+		name = "nvim-notify"
+	},
 	{
 		src = "https://github.com/saghen/blink.cmp",
+		name = "blink.cmp",
 		version = vim.version.range('1.*'),
 		build = 'cargo build --release',
 	},
 	{
-		src = "https://github.com/rafamadriz/friendly-snippets"
+		src = "https://github.com/rafamadriz/friendly-snippets",
+		name = "friendly-snippets"
 	}
 })
 
@@ -501,7 +547,7 @@ end
 
 local function setup_ts()
 	local ts = require('nvim-treesitter')
-	require("nvim-treesitter.configs").setup({
+	require("nvim-treesitter").setup({
 		ensure_installed = {
 			"bash",
 			"c",
