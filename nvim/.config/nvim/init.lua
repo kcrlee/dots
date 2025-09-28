@@ -102,7 +102,7 @@ vim.pack.add({
 		name = "noice"
 	},
 	{
-		src = "https://github.com/folke/tokyonight.nvim",
+		src = "https://github.com/projekt0n/github-nvim-theme",
 	},
 
 	{
@@ -130,8 +130,15 @@ vim.pack.add({
 		name = "friendly-snippets"
 	}
 })
-
-vim.cmd [[colorscheme tokyonight-storm]]
+local theme = require('github-theme')
+theme.setup({
+	groups = {
+		all = {
+			Directory = { fg = "#9CDCFE" }
+		}
+	}
+})
+vim.cmd [[colorscheme github_dark_default]]
 
 
 local snacks = require('snacks')
