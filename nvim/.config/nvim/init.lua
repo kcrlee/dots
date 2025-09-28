@@ -102,8 +102,8 @@ vim.pack.add({
 		name = "noice"
 	},
 	{
-		src = "https://github.com/zenbones-theme/zenbones.nvim",
-		name = "zenbones"
+		src = "https://github.com/kcrlee/tomorrow-min",
+		name = "tomorrow-min"
 	},
 	{
 		src = "https://github.com/rktjmp/lush.nvim",
@@ -136,9 +136,7 @@ vim.pack.add({
 	}
 })
 
-local theme = require('zenbones')
-vim.g.zenbones_darkness = "stark"
-vim.cmd [[colorscheme zenbones]]
+vim.cmd [[colorscheme tomorrow-min]]
 
 
 local snacks = require('snacks')
@@ -176,18 +174,18 @@ noice.setup({
 local plugin_view = require('plugin-view')
 plugin_view.setup()
 
--- local unpack = require('unpack').setup()
--- local unpack_path = vim.fn.stdpath("data") .. "/site/pack/managers/start/unpack"
---
--- if not vim.uv.fs_stat(unpack_path) then
--- 	vim.fn.system({
--- 		'git',
--- 		'clone',
--- 		"--filter=blob:none",
--- 		'https://github.com/mezdelex/unpack',
--- 		unpack_path
--- 	})
--- end
+local unpack = require('unpack').setup()
+local unpack_path = vim.fn.stdpath("data") .. "/site/pack/managers/start/unpack"
+
+if not vim.uv.fs_stat(unpack_path) then
+	vim.fn.system({
+		'git',
+		'clone',
+		"--filter=blob:none",
+		'https://github.com/mezdelex/unpack',
+		unpack_path
+	})
+end
 
 
 local blink = require('blink.cmp')
