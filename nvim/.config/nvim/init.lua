@@ -132,10 +132,6 @@ vim.pack.add({
 		name = "blink-cmp-dictionary"
 	},
 	{
-		src = "https://github.com/L3MON4D3/LuaSnip",
-		name = "luasnip"
-	},
-	{
 		src = "https://github.com/rafamadriz/friendly-snippets",
 		name = "friendly-snippets"
 	}
@@ -205,8 +201,14 @@ if not vim.uv.fs_stat(unpack_path) then
 	})
 end
 
-
+local lazydev = require('lazydev')
+lazydev.setup({
+	library = {
+		{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
+	}
+})
 local blink = require('blink.cmp')
+
 blink.setup({
 	fuzzy = {
 		implementation = 'prefer_rust',
@@ -226,8 +228,13 @@ blink.setup({
 		nerd_font_variant = "mono"
 	},
 	sources = {
-		default = { 'lsp', 'path', 'snippets', 'buffer' },
+		default = { "lazydev", "lsp", "path", "snippets", "buffer" },
 		providers = {
+			lazydev = {
+				name = "LazyDev",
+				module = "lazydev.integrations.blink",
+				score_offset = 100,
+			},
 			dictionary = {
 				module = "blink-cmp-dictionary",
 				name = "Dict",
@@ -238,11 +245,9 @@ blink.setup({
 				opts = {
 					dictionary_directories = { vim.fn.expand("~/.config/nvim/dictionaries") },
 				}
-
-
 			}
 
-		}
+		},
 	},
 	completion = {
 		accept = {
@@ -384,7 +389,6 @@ oil.setup({
 local neogit = require('neogit')
 neogit.setup({})
 
-local luasnip = require("luasnip.loaders.from_vscode").lazy_load()
 
 
 local treesitter_ctx = require("treesitter-context")
