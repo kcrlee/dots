@@ -81,11 +81,11 @@ vim.pack.add({
 	},
 	{
 		src = "https://github.com/stevearc/conform.nvim",
-		name = "conform",
+		name = "conform.nvim",
 	},
 	{
 		src = "https://github.com/mfussenegger/nvim-lint",
-		name = "nvim-lint",
+		name = "lint",
 	},
 	{
 		src = "https://github.com/ibhagwan/fzf-lua",
@@ -115,7 +115,6 @@ vim.pack.add({
 		src = "https://github.com/rktjmp/lush.nvim",
 		name = "lush",
 	},
-
 	{
 		src = "https://github.com/MunifTanjim/nui.nvim",
 		name = "nui.nvim",
@@ -124,7 +123,6 @@ vim.pack.add({
 		src = "https://github.com/rcarriga/nvim-notify",
 		name = "nvim-notify",
 	},
-
 	{
 		src = "https://github.com/nvim-lualine/lualine.nvim",
 		name = "lualine",
@@ -148,26 +146,18 @@ vim.pack.add({
 vim.cmd([[colorscheme tomorrow-min]])
 
 local lint = require("lint")
-
+vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+	callback = function()
+		require("lint").try_lint()
+	end,
+})
 local conform = require("conform")
 conform.setup({
 	quiet = true,
 	formatters = {
-		deno_fmt = {
-			append_args = function()
-				return { "--no-semicolons" }
-			end,
-		},
 		prettier = {
 			args = function(_, ctx)
-				local prettier_roots = {
-					".prettierrc",
-					".prettierrc.json",
-					".prettierrc.mjs",
-					".prettierrc.mts",
-					"prettier.config.js",
-					"prettier.config.ts",
-				}
+				local prettier_roots = { ".prettierrc", ".prettierrc.json", "prettier.config.js", ".prettierrc.mjs" }
 				local args = { "--stdin-filepath", "$FILENAME" }
 				local config_path = vim.fn.stdpath("config")
 
@@ -270,11 +260,11 @@ noice.setup({
 	},
 	-- -- you can enable a preset for easier configuration
 	presets = {
-		bottom_search = true,   -- use a classic bottom cmdline for search
+		bottom_search = true, -- use a classic bottom cmdline for search
 		command_palette = true, -- position the cmdline and popupmenu together
 		long_message_to_split = true, -- long messages will be sent to a split
-		inc_rename = false,     -- enables an input dialog for inc-rename.nvim
-		lsp_doc_border = true,  -- add a border to hover docs and signature help
+		inc_rename = false, -- enables an input dialog for inc-rename.nvim
+		lsp_doc_border = true, -- add a border to hover docs and signature help
 	},
 })
 
@@ -609,7 +599,8 @@ local function setup_lsp()
 					group = vim.api.nvim_create_augroup("lsp", { clear = false }),
 					buffer = args.buf,
 					callback = function()
-						vim.lsp.buf.format({ bufnr = args.buf, id = client.id, timeout_ms = 1000 })
+						--disbale while I figured out if I want conform.nvim or LSP
+						-- vim.lsp.buf.format({ bufnr = args.buf, id = client.id, timeout_ms = 1000 })
 					end,
 				})
 			end
