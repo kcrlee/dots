@@ -146,7 +146,7 @@ vim.pack.add({
 vim.cmd([[colorscheme tomorrow-min]])
 
 local lint = require("lint")
-vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+vim.api.nvim_create_autocmd({ "BufReadPre", "BufNewFile", "BufWritePost" }, {
 	callback = function()
 		require("lint").try_lint()
 	end,
