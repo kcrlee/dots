@@ -118,10 +118,9 @@ vim.pack.add({
 	},
 
 	{
-		src = "https://github.com/nvim-mini/mini.nvim",
-		version = vim.version.range("*")
+		src = "https://github.com/nvim-lualine/lualine.nvim",
+		name = "lualine"
 	},
-
 	{
 		src = "https://github.com/saghen/blink.cmp",
 		name = "blink.cmp",
@@ -144,6 +143,9 @@ vim.pack.add({
 
 vim.cmd [[colorscheme tomorrow-min]]
 
+
+local lualine = require('lualine')
+lualine.setup({})
 
 local snacks = require('snacks')
 snacks.setup({
