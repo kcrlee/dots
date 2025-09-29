@@ -437,6 +437,7 @@ local function setup_lsp()
 		"ts_ls",
 		"typos_lsp",
 		"html_lsp",
+		"prettierd"
 	})
 
 	vim.diagnostic.config({
