@@ -36,123 +36,227 @@ vim.g.mapleader = ","
 vim.pack.add({
 	{
 		src = "https://github.com/nvim-lua/plenary.nvim",
-		name = "plenary"
+		name = "plenary",
 	},
 	{
 		src = "https://github.com/adriankarlen/plugin-view.nvim",
-		name = 'plugin-view'
+		name = "plugin-view",
 	},
 	{
 		src = "https://github.com/mezdelex/unpack",
-		name = "unpack"
+		name = "unpack",
 	},
 	{
 		src = "https://github.com/nvim-treesitter/nvim-treesitter",
 		version = "main",
-		name = 'nvim-treesitter'
+		name = "nvim-treesitter",
 	},
 	{
 		src = "https://github.com/nvim-treesitter/nvim-treesitter-context",
-		name = "nvim-treesitter-context"
+		name = "nvim-treesitter-context",
 	},
 	{
 		src = "https://github.com/neovim/nvim-lspconfig",
-		name = "nvim-lspconfig"
+		name = "nvim-lspconfig",
 	},
 	{
 		src = "https://github.com/nvim-tree/nvim-web-devicons",
-		name = "nvim-web-devicons"
+		name = "nvim-web-devicons",
 	},
 	{
 		src = "https://github.com/NeogitOrg/neogit",
-		name = "neogit"
+		name = "neogit",
 	},
 	{
 		src = "https://github.com/mason-org/mason.nvim",
-		name = "mason.nvim"
+		name = "mason.nvim",
 	},
 	{
 		src = "https://github.com/mbbill/undotree",
-		name = "undotree"
+		name = "undotree",
 	},
 	{
 		src = "https://github.com/stevearc/oil.nvim",
-		name = "oil.nvim"
+		name = "oil.nvim",
+	},
+	{
+		src = "https://github.com/stevearc/conform.nvim",
+		name = "conform",
+	},
+	{
+		src = "https://github.com/mfussenegger/nvim-lint",
+		name = "nvim-lint",
 	},
 	{
 		src = "https://github.com/ibhagwan/fzf-lua",
-		name = "fzf-lua"
+		name = "fzf-lua",
 	},
 	{
 		src = "https://github.com/folke/snacks.nvim",
-		name = "snack.nvim"
+		name = "snack.nvim",
 	},
 	{
 		src = "https://github.com/folke/trouble.nvim",
-		name = "trouble.nvim"
+		name = "trouble.nvim",
 	},
 	{
 		src = "https://github.com/folke/lazydev.nvim",
-		name = "lazydev.nvim"
+		name = "lazydev.nvim",
 	},
 	{
 		src = "https://github.com/folke/noice.nvim",
-		name = "noice"
+		name = "noice",
 	},
 	{
 		src = "https://github.com/kcrlee/tomorrow-min",
-		name = "tomorrow-min"
+		name = "tomorrow-min",
 	},
 	{
 		src = "https://github.com/rktjmp/lush.nvim",
-		name = "lush"
+		name = "lush",
 	},
 
 	{
 		src = "https://github.com/MunifTanjim/nui.nvim",
-		name = "nui.nvim"
+		name = "nui.nvim",
 	},
 	{
 		src = "https://github.com/rcarriga/nvim-notify",
-		name = "nvim-notify"
+		name = "nvim-notify",
 	},
 
 	{
 		src = "https://github.com/nvim-lualine/lualine.nvim",
-		name = "lualine"
+		name = "lualine",
 	},
 	{
 		src = "https://github.com/saghen/blink.cmp",
 		name = "blink.cmp",
-		version = vim.version.range('*'),
-		build = 'cargo build --release',
+		version = vim.version.range("*"),
+		build = "cargo build --release",
 	},
 	{
 		src = "https://github.com/Kaiser-Yang/blink-cmp-dictionary",
-		name = "blink-cmp-dictionary"
+		name = "blink-cmp-dictionary",
 	},
 	{
 		src = "https://github.com/rafamadriz/friendly-snippets",
-		name = "friendly-snippets"
-	}
+		name = "friendly-snippets",
+	},
 })
 
-vim.cmd [[colorscheme tomorrow-min]]
+vim.cmd([[colorscheme tomorrow-min]])
 
+local lint = require("lint")
 
-local lualine = require('lualine')
+local conform = require("conform")
+conform.setup({
+	quiet = true,
+	formatters = {
+		deno_fmt = {
+			append_args = function()
+				return { "--no-semicolons" }
+			end,
+		},
+		prettier = {
+			args = function(_, ctx)
+				local prettier_roots = {
+					".prettierrc",
+					".prettierrc.json",
+					".prettierrc.mjs",
+					".prettierrc.mts",
+					"prettier.config.js",
+					"prettier.config.ts",
+				}
+				local args = { "--stdin-filepath", "$FILENAME" }
+				local config_path = vim.fn.stdpath("config")
+
+				local localPrettierConfig = vim.fs.find(prettier_roots, {
+					upward = true,
+					path = ctx.dirname,
+					type = "file",
+				})[1]
+				local globalPrettierConfig = vim.fs.find(prettier_roots, {
+					path = type(config_path) == "string" and config_path or config_path[1],
+					type = "file",
+				})[1]
+				local disableGlobalPrettierConfig = os.getenv("DISABLE_GLOBAL_PRETTIER_CONFIG")
+
+				-- Project config takes precedence over global config
+				if localPrettierConfig then
+					vim.list_extend(args, { "--config", localPrettierConfig })
+				elseif globalPrettierConfig and not disableGlobalPrettierConfig then
+					vim.list_extend(args, { "--config", globalPrettierConfig })
+				end
+
+				local hasTailwindPrettierPlugin = vim.fs.find("node_modules/prettier-plugin-tailwindcss", {
+					upward = true,
+					path = ctx.dirname,
+					type = "directory",
+				})[1]
+
+				if hasTailwindPrettierPlugin then
+					vim.list_extend(args, { "--plugin", "prettier-plugin-tailwindcss" })
+				end
+
+				return args
+			end,
+		},
+	},
+	formatters_by_ft = {
+		swift = { "swiftformat" },
+		astro = { "deno_fmt" },
+		sql = { "sqlfmt" },
+		lua = { "stylua" },
+		typescript = { "deno_fmt" },
+		typescriptreact = { "deno_fmt" },
+		javascript = { "deno_fmt" },
+		javascriptreact = { "deno_fmt" },
+		json = {
+			"jq",
+			"deno_fmt",
+			"prettier",
+			stop_after_first = true,
+		},
+		liquid = { "prettier" },
+		jsonl = { "jq_compact" },
+		python = { "black" },
+		html = { "deno_fmt" },
+		svelte = { "deno_fmt" },
+		css = { "deno_fmt" },
+		scss = { "deno_fmt" },
+		markdown = { "deno_fmt" },
+		yaml = { "deno_fmt" },
+		graphql = { "prettier" },
+		go = { "goimports", "gofmt" },
+		sh = { "shfmt" },
+		bash = { "shfmt" },
+		haskell = { "ormolu" },
+		zsh = { "shfmt" },
+	},
+	format_on_save = function(bufnr)
+		-- Disable autoformat for files in a certain path
+		local bufname = vim.api.nvim_buf_get_name(bufnr)
+		if bufname:match("/node_modules/") then
+			return
+		end
+		return { timeout_ms = 1000, lsp_fallback = true }
+	end,
+	format_after_save = { lsp_fallback = true },
+})
+
+local lualine = require("lualine")
 lualine.setup({})
 
-local snacks = require('snacks')
+local snacks = require("snacks")
 snacks.setup({
 	image = { enabled = true },
 	bigfile = { enabled = true },
 	explorer = { enabled = false },
 })
 
-local trouble = require('trouble')
+local trouble = require("trouble")
 trouble.setup({})
-
 
 local noice = require("noice")
 noice.setup({
@@ -174,8 +278,7 @@ noice.setup({
 	},
 })
 
-
-local notify = require('notify')
+local notify = require("notify")
 notify.setup({
 	timeout = 1000,
 	render = "compact",
@@ -184,48 +287,48 @@ notify.setup({
 	background_colour = "#000000",
 })
 
-local plugin_view = require('plugin-view')
+local plugin_view = require("plugin-view")
 plugin_view.setup()
 
-local unpack = require('unpack')
+local unpack = require("unpack")
 unpack.setup()
 local unpack_path = vim.fn.stdpath("data") .. "/site/pack/managers/start/unpack"
 
 if not vim.uv.fs_stat(unpack_path) then
 	vim.fn.system({
-		'git',
-		'clone',
+		"git",
+		"clone",
 		"--filter=blob:none",
-		'https://github.com/mezdelex/unpack',
-		unpack_path
+		"https://github.com/mezdelex/unpack",
+		unpack_path,
 	})
 end
 
-local lazydev = require('lazydev')
+local lazydev = require("lazydev")
 lazydev.setup({
 	library = {
 		{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
-	}
+	},
 })
-local blink = require('blink.cmp')
+local blink = require("blink.cmp")
 
 blink.setup({
 	fuzzy = {
-		implementation = 'prefer_rust',
+		implementation = "prefer_rust",
 		frecency = {
 			enabled = true,
 		},
 		prebuilt_binaries = {
 			download = true,
-			force_version = "1.*"
-		}
+			force_version = "1.*",
+		},
 	},
 	signature = {
 		enabled = true,
-		window = { border = "single" }
+		window = { border = "single" },
 	},
 	appearance = {
-		nerd_font_variant = "mono"
+		nerd_font_variant = "mono",
 	},
 	sources = {
 		default = { "lazydev", "lsp", "path", "snippets", "buffer" },
@@ -244,16 +347,15 @@ blink.setup({
 				min_keyword_length = 3,
 				opts = {
 					dictionary_directories = { vim.fn.expand("~/.config/nvim/dictionaries") },
-				}
-			}
-
+				},
+			},
 		},
 	},
 	completion = {
 		accept = {
 			auto_brackets = {
 				enabled = false,
-			}
+			},
 		},
 		documentation = {
 			auto_show = true,
@@ -265,11 +367,13 @@ blink.setup({
 				padding = { 0, 1 }, -- padding only on right side
 				components = {
 					kind_icon = {
-						text = function(ctx) return ' ' .. ctx.kind_icon .. ctx.icon_gap .. ' ' end
-					}
-				}
-			}
-		}
+						text = function(ctx)
+							return " " .. ctx.kind_icon .. ctx.icon_gap .. " "
+						end,
+					},
+				},
+			},
+		},
 	},
 	keymap = {
 		preset = "default",
@@ -287,16 +391,15 @@ blink.setup({
 		["<C-h>"] = { "snippet_backward", "fallback" },
 		-- ["<C-e>"] = { "hide" },
 	},
-
 })
 
 local fzf = require("fzf-lua")
-fzf.setup({ 'telescope' })
+fzf.setup({ "telescope" })
 
 local mason = require("mason")
 mason.setup({})
 
-local oil = require('oil')
+local oil = require("oil")
 oil.setup({
 	default_file_explorer = true,
 	columns = {
@@ -384,29 +487,26 @@ oil.setup({
 	},
 })
 
-
-
-local neogit = require('neogit')
+local neogit = require("neogit")
 neogit.setup({})
-
-
 
 local treesitter_ctx = require("treesitter-context")
 treesitter_ctx.setup({
 	max_lines = 2,
 	separator = "-",
-	mode = "topline"
+	mode = "topline",
 })
 
 local map = vim.keymap.set
-map("n", "<leader>p", function() plugin_view.open() end)
+map("n", "<leader>p", function()
+	plugin_view.open()
+end)
 
 map("n", "<leader>g", require("neogit").open)
 
 map("n", "<F12>", ":UndotreeToggle <Enter>")
 
 map("n", "<leader>i", ":Inspect <Enter>")
-
 
 map("n", "<leader>ff", fzf.files)
 map("n", "<leader>fg", fzf.live_grep)
@@ -415,12 +515,7 @@ map("n", "-", ":Oil<CR>")
 
 map("n", "<leader>xq", "<cmd>Trouble qflist toggle<cr>", { silent = true, noremap = true })
 map("n", "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>", { silent = true, noremap = true })
-map(
-	"n",
-	"<leader>xX",
-	"<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
-	{ silent = true, noremap = true }
-)
+map("n", "<leader>xX", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", { silent = true, noremap = true })
 -- LSP
 --
 local autocmd = vim.api.nvim_create_autocmd
@@ -429,8 +524,6 @@ local function setup_lsp()
 	vim.lsp.enable({
 		"bashls",
 		"cssls",
-		"eslint",
-		"gopls",
 		"html",
 		"jsonls",
 		"lua_ls",
@@ -440,8 +533,6 @@ local function setup_lsp()
 		"rust_analyzer",
 		"ts_ls",
 		"typos_lsp",
-		"html_lsp",
-		"prettierd"
 	})
 
 	vim.diagnostic.config({
@@ -510,10 +601,12 @@ local function setup_lsp()
 			-- 	})
 			-- end
 
-			if not client:supports_method('textDocument/willSaveWaitUntil')
-				and client:supports_method('textDocument/formatting') then
-				vim.api.nvim_create_autocmd('BufWritePre', {
-					group = vim.api.nvim_create_augroup('my.lsp', { clear = false }),
+			if
+				not client:supports_method("textDocument/willSaveWaitUntil")
+				and client:supports_method("textDocument/formatting")
+			then
+				vim.api.nvim_create_autocmd("BufWritePre", {
+					group = vim.api.nvim_create_augroup("lsp", { clear = false }),
 					buffer = args.buf,
 					callback = function()
 						vim.lsp.buf.format({ bufnr = args.buf, id = client.id, timeout_ms = 1000 })
@@ -524,9 +617,8 @@ local function setup_lsp()
 	})
 end
 
-
 local function setup_ts()
-	local ts = require('nvim-treesitter')
+	local ts = require("nvim-treesitter")
 	require("nvim-treesitter").setup({
 		ensure_installed = {
 			"bash",
