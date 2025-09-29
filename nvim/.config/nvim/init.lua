@@ -198,6 +198,7 @@ conform.setup({
 		astro = { "deno_fmt" },
 		sql = { "sqlfmt" },
 		lua = { "stylua" },
+		toml = { "taplo" },
 		typescript = { "deno_fmt" },
 		typescriptreact = { "deno_fmt" },
 		javascript = { "deno_fmt" },
@@ -521,6 +522,7 @@ local function setup_lsp()
 		"svelte",
 		"tailwindcss",
 		"rust_analyzer",
+		"taplo",
 		"ts_ls",
 		"typos_lsp",
 	})
