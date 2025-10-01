@@ -6,6 +6,12 @@ vim.api.nvim_create_augroup(group, { clear = true })
 
 vim.cmd([[autocmd BufEnter * set formatoptions-=cro]])
 
+autocmd({ "BufReadPre", "BufNewFile", "BufWritePost" }, {
+	group = group,
+	callback = function()
+		require("lint").try_lint()
+	end,
+})
 autocmd("LspAttach", {
 	group = group,
 	callback = function(args)
