@@ -1,7 +1,10 @@
 return {
 	config = function()
-		local autocmd = vim.api.nvim_create_autocmd
-		local augroup = vim.api.nvim_create_augroup("config", { clear = true })
+		require("mason").setup({
+			registries = { "github:crashdummyy/mason-registry", "github:mason-org/mason-registry" },
+		})
+		require("mason-lspconfig").setup()
+
 		vim.lsp.enable({
 			"bashls",
 			"cssls",
@@ -39,13 +42,16 @@ return {
 				prefix = "",
 			},
 		})
-
 	end,
 	defer = true,
 	dependencies = {
 		{
 			defer = true,
 			src = "https://github.com/williamboman/mason.nvim",
+		},
+		{
+			defer = true,
+			src = "https://github.com/williamboman/mason-lspconfig.nvim",
 		},
 	},
 	src = "https://github.com/neovim/nvim-lspconfig",

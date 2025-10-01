@@ -58,7 +58,7 @@ autocmd("LspAttach", {
 				group = vim.api.nvim_create_augroup(group, { clear = false }),
 				buffer = args.buf,
 				callback = function()
-					--disbale while I figured out if I want conform.nvim or LSP
+					-- disable while I figured out if I want conform.nvim or LSP
 					-- vim.lsp.buf.format({ bufnr = args.buf, id = client.id, timeout_ms = 1000 })
 				end,
 			})
