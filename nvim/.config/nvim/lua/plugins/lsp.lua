@@ -16,7 +16,6 @@ return {
 			"tailwindcss",
 			"rust_analyzer",
 			"ts_ls",
-			"typos_lsp",
 			"graphql",
 		})
 
