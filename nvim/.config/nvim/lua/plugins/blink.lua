@@ -1,0 +1,95 @@
+return {
+	config = function()
+		local blink = require("blink.cmp")
+
+		blink.setup({
+			fuzzy = {
+				implementation = "prefer_rust",
+				frecency = {
+					enabled = true,
+				},
+				prebuilt_binaries = {
+					download = true,
+					force_version = "1.*",
+				},
+			},
+			signature = {
+				enabled = true,
+				window = { border = "single" },
+			},
+			appearance = {
+				nerd_font_variant = "mono",
+			},
+			sources = {
+				default = { "lazydev", "lsp", "path", "snippets", "buffer" },
+				providers = {
+					lazydev = {
+						name = "LazyDev",
+						module = "lazydev.integrations.blink",
+						score_offset = 100,
+					},
+					dictionary = {
+						module = "blink-cmp-dictionary",
+						name = "Dict",
+						score_offset = 20,
+						enabled = true,
+						max_items = 8,
+						min_keyword_length = 3,
+						opts = {
+							dictionary_directories = { vim.fn.expand("~/.config/nvim/dictionaries") },
+						},
+					},
+				},
+			},
+			completion = {
+				accept = {
+					auto_brackets = {
+						enabled = false,
+					},
+				},
+				documentation = {
+					auto_show = true,
+					auto_show_delay_ms = 200,
+				},
+				menu = {
+					auto_show = true,
+					draw = {
+						padding = { 0, 1 }, -- padding only on right side
+						components = {
+							kind_icon = {
+								text = function(ctx)
+									return " " .. ctx.kind_icon .. ctx.icon_gap .. " "
+								end,
+							},
+						},
+					},
+				},
+			},
+			keymap = {
+				preset = "default",
+				["<C-space>"] = {},
+				["<C-p>"] = {},
+				["<Tab>"] = {},
+				["<S-Tab>"] = {},
+				["<K>"] = { "show", "show_documentation", "hide_documentation", "fallback" },
+				["<CR>"] = { "select_and_accept", "fallback" },
+				["<C-k>"] = { "select_prev", "fallback" },
+				["<C-j>"] = { "select_next", "fallback" },
+				["<C-b>"] = { "scroll_documentation_down", "fallback" },
+				["<C-f>"] = { "scroll_documentation_up", "fallback" },
+				["<C-l>"] = { "snippet_forward", "fallback" },
+				["<C-h>"] = { "snippet_backward", "fallback" },
+				-- ["<C-e>"] = { "hide" },
+			},
+		})
+	end,
+	dependencies = {
+		{
+			defer = true,
+			src = "https://github.com/nvim-lua/plenary.nvim",
+		},
+	},
+	data = { build = "cargo build --release" },
+	defer = true,
+	src = "https://github.com/Saghen/blink.cmp",
+}
