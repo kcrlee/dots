@@ -522,9 +522,9 @@ local function setup_lsp()
 		"svelte",
 		"tailwindcss",
 		"rust_analyzer",
-		-- "taplo",
 		"ts_ls",
 		"typos_lsp",
+		"graphql",
 	})
 
 	vim.diagnostic.config({
