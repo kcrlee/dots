@@ -1,11 +1,10 @@
 local group = "init"
 
-local autocmd= vim.api.nvim_create_autocmd
+local autocmd = vim.api.nvim_create_autocmd
 
 vim.api.nvim_create_augroup(group, { clear = true })
 
 vim.cmd([[autocmd BufEnter * set formatoptions-=cro]])
-
 
 autocmd("LspAttach", {
 	group = group,
@@ -66,9 +65,23 @@ autocmd("LspAttach", {
 	end,
 })
 
+autocmd("FileType", {
+	group = group,
+	callback = function(ev)
+		local filetype = ev.match
+		local lang = vim.treesitter.language.get_lang(filetype)
+		if lang then
+			if vim.treesitter.language.add(lang) then
+				vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+				vim.treesitter.start()
+			end
+		end
+	end,
+})
+
 autocmd({ "BufReadPre", "BufNewFile", "BufWritePost" }, {
 	callback = function()
 		require("lint").try_lint()
 	end,
-	group=group
+	group = group,
 })

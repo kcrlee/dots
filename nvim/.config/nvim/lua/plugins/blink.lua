@@ -2,6 +2,8 @@ return {
 	config = function()
 		local blink = require("blink.cmp")
 
+		require("luasnip.loaders.from_lua").lazy_load()
+
 		blink.setup({
 			fuzzy = {
 				implementation = "prefer_rust",
@@ -20,6 +22,9 @@ return {
 			appearance = {
 				nerd_font_variant = "mono",
 			},
+			snippets = {
+				preset = "luasnip",
+			},
 			sources = {
 				default = { "lazydev", "lsp", "path", "snippets", "buffer" },
 				providers = {
@@ -31,10 +36,10 @@ return {
 					dictionary = {
 						module = "blink-cmp-dictionary",
 						name = "Dict",
-						score_offset = 20,
+						score_offset = 1,
 						enabled = true,
 						max_items = 8,
-						min_keyword_length = 3,
+						min_keyword_length = 5,
 						opts = {
 							dictionary_directories = { vim.fn.expand("~/.config/nvim/dictionaries") },
 						},
@@ -67,18 +72,18 @@ return {
 			},
 			keymap = {
 				preset = "default",
-				["<C-space>"] = {},
-				["<C-p>"] = {},
-				["<Tab>"] = {},
-				["<S-Tab>"] = {},
-				["<K>"] = { "show", "show_documentation", "hide_documentation", "fallback" },
-				["<CR>"] = { "select_and_accept", "fallback" },
-				["<C-k>"] = { "select_prev", "fallback" },
-				["<C-j>"] = { "select_next", "fallback" },
-				["<C-b>"] = { "scroll_documentation_down", "fallback" },
-				["<C-f>"] = { "scroll_documentation_up", "fallback" },
-				["<C-l>"] = { "snippet_forward", "fallback" },
-				["<C-h>"] = { "snippet_backward", "fallback" },
+				-- ["<C-space>"] = {},
+				-- ["<C-p>"] = {},
+				-- ["<Tab>"] = {},
+				-- ["<S-Tab>"] = {},
+				-- ["<K>"] = { "show", "show_documentation", "hide_documentation", "fallback" },
+				-- ["<CR>"] = { "select_and_accept", "fallback" },
+				-- ["<C-k>"] = { "select_prev", "fallback" },
+				-- ["<C-j>"] = { "select_next", "fallback" },
+				-- ["<C-b>"] = { "scroll_documentation_down", "fallback" },
+				-- ["<C-f>"] = { "scroll_documentation_up", "fallback" },
+				-- ["<C-l>"] = { "snippet_forward", "fallback" },
+				-- ["<C-h>"] = { "snippet_backward", "fallback" },
 				-- ["<C-e>"] = { "hide" },
 			},
 		})
@@ -87,6 +92,10 @@ return {
 		{
 			defer = true,
 			src = "https://github.com/nvim-lua/plenary.nvim",
+		},
+		{
+			defer = true,
+			src = "https://github.com/L3MON4D3/LuaSnip",
 		},
 	},
 	data = { build = "cargo build --release" },
