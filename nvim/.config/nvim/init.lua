@@ -522,7 +522,7 @@ local function setup_lsp()
 		"svelte",
 		"tailwindcss",
 		"rust_analyzer",
-		"taplo",
+		-- "taplo",
 		"ts_ls",
 		"typos_lsp",
 	})
