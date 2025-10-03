@@ -13,7 +13,7 @@ return {
 			"lua_ls",
 			"shopify_theme_ls",
 			"svelte",
-			"sourcekit-lsp",
+			"sourcekit",
 			"tailwindcss",
 			"rust_analyzer",
 			"ts_ls",
