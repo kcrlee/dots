@@ -6,6 +6,14 @@ vim.api.nvim_create_augroup(group, { clear = true })
 
 vim.cmd([[autocmd BufEnter * set formatoptions-=cro]])
 
+autocmd("Filetype", {
+	pattern = { "latex", "markdown" },
+	group = group,
+	callback = function()
+		vim.cmd("packadd markview.nvim")
+	end,
+})
+
 autocmd({ "BufReadPre", "BufNewFile", "BufWritePost" }, {
 	group = group,
 	callback = function()

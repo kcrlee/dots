@@ -30,3 +30,18 @@ vim.o.ignorecase = true
 vim.o.smartcase = true
 vim.opt.grepprg = "rg --smartcase --vimgrep"
 vim.opt.grepformat = "%f:%l:%c:%m"
+
+-- Filetype detection
+vim.filetype.add({
+	extension = {
+		env = "dotenv",
+	},
+	filename = {
+		[".env"] = "dotenv",
+		["env"] = "dotenv",
+	},
+	pattern = {
+		["[jt]sconfig.*.json"] = "jsonc",
+		["%.env%.[%w_.-]+"] = "dotenv",
+	},
+})
