@@ -20,6 +20,7 @@ autocmd({ "BufReadPre", "BufNewFile", "BufWritePost" }, {
 		require("lint").try_lint()
 	end,
 })
+
 autocmd("LspAttach", {
 	group = group,
 	callback = function(args)

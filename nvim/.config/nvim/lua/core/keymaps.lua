@@ -13,8 +13,3 @@ map("n", "<leader>xq", "<cmd>Trouble qflist toggle<cr>", { silent = true, norema
 map("n", "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>", { silent = true, noremap = true })
 map("n", "<leader>xX", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", { silent = true, noremap = true })
 map("n", "<leader>g", require("neogit").open)
-
--- map("n", "<leader>p", function()
--- 	plugin_view.open()
--- end)
-
