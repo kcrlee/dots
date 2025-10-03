@@ -53,16 +53,16 @@ autocmd("LspAttach", {
 		local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
 		local methods = vim.lsp.protocol.Methods
 
-		-- if client:supports_method(methods.textDocument_completion) then
-		-- 	vim.lsp.completion.enable(true, client.id, args.buf, {
-		-- 		autotrigger = true,
-		-- 		convert = function(item)
-		-- 			-- Don't preselect any item
-		-- 			item.preselect = false
-		-- 			return item
-		-- 		end
-		-- 	})
-		-- end
+		if client:supports_method(methods.textDocument_completion) then
+			vim.lsp.completion.enable(true, client.id, args.buf, {
+				autotrigger = true,
+				convert = function(item)
+					-- Don't preselect any item
+					item.preselect = false
+					return item
+				end,
+			})
+		end
 
 		if
 			not client:supports_method("textDocument/willSaveWaitUntil")

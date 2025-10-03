@@ -7,7 +7,7 @@
 local util = require("lspconfig.util")
 ---@type vim.lsp.Config
 return {
-	cmd = { "sourcekit-lsp" },
+	cmd = { "xcrun", "sourcekit-lsp" },
 	filetypes = {
 		"swift",
 		"objc",
