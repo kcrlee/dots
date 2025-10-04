@@ -33,17 +33,6 @@ return {
 						module = "lazydev.integrations.blink",
 						score_offset = 100,
 					},
-					dictionary = {
-						module = "blink-cmp-dictionary",
-						name = "Dict",
-						score_offset = 1,
-						enabled = true,
-						max_items = 8,
-						min_keyword_length = 5,
-						opts = {
-							dictionary_directories = { vim.fn.expand("~/.config/nvim/dictionaries") },
-						},
-					},
 				},
 			},
 			completion = {
