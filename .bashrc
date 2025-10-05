@@ -31,6 +31,19 @@ case ":$PATH:" in
 *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 
+if [[ "$OSTYPE" == "darwin"* ]]; then
+	export HOMEBREW_PREFIX="/opt/homebrew/bin:$PATH"
+fi
+
+function load_bash_completion() {
+	if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+		source /etc/profile.d/bash_completion.sh
+	elif [[ "$OSTYPE" == "darwin"* ]]; then
+		# Mac OSX
+		[[ -r "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh" ]] && . "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh"
+	fi
+}
+
 export PATH
 
 # ============================================================================
@@ -51,8 +64,7 @@ eval "$(starship init bash)"
 # Blesh (Bash Line Editor)
 if [ -f ~/.local/share/blesh/ble.sh ] && [[ $- == *i* ]]; then
 	source ~/.local/share/blesh/ble.sh
-	source /etc/profile.d/bash_completion.sh
-
+	load_bash_completion
 	ble-import -d integration/fzf-completion
 	ble-import -d integration/fzf-key-bindings
 fi
