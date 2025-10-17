@@ -1,37 +1,112 @@
 {
   "plugins": {
-    "LuaSnip": [],
-    "blink.cmp": [],
-    "conform.nvim": [],
-    "fzf-lua": [],
-    "lazydev.nvim": [],
-    "lualine.nvim": [],
-    "lush.nvim": [],
-    "markview.nvim": [],
-    "mason-lspconfig.nvim": [],
-    "mason.nvim": [],
-    "neogit": [],
+    "LuaSnip": {
+      "rev": "eec1a84",
+      "src": "https://github.com/L3MON4D3/LuaSnip"
+    },
+    "blink.cmp": {
+      "rev": "cb87357",
+      "src": "https://github.com/Saghen/blink.cmp"
+    },
+    "conform.nvim": {
+      "rev": "fbcb4fa",
+      "src": "https://github.com/stevearc/conform.nvim"
+    },
+    "fzf-lua": {
+      "rev": "db45bab",
+      "src": "https://github.com/ibhagwan/fzf-lua"
+    },
+    "lazydev.nvim": {
+      "rev": "e28ce52",
+      "src": "https://github.com/folke/lazydev.nvim"
+    },
+    "lualine.nvim": {
+      "rev": "3946f01",
+      "src": "https://github.com/nvim-lualine/lualine.nvim"
+    },
+    "lush.nvim": {
+      "rev": "9c60ec2",
+      "src": "https://github.com/rktjmp/lush.nvim"
+    },
+    "markview.nvim": {
+      "rev": "c93ea99",
+      "src": "https://github.com/OXY2DEV/markview.nvim"
+    },
+    "mason-lspconfig.nvim": {
+      "rev": "6bdb14f",
+      "src": "https://github.com/williamboman/mason-lspconfig.nvim"
+    },
+    "mason.nvim": {
+      "rev": "ad7146a",
+      "src": "https://github.com/williamboman/mason.nvim"
+    },
+    "neogit": {
+      "rev": "0f48491a",
+      "src": "https://github.com/NeogitOrg/neogit"
+    },
     "noice.nvim": [],
-    "nui.nvim": [],
-    "nvim-lint": [],
-    "nvim-lspconfig": [],
+    "nui.nvim": {
+      "rev": "de74099",
+      "src": "https://github.com/MunifTanjim/nui.nvim"
+    },
+    "nvim-lint": {
+      "rev": "9da1fb9",
+      "src": "https://github.com/mfussenegger/nvim-lint"
+    },
+    "nvim-lspconfig": {
+      "rev": "ac98db2",
+      "src": "https://github.com/neovim/nvim-lspconfig"
+    },
     "nvim-notify": [],
     "nvim-treesitter": {
+      "rev": "846d5113",
+      "src": "https://github.com/nvim-treesitter/nvim-treesitter",
       "version": "'main'"
     },
-    "nvim-treesitter-context": [],
+    "nvim-treesitter-context": {
+      "rev": "41847d3",
+      "src": "https://github.com/nvim-treesitter/nvim-treesitter-context"
+    },
     "nvim-treesitter-textobjects": {
+      "rev": "1b2d85d",
+      "src": "https://github.com/nvim-treesitter/nvim-treesitter-textobjects",
       "version": "'main'"
     },
-    "nvim-web-devicons": [],
-    "oil.nvim": [],
-    "plenary.nvim": [],
-    "snacks.nvim": [],
-    "store.nvim": [],
-    "tomorrow-min": [],
-    "trouble.nvim": [],
-    "undotree": [],
-    "xcodebuild.nvim": []
+    "nvim-web-devicons": {
+      "rev": "b8221e4",
+      "src": "https://github.com/nvim-tree/nvim-web-devicons"
+    },
+    "oil.nvim": {
+      "rev": "7194872",
+      "src": "https://github.com/stevearc/oil.nvim"
+    },
+    "plenary.nvim": {
+      "rev": "b9fd522",
+      "src": "https://github.com/nvim-lua/plenary.nvim"
+    },
+    "snacks.nvim": {
+      "rev": "454ba02",
+      "src": "https://github.com/folke/snacks.nvim"
+    },
+    "store.nvim": {
+      "rev": "ff6c30a",
+      "src": "https://github.com/alex-popov-tech/store.nvim"
+    },
+    "tomorrow-min": {
+      "rev": "9786418",
+      "src": "https://github.com/kcrlee/tomorrow-min"
+    },
+    "trouble.nvim": {
+      "rev": "c098362",
+      "src": "https://github.com/folke/trouble.nvim"
+    },
+    "undotree": {
+      "rev": "0f1c981",
+      "src": "https://github.com/mbbill/undotree"
+    },
+    "xcodebuild.nvim": {
+      "rev": "1ceeb31",
+      "src": "https://github.com/wojciech-kulik/xcodebuild.nvim"
+    }
   }
 }
-

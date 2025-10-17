@@ -21,6 +21,18 @@ autocmd({ "BufReadPre", "BufNewFile", "BufWritePost" }, {
 	end,
 })
 
+autocmd("PackChanged", {
+	group = group,
+	callback = function(ev)
+		local spec = ev.data.spec
+		if spec and spec.name == "nvim-treesitter" and ev.data.kind == "update" then
+			vim.schedule(function()
+				local ts = require('nvim-treesitter')
+				ts.update()
+			end)
+		end
+	end,
+})
 autocmd("LspAttach", {
 	group = group,
 	callback = function(args)

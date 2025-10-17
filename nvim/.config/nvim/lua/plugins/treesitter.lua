@@ -37,17 +37,6 @@ return {
 			highlight = { enable = true },
 			indent = { enable = true },
 		})
-		autocmd("PackChanged", {
-			group = 'init',
-			callback = function(ev)
-				local spec = ev.data.spec
-				if spec and spec.name == "nvim-treesitter" and ev.data.kind == "update" then
-					vim.schedule(function()
-						ts.update()
-					end)
-				end
-			end,
-		})
 	end,
 	defer = true,
 	dependencies = {
