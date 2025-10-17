@@ -52,7 +52,9 @@ return {
 		'typescript',
 		'typescriptreact',
 		'typescript.tsx',
-		'svelte'
+		'svelte',
+		'liquid',
+		'html'
 	},
 	root_dir = function(bufnr, on_dir)
 		-- The project root is where the LSP can be started from

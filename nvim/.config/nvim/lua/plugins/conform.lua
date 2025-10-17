@@ -7,7 +7,7 @@ return {
 				prettier = {
 					args = function(_, ctx)
 						local prettier_roots =
-							{ ".prettierrc", ".prettierrc.json", "prettier.config.js", ".prettierrc.mjs" }
+						{ ".prettierrc", ".prettierrc.json", "prettier.config.js", ".prettierrc.mjs" }
 						local args = { "--stdin-filepath", "$FILENAME" }
 						local config_path = vim.fn.stdpath("config")
 
@@ -47,7 +47,7 @@ return {
 				swift = { "swiftformat" },
 				astro = { "prettier" },
 				sql = { "sqlfmt" },
-				lua = { "stylua" },
+				lua = { "lua_ls" },
 				toml = { "taplo" },
 				typescript = { "prettier" },
 				typescriptreact = { "prettier" },
