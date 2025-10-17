@@ -18,6 +18,7 @@ return {
 				"gosum",
 				"html",
 				"javascript",
+				"css",
 				"json",
 				"jsx",
 				"lua",
@@ -32,11 +33,11 @@ return {
 				"yaml",
 				"zig",
 			},
-			highlight = { enable = true },
+			highlight = { enable = true, additional_vim_regex = false },
 			indent = { enable = true },
 		})
 		autocmd("PackChanged", {
-			group = augroup,
+			group = 'init',
 			callback = function(ev)
 				local spec = ev.data.spec
 				if spec and spec.name == "nvim-treesitter" and ev.data.kind == "update" then
