@@ -1,0 +1,37 @@
+{
+  "plugins": {
+    "LuaSnip": [],
+    "blink.cmp": [],
+    "conform.nvim": [],
+    "fzf-lua": [],
+    "lazydev.nvim": [],
+    "lualine.nvim": [],
+    "lush.nvim": [],
+    "markview.nvim": [],
+    "mason-lspconfig.nvim": [],
+    "mason.nvim": [],
+    "neogit": [],
+    "noice.nvim": [],
+    "nui.nvim": [],
+    "nvim-lint": [],
+    "nvim-lspconfig": [],
+    "nvim-notify": [],
+    "nvim-treesitter": {
+      "version": "'main'"
+    },
+    "nvim-treesitter-context": [],
+    "nvim-treesitter-textobjects": {
+      "version": "'main'"
+    },
+    "nvim-web-devicons": [],
+    "oil.nvim": [],
+    "plenary.nvim": [],
+    "snacks.nvim": [],
+    "store.nvim": [],
+    "tomorrow-min": [],
+    "trouble.nvim": [],
+    "undotree": [],
+    "xcodebuild.nvim": []
+  }
+}
+

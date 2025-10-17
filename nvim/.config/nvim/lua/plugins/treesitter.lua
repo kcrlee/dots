@@ -31,9 +31,10 @@ return {
 				"tsx",
 				"typescript",
 				"yaml",
+				"vim",
 				"zig",
 			},
-			highlight = { enable = true, additional_vim_regex = false },
+			highlight = { enable = true },
 			indent = { enable = true },
 		})
 		autocmd("PackChanged", {
