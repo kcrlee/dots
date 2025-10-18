@@ -34,14 +34,14 @@ vim.opt.grepformat = "%f:%l:%c:%m"
 -- Filetype detection
 vim.filetype.add({
 	extension = {
-		env = "dotenv",
+		env = "sh",
 	},
 	filename = {
-		[".env"] = "dotenv",
-		["env"] = "dotenv",
+		[".env"] = "sh",
+		["env"] = "sh",
 	},
 	pattern = {
 		["[jt]sconfig.*.json"] = "jsonc",
-		["%.env%.[%w_.-]+"] = "dotenv",
+		["%.env%.[%w_.-]+"] = "sh",
 	},
 })
