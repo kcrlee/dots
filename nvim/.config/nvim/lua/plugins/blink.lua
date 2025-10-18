@@ -33,10 +33,7 @@ return {
 			appearance = {
 				nerd_font_variant = "mono",
 			},
-			snippets = {
-				-- preset = "luasnip",
-				friendly_snippets = true, -- default
-			},
+			snippets = {},
 			sources = {
 				default = { "lazydev", "lsp", "path", "snippets", "buffer" },
 				providers = {
