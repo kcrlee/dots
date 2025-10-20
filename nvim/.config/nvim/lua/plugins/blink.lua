@@ -14,7 +14,6 @@ return {
 				},
 			},
 			signature = {
-				signature = { window = { border = "single" } },
 				enabled = true,
 				window = {
 					border = "rounded",
