@@ -6,8 +6,14 @@ return {
 			formatters = {
 				prettier = {
 					args = function(_, ctx)
-						local prettier_roots = { ".prettierrc", ".prettierrc.json", "prettier.config.js",
-							".prettierrc.mjs", "prettier.config.ts", "prettier.config.mts" }
+						local prettier_roots = {
+							".prettierrc",
+							".prettierrc.json",
+							"prettier.config.js",
+							".prettierrc.mjs",
+							"prettier.config.ts",
+							"prettier.config.mts",
+						}
 						local args = { "--stdin-filepath", "$FILENAME" }
 						local config_path = vim.fn.stdpath("config")
 
