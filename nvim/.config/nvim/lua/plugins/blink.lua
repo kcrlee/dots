@@ -14,6 +14,7 @@ return {
 				},
 			},
 			signature = {
+				signature = { window = { border = "single" } },
 				enabled = true,
 				window = {
 					border = "rounded",
@@ -60,9 +61,13 @@ return {
 					auto_show = true,
 					draw = {
 						treesitter = { "lsp" },
-						columns = {
-							{ "label",     "label_description", gap = 1 },
-							{ "kind_icon", "kind",              gap = 1 },
+						padding = { 0, 1 }, -- padding only on right side
+						components = {
+							kind_icon = {
+								text = function(ctx)
+									return " " .. ctx.kind_icon .. ctx.icon_gap .. " "
+								end,
+							},
 						},
 					},
 				},
