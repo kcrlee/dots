@@ -1,7 +1,6 @@
 return {
 	config = function()
 		local blink = require("blink.cmp")
-
 		blink.setup({
 			fuzzy = {
 				implementation = "prefer_rust",
@@ -26,13 +25,17 @@ return {
 					show_documentation = true,
 				},
 			},
-			appearance = {
-				nerd_font_variant = "mono",
-			},
-			snippets = {},
 			sources = {
 				default = { "lazydev", "lsp", "path", "snippets", "buffer" },
+				per_filetype = {
+					lua = { inherit_defaults = true, "lazydev" },
+				},
 				providers = {
+					snippets = {
+						opts = {
+							friendly_snippets = true,
+						},
+					},
 					lazydev = {
 						name = "LazyDev",
 						module = "lazydev.integrations.blink",
@@ -44,6 +47,7 @@ return {
 				list = {
 					selection = {
 						preselect = false,
+						auto_insert = true,
 					},
 				},
 				accept = {
@@ -51,26 +55,26 @@ return {
 						enabled = false,
 					},
 				},
-				documentation = {
-					auto_show = true,
-					auto_show_delay_ms = 200,
-				},
 				menu = {
 					border = "rounded",
-					winhighlight =
-					"Normal:BlinkCmpDoc,FloatBorder:BlinkCmpDocBorder,CursorLine:BlinkCmpDocCursorLine,Search:None",
 					auto_show = true,
 					draw = {
-						padding = 1, -- padding only on right side
-						components = {
-							kind_icon = {
-								text = function(ctx)
-									return " " .. ctx.kind_icon .. ctx.icon_gap .. " "
-								end,
-							},
+						treesitter = { "lsp" },
+						columns = {
+							{ "label",     "label_description", gap = 1 },
+							{ "kind_icon", "kind",              gap = 1 },
 						},
 					},
 				},
+				documentation = {
+					auto_show = true,
+					treesitter_highlighting = true,
+					window = { border = "rounded" },
+				},
+			},
+			appearance = {
+				use_nvim_cmp_as_default = false,
+				nerd_font_variant = "mono",
 			},
 			keymap = {
 				preset = "default",

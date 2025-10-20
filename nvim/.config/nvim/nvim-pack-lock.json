@@ -49,6 +49,10 @@
       "rev": "de74099",
       "src": "https://github.com/MunifTanjim/nui.nvim"
     },
+    "nvim": {
+      "rev": "af58927",
+      "src": "https://github.com/catppuccin/nvim"
+    },
     "nvim-lint": {
       "rev": "9da1fb9",
       "src": "https://github.com/mfussenegger/nvim-lint"
@@ -91,6 +95,10 @@
     "store.nvim": {
       "rev": "ff6c30a",
       "src": "https://github.com/alex-popov-tech/store.nvim"
+    },
+    "tokyonight.nvim": {
+      "rev": "e63c42a",
+      "src": "https://github.com/folke/tokyonight.nvim"
     },
     "tomorrow-min": {
       "rev": "9786418",
