@@ -4,6 +4,10 @@
       "rev": "eec1a84",
       "src": "https://github.com/L3MON4D3/LuaSnip"
     },
+    "blink-emoji.nvim": {
+      "rev": "f22ce8c",
+      "src": "https://github.com/moyiz/blink-emoji.nvim"
+    },
     "blink.cmp": {
       "rev": "cb87357",
       "src": "https://github.com/Saghen/blink.cmp"
@@ -11,6 +15,10 @@
     "conform.nvim": {
       "rev": "fbcb4fa",
       "src": "https://github.com/stevearc/conform.nvim"
+    },
+    "friendly-snippets": {
+      "rev": "572f566",
+      "src": "https://github.com/rafamadriz/friendly-snippets"
     },
     "fzf-lua": {
       "rev": "db45bab",

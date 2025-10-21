@@ -1,6 +1,7 @@
 return {
 	config = function()
 		local blink = require("blink.cmp")
+		require("luasnip.loaders.from_vscode").lazy_load()
 		blink.setup({
 			fuzzy = {
 				implementation = "prefer_rust",
@@ -16,7 +17,7 @@ return {
 			signature = {
 				enabled = true,
 				window = {
-					border = "rounded",
+					border = "single",
 					min_width = 10,
 					max_width = 80,
 					max_height = 80,
@@ -25,16 +26,37 @@ return {
 					show_documentation = true,
 				},
 			},
+			snippets = { preset = "luasnip" },
 			sources = {
-				default = { "lazydev", "lsp", "path", "snippets", "buffer" },
+				default = { "lazydev", "lsp", "path", "snippets", "buffer", "emoji" },
 				per_filetype = {
 					lua = { inherit_defaults = true, "lazydev" },
 				},
 				providers = {
-					snippets = {
+					lsp = {
+						name = "lsp",
+						enabled = true,
+						module = "blink.cmp.sources.lsp",
+					},
+					emoji = {
+						module = "blink-emoji",
+						name = "Emoji",
+						score_offset = 15, -- Tune by preference
 						opts = {
-							friendly_snippets = true,
+							insert = true, -- Insert emoji (default) or complete its name
+							---@type string|table|fun():table
+							trigger = function()
+								return { ":" }
+							end,
 						},
+						should_show_items = function()
+							return vim.tbl_contains(
+							-- Enable emoji completion only for git commits and markdown.
+							-- By default, enabled for all file-types.
+								{ "gitcommit", "markdown" },
+								vim.o.filetype
+							)
+						end,
 					},
 					lazydev = {
 						name = "LazyDev",
@@ -49,6 +71,9 @@ return {
 						preselect = false,
 						auto_insert = true,
 					},
+					window = {
+						border = "single",
+					},
 				},
 				accept = {
 					auto_brackets = {
@@ -56,16 +81,18 @@ return {
 					},
 				},
 				menu = {
-					border = "rounded",
+					border = "single",
 					auto_show = true,
 					draw = {
 						treesitter = { "lsp" },
-						padding = { 0, 1 }, -- padding only on right side
+						columns = { { "kind_icon" }, { "label", "label_description", gap = 1 }, { "source_name" } },
 						components = {
-							kind_icon = {
+							source_name = {
+								width = { max = 30 },
 								text = function(ctx)
-									return " " .. ctx.kind_icon .. ctx.icon_gap .. " "
+									return "[" .. ctx.source_name .. "]"
 								end,
+								highlight = "BlinkCmpSource",
 							},
 						},
 					},
@@ -73,7 +100,7 @@ return {
 				documentation = {
 					auto_show = true,
 					treesitter_highlighting = true,
-					window = { border = "rounded" },
+					window = { border = "single" },
 				},
 			},
 			appearance = {
@@ -102,6 +129,15 @@ return {
 		{
 			defer = true,
 			src = "https://github.com/L3MON4D3/LuaSnip",
+		},
+		{
+			defer = true,
+			src = "https://github.com/rafamadriz/friendly-snippets",
+		},
+
+		{
+			defer = true,
+			src = "https://github.com/moyiz/blink-emoji.nvim",
 		},
 	},
 	data = { build = "cargo build --release" },

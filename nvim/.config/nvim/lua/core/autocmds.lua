@@ -27,7 +27,7 @@ autocmd("PackChanged", {
 		local spec = ev.data.spec
 		if spec and spec.name == "nvim-treesitter" and ev.data.kind == "update" then
 			vim.schedule(function()
-				local ts = require('nvim-treesitter')
+				local ts = require("nvim-treesitter")
 				ts.update()
 			end)
 		end
