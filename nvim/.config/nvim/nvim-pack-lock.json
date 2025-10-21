@@ -91,6 +91,10 @@
       "rev": "b9fd522",
       "src": "https://github.com/nvim-lua/plenary.nvim"
     },
+    "plugin-view.nvim": {
+      "rev": "369c80a",
+      "src": "https://github.com/adriankarlen/plugin-view.nvim"
+    },
     "snacks.nvim": {
       "rev": "454ba02",
       "src": "https://github.com/folke/snacks.nvim"

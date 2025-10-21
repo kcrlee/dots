@@ -17,8 +17,7 @@ return {
 			signature = {
 				enabled = true,
 				window = {
-					border = "rounded",
-					winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None",
+					border = "double",
 					min_width = 10,
 					max_width = 80,
 					max_height = 80,
@@ -80,8 +79,7 @@ return {
 				},
 				menu = {
 					window = {
-						border = "rounded",
-						winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None",
+						border = "double",
 					},
 					auto_show = true,
 					draw = {
@@ -103,8 +101,7 @@ return {
 					auto_show_delay_ms = 200,
 					treesitter_highlighting = true,
 					window = {
-						border = "rounded",
-						winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None",
+						border = "double",
 					},
 				},
 			},
