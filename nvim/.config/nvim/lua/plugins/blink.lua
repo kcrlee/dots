@@ -78,9 +78,7 @@ return {
 					},
 				},
 				menu = {
-					window = {
-						border = "double",
-					},
+					border = "double",
 					auto_show = true,
 					draw = {
 						treesitter = { "lsp" },
