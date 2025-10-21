@@ -53,7 +53,7 @@ return {
 				swift = { "swiftformat" },
 				astro = { "prettier" },
 				sql = { "sqlfmt" },
-				lua = { "lua_ls" },
+				lua = { "luaformatter" },
 				toml = { "taplo" },
 				typescript = { "prettier" },
 				typescriptreact = { "prettier" },

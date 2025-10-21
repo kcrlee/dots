@@ -15,8 +15,9 @@ return {
 			"svelte",
 			"sourcekit",
 			"tailwindcss",
-			"rust_analyzer",
+			"tombi",
 			"ts_ls",
+			"rust_analyzer",
 			"graphql",
 		})
 
