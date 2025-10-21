@@ -18,7 +18,7 @@ return {
 				enabled = true,
 				window = {
 					border = "rounded",
-					winhighlight = 'Normal:BlinkCmpSignatureHelp,FloatBorder:BlinkCmpSignatureHelpBorder',
+					winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None",
 					min_width = 10,
 					max_width = 80,
 					max_height = 80,
@@ -79,8 +79,10 @@ return {
 					},
 				},
 				menu = {
-					border = "rounded",
-					winhighlight = 'Normal:BlinkCmpDoc,FloatBorder:BlinkCmpDocBorder,EndOfBuffer:BlinkCmpDoc',
+					window = {
+						border = "rounded",
+						winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None",
+					},
 					auto_show = true,
 					draw = {
 						treesitter = { "lsp" },
@@ -102,12 +104,12 @@ return {
 					treesitter_highlighting = true,
 					window = {
 						border = "rounded",
-						winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None"
+						winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None",
 					},
 				},
 			},
 			appearance = {
-				use_nvim_cmp_as_default = true,
+				use_nvim_cmp_as_default = false,
 				nerd_font_variant = "mono",
 			},
 			keymap = {
