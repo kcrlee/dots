@@ -18,6 +18,7 @@ return {
 				enabled = true,
 				window = {
 					border = "rounded",
+					winhighlight = 'Normal:BlinkCmpSignatureHelp,FloatBorder:BlinkCmpSignatureHelpBorder',
 					min_width = 10,
 					max_width = 80,
 					max_height = 80,
@@ -79,7 +80,7 @@ return {
 				},
 				menu = {
 					border = "rounded",
-					winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None",
+					winhighlight = 'Normal:BlinkCmpDoc,FloatBorder:BlinkCmpDocBorder,EndOfBuffer:BlinkCmpDoc',
 					auto_show = true,
 					draw = {
 						treesitter = { "lsp" },

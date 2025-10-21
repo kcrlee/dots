@@ -1,6 +1,7 @@
 local group = "init"
 
 local autocmd = vim.api.nvim_create_autocmd
+
 vim.api.nvim_create_augroup(group, { clear = true })
 
 vim.cmd([[autocmd BufEnter * set formatoptions-=cro]])
