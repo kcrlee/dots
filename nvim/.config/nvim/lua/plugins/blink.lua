@@ -79,6 +79,7 @@ return {
 				},
 				menu = {
 					border = "rounded",
+					winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None",
 					auto_show = true,
 					draw = {
 						treesitter = { "lsp" },
@@ -98,11 +99,14 @@ return {
 					auto_show = true,
 					auto_show_delay_ms = 200,
 					treesitter_highlighting = true,
-					window = { border = "rounded" },
+					window = {
+						border = "rounded",
+						winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None"
+					},
 				},
 			},
 			appearance = {
-				use_nvim_cmp_as_default = false,
+				use_nvim_cmp_as_default = true,
 				nerd_font_variant = "mono",
 			},
 			keymap = {
