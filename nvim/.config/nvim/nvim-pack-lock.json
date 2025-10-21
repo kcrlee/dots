@@ -52,7 +52,10 @@
       "rev": "0f48491a",
       "src": "https://github.com/NeogitOrg/neogit"
     },
-    "noice.nvim": [],
+    "noice.nvim": {
+      "rev": "db24837",
+      "src": "https://github.com/folke/noice.nvim"
+    },
     "nui.nvim": {
       "rev": "de74099",
       "src": "https://github.com/MunifTanjim/nui.nvim"

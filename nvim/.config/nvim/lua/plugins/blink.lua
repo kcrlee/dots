@@ -17,7 +17,7 @@ return {
 			signature = {
 				enabled = true,
 				window = {
-					border = "single",
+					border = "rounded",
 					min_width = 10,
 					max_width = 80,
 					max_height = 80,
@@ -26,7 +26,7 @@ return {
 					show_documentation = true,
 				},
 			},
-			snippets = { preset = "luasnip" },
+			snippets = { preset = "default" },
 			sources = {
 				default = { "lazydev", "lsp", "path", "snippets", "buffer", "emoji" },
 				per_filetype = {
@@ -71,9 +71,6 @@ return {
 						preselect = false,
 						auto_insert = true,
 					},
-					window = {
-						border = "single",
-					},
 				},
 				accept = {
 					auto_brackets = {
@@ -81,7 +78,7 @@ return {
 					},
 				},
 				menu = {
-					border = "single",
+					border = "rounded",
 					auto_show = true,
 					draw = {
 						treesitter = { "lsp" },
@@ -99,8 +96,9 @@ return {
 				},
 				documentation = {
 					auto_show = true,
+					auto_show_delay_ms = 200,
 					treesitter_highlighting = true,
-					window = { border = "single" },
+					window = { border = "rounded" },
 				},
 			},
 			appearance = {
