@@ -4,6 +4,10 @@
       "rev": "ccf25a5",
       "src": "https://github.com/L3MON4D3/LuaSnip"
     },
+    "base46": {
+      "rev": "db58475",
+      "src": "https://github.com/nvchad/base46"
+    },
     "blink-emoji.nvim": {
       "rev": "f22ce8c",
       "src": "https://github.com/moyiz/blink-emoji.nvim"
@@ -95,6 +99,10 @@
       "rev": "7194872",
       "src": "https://github.com/stevearc/oil.nvim"
     },
+    "palette.nvim": {
+      "rev": "8c68f96",
+      "src": "https://github.com/bhugovilela/palette.nvim"
+    },
     "plenary.nvim": {
       "rev": "b9fd522",
       "src": "https://github.com/nvim-lua/plenary.nvim"
@@ -118,6 +126,10 @@
     "trouble.nvim": {
       "rev": "c098362",
       "src": "https://github.com/folke/trouble.nvim"
+    },
+    "ui": {
+      "rev": "03b9718",
+      "src": "https://github.com/nvchad/ui"
     },
     "undotree": {
       "rev": "0f1c981",

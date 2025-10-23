@@ -6,7 +6,6 @@ return {
 			---@type markview.config.markdown
 			markdown = {
 				enable = true,
-
 				block_quotes = {
 					enable = true,
 					wrap = true,
