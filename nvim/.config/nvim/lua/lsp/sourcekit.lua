@@ -19,10 +19,10 @@ return {
 		local filename = vim.api.nvim_buf_get_name(bufnr)
 		on_dir(
 			util.root_pattern("buildServer.json")(filename)
-				or util.root_pattern("*.xcodeproj", "*.xcworkspace")(filename)
-				-- better to keep it at the end, because some modularized apps contain multiple Package.swift files
-				or util.root_pattern("compile_commands.json", "Package.swift")(filename)
-				or vim.fs.dirname(vim.fs.find(".git", { path = filename, upward = true })[1])
+			or util.root_pattern("*.xcodeproj", "*.xcworkspace")(filename)
+			-- better to keep it at the end, because some modularized apps contain multiple Package.swift files
+			or util.root_pattern("compile_commands.json", "Package.swift")(filename)
+			or vim.fs.dirname(vim.fs.find(".git", { path = filename, upward = true })[1])
 		)
 	end,
 	get_language_id = function(_, ftype)

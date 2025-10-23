@@ -52,6 +52,10 @@
       "rev": "0f48491a",
       "src": "https://github.com/NeogitOrg/neogit"
     },
+    "no-neck-pain.nvim": {
+      "rev": "c3d96b6",
+      "src": "https://github.com/shortcuts/no-neck-pain.nvim"
+    },
     "nui.nvim": {
       "rev": "de74099",
       "src": "https://github.com/MunifTanjim/nui.nvim"

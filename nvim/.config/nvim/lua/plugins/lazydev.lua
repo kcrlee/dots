@@ -4,7 +4,7 @@ return {
 		lazydev.setup({
 			library = {
 				{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
-				{ path = "wezterm-types", mods = { "wezterm" } },
+				{ path = "wezterm-types",      mods = { "wezterm" } },
 			},
 		})
 	end,
