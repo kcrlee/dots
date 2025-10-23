@@ -11,7 +11,7 @@ return {
 		Lua = {
 			hint = { enable = true },
 			telemetry = { enable = false },
-			diagnostics = { globals = { "vim" } },
+			diagnostics = { globals = { "vim", "require" } },
 			workspace = {
 				checkThirdParty = false,
 			},
