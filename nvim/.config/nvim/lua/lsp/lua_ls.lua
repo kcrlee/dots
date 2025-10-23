@@ -3,8 +3,6 @@ return {
 	cmd = { "lua-language-server" },
 	filetypes = { 'lua' },
 	root_markers = {
-
-
 		'luarc.json',
 		'.luarc.json',
 		'.git'
