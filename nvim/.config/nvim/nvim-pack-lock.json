@@ -56,6 +56,10 @@
       "rev": "c3d96b6",
       "src": "https://github.com/shortcuts/no-neck-pain.nvim"
     },
+    "noice.nvim": {
+      "rev": "c86aea5",
+      "src": "https://github.com/folke/noice.nvim"
+    },
     "nui.nvim": {
       "rev": "de74099",
       "src": "https://github.com/MunifTanjim/nui.nvim"

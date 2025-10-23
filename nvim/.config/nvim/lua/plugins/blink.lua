@@ -4,7 +4,6 @@ return {
 		local blink = require("blink.cmp")
 		require("luasnip.loaders.from_vscode").lazy_load()
 		blink.setup({
-
 			---@type blink.cmp.Config
 			fuzzy = {
 				implementation = "prefer_rust",
@@ -20,7 +19,7 @@ return {
 			signature = {
 				enabled = true,
 				window = {
-					border = "double",
+					border = "rounded",
 					min_width = 10,
 					max_width = 80,
 					max_height = 80,
@@ -68,6 +67,9 @@ return {
 					},
 				},
 			},
+			cmdline = {
+				enabled = true,
+			},
 			completion = {
 				list = {
 					selection = {
@@ -81,7 +83,7 @@ return {
 					},
 				},
 				menu = {
-					border = "double",
+					border = "rounded",
 					auto_show = true,
 					draw = {
 						treesitter = { "lsp" },
@@ -99,10 +101,10 @@ return {
 				},
 				documentation = {
 					auto_show = true,
-					auto_show_delay_ms = 200,
+					auto_show_delay_ms = 500,
 					treesitter_highlighting = true,
 					window = {
-						border = "double",
+						border = "rounded",
 					},
 				},
 			},
