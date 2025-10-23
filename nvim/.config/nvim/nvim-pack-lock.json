@@ -1,7 +1,7 @@
 {
   "plugins": {
     "LuaSnip": {
-      "rev": "eec1a84",
+      "rev": "ccf25a5",
       "src": "https://github.com/L3MON4D3/LuaSnip"
     },
     "blink-emoji.nvim": {
