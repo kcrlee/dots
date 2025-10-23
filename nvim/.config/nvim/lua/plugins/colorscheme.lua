@@ -1,12 +1,3 @@
-return {
-	dir = "~/dev/personal/nvim-plugins/tomorrow-min",
-	-- "KyleLee95/tomorrow-min",
-	lazy = false,
-	config = function()
-		vim.cmd("colorscheme tomorrow-min")
-	end,
-}
-
 -- return {
 -- 	"marko-cerovac/material.nvim",
 -- 	lazy = false,
@@ -16,13 +7,13 @@ return {
 -- 	end,
 -- }
 
--- return {
--- 	"ntk148v/habamax.nvim",
--- 	dependencies = { "rktjmp/lush.nvim" },
--- 	config = function()
--- 		vim.cmd.colorscheme("habamax.nvim")
--- 	end,
--- }
+return {
+	"ntk148v/habamax.nvim",
+	dependencies = { "rktjmp/lush.nvim" },
+	config = function()
+		vim.cmd.colorscheme("habamax.nvim")
+	end,
+}
 
 -- return {
 -- 	"kepano/flexoki-neovim",
