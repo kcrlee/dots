@@ -28,6 +28,10 @@
       "rev": "db45bab",
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
+    "github-nvim-theme": {
+      "rev": "c106c94",
+      "src": "https://github.com/projekt0n/github-nvim-theme"
+    },
     "lazydev.nvim": {
       "rev": "e28ce52",
       "src": "https://github.com/folke/lazydev.nvim"
@@ -51,6 +55,10 @@
     "mason.nvim": {
       "rev": "ad7146a",
       "src": "https://github.com/williamboman/mason.nvim"
+    },
+    "mini.nvim": {
+      "rev": "cf32454",
+      "src": "https://github.com/nvim-mini/mini.nvim"
     },
     "neogit": {
       "rev": "0f48491a",
@@ -138,6 +146,10 @@
     "xcodebuild.nvim": {
       "rev": "1ceeb31",
       "src": "https://github.com/wojciech-kulik/xcodebuild.nvim"
+    },
+    "xeno.nvim": {
+      "rev": "f70c224",
+      "src": "https://github.com/kyza0d/xeno.nvim"
     }
   }
 }
