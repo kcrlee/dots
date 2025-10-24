@@ -8,7 +8,6 @@ return {
 		vim.lsp.enable({
 			"bashls",
 			"cssls",
-			"cspell_ls",
 			"html",
 			"jsonls",
 			"lua_ls",

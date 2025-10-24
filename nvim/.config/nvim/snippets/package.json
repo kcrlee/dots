@@ -6,7 +6,6 @@
         "language": [
           "liquid",
           "html",
-          "typescript",
           "javascript"
         ],
         "path": "./alpine.json"

@@ -1,5 +1,4 @@
 local map = vim.keymap.set
-
 map("n", "<F12>", ":UndotreeToggle <Enter>")
 
 map("n", "<leader>i", ":Inspect <Enter>")
