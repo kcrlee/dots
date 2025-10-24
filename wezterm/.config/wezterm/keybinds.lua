@@ -11,7 +11,7 @@ function keybind_config.get_keybinds()
 		-- Closing the current split
 		{
 			key = "w",
-			mods = "ALT",
+			mods = "ALT|SHIFT",
 			action = act({ CloseCurrentPane = { confirm = true } }),
 		},
 
