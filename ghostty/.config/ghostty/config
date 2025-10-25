@@ -1,6 +1,5 @@
 
 theme="Tomorrow Night Custom"
-
 # splits
 unfocused-split-opacity = 0.85
 keybind = alt+shift+]=goto_split:next
@@ -19,9 +18,8 @@ window-padding-y = 4,4
 # shell
 mouse-hide-while-typing = true
 
-
 font-family = TX-02-Variable
-font-size = 16
+font-size = 18
 # Font weight (100 to 900)
 # 100 = Thin
 # 200 = ExtraLight
@@ -33,16 +31,16 @@ font-size = 16
 # 700 = Bold
 # 800 = ExtraBold
 # 900 = Black
-font-variation = wght=425
+font-variation = wght=400
 
 # Font slant (0 to -16)
 #   0 = Regular
 # -16 = Oblique
 font-variation = slnt=0
 
-
 font-feature = +calt
 font-feature = +ss05
+
 
 # Cell
 adjust-cell-height= 10%
