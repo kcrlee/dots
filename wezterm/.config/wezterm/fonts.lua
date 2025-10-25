@@ -3,9 +3,9 @@ local font_config = {}
 
 function font_config.get_fonts()
 	return wezterm.font_with_fallback({
-		{ family = "Berkeley Mono" },
-		{ family = "JetBrains Mono",      weight = "Medium", harfbuzz_features = { "calt=0", "clig=0", "liga=0" } },
-		{ family = "Hack Nerd Font Mono", weight = "Medium" },
+		{ family = "Berkeley Mono", weight = 600, },
+		-- { family = "JetBrains Mono",         weight = "Medium", harfbuzz_features = { "calt=0", "clig=0", "liga=0" } },
+		-- { family = "Hack Nerd Font Mono",    weight = "Medium" },
 	})
 end
 
