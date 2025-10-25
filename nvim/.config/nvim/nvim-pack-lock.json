@@ -64,6 +64,10 @@
       "rev": "0f48491a",
       "src": "https://github.com/NeogitOrg/neogit"
     },
+    "nightfox.nvim": {
+      "rev": "ba47d4b",
+      "src": "https://github.com/EdenEast/nightfox.nvim"
+    },
     "no-neck-pain.nvim": {
       "rev": "c3d96b6",
       "src": "https://github.com/shortcuts/no-neck-pain.nvim"
@@ -71,6 +75,10 @@
     "noice.nvim": {
       "rev": "c86aea5",
       "src": "https://github.com/folke/noice.nvim"
+    },
+    "nordic.nvim": {
+      "rev": "6afe957",
+      "src": "https://github.com/AlexvZyl/nordic.nvim"
     },
     "nui.nvim": {
       "rev": "de74099",
@@ -150,6 +158,10 @@
     "xeno.nvim": {
       "rev": "f70c224",
       "src": "https://github.com/kyza0d/xeno.nvim"
+    },
+    "zenbones.nvim": {
+      "rev": "a934bc0",
+      "src": "https://github.com/zenbones-theme/zenbones.nvim"
     }
   }
 }
