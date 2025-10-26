@@ -38,16 +38,24 @@ font-family-italic = "TX-02-Variable"
 # font-variation = wght=425
 
 
-font-style = Book
+font-style = Regular
 font-style-bold = SemiBold
-font-style-italic = Book Oblique
-
+font-style-italic = Oblique
+font-style-bold-italic = SemiBold Oblique
 font-size = 16
-font-thicken = true
-bold-color = bright
 
+# bright works because of thicken
+font-thicken=true
+bold-color = bright 
+
+# ligatures
 font-feature = -calt 
 font-feature = -liga
+
+# contrast
+
+minimum-contrast = 1.1
+
 
 # Cell
 adjust-cell-height= 20%
