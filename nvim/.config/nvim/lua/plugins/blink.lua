@@ -27,9 +27,6 @@ return {
 							return a_priority > b_priority
 						end
 					end,
-					-- defaults
-					"score",
-					"sort_text",
 				},
 				prebuilt_binaries = {
 					download = true,
@@ -59,11 +56,12 @@ return {
 						name = "lsp",
 						enabled = true,
 						module = "blink.cmp.sources.lsp",
+						score_offset = 200,
 					},
 					emoji = {
 						module = "blink-emoji",
 						name = "Emoji",
-						score_offset = 15, -- Tune by preference
+						score_offset = 0, -- Tune by preference
 						opts = {
 							insert = true, -- Insert emoji (default) or complete its name
 							---@type string|table|fun():table

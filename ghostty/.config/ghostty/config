@@ -38,7 +38,7 @@ font-family-italic = "TX-02-Variable"
 # font-variation = wght=425
 
 
-font-style = Regular
+font-style = Medium 
 font-style-bold = SemiBold
 font-style-italic = Oblique
 font-style-bold-italic = SemiBold Oblique
