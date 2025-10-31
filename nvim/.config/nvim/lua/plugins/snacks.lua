@@ -2,7 +2,7 @@ return {
 	config = function()
 		local snacks = require("snacks")
 		snacks.setup({
-			image = { enabled = true },
+			image = { enabled = false },
 			bigfile = { enabled = true },
 			explorer = { enabled = false },
 		})
