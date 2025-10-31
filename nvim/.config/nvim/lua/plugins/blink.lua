@@ -5,9 +5,9 @@ return {
 		require("luasnip.loaders.from_vscode").lazy_load()
 		local source_priority = {
 			snippets = 4,
-			lsp = 3,
-			path = 2,
-			buffer = 1
+			lsp = 1,
+			path = 3,
+			buffer = 2,
 		}
 
 		blink.setup({
@@ -15,19 +15,21 @@ return {
 			fuzzy = {
 				implementation = "prefer_rust",
 				frecency = {
-					enabled = false,
+					enabled = true,
 				},
 
-				use_proximity = false,
+				use_proximity = true,
 				sorts = {
 					function(a, b)
 						local a_priority = source_priority[a.source_id]
 						local b_priority = source_priority[b.source_id]
-						if a_priority ~= b_priority then return a_priority > b_priority end
+						if a_priority ~= b_priority then
+							return a_priority > b_priority
+						end
 					end,
 					-- defaults
-					'score',
-					'sort_text'
+					"score",
+					"sort_text",
 				},
 				prebuilt_binaries = {
 					download = true,
