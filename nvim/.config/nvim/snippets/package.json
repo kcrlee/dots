@@ -1,15 +1,6 @@
 {
   "name": "dev-snips",
   "contributes": {
-    "snippets": [
-      {
-        "language": [
-          "liquid",
-          "html",
-          "javascript"
-        ],
-        "path": "./alpine.json"
-      }
-    ]
+    "snippets": []
   }
 }

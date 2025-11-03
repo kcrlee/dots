@@ -6,13 +6,6 @@ vim.api.nvim_create_augroup(group, { clear = true })
 
 vim.cmd([[autocmd BufEnter * set formatoptions-=cro]])
 
--- autocmd("Filetype", {
--- 	pattern = { "latex", "markdown" },
--- 	group = group,
--- 	callback = function()
--- 		vim.cmd("packadd markview.nvim")
--- 	end,
--- })
 
 autocmd({ "BufReadPre", "BufNewFile", "BufWritePost" }, {
 	group = group,
@@ -72,8 +65,6 @@ autocmd("LspAttach", {
 			vim.lsp.completion.enable(true, client.id, args.buf, {
 				autotrigger = true,
 				convert = function(item)
-					-- Don't preselect any item
-
 					item.preselect = false
 					return { abbr = item.label:gsub("%b()", "") }
 				end,

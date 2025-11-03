@@ -4,7 +4,7 @@ vim.o.spelllang = "en_us"
 vim.o.undofile = true
 vim.o.swapfile = false
 vim.o.termguicolors = true
-vim.opt.completeopt = { "menuone", "noselect", "popup" }
+vim.opt.completeopt = { "fuzzy", "menuone", "noselect", "popup" }
 
 -- UI
 vim.o.rnu = true
