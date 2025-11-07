@@ -10,8 +10,8 @@ keybind = alt+shift+w=close_surface
 # window properties
 window-theme = ghostty
 window-inherit-working-directory = true
-window-padding-x = 20
-window-padding-y = 20
+window-padding-x = 16	
+window-padding-y = 8
 # macos-titlebar-proxy-icon = hidden
 
 # shell
@@ -38,7 +38,7 @@ font-family-italic = "TX-02-Variable"
 # font-variation = wght=425
 
 
-font-style = Medium 
+font-style = Book 
 font-style-bold = SemiBold
 font-style-italic = Oblique
 font-style-bold-italic = SemiBold Oblique
