@@ -18,9 +18,9 @@ window-padding-y = 8
 mouse-hide-while-typing = true
 
 # ensure TX-02 is used 
-font-family = "TX-02-Variable"
-font-family-bold = "TX-02-Variable"
-font-family-italic = "TX-02-Variable"
+font-family = "JetBrainsMono Nerd Font"
+# font-family-bold = "TX-02-Variable"
+# font-family-italic = "TX-02-Variable"
 
 
 # weight (font-style using named style syntax)
@@ -38,14 +38,14 @@ font-family-italic = "TX-02-Variable"
 # font-variation = wght=425
 
 
-font-style = Book 
-font-style-bold = SemiBold
-font-style-italic = Oblique
-font-style-bold-italic = SemiBold Oblique
+font-style =  Medium
+font-style-bold = ExtraBold 
+font-style-italic = Italic
+font-style-bold-italic = Bold Italic
 font-size = 16
 
 # bright works because of thicken
-font-thicken=true
+font-thicken = true
 bold-color = bright 
 
 # ligatures
