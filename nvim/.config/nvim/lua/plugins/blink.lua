@@ -6,27 +6,24 @@ return {
 		local source_priority = {
 			snippets = 1,
 			lsp = 4,
-			path = 2,
-			buffer = 3,
+			path = 3,
+			buffer = 2,
 		}
 
 		blink.setup({
 			---@type blink.cmp.Config
 			fuzzy = {
 				implementation = "prefer_rust",
-				frecency = {
-					enabled = true,
-				},
 				use_proximity = true,
-				sorts = {
-					function(a, b)
-						local a_priority = source_priority[a.source_id]
-						local b_priority = source_priority[b.source_id]
-						if a_priority ~= b_priority then
-							return a_priority > b_priority
-						end
-					end,
-				},
+				-- sorts = {
+				-- 	function(a, b)
+				-- 		local a_priority = source_priority[a.source_id]
+				-- 		local b_priority = source_priority[b.source_id]
+				-- 		if a_priority ~= b_priority then
+				-- 			return a_priority > b_priority
+				-- 		end
+				-- 	end,
+				-- },
 				prebuilt_binaries = {
 					download = true,
 					force_version = "1.*",
@@ -55,7 +52,7 @@ return {
 						name = "lsp",
 						enabled = true,
 						module = "blink.cmp.sources.lsp",
-						score_offset = 200,
+						max_items = 50
 					},
 					lazydev = {
 						name = "LazyDev",
