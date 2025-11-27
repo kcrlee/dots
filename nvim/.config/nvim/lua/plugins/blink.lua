@@ -106,7 +106,6 @@ return {
 				use_nvim_cmp_as_default = false,
 				nerd_font_variant = "mono",
 			},
-
 			keymap = {
 				["<C-space>"] = { "show", "show_documentation", "hide_documentation", "fallback" },
 				["<CR>"] = { "accept", "fallback" },

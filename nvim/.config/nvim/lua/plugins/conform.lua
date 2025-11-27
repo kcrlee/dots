@@ -15,6 +15,11 @@ return {
 							"prettier.config.mts",
 						}
 						local args = { "--stdin-filepath", "$FILENAME" }
+						-- Add parser for SVG files
+						local bufname = vim.api.nvim_buf_get_name(ctx.buf)
+						if bufname:match("%.svg$") then
+							vim.list_extend(args, { "--parser", "html" })
+						end
 						local config_path = vim.fn.stdpath("config")
 
 						local localPrettierConfig = vim.fs.find(prettier_roots, {
@@ -67,6 +72,7 @@ return {
 				liquid = { "prettier" },
 				python = { "black" },
 				html = { "prettier" },
+				svg = { "prettier" },
 				svelte = { "prettier" },
 				css = { "prettier" },
 				scss = { "prettier" },

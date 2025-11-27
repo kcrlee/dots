@@ -35,6 +35,7 @@ vim.opt.grepformat = "%f:%l:%c:%m"
 vim.filetype.add({
 	extension = {
 		env = "sh",
+		svg = "html"
 	},
 	filename = {
 		[".env"] = "sh",
