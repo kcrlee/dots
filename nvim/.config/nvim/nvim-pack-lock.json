@@ -92,7 +92,6 @@
       "rev": "ac98db2",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
-    "nvim-notify": [],
     "nvim-treesitter": {
       "rev": "846d5113",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter",
