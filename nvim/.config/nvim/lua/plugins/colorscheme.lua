@@ -5,6 +5,10 @@ return {
 	dependencies = {
 		{
 			defer = true,
+			src = "https://github.com/nvim-lua/plenary.nvim",
+		},
+		{
+			defer = true,
 			src = "https://github.com/rktjmp/lush.nvim",
 		},
 	},
