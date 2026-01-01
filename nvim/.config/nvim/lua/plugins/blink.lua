@@ -51,7 +51,7 @@ return {
 						name = "lsp",
 						enabled = true,
 						module = "blink.cmp.sources.lsp",
-						max_items = 50
+						max_items = 50,
 					},
 					lazydev = {
 						name = "LazyDev",

@@ -34,10 +34,14 @@ vim.opt.grepformat = "%f:%l:%c:%m"
 -- Filetype detection
 vim.filetype.add({
 	extension = {
+		dev = "sh",
+		staging = "sh",
 		env = "sh",
-		svg = "html"
+		svg = "html",
 	},
 	filename = {
+		[".dev"] = "sh",
+		[".staging"] = "sh",
 		[".env"] = "sh",
 		["env"] = "sh",
 	},
