@@ -106,6 +106,10 @@
       "rev": "df43071",
       "src": "https://github.com/alex-popov-tech/store.nvim"
     },
+    "teide.nvim": {
+      "rev": "c8df92c32cd8f9741858241474c9069af74c20ca",
+      "src": "https://github.com/serhez/teide.nvim"
+    },
     "tomorrow-min": {
       "rev": "9786418",
       "src": "https://github.com/kcrlee/tomorrow-min"
