@@ -1,13 +1,17 @@
 return {
 	config = function()
-		vim.cmd([[colorscheme teide-dimmed]])
+		vim.cmd([[colorscheme tomorrow-min]])
 	end,
 	dependencies = {
 		{
 			defer = true,
 			src = "https://github.com/nvim-lua/plenary.nvim",
 		},
+		{
+			defer = true,
+			src = "https://github.com/rktjmp/lush.nvim",
+		},
 	},
 	defer = true,
-	src = "https://github.com/serhez/teide.nvim",
+	src = "https://github.com/kcrlee/tomorrow-min",
 }
