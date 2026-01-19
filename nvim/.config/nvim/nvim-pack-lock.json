@@ -118,6 +118,10 @@
       "rev": "bd67efe",
       "src": "https://github.com/folke/trouble.nvim"
     },
+    "ts-error-translator.nvim": {
+      "rev": "558abff11b9e8f4cefc0de09df780c56841c7a4b",
+      "src": "https://github.com/dmmulroy/ts-error-translator.nvim"
+    },
     "undotree": {
       "rev": "0f1c981",
       "src": "https://github.com/mbbill/undotree"
