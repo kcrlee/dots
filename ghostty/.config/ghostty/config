@@ -1,29 +1,62 @@
-# Move the file colorscheme file to where ghostty pulls the colorschemes from
 theme="Tomorrow Night Custom"
-
 # splits
 unfocused-split-opacity = 0.85
 keybind = alt+shift+]=goto_split:next
 keybind = alt+shift+[=goto_split:previous
-
-
 keybind = alt+shift+p=new_split:right
 keybind = alt+shift+o=new_split:down
 keybind = alt+shift+w=close_surface
 
-
-
 # window properties
-window-theme=ghostty
-window-inherit-working-directory=true
+window-theme = ghostty
+window-inherit-working-directory = true
+window-padding-x = 16	
+window-padding-y = 8
 # macos-titlebar-proxy-icon = hidden
-window-padding-x = 4,4
-window-padding-y = 4,4
 
-# font
-font-family = "JetBrains Mono Bold"
-font-family-bold = "JetBrains Mono ExtraBold"
-font-family-italic = "JetBrains Mono Bold Italic"
-font-family-bold-italic = "JetBrains Mono ExtraBold Italic"
+# shell
+mouse-hide-while-typing = true
+
+# ensure TX-02 is used 
+font-family = "JetBrainsMono Nerd Font"
+# font-family-bold = "TX-02-Variable"
+# font-family-italic = "TX-02-Variable"
+
+
+# weight (font-style using named style syntax)
+# 400 Regular
+# 425 Book
+# 500 Medium
+# 600 SemiBold
+# 700 Bold
+
+# alternate syntax
+# Font slant (0 to -16)
+#   0 = Regular
+# -16 = Oblique
+# font-variation = slnt=0
+# font-variation = wght=425
+
+
+font-style =  Medium
+font-style-bold = ExtraBold 
+font-style-italic = Italic
+font-style-bold-italic = Bold Italic
 font-size = 16
-font-feature = -calt
+
+# bright works because of thicken
+font-thicken = true
+bold-color = bright 
+
+# ligatures
+font-feature = -calt 
+font-feature = -liga
+
+# contrast
+
+minimum-contrast = 1.1
+
+
+# Cell
+adjust-cell-height= 20%
+adjust-cell-width= -4%

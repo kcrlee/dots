@@ -1,1 +1,5 @@
-return {"MunifTanjim/nui.nvim",	lazy = true,}
+return {
+	config = function() end,
+	defer = true,
+	src = "https://github.com/MunifTanjim/nui.nvim",
+}

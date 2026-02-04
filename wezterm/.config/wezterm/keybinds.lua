@@ -11,7 +11,7 @@ function keybind_config.get_keybinds()
 		-- Closing the current split
 		{
 			key = "w",
-			mods = "ALT",
+			mods = "ALT|SHIFT",
 			action = act({ CloseCurrentPane = { confirm = true } }),
 		},
 
@@ -24,39 +24,40 @@ function keybind_config.get_keybinds()
 		-- Spawning a new split (left-right)
 		{
 			key = "o",
-			mods = "ALT",
+			mods = "ALT|SHIFT",
 			action = act({ SplitHorizontal = { domain = "CurrentPaneDomain" } }),
 		},
 
 		-- Spawning a new split (top-down)
 		{
 			key = "p",
-			mods = "ALT",
+			mods = "ALT|SHIFT",
 			action = act({ SplitVertical = { domain = "CurrentPaneDomain" } }),
 		},
 		-- Cycle through splits
 		{
 			key = "[",
 			mods = "ALT",
-			action = act({ ActivatePaneDirection = "Next" }),
+			action = act.RotatePanes("Clockwise"),
 		},
 
 		{
 			key = "]",
 			mods = "ALT",
-			action = act({ ActivatePaneDirection = "Prev" }),
+			action = act.RotatePanes("CounterClockwise"),
 		},
 
 		-- Changing the layout of the splits
 		{
 			key = "}",
 			mods = "ALT|SHIFT",
-			action = act.RotatePanes("Clockwise"),
+			action = act({ ActivatePaneDirection = "Next" }),
 		},
 		{
 			key = "{",
 			mods = "ALT|SHIFT",
-			action = act.RotatePanes("CounterClockwise"),
+
+			action = act({ ActivatePaneDirection = "Prev" }),
 		},
 		{
 			mods = "CTRL",

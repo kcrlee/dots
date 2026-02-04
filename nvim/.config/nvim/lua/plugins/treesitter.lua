@@ -1,34 +1,54 @@
 return {
-	"nvim-treesitter/nvim-treesitter",
-	version = false, -- last release is way too old and doesn't work on Windows
-	build = ":TSUpdate",
-	-- dependencies = { "JoosepAlviste/nvim-ts-context-commentstring" },
-	event = { "BufReadPost", "BufNewFile" },
 	config = function()
-		local configs = require("nvim-treesitter.configs")
-		configs.setup({
+		local autocmd = vim.api.nvim_create_autocmd
+		local ts = require("nvim-treesitter")
+		require("nvim-treesitter").setup({
 			ensure_installed = {
+				"bash",
 				"c",
-				"cpp",
-				"cuda",
-				"haskell",
-				"lua",
-				"markdown",
-				"markdown_inline",
-				"latex",
-				"nix",
-				"vim",
+				"dockerfile",
+				"graphql",
+				"git_config",
+				"git_rebase",
+				"gitattributes",
+				"gitcommit",
+				"gitignore",
+				"go",
+				"gomod",
+				"gosum",
 				"html",
 				"javascript",
-				"typescript",
+				"css",
 				"json",
+				"jsx",
+				"lua",
+				"liquid",
+				"make",
+				"markdown",
+				"python",
+				"sql",
+				"toml",
+				"tsx",
+				"typescript",
+				"yaml",
+				"vim",
+				"zig",
 			},
-			filetype_associations = {
-				jsonl = "json",
-				json_compact = "json",
+			highlight = {
+				enable = true,
+				additional_vim_regex_highlighting = false,
 			},
-			highlight = { enable = true },
-			indent = { enable = true, ignore = { "python" } },
+			indent = { enable = true },
 		})
 	end,
+	defer = true,
+	dependencies = {
+		{
+			defer = true,
+			src = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects",
+			version = "main",
+		},
+	},
+	src = "https://github.com/nvim-treesitter/nvim-treesitter",
+	version = "main",
 }

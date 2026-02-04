@@ -1,23 +1,17 @@
--- return {
--- 	"marko-cerovac/material.nvim",
--- 	lazy = false,
--- 	config = function()
--- 		vim.g.material_style = "darker"
--- 		vim.cmd("colorscheme material ")
--- 	end,
--- }
-
 return {
-	"ntk148v/habamax.nvim",
-	dependencies = { "rktjmp/lush.nvim" },
 	config = function()
-		vim.cmd.colorscheme("habamax.nvim")
+		vim.cmd([[colorscheme tomorrow-min]])
 	end,
+	dependencies = {
+		{
+			defer = true,
+			src = "https://github.com/nvim-lua/plenary.nvim",
+		},
+		{
+			defer = true,
+			src = "https://github.com/rktjmp/lush.nvim",
+		},
+	},
+	defer = true,
+	src = "https://github.com/kcrlee/tomorrow-min",
 }
-
--- return {
--- 	"kepano/flexoki-neovim",
--- 	config = function()
--- 		vim.cmd("colorscheme flexoki-dark")
--- 	end,
--- }

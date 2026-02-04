@@ -1,0 +1,78 @@
+# completion options
+bleopt complete_ambiguous=1
+bleopt complete_auto_complete=
+bleopt complete_menu_complete=
+bleopt complete_menu_filter=
+
+
+
+# Color palette definitions
+color_black='#000000'
+color_red='#cc6666'
+color_green='#b5bd68'
+color_yellow='#f0c674'
+color_blue='#81a2be'
+color_magenta='#b294bb'
+color_cyan='#8abeb7'
+color_white='#ffffff'
+color_bg='#1d1f21'
+color_fg='#c5c8c6'
+color_selection_bg='#373b41'
+color_comment='#969896'
+
+# Syntax highlighting colors
+ble-face -s syntax_default fg=$color_fg
+ble-face -s syntax_command fg=$color_green,bold
+ble-face -s syntax_quoted fg=$color_yellow
+ble-face -s syntax_quotation fg=$color_yellow
+ble-face -s syntax_escape fg=$color_yellow
+ble-face -s syntax_expr fg=$color_cyan
+ble-face -s syntax_error fg=$color_white,underline
+ble-face -s syntax_varname fg=$color_cyan
+ble-face -s syntax_delimiter fg=$color_fg
+ble-face -s syntax_param_expansion fg=$color_cyan
+ble-face -s syntax_history_expansion fg=$color_blue
+ble-face -s syntax_function_name fg=$color_green,bold
+ble-face -s syntax_comment fg=$color_comment
+ble-face -s syntax_glob fg=$color_magenta
+ble-face -s syntax_brace fg=$color_fg
+ble-face -s syntax_tilde fg=$color_blue
+
+# Command highlighting
+ble-face -s command_builtin fg=$color_green
+ble-face -s command_function fg=$color_green
+ble-face -s command_file fg=$color_green
+ble-face -s command_keyword fg=$color_magenta,bold
+ble-face -s command_alias fg=$color_green
+ble-face -s command_directory fg=$color_blue
+
+# Filename completion colors
+ble-face -s filename_directory fg=$color_blue,bold
+ble-face -s filename_directory_sticky fg=$color_blue,bg=$color_selection_bg
+ble-face -s filename_link fg=$color_cyan
+ble-face -s filename_orphan fg=$color_blue
+ble-face -s filename_executable fg=$color_green
+ble-face -s filename_setuid fg=$color_white,bg=$color_blue
+ble-face -s filename_setgid fg=$color_black,bg=$color_yellow
+ble-face -s filename_other fg=$color_fg
+
+# Auto-complete and menu
+ble-face -s auto_complete fg=$color_comment
+ble-face -s menu_filter_fixed fg=$color_cyan,bold
+ble-face -s menu_filter_input fg=$color_yellow,underline
+ble-face -s menu_desc_default fg=$color_comment
+ble-face -s menu_desc_type fg=$color_blue
+ble-face -s menu_desc_quote fg=$color_yellow
+
+# Disabled/region colors
+ble-face -s disabled fg=$color_comment
+ble-face -s region fg=$color_fg,bg=$color_selection_bg
+ble-face -s region_insert fg=$color_black,bg=$color_cyan
+ble-face -s region_match fg=$color_black,bg=$color_yellow
+
+# Command line editing
+ble-face -s overwrite_mode fg=$color_black,bg=$color_yellow
+ble-face -s argument_option fg=$color_yellow
+ble-face -s argument_error fg=$color_red
+
+
