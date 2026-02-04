@@ -10,7 +10,6 @@ return {
 			"html",
 			"jsonls",
 			"lua_ls",
-			"shopify_theme_ls",
 			"svelte",
 			"sourcekit",
 			"tailwindcss",
