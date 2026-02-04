@@ -13,7 +13,7 @@
       "src": "https://github.com/Saghen/blink.cmp"
     },
     "codediff.nvim": {
-      "rev": "fc6157e",
+      "rev": "8dc25e4aae6c2570d764ca3877f617d36fb5a73d",
       "src": "https://github.com/esmuellert/codediff.nvim"
     },
     "conform.nvim": {
@@ -21,7 +21,7 @@
       "src": "https://github.com/stevearc/conform.nvim"
     },
     "dotenv.nvim": {
-      "rev": "7d516e9",
+      "rev": "7d516e9293c6e3ac21830fb10a4e8674c02747c6",
       "src": "https://github.com/ellisonleao/dotenv.nvim"
     },
     "friendly-snippets": {
@@ -133,6 +133,10 @@
     "undotree": {
       "rev": "0f1c981",
       "src": "https://github.com/mbbill/undotree"
+    },
+    "vscode.nvim": {
+      "rev": "aa1102a7e15195c9cca22730b09224a7f7745ba8",
+      "src": "https://github.com/Mofiqul/vscode.nvim"
     },
     "xcodebuild.nvim": {
       "rev": "54e826a",
