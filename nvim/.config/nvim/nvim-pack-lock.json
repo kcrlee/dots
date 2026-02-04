@@ -56,6 +56,10 @@
       "rev": "57e5a8a",
       "src": "https://github.com/williamboman/mason.nvim"
     },
+    "multicursor.nvim": {
+      "rev": "630dd29dd696bc977cb81d7dd2fa6bb280f60fc4",
+      "src": "https://github.com/jake-stewart/multicursor.nvim"
+    },
     "neogit": {
       "rev": "8c75d6d0",
       "src": "https://github.com/NeogitOrg/neogit"
