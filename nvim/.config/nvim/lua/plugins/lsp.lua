@@ -14,7 +14,8 @@ return {
 			"sourcekit",
 			"tailwindcss",
 			"tombi",
-			"ts_ls",
+			"tsgo",
+			-- "ts_ls",
 			"rust_analyzer",
 			"graphql",
 		})
