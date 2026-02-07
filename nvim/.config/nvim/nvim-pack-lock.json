@@ -12,6 +12,10 @@
       "rev": "3b83374",
       "src": "https://github.com/Saghen/blink.cmp"
     },
+    "claudecode.nvim": {
+      "rev": "aa9a5cebebdbfa449c1c5ff229ba5d98e66bafed",
+      "src": "https://github.com/coder/claudecode.nvim"
+    },
     "codediff.nvim": {
       "rev": "8dc25e4aae6c2570d764ca3877f617d36fb5a73d",
       "src": "https://github.com/esmuellert/codediff.nvim"
