@@ -5,6 +5,7 @@ return {
 			image = { enabled = false },
 			bigfile = { enabled = true },
 			explorer = { enabled = false },
+			terminal = { enabled = true }
 		})
 	end,
 	defer = true,
