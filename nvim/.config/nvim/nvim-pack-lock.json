@@ -4,6 +4,10 @@
       "rev": "3732756",
       "src": "https://github.com/L3MON4D3/LuaSnip"
     },
+    "blink-cmp-dictionary": {
+      "rev": "43b701fe9728a704bc63e4667c5d8b398bf129b2",
+      "src": "https://github.com/Kaiser-Yang/blink-cmp-dictionary"
+    },
     "blink-emoji.nvim": {
       "rev": "066013e",
       "src": "https://github.com/moyiz/blink-emoji.nvim"
@@ -27,6 +31,10 @@
     "dotenv.nvim": {
       "rev": "7d516e9293c6e3ac21830fb10a4e8674c02747c6",
       "src": "https://github.com/ellisonleao/dotenv.nvim"
+    },
+    "edgy.nvim": {
+      "rev": "541705c0e2d67c8925d1c072ac11d30a644ca6a7",
+      "src": "https://github.com/folke/edgy.nvim"
     },
     "friendly-snippets": {
       "rev": "572f566",
@@ -92,6 +100,10 @@
       "rev": "a2bd1cf",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
+    "nvim-notify": {
+      "rev": "8701bece920b38ea289b457f902e2ad184131a5d",
+      "src": "https://github.com/rcarriga/nvim-notify"
+    },
     "nvim-treesitter": {
       "rev": "b6271b67",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter",
@@ -117,6 +129,10 @@
     "plenary.nvim": {
       "rev": "b9fd522",
       "src": "https://github.com/nvim-lua/plenary.nvim"
+    },
+    "plugin-view.nvim": {
+      "rev": "369c80aff5e71b1147f69ecbefa4b46d97f733d2",
+      "src": "https://github.com/adriankarlen/plugin-view.nvim"
     },
     "render-markdown.nvim": {
       "rev": "48b4175dbca8439d30c1f52231cbe5a712c8f9d9",
@@ -153,6 +169,10 @@
     "vscode.nvim": {
       "rev": "aa1102a7e15195c9cca22730b09224a7f7745ba8",
       "src": "https://github.com/Mofiqul/vscode.nvim"
+    },
+    "wezterm-types": {
+      "rev": "cfa3aa49d3a55f5004ae41df4bcf99449030fff6",
+      "src": "https://github.com/DrKJeff16/wezterm-types"
     },
     "xcodebuild.nvim": {
       "rev": "54e826a",
