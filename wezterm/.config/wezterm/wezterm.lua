@@ -7,10 +7,10 @@ local config = {
 	-- macos_window_background_blur = 15,
 	-- window_decorations = "RESIZE",
 	window_content_alignment = {
-		horizontal = 'Left',
-		vertical = 'Top',
+		horizontal = "Left",
+		vertical = "Top",
 	},
-	hide_tab_bar_if_only_one_tab = true,
+	hide_tab_bar_if_only_one_tab = false,
 	automatically_reload_config = true,
 	enable_wayland = true,
 	font = font_config.get_fonts(),
