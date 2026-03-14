@@ -1,59 +1,110 @@
+# ============================================================================
+# .zshrc — interactive shell configuration
+# ============================================================================
+
+# ============================================================================
+# Oh My Zsh
+# ============================================================================
 export ZSH="$HOME/.oh-my-zsh"
-export PATH="$PATH:[directory]"
-export PATH="$PATH:/home/kyle/.local/share/bob/nvim-bin"
-export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
-export ANDROID_HOME="$HOME/Android/Sdk"
-export SUDO_EDITOR="$HOME/.local/share/bob/nvim-bin/nvim"
-export FLYCTL_INSTALL="/home/kyle/.fly"
-export PATH="$FLYCTL_INSTALL/bin:$PATH"
 ZSH_THEME="robbyrussell"
-plugins=(git direnv fzf)
 
-source $ZSH/oh-my-zsh.sh
+# Plugins (zsh-syntax-highlighting & zsh-autosuggestions installed in $ZSH_CUSTOM/plugins/)
+plugins=(git fzf direnv zsh-syntax-highlighting zsh-autosuggestions)
 
+source "$ZSH/oh-my-zsh.sh"
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# ============================================================================
+# History
+# ============================================================================
+HISTSIZE=50000
+SAVEHIST=50000
+HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/zsh/history"
+[[ -d "${HISTFILE:h}" ]] || mkdir -p "${HISTFILE:h}"
 
-# fzf key bindings
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_SPACE
+setopt SHARE_HISTORY
+setopt INC_APPEND_HISTORY
 
-FZF_FD_OPTS="--hidden --follow --exclude '.git'"
-export FZF_DEFAULT_COMMAND="fd ${FZF_FD_OPTS}"
-export FZF_CTRL_T_COMMAND="fd ${FZF_FD_OPTS}"
-export FZF_ALT_C_COMMAND="fd --type d ${FZF_FD_OPTS}"
+# ============================================================================
+# Shell Options
+# ============================================================================
+setopt AUTO_CD
+setopt INTERACTIVE_COMMENTS
+setopt NO_BEEP
 
-_fzf_compgen_path() {
-    fd ${FZF_FD_OPTS} . "${1}"
+# ============================================================================
+# Key Bindings
+# ============================================================================
+bindkey -e  # emacs mode
+
+# Arrow-key history search (type prefix, then up/down to filter)
+autoload -U history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+bindkey "^[[A" history-beginning-search-backward-end
+bindkey "^[[B" history-beginning-search-forward-end
+
+# ============================================================================
+# FZF
+# ============================================================================
+if (( $+commands[fzf] )); then
+    eval "$(fzf --zsh)"
+
+    FZF_FD_OPTS="--hidden --follow --exclude '.git'"
+    export FZF_DEFAULT_COMMAND="fd ${FZF_FD_OPTS}"
+    export FZF_CTRL_T_COMMAND="fd ${FZF_FD_OPTS}"
+    export FZF_ALT_C_COMMAND="fd --type d ${FZF_FD_OPTS}"
+
+    _fzf_compgen_path() {
+        fd ${FZF_FD_OPTS} . "${1}"
+    }
+
+    _fzf_compgen_dir() {
+        fd --type d ${FZF_FD_OPTS} . "${1}"
+    }
+fi
+
+# ============================================================================
+# NVM (lazy-loaded to avoid ~400ms startup penalty)
+# ============================================================================
+_nvm_lazy_load() {
+    unset -f nvm node npm npx
+    [ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
+    [ -s "$NVM_DIR/bash_completion" ] && source "$NVM_DIR/bash_completion"
 }
+nvm()  { _nvm_lazy_load; nvm  "$@"; }
+node() { _nvm_lazy_load; node "$@"; }
+npm()  { _nvm_lazy_load; npm  "$@"; }
+npx()  { _nvm_lazy_load; npx  "$@"; }
 
-_fzf_compgen_dir() {
-    fd --type d ${FZF_FD_OPTS} . "${1}"
-}
+# ============================================================================
+# Aliases
+# ============================================================================
+alias h2='$(npm prefix -s)/node_modules/.bin/shopify hydrogen'
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# pnpm
-export PNPM_HOME="/home/kyle/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
-
+# ============================================================================
+# OSC 7 — terminal CWD tracking (Ghostty, WezTerm)
+# ============================================================================
 function osc7-pwd() {
-    emulate -L zsh # also sets localoptions for us
+    emulate -L zsh
     setopt extendedglob
     local LC_ALL=C
-    printf '\e]7;file://%s%s\e\' $HOST ${PWD//(#m)([^@-Za-z&-;_~])/%${(l:2::0:)$(([##16]#MATCH))}}
+    printf '\e]7;file://%s%s\e\\' "$HOST" "${PWD//(#m)([^@-Za-z&-;_~])/%${(l:2::0:)$(([##16]#MATCH))}}"
 }
 
 function chpwd-osc7-pwd() {
     (( ZSH_SUBSHELL )) || osc7-pwd
 }
-add-zsh-hook -Uz chpwd chpwd-osc7-pwd
+autoload -Uz add-zsh-hook
+add-zsh-hook chpwd chpwd-osc7-pwd
 
-
-alias air="/home/kyle/go/bin/air"
-
-[ -f "/home/kyle/.ghcup/env" ] && . "/home/kyle/.ghcup/env" # ghcup-env
+# ============================================================================
+# Extensibility — source user-local overrides
+# ============================================================================
+if [[ -d ~/.zshrc.d ]]; then
+    for rc in ~/.zshrc.d/*(N); do
+        [[ -f "$rc" ]] && source "$rc"
+    done
+    unset rc
+fi
