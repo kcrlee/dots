@@ -86,6 +86,7 @@ install_zsh_plugins() {
     clone_if_missing https://github.com/marlonrichert/zsh-autocomplete  "${plugin_dir}/zsh-autocomplete"
     clone_if_missing https://github.com/zsh-users/zsh-syntax-highlighting "${plugin_dir}/zsh-syntax-highlighting"
     clone_if_missing https://github.com/Aloxaf/fzf-tab                  "${plugin_dir}/fzf-tab"
+    clone_if_missing https://github.com/jeffreytse/zsh-vi-mode          "${plugin_dir}/zsh-vi-mode"
 }
 
 # ============================================================================

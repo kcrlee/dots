@@ -16,10 +16,35 @@ ZSH_THEME="robbyrussell"
 # ============================================================================
 : ${COMPLETION_ENGINE:=fzf}
 
-plugins=(git fzf direnv zsh-syntax-highlighting)
+plugins=(git fzf direnv zsh-vi-mode zsh-syntax-highlighting)
 if [[ "$COMPLETION_ENGINE" == "fzf" ]]; then
     plugins+=( fzf-tab )
 fi
+
+# ============================================================================
+# zsh-vi-mode hooks  (must be defined before oh-my-zsh sources the plugin)
+# ============================================================================
+
+# Mode indicator in right prompt
+function zvm_after_select_vi_mode {
+    case $ZVM_MODE in
+        $ZVM_MODE_NORMAL)      RPS1="Normal | $COMPLETION_ENGINE" ;;
+        $ZVM_MODE_INSERT)      RPS1="Insert | $COMPLETION_ENGINE" ;;
+        $ZVM_MODE_VISUAL)      RPS1="Visual | $COMPLETION_ENGINE" ;;
+        $ZVM_MODE_VISUAL_LINE) RPS1="Visual Line | $COMPLETION_ENGINE" ;;
+        $ZVM_MODE_REPLACE)     RPS1="Replace | $COMPLETION_ENGINE" ;;
+    esac
+}
+
+# Keybindings that must be set after zsh-vi-mode initialises
+function zvm_after_init {
+    # Arrow-key history search (type prefix, then up/down to filter)
+    autoload -U history-search-end
+    zle -N history-beginning-search-backward-end history-search-end
+    zle -N history-beginning-search-forward-end history-search-end
+    bindkey "^[[A" history-beginning-search-backward-end
+    bindkey "^[[B" history-beginning-search-forward-end
+}
 
 source "$ZSH/oh-my-zsh.sh"
 
@@ -42,33 +67,6 @@ setopt INC_APPEND_HISTORY
 setopt AUTO_CD
 setopt INTERACTIVE_COMMENTS
 setopt NO_BEEP
-
-# ============================================================================
-# Key Bindings
-# ============================================================================
-bindkey -v  # vi mode
-KEYTIMEOUT=1
-
-# Vi mode indicator + cursor shape
-function zle-keymap-select zle-line-init {
-    case $KEYMAP in
-        vicmd)      VI_MODE="Normal";  print -n '\e[1 q' ;;
-        viins|main) VI_MODE="Insert";  print -n '\e[5 q' ;;
-        visual)     VI_MODE="Visual";  print -n '\e[1 q' ;;
-        viopp)      VI_MODE="Pending"; print -n '\e[1 q' ;;
-    esac
-    RPS1="$VI_MODE | $COMPLETION_ENGINE"
-    zle reset-prompt
-}
-zle -N zle-keymap-select
-zle -N zle-line-init
-
-# Arrow-key history search (type prefix, then up/down to filter)
-autoload -U history-search-end
-zle -N history-beginning-search-backward-end history-search-end
-zle -N history-beginning-search-forward-end history-search-end
-bindkey "^[[A" history-beginning-search-backward-end
-bindkey "^[[B" history-beginning-search-forward-end
 
 
 # ============================================================================
