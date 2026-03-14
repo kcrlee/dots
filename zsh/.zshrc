@@ -9,7 +9,7 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="robbyrussell"
 
 # Plugins (zsh-syntax-highlighting & zsh-autosuggestions installed in $ZSH_CUSTOM/plugins/)
-plugins=(git fzf direnv zsh-syntax-highlighting zsh-autosuggestions)
+plugins=(fzf-tab git fzf direnv zsh-syntax-highlighting zsh-autosuggestions)
 
 source "$ZSH/oh-my-zsh.sh"
 
@@ -36,7 +36,22 @@ setopt NO_BEEP
 # ============================================================================
 # Key Bindings
 # ============================================================================
-bindkey -e  # emacs mode
+bindkey -v  # vi mode
+KEYTIMEOUT=1
+
+# Vi mode indicator + cursor shape
+function zle-keymap-select zle-line-init {
+    case $KEYMAP in
+        vicmd)      VI_MODE="Normal";  print -n '\e[1 q' ;;
+        viins|main) VI_MODE="Insert";  print -n '\e[5 q' ;;
+        visual)     VI_MODE="Visual";  print -n '\e[1 q' ;;
+        viopp)      VI_MODE="Pending"; print -n '\e[1 q' ;;
+    esac
+    RPS1="$VI_MODE"
+    zle reset-prompt
+}
+zle -N zle-keymap-select
+zle -N zle-line-init
 
 # Arrow-key history search (type prefix, then up/down to filter)
 autoload -U history-search-end
@@ -44,6 +59,17 @@ zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
 bindkey "^[[A" history-beginning-search-backward-end
 bindkey "^[[B" history-beginning-search-forward-end
+
+# Tab accepts autosuggestion if visible, otherwise does normal completion
+function tab-accept-or-complete() {
+    if [[ -n "$POSTDISPLAY" ]]; then
+        zle autosuggest-accept
+    else
+        zle expand-or-complete
+    fi
+}
+zle -N tab-accept-or-complete
+bindkey '^I' tab-accept-or-complete
 
 # ============================================================================
 # FZF

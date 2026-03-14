@@ -13,17 +13,17 @@ typeset -U path
 
 # Homebrew (macOS only)
 if [[ "$OSTYPE" == darwin* && -x /opt/homebrew/bin/brew ]]; then
-    eval "$(/opt/homebrew/bin/brew shellenv)"
+	eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
 # User paths
 path=(
-    "$HOME/.local/bin"
-    "$HOME/bin"
-    "$HOME/.local/share/bob/nvim-bin"
-    "$HOME/.cargo/bin"
-    "$HOME/.local/share/pnpm"
-    $path
+	"$HOME/.local/bin"
+	"$HOME/bin"
+	"$HOME/.local/share/bob/nvim-bin"
+	"$HOME/.cargo/bin"
+	"$HOME/.local/share/pnpm"
+	$path
 )
 
 # Rust/Cargo env (sets other vars besides PATH)
