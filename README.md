@@ -19,11 +19,24 @@ dots/
 
 A few legacy bash files (`.bashrc`, `.bash_profile`, `.blerc`, `.fzf.bash`) live at the repo root and aren't managed by stow.
 
-## Usage
+## Quick Start
+
+```sh
+git clone https://github.com/kyle/dots ~/dots
+cd ~/dots
+./install.sh
+```
+
+The install script works on **macOS** and **Fedora Linux**. It will:
+
+1. Install system packages (`stow`, `zsh`, `fzf`, `fd`, `tmux`, `direnv`)
+2. Install Oh My Zsh and third-party zsh plugins
+3. Stow config packages (OS-appropriate selection)
+4. Set zsh as your default shell
+
+## Manual Usage
 
 ### Install a package
-
-From the repo root, stow a package to symlink it into your home directory:
 
 ```sh
 cd ~/dots
@@ -88,11 +101,13 @@ wezterm/
 
 ## Dependencies
 
-- [GNU Stow](https://www.gnu.org/software/stow/) — `brew install stow` / `dnf install stow`
-- [Oh My Zsh](https://ohmyz.sh/) — framework for the zsh config
-- [fzf](https://github.com/junegunn/fzf) + [fd](https://github.com/sharkdp/fd) — fuzzy finder integration
-- [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting) and [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions) — install into `$ZSH_CUSTOM/plugins/`:
-  ```sh
-  git clone https://github.com/zsh-users/zsh-syntax-highlighting ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-  git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-  ```
+All handled by `install.sh`, but for reference:
+
+- [GNU Stow](https://www.gnu.org/software/stow/) — symlink manager
+- [Oh My Zsh](https://ohmyz.sh/) — zsh framework
+- [fzf](https://github.com/junegunn/fzf) + [fd](https://github.com/sharkdp/fd) — fuzzy finder
+- [direnv](https://direnv.net/) — per-directory environment variables
+- Zsh plugins (cloned into `$ZSH_CUSTOM/plugins/`):
+  - [zsh-autocomplete](https://github.com/marlonrichert/zsh-autocomplete)
+  - [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
+  - [fzf-tab](https://github.com/Aloxaf/fzf-tab)
