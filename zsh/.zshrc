@@ -8,8 +8,18 @@
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="robbyrussell"
 
-# Plugins (zsh-syntax-highlighting & zsh-autosuggestions installed in $ZSH_CUSTOM/plugins/)
-plugins=(fzf-tab git fzf direnv zsh-syntax-highlighting zsh-autosuggestions)
+# ============================================================================
+# Completion Engine — set COMPLETION_ENGINE to switch modes:
+#   "fzf"            → zsh-autocomplete + fzf-tab (default)
+#   "inshellisense"  → Microsoft inshellisense overlay
+#   "off"            → no enhanced completions
+# ============================================================================
+: ${COMPLETION_ENGINE:=fzf}
+
+plugins=(git fzf direnv zsh-syntax-highlighting)
+if [[ "$COMPLETION_ENGINE" == "fzf" ]]; then
+    plugins=(zsh-autocomplete "${plugins[@]}" fzf-tab)
+fi
 
 source "$ZSH/oh-my-zsh.sh"
 
@@ -60,16 +70,10 @@ zle -N history-beginning-search-forward-end history-search-end
 bindkey "^[[A" history-beginning-search-backward-end
 bindkey "^[[B" history-beginning-search-forward-end
 
-# Tab accepts autosuggestion if visible, otherwise does normal completion
-function tab-accept-or-complete() {
-    if [[ -n "$POSTDISPLAY" ]]; then
-        zle autosuggest-accept
-    else
-        zle expand-or-complete
-    fi
-}
-zle -N tab-accept-or-complete
-bindkey '^I' tab-accept-or-complete
+# Tab triggers completion (fzf-tab intercepts and shows candidates in fzf)
+if [[ "$COMPLETION_ENGINE" == "fzf" ]]; then
+    bindkey '^I' expand-or-complete
+fi
 
 # ============================================================================
 # FZF
@@ -124,6 +128,14 @@ function chpwd-osc7-pwd() {
 }
 autoload -Uz add-zsh-hook
 add-zsh-hook chpwd chpwd-osc7-pwd
+
+# ============================================================================
+# Inshellisense — auto-launch when COMPLETION_ENGINE=inshellisense
+# ============================================================================
+if [[ "$COMPLETION_ENGINE" == "inshellisense" ]] && (( $+commands[is] )) && [[ -z "$IS_SESSION" ]]; then
+    export IS_SESSION=1
+    exec is
+fi
 
 # ============================================================================
 # Extensibility — source user-local overrides
