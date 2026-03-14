@@ -1,11 +1,8 @@
-local wezterm = require("wezterm")
+require("wezterm")
 local font_config = require("fonts")
 local keybind_config = require("keybinds")
 
 local config = {
-	-- window_background_opacity = 0.75,
-	-- macos_window_background_blur = 15,
-	-- window_decorations = "RESIZE",
 	window_content_alignment = {
 		horizontal = "Left",
 		vertical = "Top",
@@ -19,9 +16,13 @@ local config = {
 	color_scheme = "Tomorrow Night",
 	keys = keybind_config.get_keybinds(),
 	exit_behavior = "Hold",
-	-- disable_default_key_bindings = true,
+	ssh_domains = {
+		{
+			name = "pi",
+			remote_address = "100.100.94.39",
+			username = "kyle"
+		}
+	}
 }
 
--- wezterm.log_info(config)
--- wezterm.log_error("Config Dir " .. wezterm.config_dir)
 return config

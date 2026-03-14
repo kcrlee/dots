@@ -60,3 +60,6 @@ minimum-contrast = 1.1
 # Cell
 adjust-cell-height= 20%
 adjust-cell-width= -4%
+
+# quick term
+keybind = global:cmd+backquote=toggle_quick_terminal
