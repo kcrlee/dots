@@ -10,7 +10,7 @@ ZSH_THEME="robbyrussell"
 
 # ============================================================================
 # Completion Engine — set COMPLETION_ENGINE to switch modes:
-#   "fzf"            → zsh-autocomplete + fzf-tab (default)
+#   "fzf"            → fzf-tab (default)
 #   "inshellisense"  → Microsoft inshellisense overlay
 #   "off"            → no enhanced completions
 # ============================================================================
@@ -18,7 +18,7 @@ ZSH_THEME="robbyrussell"
 
 plugins=(git fzf direnv zsh-syntax-highlighting)
 if [[ "$COMPLETION_ENGINE" == "fzf" ]]; then
-    plugins=(zsh-autocomplete "${plugins[@]}" fzf-tab)
+    plugins+=( fzf-tab )
 fi
 
 source "$ZSH/oh-my-zsh.sh"
@@ -57,7 +57,7 @@ function zle-keymap-select zle-line-init {
         visual)     VI_MODE="Visual";  print -n '\e[1 q' ;;
         viopp)      VI_MODE="Pending"; print -n '\e[1 q' ;;
     esac
-    RPS1="$VI_MODE"
+    RPS1="$VI_MODE | $COMPLETION_ENGINE"
     zle reset-prompt
 }
 zle -N zle-keymap-select
@@ -70,16 +70,14 @@ zle -N history-beginning-search-forward-end history-search-end
 bindkey "^[[A" history-beginning-search-backward-end
 bindkey "^[[B" history-beginning-search-forward-end
 
-# Tab triggers completion (fzf-tab intercepts and shows candidates in fzf)
-if [[ "$COMPLETION_ENGINE" == "fzf" ]]; then
-    bindkey '^I' expand-or-complete
-fi
 
 # ============================================================================
 # FZF
 # ============================================================================
 if (( $+commands[fzf] )); then
-    eval "$(fzf --zsh)"
+    # Keybindings (Ctrl-R, Ctrl-T, Alt-C) come from the oh-my-zsh fzf plugin.
+    # Don't run `eval "$(fzf --zsh)"` — it rebinds ^I to fzf-completion,
+    # overriding fzf-tab's tab binding.
 
     FZF_FD_OPTS="--hidden --follow --exclude '.git'"
     export FZF_DEFAULT_COMMAND="fd ${FZF_FD_OPTS}"
