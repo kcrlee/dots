@@ -61,12 +61,29 @@ eval "$(starship init bash)"
 # set -o vi
 # fi
 
-# Blesh (Bash Line Editor)
+# Blesh (Bash Line Editor) — disabled inside tmux unless DOTS_FORCE_BLESH=1
+_dots_want_blesh=0
 if [ -f ~/.local/share/blesh/ble.sh ] && [[ $- == *i* ]]; then
+	if [ -z "$TMUX" ] || [ "${DOTS_FORCE_BLESH:-0}" = "1" ]; then
+		_dots_want_blesh=1
+	fi
+fi
+
+if [ "$_dots_want_blesh" = "1" ]; then
 	source ~/.local/share/blesh/ble.sh
 	load_bash_completion
 	ble-import -d integration/fzf-completion
 	ble-import -d integration/fzf-key-bindings
+else
+	if [[ $- == *i* ]]; then
+		load_bash_completion
+	fi
+fi
+unset _dots_want_blesh
+
+# Override .inputrc vi mode inside tmux to avoid scrollback/escape conflicts
+if [ -n "$TMUX" ] && [ "${DOTS_FORCE_BLESH:-0}" != "1" ] && [[ $- == *i* ]]; then
+	set -o emacs
 fi
 
 # FZF (Fuzzy Finder)
