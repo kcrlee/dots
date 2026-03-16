@@ -14,7 +14,7 @@ dots/
 ├── systemd/      → ~/.config/systemd/user/
 ├── tmux/         → ~/.config/tmux/
 ├── wezterm/      → ~/.config/wezterm/
-└── zsh/          → ~/.zshrc, ~/.zshenv
+└── zsh/          → ~/.zshenv, ~/.config/zsh/.zshenv, ~/.config/zsh/.zshrc
 ```
 
 A few legacy bash files (`.bashrc`, `.bash_profile`, `.blerc`, `.fzf.bash`) live at the repo root and aren't managed by stow.
@@ -40,7 +40,7 @@ The install script works on **macOS** and **Fedora Linux**. It will:
 
 ```sh
 cd ~/dots
-stow zsh        # creates ~/.zshrc → dots/zsh/.zshrc, ~/.zshenv → dots/zsh/.zshenv
+stow zsh        # creates ~/.zshenv, ~/.config/zsh/.zshenv, ~/.config/zsh/.zshrc
 stow nvim       # creates ~/.config/nvim/ → dots/nvim/.config/nvim/
 stow ghostty tmux wezterm   # multiple at once
 ```
