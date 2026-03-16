@@ -33,5 +33,9 @@ path=(
 export NVM_DIR="${XDG_CONFIG_HOME}/nvm"
 [[ -d "$HOME/.nvm" && ! -d "$NVM_DIR" ]] && export NVM_DIR="$HOME/.nvm"
 
+# Default editor (bob-managed Neovim)
+export EDITOR="nvim"
+export VISUAL="nvim"
+
 # pnpm
 export PNPM_HOME="$HOME/.local/share/pnpm"

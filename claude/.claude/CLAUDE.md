@@ -4,6 +4,18 @@
 
 Always use `rg` as primary search tool. Only fall back to `grep` for plain text/comments.
 
+### Plan execution: follow provided plans directly
+
+When the user provides an implementation plan (inline, in `plan.md`, or by path):
+
+1. **Read the plan first** — not the codebase
+2. **Only read files you're about to modify** or that contain a specific symbol you need. No broad "context gathering"
+3. **Execute steps in order.** Don't reorder, skip, or "improve" the plan unless asked
+4. **No unsolicited review.** Don't analyze whether the plan is optimal or suggest alternatives unless asked
+5. **Ask, don't explore.** If a step is ambiguous, ask the user — don't read 10 files to infer the answer
+
+Applies when the user's message contains step-by-step instructions, numbered steps, or references a plan document. Does NOT apply to open-ended questions like "how does X work?"
+
 ### Visual verification: MANDATORY for all UI changes
 
 When ANY task touches Tailwind classes, color values, CSS, component layout, styling, or UI/UX:
