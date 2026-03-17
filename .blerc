@@ -1,3 +1,6 @@
+# vi mode: show "-- NORMAL --" instead of default bold tilde
+bleopt keymap_vi_mode_string_nmap=$'\e[1m-- NORMAL --\e[m'
+
 # completion options
 bleopt complete_ambiguous=1
 bleopt complete_auto_complete=1
