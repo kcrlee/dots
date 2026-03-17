@@ -1,9 +1,10 @@
 # completion options
 bleopt complete_ambiguous=1
-bleopt complete_auto_complete=
-bleopt complete_menu_complete=
-bleopt complete_menu_filter=
+bleopt complete_auto_complete=1
+# bleopt complete_menu_complete=0
+# bleopt complete_menu_filter=0
 
+# fzf-tab like
 ble-import -d integration/fzf-menu
 
 # Color palette definitions
