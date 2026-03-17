@@ -6,8 +6,6 @@ bleopt complete_menu_filter=
 
 ble-import -d integration/fzf-menu
 
-
-
 # Color palette definitions
 color_black='#000000'
 color_red='#cc6666'
