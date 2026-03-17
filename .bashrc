@@ -1,3 +1,13 @@
+# Blesh (Bash Line Editor) — early init, deferred attach
+# Must load before starship/fzf so ble.sh can properly measure the final prompt
+_dots_want_blesh=0
+if [ -f ~/.local/share/blesh/ble.sh ] && [[ $- == *i* ]]; then
+	if [ -z "$TMUX" ] || [ "${DOTS_FORCE_BLESH:-0}" = "1" ]; then
+		_dots_want_blesh=1
+		source ~/.local/share/blesh/ble.sh --attach=none
+	fi
+fi
+
 # Source global definitions
 if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
@@ -61,16 +71,8 @@ eval "$(starship init bash)"
 # set -o vi
 # fi
 
-# Blesh (Bash Line Editor) — disabled inside tmux unless DOTS_FORCE_BLESH=1
-_dots_want_blesh=0
-if [ -f ~/.local/share/blesh/ble.sh ] && [[ $- == *i* ]]; then
-	if [ -z "$TMUX" ] || [ "${DOTS_FORCE_BLESH:-0}" = "1" ]; then
-		_dots_want_blesh=1
-	fi
-fi
-
+# Load bash completions (blesh integrations are deferred via .blerc)
 if [ "$_dots_want_blesh" = "1" ]; then
-	source ~/.local/share/blesh/ble.sh
 	load_bash_completion
 	ble-import -d integration/fzf-completion
 	ble-import -d integration/fzf-key-bindings
@@ -79,7 +81,6 @@ else
 		load_bash_completion
 	fi
 fi
-unset _dots_want_blesh
 
 # Override .inputrc vi mode inside tmux to avoid scrollback/escape conflicts
 if [ -n "$TMUX" ] && [ "${DOTS_FORCE_BLESH:-0}" != "1" ] && [[ $- == *i* ]]; then
@@ -131,3 +132,11 @@ fi
 # Uncomment if you don't like systemctl's auto-paging:
 # export SYSTEMD_PAGER=
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
+
+# ============================================================================
+# Blesh Attach (must be last — after starship, fzf, and all completions)
+# ============================================================================
+if [ "$_dots_want_blesh" = "1" ]; then
+	ble-attach
+fi
+unset _dots_want_blesh
