@@ -29,6 +29,8 @@ fi
 
 # Neovim (bob version manager)
 export PATH="$HOME/.local/share/bob/nvim-bin:$PATH"
+export EDITOR="nvim"
+export VISUAL="nvim"
 
 # NVM (Node Version Manager)
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
