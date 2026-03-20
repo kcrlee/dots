@@ -100,10 +100,3 @@ autocmd("FileType", {
 		end
 	end,
 })
-
-autocmd({ "BufReadPre", "BufNewFile", "BufWritePost" }, {
-	callback = function()
-		require("lint").try_lint()
-	end,
-	group = group,
-})
