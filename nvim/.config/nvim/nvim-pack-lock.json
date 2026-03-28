@@ -52,6 +52,10 @@
       "rev": "1afbbb449aa0254823dbe1932e3cbb51886ff9fe",
       "src": "https://github.com/webhooked/kanso.nvim"
     },
+    "kulala.nvim": {
+      "rev": "6656c9d332735ca6a27725e0fb45a1715c4372d9",
+      "src": "https://github.com/mistweaverco/kulala.nvim"
+    },
     "lazydev.nvim": {
       "rev": "ff2cbcba459b637ec3fd165a2be59b7bbaeedf0d",
       "src": "https://github.com/folke/lazydev.nvim"

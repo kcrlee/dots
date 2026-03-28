@@ -15,8 +15,7 @@ return {
 			"tailwindcss",
 			"tombi",
 			"vtsls",
-			-- "tsgo",
-			-- "ts_ls",
+			"kulala_ls",
 			"rust_analyzer",
 			"graphql",
 		})
