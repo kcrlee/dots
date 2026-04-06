@@ -21,6 +21,8 @@ return {
 			"graphql",
 		})
 
+		vim.lsp.document_color.enable(false)
+
 		vim.diagnostic.config({
 			virtual_text = false,
 			signs = {
