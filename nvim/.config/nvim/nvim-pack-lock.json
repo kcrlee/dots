@@ -28,6 +28,10 @@
       "rev": "086a40dc7ed8242c03be9f47fbcee68699cc2395",
       "src": "https://github.com/stevearc/conform.nvim"
     },
+    "diagram.nvim": {
+      "rev": "89d8110ec15021ac9a03ff2317d27b900c45bf60",
+      "src": "https://github.com/3rd/diagram.nvim"
+    },
     "dotenv.nvim": {
       "rev": "7d516e9293c6e3ac21830fb10a4e8674c02747c6",
       "src": "https://github.com/ellisonleao/dotenv.nvim"
