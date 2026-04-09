@@ -5,7 +5,6 @@
 set -euo pipefail
 
 DOTS_DIR="$(cd "$(dirname "$0")" && pwd)"
-ZSH_CUSTOM="${ZSH_CUSTOM:-${HOME}/.oh-my-zsh/custom}"
 
 # ============================================================================
 # Helpers
@@ -45,30 +44,17 @@ install_packages_macos() {
         eval "$(/opt/homebrew/bin/brew shellenv)"
     fi
 
-    local packages=(stow zsh fzf fd tmux direnv)
+    local packages=(stow fzf fd tmux direnv)
 
     info "Installing packages via Homebrew…"
     brew install "${packages[@]}"
 }
 
 install_packages_fedora() {
-    local packages=(stow zsh fzf fd-find tmux direnv util-linux-user)
+    local packages=(stow fzf fd-find tmux direnv)
 
     info "Installing packages via dnf…"
     sudo dnf install -y "${packages[@]}"
-}
-
-# ============================================================================
-# Zsh ecosystem
-# ============================================================================
-install_oh_my_zsh() {
-    if [[ -d "$HOME/.oh-my-zsh" ]]; then
-        ok "Oh My Zsh already installed"
-        return
-    fi
-    info "Installing Oh My Zsh…"
-    RUNZSH=no KEEP_ZSHRC=yes \
-        sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 }
 
 clone_if_missing() {
@@ -81,14 +67,6 @@ clone_if_missing() {
     fi
 }
 
-install_zsh_plugins() {
-    local plugin_dir="${ZSH_CUSTOM}/plugins"
-    clone_if_missing https://github.com/marlonrichert/zsh-autocomplete  "${plugin_dir}/zsh-autocomplete"
-    clone_if_missing https://github.com/zsh-users/zsh-syntax-highlighting "${plugin_dir}/zsh-syntax-highlighting"
-    clone_if_missing https://github.com/Aloxaf/fzf-tab                  "${plugin_dir}/fzf-tab"
-    clone_if_missing https://github.com/jeffreytse/zsh-vi-mode          "${plugin_dir}/zsh-vi-mode"
-}
-
 # ============================================================================
 # Stow packages
 # ============================================================================
@@ -96,7 +74,7 @@ stow_packages() {
     local os="$1"
 
     # Packages to stow on all platforms
-    local packages=(zsh nvim bob)
+    local packages=(nvim bob)
 
     # OS-specific packages
     case "$os" in
@@ -120,23 +98,23 @@ stow_packages() {
 # Set default shell
 # ============================================================================
 set_default_shell() {
-    local zsh_path
-    zsh_path="$(command -v zsh)"
+    local bash_path
+    bash_path="$(command -v bash)"
 
-    if [[ "$SHELL" == *zsh ]]; then
-        ok "Default shell is already zsh"
+    if [[ "$SHELL" == "$bash_path" ]]; then
+        ok "Default shell is already bash"
         return
     fi
 
-    # Ensure zsh is in /etc/shells
-    if ! grep -qx "$zsh_path" /etc/shells 2>/dev/null; then
-        info "Adding $zsh_path to /etc/shells…"
-        echo "$zsh_path" | sudo tee -a /etc/shells >/dev/null
+    # Ensure bash is in /etc/shells
+    if ! grep -qx "$bash_path" /etc/shells 2>/dev/null; then
+        info "Adding $bash_path to /etc/shells…"
+        echo "$bash_path" | sudo tee -a /etc/shells >/dev/null
     fi
 
-    info "Changing default shell to zsh…"
-    chsh -s "$zsh_path"
-    ok "Default shell set to zsh (restart your terminal)"
+    info "Changing default shell to bash…"
+    chsh -s "$bash_path"
+    ok "Default shell set to bash (restart your terminal)"
 }
 
 # ============================================================================
@@ -149,10 +127,6 @@ main() {
 
     # System packages
     "install_packages_${os}"
-
-    # Zsh ecosystem
-    install_oh_my_zsh
-    install_zsh_plugins
 
     # Symlink configs
     stow_packages "$os"

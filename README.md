@@ -14,10 +14,9 @@ dots/
 ├── systemd/      → ~/.config/systemd/user/
 ├── tmux/         → ~/.config/tmux/
 ├── wezterm/      → ~/.config/wezterm/
-└── zsh/          → ~/.zshenv, ~/.config/zsh/.zshenv, ~/.config/zsh/.zshrc
 ```
 
-A few legacy bash files (`.bashrc`, `.bash_profile`, `.blerc`, `.fzf.bash`) live at the repo root and aren't managed by stow.
+A few bash files (`.bashrc`, `.bash_profile`, `.blerc`, `.fzf.bash`) live at the repo root and aren't managed by stow.
 
 ## Quick Start
 
@@ -29,10 +28,9 @@ cd ~/dots
 
 The install script works on **macOS** and **Fedora Linux**. It will:
 
-1. Install system packages (`stow`, `zsh`, `fzf`, `fd`, `tmux`, `direnv`)
-2. Install Oh My Zsh and third-party zsh plugins
-3. Stow config packages (OS-appropriate selection)
-4. Set zsh as your default shell
+1. Install system packages (`stow`, `fzf`, `fd`, `tmux`, `direnv`)
+2. Stow config packages (OS-appropriate selection)
+3. Set bash as your default shell
 
 ## Manual Usage
 
@@ -40,7 +38,6 @@ The install script works on **macOS** and **Fedora Linux**. It will:
 
 ```sh
 cd ~/dots
-stow zsh        # creates ~/.zshenv, ~/.config/zsh/.zshenv, ~/.config/zsh/.zshrc
 stow nvim       # creates ~/.config/nvim/ → dots/nvim/.config/nvim/
 stow ghostty tmux wezterm   # multiple at once
 ```
@@ -48,13 +45,13 @@ stow ghostty tmux wezterm   # multiple at once
 ### Remove a package
 
 ```sh
-stow -D zsh     # removes the symlinks, leaves the files in dots/ intact
+stow -D nvim    # removes the symlinks, leaves the files in dots/ intact
 ```
 
 ### Preview changes
 
 ```sh
-stow -n -v zsh  # dry run — shows what would be linked without doing it
+stow -n -v nvim # dry run — shows what would be linked without doing it
 ```
 
 ## Adding new configs
@@ -104,10 +101,5 @@ wezterm/
 All handled by `install.sh`, but for reference:
 
 - [GNU Stow](https://www.gnu.org/software/stow/) — symlink manager
-- [Oh My Zsh](https://ohmyz.sh/) — zsh framework
 - [fzf](https://github.com/junegunn/fzf) + [fd](https://github.com/sharkdp/fd) — fuzzy finder
 - [direnv](https://direnv.net/) — per-directory environment variables
-- Zsh plugins (cloned into `$ZSH_CUSTOM/plugins/`):
-  - [zsh-autocomplete](https://github.com/marlonrichert/zsh-autocomplete)
-  - [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
-  - [fzf-tab](https://github.com/Aloxaf/fzf-tab)
