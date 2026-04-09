@@ -72,6 +72,10 @@
       "rev": "9c60ec2",
       "src": "https://github.com/rktjmp/lush.nvim"
     },
+    "markdown-preview.nvim": {
+      "rev": "a923f5fc5ba36a3b17e289dc35dc17f66d0548ee",
+      "src": "https://github.com/iamcco/markdown-preview.nvim"
+    },
     "markview.nvim": {
       "rev": "918f3f92e87d28a487af89912d774521a52f9888",
       "src": "https://github.com/OXY2DEV/markview.nvim"
