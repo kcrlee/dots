@@ -1,16 +1,20 @@
 .*
 !.config
-
 share/*
 etc/*
 tmp/*
 Users/*
+Pictures/*
 Postman/*
 Public/*
 Library/*
 Applications/*
+MPCS/*
 Movies/*
 Music/*
 bin/*
 lib/*
 Screen\ Studio\ Projects
+go/*
+Documents/*
+
