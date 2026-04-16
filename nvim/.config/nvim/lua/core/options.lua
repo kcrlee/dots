@@ -25,7 +25,8 @@ vim.o.autoread = true
 vim.o.autowrite = true
 
 -- Text layout
-vim.o.textWidth = 120
+vim.o.textwidth = 120
+vim.o.colorcolumn = "+1"
 vim.o.wrap = true
 vim.opt.linebreak = true
 vim.o.tabstop = 4
