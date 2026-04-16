@@ -1,4 +1,4 @@
-vim.bo.textwidth = 80
+vim.bo.textwidth = 120
 vim.bo.formatoptions = vim.bo.formatoptions .. "tcqln"
 
 --- Hard-wrap lines exceeding textwidth on save, skipping fenced code blocks.
