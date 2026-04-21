@@ -3,6 +3,7 @@ vim.g.mapleader = ","
 vim.o.spelllang = "en_us"
 vim.o.termguicolors = true
 vim.opt.completeopt = { "fuzzy", "menuone", "noselect", "popup" }
+vim.opt.mouse = ""
 
 -- UI
 vim.o.rnu = true
