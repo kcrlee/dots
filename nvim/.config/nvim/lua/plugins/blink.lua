@@ -120,4 +120,5 @@ return {
 	data = { build = "cargo build --release" },
 	defer = true,
 	src = "https://github.com/Saghen/blink.cmp",
+	version = vim.version.range("*")
 }
