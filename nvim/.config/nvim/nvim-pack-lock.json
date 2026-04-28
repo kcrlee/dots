@@ -17,7 +17,7 @@
       "src": "https://github.com/j-hui/fidget.nvim"
     },
     "fzf-lua": {
-      "rev": "2e29d5f233defe3c5587df0e4dd29af2bd95a5a7",
+      "rev": "b437bafc981a180d609bb4092c56ce8999f7a2c4",
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
     "kulala.nvim": {
@@ -122,6 +122,10 @@
     "ts-error-translator.nvim": {
       "rev": "558abff11b9e8f4cefc0de09df780c56841c7a4b",
       "src": "https://github.com/dmmulroy/ts-error-translator.nvim"
+    },
+    "wezterm-types": {
+      "rev": "520c6fabf8461d7df2e9b4cbddf8e06bc71368a4",
+      "src": "https://github.com/DrKJeff16/wezterm-types"
     },
     "xcodebuild.nvim": {
       "rev": "e6b57ce4855a41559e5ad402b9095d4ac4994e23",

@@ -4,6 +4,59 @@ return {
 			registries = { "github:crashdummyy/mason-registry", "github:mason-org/mason-registry" },
 		})
 		require("mason-lspconfig").setup()
+
+		vim.lsp.config("*", {
+			capabilities = vim.tbl_deep_extend("force", vim.lsp.protocol.make_client_capabilities(), {
+				textDocument = {
+					completion = {
+						completionItem = {
+							snippetSupport = true,
+							resolveSupport = {
+								properties = { "documentation", "detail", "additionalTextEdits" },
+							},
+						},
+					},
+				},
+			}),
+		})
+
+		local kind_icons = {
+			Text = "󰉿", Method = "󰊕", Function = "󰊕", Constructor = "",
+			Field = "󰜢", Variable = "󰀫", Class = "󰠱", Interface = "",
+			Module = "", Property = "󰜢", Unit = "", Value = "󰎠",
+			Enum = "", Keyword = "󰌋", Snippet = "", Color = "󰏘",
+			File = "󰈙", Reference = "󰈇", Folder = "󰉋", EnumMember = "",
+			Constant = "󰏿", Struct = "󰙅", Event = "", Operator = "󰆕",
+			TypeParameter = "",
+		}
+
+		vim.api.nvim_create_autocmd("LspAttach", {
+			group = vim.api.nvim_create_augroup("my.lsp.completion", { clear = true }),
+			callback = function(ev)
+				local client = vim.lsp.get_client_by_id(ev.data.client_id)
+				if not client then return end
+
+				if client:supports_method("textDocument/completion") then
+					vim.lsp.completion.enable(true, client.id, ev.buf, {
+						autotrigger = true,
+						convert = function(item)
+							local kind_name = vim.lsp.protocol.CompletionItemKind[item.kind] or "Text"
+							return {
+								abbr = (item.label or ""):gsub("%b()", ""),
+								kind = kind_icons[kind_name] or kind_name,
+								menu = "[" .. client.name .. "]",
+							}
+						end,
+					})
+				end
+
+				if client:supports_method("textDocument/signatureHelp") then
+					vim.keymap.set("i", "<C-s>", vim.lsp.buf.signature_help,
+						{ buffer = ev.buf, desc = "LSP signature help" })
+				end
+			end,
+		})
+
 		vim.lsp.enable({
 			"bashls",
 			"html",
@@ -14,10 +67,19 @@ return {
 			"tailwindcss",
 			"tombi",
 			"vtsls",
-			"tsgo",
 			"kulala_ls",
 			"rust_analyzer",
 			"graphql",
+		})
+
+		vim.lsp.config("lua_ls", {
+			settings = {
+				Lua = {
+					telemetry = { enable = false },
+					diagnostics = { globals = { "vim", "require" } },
+					workspace = { checkThirdParty = false },
+				},
+			},
 		})
 
 		vim.lsp.document_color.enable(false)

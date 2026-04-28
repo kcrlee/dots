@@ -1,8 +1,15 @@
---global
+-- global
 vim.g.mapleader = ","
 vim.o.spelllang = "en_us"
 vim.o.termguicolors = true
-vim.opt.completeopt = { "fuzzy", "menuone", "noselect", "popup" }
+
+-- lsp
+vim.o.autocomplete = true
+vim.o.completeopt = "fuzzy,menuone,noselect,popup,nearest"
+vim.o.pumheight = 10
+vim.opt.shortmess:append("c")
+vim.o.wildoptions = "fuzzy,pum,tagfile"
+
 
 -- UI
 vim.o.rnu = true
@@ -27,7 +34,7 @@ vim.o.autowrite = true
 -- Text layout
 vim.o.textwidth = 120
 vim.o.wrap = true
-vim.opt.linebreak = true
+vim.o.linebreak = true
 vim.o.tabstop = 4
 vim.o.softtabstop = 4
 vim.o.shiftwidth = 4
@@ -36,8 +43,8 @@ vim.o.smartindent = true
 -- Searching
 vim.o.ignorecase = true
 vim.o.smartcase = true
-vim.opt.grepprg = "rg --smartcase --vimgrep"
-vim.opt.grepformat = "%f:%l:%c:%m"
+vim.o.grepprg = "rg --smartcase --vimgrep"
+vim.o.grepformat = "%f:%l:%c:%m"
 
 vim.o.undofile = true
 vim.o.undolevels = 1000

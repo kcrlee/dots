@@ -25,8 +25,9 @@ return {
 			prompt_save_on_select_new_entry = true,
 			cleanup_delay_ms = 2000,
 			lsp_file_methods = {
+				enabled = true,
 				timeout_ms = 1000,
-				autosave_changes = false,
+				autosave_changes = "unmodified",
 			},
 			constrain_cursor = "editable",
 			experimental_watch_for_changes = false,

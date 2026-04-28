@@ -60,13 +60,13 @@ return {
 				sql = { "sqlfmt" },
 				lua = { "luaformatter" },
 				toml = { "tombi" },
-				typescript = { "biome" },
-				typescriptreact = { "biome" },
-				javascript = { "biome" },
-				javascriptreact = { "biome" },
+				typescript = { "biome-check" },
+				typescriptreact = { "biome-check" },
+				javascript = { "biome-check" },
+				javascriptreact = { "biome-check" },
 				json = {
 					"jq",
-					"biome",
+					"biome-check",
 					stop_after_first = true,
 				},
 				liquid = { "prettier" },
@@ -74,7 +74,7 @@ return {
 				html = { "prettier" },
 				svg = { "prettier" },
 				svelte = { "prettier" },
-				css = { "biome" },
+				css = { "biome-check" },
 				scss = { "prettier" },
 				markdown = { "prettier" },
 				yaml = { "prettier" },
@@ -83,15 +83,17 @@ return {
 				bash = { "shfmt" },
 				zsh = { "shfmt" },
 			},
+			default_format_opts = {
+				lsp_format = "fallback",
+			},
 			format_on_save = function(bufnr)
-				-- Disable autoformat for files in a certain path
 				local bufname = vim.api.nvim_buf_get_name(bufnr)
 				if bufname:match("/node_modules/") then
 					return
 				end
-				return { timeout_ms = 1000, lsp_fallback = true }
+				return { timeout_ms = 1000, lsp_format = "fallback" }
 			end,
-			format_after_save = { lsp_fallback = true },
+			format_after_save = { lsp_format = "fallback" },
 		})
 	end,
 	defer = true,
