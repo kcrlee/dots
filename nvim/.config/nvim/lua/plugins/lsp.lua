@@ -4,7 +4,6 @@ return {
 			registries = { "github:crashdummyy/mason-registry", "github:mason-org/mason-registry" },
 		})
 		require("mason-lspconfig").setup()
-
 		vim.lsp.enable({
 			"bashls",
 			"html",
