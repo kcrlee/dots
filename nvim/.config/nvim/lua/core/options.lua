@@ -5,7 +5,7 @@ vim.o.termguicolors = true
 
 -- lsp
 vim.o.complete = ""
-vim.o.completeopt = "fuzzy,menuone,noselect,preview"
+vim.o.completeopt = "fuzzy,menuone,noselect,popup"
 vim.o.pumheight = 10
 vim.o.updatetime = 250
 vim.opt.shortmess:append("c")
