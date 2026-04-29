@@ -66,7 +66,7 @@ return {
 				javascriptreact = { "biome" },
 				json = {
 					"jq",
-					"biome-check",
+					"biome",
 					stop_after_first = true,
 				},
 				liquid = { "prettier" },
@@ -74,7 +74,7 @@ return {
 				html = { "prettier" },
 				svg = { "prettier" },
 				svelte = { "prettier" },
-				css = { "biome-check" },
+				css = { "biome" },
 				scss = { "prettier" },
 				markdown = { "prettier" },
 				yaml = { "prettier" },

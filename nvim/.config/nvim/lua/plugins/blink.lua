@@ -91,6 +91,12 @@ return {
 					treesitter_highlighting = true,
 					window = {
 						border = "rounded",
+						max_width = 60,
+						max_height = 20,
+						direction_priority = {
+							menu_north = { 'e', 'w', 's', 'n' },
+							menu_south = { "e", "w" },
+						},
 					},
 				},
 			},

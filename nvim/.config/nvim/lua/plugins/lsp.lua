@@ -20,57 +20,20 @@ return {
 			}),
 		})
 
-		local kind_icons = {
-			Text = "󰉿",
-			Method = "󰊕",
-			Function = "󰊕",
-			Constructor = "",
-			Field = "󰜢",
-			Variable = "󰀫",
-			Class = "󰠱",
-			Interface = "",
-			Module = "",
-			Property = "󰜢",
-			Unit = "",
-			Value = "󰎠",
-			Enum = "",
-			Keyword = "󰌋",
-			Snippet = "",
-			Color = "󰏘",
-			File = "󰈙",
-			Reference = "󰈇",
-			Folder = "󰉋",
-			EnumMember = "",
-			Constant = "󰏿",
-			Struct = "󰙅",
-			Event = "",
-			Operator = "󰆕",
-			TypeParameter = "",
-		}
-
 		vim.api.nvim_create_autocmd("LspAttach", {
-			group = vim.api.nvim_create_augroup("my.lsp.completion", { clear = true }),
+			group = vim.api.nvim_create_augroup("my.lsp.attach", { clear = true }),
 			callback = function(ev)
 				local client = vim.lsp.get_client_by_id(ev.data.client_id)
 				if not client then return end
 
-				if client:supports_method("textDocument/completion") then
-					vim.lsp.completion.enable(true, client.id, ev.buf, {
-						autotrigger = true,
-						convert = function(item)
-							local kind_name = vim.lsp.protocol.CompletionItemKind[item.kind] or "Text"
-							return {
-								abbr = (item.label or ""):gsub("%b()", ""),
-								kind = kind_icons[kind_name] or kind_name,
-								menu = "[" .. client.name .. "]",
-							}
-						end,
-					})
-				end
-
-				if client:supports_method("textDocument/signatureHelp") then
-					vim.keymap.set("i", "<C-s>", vim.lsp.buf.signature_help,
-						{ buffer = ev.buf, desc = "LSP signature help" })
+				if client:supports_method("textDocument/hover") then
+					vim.keymap.set("n", "K", function()
+						vim.lsp.buf.hover({
+							border = "rounded",
+							max_width = 80,
+							max_height = 20,
+						})
+					end, { buffer = ev.buf, desc = "LSP hover" })
 				end
 			end,
 		})
