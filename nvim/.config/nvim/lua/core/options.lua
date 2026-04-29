@@ -2,12 +2,12 @@
 vim.g.mapleader = ","
 vim.o.spelllang = "en_us"
 vim.o.termguicolors = true
--- vim.opt.completeopt = { "fuzzy", "menuone", "noselect", "popup" }
+vim.opt.completeopt = { "fuzzy", "menuone", "noselect", "popup" }
 
 -- UI
 vim.o.rnu = true
 vim.o.statuscolumn = "%=%{v:lnum} %{v:relnum} %s"
--- vim.o.winborder = "rounded"
+vim.o.winborder = "rounded"
 vim.o.signcolumn = "yes"
 vim.o.cursorcolumn = false
 vim.o.scrolloff = 8 -- Ensures 8 lines above and below of the cursor
