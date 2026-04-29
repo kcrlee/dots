@@ -71,11 +71,14 @@ return {
 						includeCompletionsForImportStatements = true,
 						includeCompletionsWithSnippetText = true,
 						includeCompletionsWithInsertText = true,
+						includePackageJsonAutoImports = "auto",
 						importModuleSpecifier = "shortest",
 					},
 					suggest = {
 						completeFunctionCalls = true,
+						autoImports = true,
 					},
+					updateImportsOnFileMove = { enabled = "always" },
 				},
 				javascript = {
 					preferences = {
@@ -83,7 +86,12 @@ return {
 						includeCompletionsForImportStatements = true,
 						includeCompletionsWithSnippetText = true,
 						includeCompletionsWithInsertText = true,
+						includePackageJsonAutoImports = "auto",
 					},
+					suggest = {
+						autoImports = true,
+					},
+					updateImportsOnFileMove = { enabled = "always" },
 				},
 			},
 		})
