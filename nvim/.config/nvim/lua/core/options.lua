@@ -5,10 +5,9 @@ vim.o.termguicolors = true
 
 -- lsp
 vim.o.autocomplete = true
-vim.o.completeopt = "fuzzy,menuone,noselect,popup,nearest"
+vim.o.completeopt = "fuzzy,menuone,noselect,preview"
 vim.o.pumheight = 10
 vim.opt.shortmess:append("c")
-vim.o.wildoptions = "fuzzy,pum,tagfile"
 
 
 -- UI

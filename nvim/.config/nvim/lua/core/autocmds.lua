@@ -34,7 +34,7 @@ autocmd("LspAttach", {
 			vim.lsp.buf.definition()
 		end, bufopts)
 		vim.keymap.set("n", "K", function()
-			vim.lsp.buf.hover()
+			vim.lsp.buf.hover({ anchor_bias = 'auto', zindex = 300 })
 		end, bufopts)
 		vim.keymap.set("n", "<leader>vws", function()
 			vim.lsp.buf.workspace_symbol()
@@ -79,7 +79,7 @@ autocmd("LspAttach", {
 				group = vim.api.nvim_create_augroup(group, { clear = false }),
 				buffer = args.buf,
 				callback = function()
-					-- disable while I figured out if I want conform.nvim or LSP
+					-- if we wanted LSP formatting
 					-- vim.lsp.buf.format({ bufnr = args.buf, id = client.id, timeout_ms = 1000 })
 				end,
 			})
