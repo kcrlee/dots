@@ -100,6 +100,31 @@ return {
 			},
 		})
 
+		vim.lsp.config("vtsls", {
+			settings = {
+				typescript = {
+					preferences = {
+						includeCompletionsForModuleExports = true,
+						includeCompletionsForImportStatements = true,
+						includeCompletionsWithSnippetText = true,
+						includeCompletionsWithInsertText = true,
+						importModuleSpecifier = "shortest",
+					},
+					suggest = {
+						completeFunctionCalls = true,
+					},
+				},
+				javascript = {
+					preferences = {
+						includeCompletionsForModuleExports = true,
+						includeCompletionsForImportStatements = true,
+						includeCompletionsWithSnippetText = true,
+						includeCompletionsWithInsertText = true,
+					},
+				},
+			},
+		})
+
 		vim.lsp.document_color.enable(false)
 
 		vim.diagnostic.config({

@@ -4,9 +4,10 @@ vim.o.spelllang = "en_us"
 vim.o.termguicolors = true
 
 -- lsp
-vim.o.autocomplete = true
+vim.o.complete = ""
 vim.o.completeopt = "fuzzy,menuone,noselect,preview"
 vim.o.pumheight = 10
+vim.o.updatetime = 250
 vim.opt.shortmess:append("c")
 
 
@@ -26,7 +27,6 @@ vim.o.splitbelow = true
 vim.o.writebackup = false
 vim.o.backup = false
 vim.o.swapfile = false
-vim.o.autoread = true
 vim.o.autoread = true
 vim.o.autowrite = true
 
