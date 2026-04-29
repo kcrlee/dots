@@ -51,25 +51,8 @@ autocmd("LspAttach", {
 		vim.keymap.set("n", "<leader>vrn", function()
 			vim.lsp.buf.rename()
 		end, bufopts)
-		vim.keymap.set("i", "<C-h>", function()
-			vim.lsp.buf.signature_help()
-		end, bufopts)
-
-
 
 		local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
-		local methods = vim.lsp.protocol.Methods
-
-
-		if client:supports_method(methods.textDocument_completion) then
-			vim.lsp.completion.enable(true, client.id, args.buf, {
-				autotrigger = true,
-				convert = function(item)
-					item.preselect = false
-					return { abbr = item.label:gsub("%b()", "") }
-				end,
-			})
-		end
 
 		if
 			not client:supports_method("textDocument/willSaveWaitUntil")

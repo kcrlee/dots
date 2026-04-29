@@ -2,8 +2,7 @@
 vim.g.mapleader = ","
 vim.o.spelllang = "en_us"
 vim.o.termguicolors = true
-vim.opt.completeopt = { "fuzzy", "menuone", "noselect", "popup" }
-
+vim.opt.completeopt = { "fuzzy", "menuone", "noselect" }
 -- UI
 vim.o.rnu = true
 vim.o.statuscolumn = "%=%{v:lnum} %{v:relnum} %s"
