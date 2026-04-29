@@ -34,11 +34,7 @@ autocmd("LspAttach", {
 			vim.lsp.buf.definition()
 		end, bufopts)
 		vim.keymap.set("n", "K", function()
-			vim.lsp.buf.hover({
-				buffer = "rounded",
-				anchor_bias = 'auto',
-				zindex = 300
-			})
+			vim.lsp.buf.hover()
 		end, bufopts)
 		vim.keymap.set("n", "<leader>vws", function()
 			vim.lsp.buf.workspace_symbol()
