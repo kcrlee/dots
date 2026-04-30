@@ -93,7 +93,6 @@ return {
 				end
 				return { timeout_ms = 1000, lsp_format = "fallback" }
 			end,
-			format_after_save = { lsp_format = "fallback" },
 		})
 	end,
 	defer = true,

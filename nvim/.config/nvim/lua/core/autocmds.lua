@@ -84,12 +84,9 @@ autocmd("FileType", {
 	end,
 })
 
--- Run vtsls source actions synchronously before save. addMissing must run
--- before organize/remove, or the would-be-added imports get pruned as unused.
+-- Run vtsls source actions synchronously before save.
 local ts_save_kinds = {
 	"source.addMissingImports.ts",
-	"source.removeUnused.ts",
-	"source.organizeImports.ts",
 }
 
 local function apply_ts_source_actions(bufnr)
