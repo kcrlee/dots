@@ -65,7 +65,17 @@ return {
 
 		vim.lsp.config("vtsls", {
 			settings = {
+				vtsls = {
+					autoUseWorkspaceTsdk = true,
+					experimental = {
+						completion = {
+							enableServerSideFuzzyMatch = true,
+							entriesLimit = 100,
+						},
+					},
+				},
 				typescript = {
+					tsserver = { maxTsServerMemory = 8192 },
 					preferences = {
 						includeCompletionsForModuleExports = true,
 						includeCompletionsForImportStatements = true,
@@ -73,6 +83,13 @@ return {
 						includeCompletionsWithInsertText = true,
 						includePackageJsonAutoImports = "auto",
 						importModuleSpecifier = "shortest",
+						autoImportFileExcludePatterns = {
+							"**/node_modules/**",
+							"**/dist/**",
+							"**/.tanstack/**",
+							"**/generated/**",
+							"**/packages/gql/dist/**",
+						},
 					},
 					suggest = {
 						completeFunctionCalls = true,
@@ -81,6 +98,7 @@ return {
 					updateImportsOnFileMove = { enabled = "always" },
 				},
 				javascript = {
+					tsserver = { maxTsServerMemory = 8192 },
 					preferences = {
 						includeCompletionsForModuleExports = true,
 						includeCompletionsForImportStatements = true,
