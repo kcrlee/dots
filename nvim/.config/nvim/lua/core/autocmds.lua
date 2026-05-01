@@ -6,7 +6,6 @@ vim.api.nvim_create_augroup(group, { clear = true })
 
 vim.cmd([[autocmd BufEnter * set formatoptions-=cro]])
 
-
 autocmd({ "BufReadPre", "BufNewFile", "BufWritePost" }, {
 	group = group,
 	callback = function()
@@ -84,17 +83,22 @@ autocmd("FileType", {
 	end,
 })
 
--- Run vtsls source actions synchronously before save.
+-- Only auto-add missing imports on save. Removing unused / organizing imports
+-- is intentionally skipped so in-progress code isn't pruned mid-edit.
 local ts_save_kinds = {
 	"source.addMissingImports.ts",
 }
 
 local function apply_ts_source_actions(bufnr)
-	if vim.api.nvim_buf_get_name(bufnr):match("/node_modules/") then return end
+	if vim.api.nvim_buf_get_name(bufnr):match("/node_modules/") then
+		return
+	end
 
 	local clients = vim.lsp.get_clients({ bufnr = bufnr, name = "vtsls" })
 	local client = clients[1]
-	if not client then return end
+	if not client then
+		return
+	end
 	local enc = client.offset_encoding or "utf-16"
 
 	for _, kind in ipairs(ts_save_kinds) do
@@ -106,7 +110,9 @@ local function apply_ts_source_actions(bufnr)
 			for _, action in ipairs(resp.result) do
 				if not action.edit and action.data and client:supports_method("codeAction/resolve") then
 					local resolved = client:request_sync("codeAction/resolve", action, 2000, bufnr)
-					if resolved and resolved.result then action = resolved.result end
+					if resolved and resolved.result then
+						action = resolved.result
+					end
 				end
 				if action.edit then
 					vim.lsp.util.apply_workspace_edit(action.edit, enc)
