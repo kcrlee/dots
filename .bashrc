@@ -90,8 +90,11 @@ if [ -n "$TMUX" ] && [ "${DOTS_FORCE_BLESH:-0}" != "1" ] && [[ $- == *i* ]]; the
 fi
 
 # FZF (Fuzzy Finder)
-if [ -f ~/.fzf.bash ]; then
-	source ~/.fzf.bash
+if command -v fzf >/dev/null 2>&1; then
+	# macOS Homebrew bootstraps fzf's PATH from ~/.fzf.bash; Linux uses `fzf --bash` directly.
+	if [[ "$OSTYPE" == "darwin"* ]] && [ -f ~/.fzf.bash ]; then
+		source ~/.fzf.bash
+	fi
 	eval "$(fzf --bash)"
 
 	# FZF configuration
