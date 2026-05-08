@@ -32,9 +32,6 @@ autocmd("LspAttach", {
 		vim.keymap.set("n", "gd", function()
 			vim.lsp.buf.definition()
 		end, bufopts)
-		vim.keymap.set("n", "K", function()
-			vim.lsp.buf.hover()
-		end, bufopts)
 		vim.keymap.set("n", "<leader>vws", function()
 			vim.lsp.buf.workspace_symbol()
 		end, bufopts)
@@ -52,6 +49,16 @@ autocmd("LspAttach", {
 		end, bufopts)
 
 		local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
+
+		if client:supports_method("textDocument/hover") then
+			vim.keymap.set("n", "K", function()
+				vim.lsp.buf.hover({
+					border = "rounded",
+					max_width = 80,
+					max_height = 20,
+				})
+			end, { buffer = args.buf, desc = "LSP hover" })
+		end
 
 		if
 			not client:supports_method("textDocument/willSaveWaitUntil")
@@ -94,7 +101,7 @@ local function apply_ts_source_actions(bufnr)
 		return
 	end
 
-	local clients = vim.lsp.get_clients({ bufnr = bufnr, name = "vtsls" })
+	local clients = vim.lsp.get_clients({ bufnr = bufnr, name = "tsgo" })
 	local client = clients[1]
 	if not client then
 		return

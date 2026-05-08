@@ -20,24 +20,6 @@ return {
 			}),
 		})
 
-		vim.api.nvim_create_autocmd("LspAttach", {
-			group = vim.api.nvim_create_augroup("my.lsp.attach", { clear = true }),
-			callback = function(ev)
-				local client = vim.lsp.get_client_by_id(ev.data.client_id)
-				if not client then return end
-
-				if client:supports_method("textDocument/hover") then
-					vim.keymap.set("n", "K", function()
-						vim.lsp.buf.hover({
-							border = "rounded",
-							max_width = 80,
-							max_height = 20,
-						})
-					end, { buffer = ev.buf, desc = "LSP hover" })
-				end
-			end,
-		})
-
 		vim.lsp.enable({
 			"bashls",
 			"html",
@@ -59,57 +41,6 @@ return {
 					telemetry = { enable = false },
 					diagnostics = { globals = { "vim", "require" } },
 					workspace = { checkThirdParty = false },
-				},
-			},
-		})
-
-		vim.lsp.config("vtsls", {
-			settings = {
-				vtsls = {
-					autoUseWorkspaceTsdk = true,
-					experimental = {
-						completion = {
-							enableServerSideFuzzyMatch = true,
-							entriesLimit = 100,
-						},
-					},
-				},
-				typescript = {
-					tsserver = { maxTsServerMemory = 8192 },
-					preferences = {
-						includeCompletionsForModuleExports = true,
-						includeCompletionsForImportStatements = true,
-						includeCompletionsWithSnippetText = true,
-						includeCompletionsWithInsertText = true,
-						includePackageJsonAutoImports = "auto",
-						importModuleSpecifier = "shortest",
-						autoImportFileExcludePatterns = {
-							"**/node_modules/**",
-							"**/dist/**",
-							"**/.tanstack/**",
-							"**/generated/**",
-							"**/packages/gql/dist/**",
-						},
-					},
-					suggest = {
-						completeFunctionCalls = true,
-						autoImports = true,
-					},
-					updateImportsOnFileMove = { enabled = "always" },
-				},
-				javascript = {
-					tsserver = { maxTsServerMemory = 8192 },
-					preferences = {
-						includeCompletionsForModuleExports = true,
-						includeCompletionsForImportStatements = true,
-						includeCompletionsWithSnippetText = true,
-						includeCompletionsWithInsertText = true,
-						includePackageJsonAutoImports = "auto",
-					},
-					suggest = {
-						autoImports = true,
-					},
-					updateImportsOnFileMove = { enabled = "always" },
 				},
 			},
 		})
