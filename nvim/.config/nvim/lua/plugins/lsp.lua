@@ -47,7 +47,7 @@ return {
 			"sourcekit",
 			"tailwindcss",
 			"tombi",
-			"vtsls",
+			'tsgo',
 			"kulala_ls",
 			"rust_analyzer",
 			"graphql",
