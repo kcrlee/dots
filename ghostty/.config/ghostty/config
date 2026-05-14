@@ -16,9 +16,9 @@ window-padding-y = 8
 
 # shell
 mouse-hide-while-typing = true
-
+font-family= "JetBrains Mono"
 # ensure TX-02 is used 
-font-family = "JetBrainsMono Nerd Font"
+# font-family = "JetBrainsMono Nerd Font"
 # font-family-bold = "TX-02-Variable"
 # font-family-italic = "TX-02-Variable"
 

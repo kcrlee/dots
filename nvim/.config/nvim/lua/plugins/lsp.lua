@@ -30,7 +30,6 @@ return {
 			"tailwindcss",
 			"tombi",
 			"tsgo",
-			"vtsls",
 			"kulala_ls",
 			"rust_analyzer",
 			"graphql",
