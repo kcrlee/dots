@@ -29,10 +29,11 @@ return {
 			"sourcekit",
 			"tailwindcss",
 			"tombi",
-			"tsgo",
 			"kulala_ls",
 			"rust_analyzer",
 			"graphql",
+			"tsgo"
+			-- "vtsls",
 		})
 
 		vim.lsp.config("lua_ls", {
