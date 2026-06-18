@@ -119,6 +119,10 @@
       "rev": "558abff11b9e8f4cefc0de09df780c56841c7a4b",
       "src": "https://github.com/dmmulroy/ts-error-translator.nvim"
     },
+    "typst-preview.nvim": {
+      "rev": "87db18b8d19c8b0eed399f52e4c527ce5afe4817",
+      "src": "https://github.com/chomosuke/typst-preview.nvim"
+    },
     "wezterm-types": {
       "rev": "58c95e0d78e24b236b2eecaa2c29ae973478f79b",
       "src": "https://github.com/DrKJeff16/wezterm-types"
