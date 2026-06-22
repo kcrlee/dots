@@ -6,7 +6,7 @@
       "version": ">=0.0.0"
     },
     "claudecode.nvim": {
-      "rev": "bcb3fe205efe88771e8801d0a99b6fcb0a982bbb",
+      "rev": "298a3e6cbe784ed9c0cc5ff85aab6be6d704d2cd",
       "src": "https://github.com/coder/claudecode.nvim"
     },
     "codediff.nvim": {
@@ -18,7 +18,7 @@
       "src": "https://github.com/stevearc/conform.nvim"
     },
     "fidget.nvim": {
-      "rev": "82404b196e73a00b1727a91903beef5ddc319d22",
+      "rev": "6f793b2bcd2d35e201c09520f698bb763220908a",
       "src": "https://github.com/j-hui/fidget.nvim"
     },
     "fzf-lua": {
@@ -26,7 +26,7 @@
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
     "kulala.nvim": {
-      "rev": "3dc1b52d89183650936a8d48fcc0cf7d279f5a9e",
+      "rev": "a627ebcafe2d053fa395b2d324dc9f6cbb61495e",
       "src": "https://github.com/mistweaverco/kulala.nvim"
     },
     "lazydev.nvim": {
@@ -54,7 +54,7 @@
       "src": "https://github.com/williamboman/mason.nvim"
     },
     "neogit": {
-      "rev": "5d1b65d6215928e941e1a6a4e76e02fd45ada31f",
+      "rev": "828dd073e6ad180fdb5c1603c7ad7f68a384c40b",
       "src": "https://github.com/NeogitOrg/neogit"
     },
     "noice.nvim": {
@@ -66,11 +66,11 @@
       "src": "https://github.com/MunifTanjim/nui.nvim"
     },
     "nvim-lint": {
-      "rev": "4b7957daf4b81eb578114bd6fcf20b6f5a2b59e8",
+      "rev": "01c9842c089069ab497430159312b2c8868a4590",
       "src": "https://github.com/mfussenegger/nvim-lint"
     },
     "nvim-lspconfig": {
-      "rev": "96f363ce07d46c1804532ca2d1eb3a157d11ee29",
+      "rev": "bfcc0171a43f22afa61d927ffe9fcb6cb85dc99e",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-treesitter": {
