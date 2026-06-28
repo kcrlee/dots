@@ -73,7 +73,7 @@ return {
 				python = { "black" },
 				html = { "prettier" },
 				svg = { "prettier" },
-				svelte = { "prettier" },
+				svelte = { "biome", "biome-organize-imports" },
 				css = { "biome" },
 				scss = { "prettier" },
 				markdown = { "prettier" },
