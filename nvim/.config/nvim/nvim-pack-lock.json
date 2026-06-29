@@ -111,6 +111,11 @@
       "rev": "9786418",
       "src": "https://github.com/kcrlee/tomorrow-min"
     },
+    "tree-sitter-manager.nvim": {
+      "rev": "ae305699da5e97b6cffdd5cc6f6045b1b0bd26ea",
+      "src": "https://github.com/romus204/tree-sitter-manager.nvim",
+      "version": "'main'"
+    },
     "trouble.nvim": {
       "rev": "bd67efe",
       "src": "https://github.com/folke/trouble.nvim"
