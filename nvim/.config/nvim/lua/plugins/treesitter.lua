@@ -1,8 +1,6 @@
 return {
 	config = function()
-		local autocmd = vim.api.nvim_create_autocmd
-		local ts = require("nvim-treesitter")
-		require("nvim-treesitter").setup({
+		require("tree-sitter-manager").setup({
 			ensure_installed = {
 				"bash",
 				"c",
@@ -33,19 +31,15 @@ return {
 				"yaml",
 				"vim",
 				"zig",
-			},
-			highlight = {
-				enable = true,
-				additional_vim_regex_highlighting = false,
-			},
-			indent = { enable = true },
+			},         -- parsers to install at startup
+			border = "rounded", -- border style for the TUI window
 		})
 	end,
 	defer = true,
 	dependencies = {
 		{
 			defer = true,
-			src = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects",
+			src = "https://github.com/romus204/tree-sitter-manager.nvim",
 			version = "main",
 		},
 	},

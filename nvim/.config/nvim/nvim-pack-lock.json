@@ -22,7 +22,7 @@
       "src": "https://github.com/j-hui/fidget.nvim"
     },
     "fzf-lua": {
-      "rev": "b6f0392fe1645973c795b5bbbd8d6db466a5a25a",
+      "rev": "dbe7895a07079b2320abfb3c555b90d3d40a8c9e",
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
     "kulala.nvim": {
@@ -46,7 +46,7 @@
       "src": "https://github.com/iamcco/markdown-preview.nvim"
     },
     "mason-lspconfig.nvim": {
-      "rev": "50bf3871b539896bd0650b882f6e6b467cc1c1eb",
+      "rev": "47059d71b42d74b0a1e9f61c1d99d301039c3b5b",
       "src": "https://github.com/williamboman/mason-lspconfig.nvim"
     },
     "mason.nvim": {
