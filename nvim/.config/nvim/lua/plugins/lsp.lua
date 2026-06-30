@@ -22,6 +22,7 @@ return {
 
 		vim.lsp.enable({
 			"bashls",
+			"expert",
 			"html",
 			"jsonls",
 			"lua_ls",
@@ -32,8 +33,7 @@ return {
 			"kulala_ls",
 			"rust_analyzer",
 			"graphql",
-			"tsgo"
-			-- "vtsls",
+			"tsgo",
 		})
 
 		vim.lsp.config("lua_ls", {
