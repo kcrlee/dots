@@ -21,6 +21,10 @@
       "rev": "6f793b2bcd2d35e201c09520f698bb763220908a",
       "src": "https://github.com/j-hui/fidget.nvim"
     },
+    "foldTime": {
+      "rev": "e9f81c2c2a38481d535b9d3344bc684d792a87a4",
+      "src": "https://github.com/fmaplabs/foldTime"
+    },
     "fzf-lua": {
       "rev": "dbe7895a07079b2320abfb3c555b90d3d40a8c9e",
       "src": "https://github.com/ibhagwan/fzf-lua"
