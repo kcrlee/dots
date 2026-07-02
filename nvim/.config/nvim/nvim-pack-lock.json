@@ -22,7 +22,7 @@
       "src": "https://github.com/j-hui/fidget.nvim"
     },
     "foldTime": {
-      "rev": "e9f81c2c2a38481d535b9d3344bc684d792a87a4",
+      "rev": "b30f24ae5c0c7926ade709fad47d6aea37d9b3e8",
       "src": "https://github.com/fmaplabs/foldTime"
     },
     "fzf-lua": {
