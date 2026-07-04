@@ -50,9 +50,15 @@ end
 vim.filetype.add({
 	extension = {
 		svg = "html",
+		env = "dotenv",
+	},
+	filename = {
+		[".env"] = "dotenv",
+		["tsconfig.json"] = "jsonc",
+		[".yamlfmt"] = "yaml",
 	},
 	pattern = {
 		["[jt]sconfig.*.json"] = "jsonc",
-		[".env.*"] = "dotenv",
+		["%.env%.[%w_.-]+"] = "dotenv",
 	},
 })
