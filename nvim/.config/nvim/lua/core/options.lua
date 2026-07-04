@@ -49,14 +49,10 @@ end
 -- Filetype detection
 vim.filetype.add({
 	extension = {
-		env = "sh",
 		svg = "html",
-	},
-	filename = {
-		[".env.*"] = "sh",
 	},
 	pattern = {
 		["[jt]sconfig.*.json"] = "jsonc",
-		["%.env%.[%w_.-]+"] = "sh",
+		[".env.*"] = "dotenv",
 	},
 })
