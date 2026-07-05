@@ -53,12 +53,13 @@ vim.filetype.add({
 		env = "dotenv",
 	},
 	filename = {
-		[".env"] = "dotenv",
 		["tsconfig.json"] = "jsonc",
 		[".yamlfmt"] = "yaml",
 	},
 	pattern = {
 		["[jt]sconfig.*.json"] = "jsonc",
-		["%.env%.[%w_.-]+"] = "dotenv",
+		["%.env%.%w+"] = "sh",
+		["%.env"] = "sh",
+		["%.env%.[%w_.-]+"] = "sh",
 	},
 })
