@@ -59,7 +59,6 @@ return {
 				astro = { "prettier" },
 				sql = { "sqlfmt" },
 				lua = { "luaformatter" },
-				toml = { "tombi" },
 				typescript = { "biome", "biome-organize-imports" },
 				typescriptreact = { "biome", "biome-organize-imports" },
 				javascript = { "biome", "biome-organize-imports" },
