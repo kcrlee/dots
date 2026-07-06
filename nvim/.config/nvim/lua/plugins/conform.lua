@@ -81,6 +81,7 @@ return {
 				sh = { "shfmt" },
 				bash = { "shfmt" },
 				zsh = { "shfmt" },
+				haskell = { "fourmolu" },
 			},
 			default_format_opts = {
 				lsp_format = "fallback",
