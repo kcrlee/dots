@@ -23,6 +23,7 @@ return {
 		vim.lsp.enable({
 			"bashls",
 			"expert",
+			"hls",
 			"html",
 			"jsonls",
 			"lua_ls",
