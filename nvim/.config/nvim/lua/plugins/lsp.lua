@@ -29,12 +29,14 @@ return {
 			"lua_ls",
 			"svelte",
 			"sourcekit",
+			"shopify_theme_ls",
 			"tailwindcss",
+			"tsgo",
 			"tombi",
 			"kulala_ls",
 			"rust_analyzer",
 			"graphql",
-			"tsgo",
+			"vue_ls",
 		})
 
 		vim.lsp.config("lua_ls", {
