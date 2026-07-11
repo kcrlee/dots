@@ -44,14 +44,18 @@ install_packages_macos() {
         eval "$(/opt/homebrew/bin/brew shellenv)"
     fi
 
-    local packages=(stow fzf fd tmux direnv)
+    # tree-sitter: CLI used by nvim-treesitter (main) / tree-sitter-manager to
+    # build parsers; without it parser installs fail and retry every startup.
+    local packages=(stow fzf fd tmux direnv tree-sitter)
 
     info "Installing packages via Homebrew…"
     brew install "${packages[@]}"
 }
 
 install_packages_fedora() {
-    local packages=(stow fzf fd-find tmux direnv)
+    # tree-sitter-cli: used by nvim-treesitter (main) / tree-sitter-manager to
+    # build parsers; without it parser installs fail and retry every startup.
+    local packages=(stow fzf fd-find tmux direnv tree-sitter-cli)
 
     info "Installing packages via dnf…"
     sudo dnf install -y "${packages[@]}"
