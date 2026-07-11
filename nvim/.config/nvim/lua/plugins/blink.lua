@@ -1,5 +1,5 @@
 return {
-	config = function()
+	config = function ()
 		---@module 'blink.cmp'
 		local blink = require("blink.cmp")
 		blink.setup({
@@ -14,12 +14,12 @@ return {
 					path = vim.fn.stdpath('state') .. '/blink/cmp/frecency.dat',
 					-- UNSAFE!! When enabled, disables the lock and fsync when writing to the frecency database.
 					-- This should only be used on unsupported platforms (e.g. alpine, termux)
-					unsafe_no_lock = false,
+					unsafe_no_lock = false
 				},
 				prebuilt_binaries = {
 					download = true,
-					force_version = "1.*",
-				},
+					force_version = "1.*"
+				}
 			},
 			signature = {
 				enabled = true,
@@ -30,43 +30,43 @@ return {
 					max_height = 80,
 					scrollbar = false,
 					treesitter_highlighting = true,
-					show_documentation = true,
-				},
+					show_documentation = true
+				}
 			},
 			snippets = { preset = "default" },
 			sources = {
 				default = { "lsp", "lazydev", "path", "snippets", "buffer" },
 				per_filetype = {
-					lua = { inherit_defaults = true, "lazydev" },
+					lua = { inherit_defaults = true, "lazydev" }
 				},
 				providers = {
 					lsp = {
 						name = "lsp",
 						enabled = true,
 						module = "blink.cmp.sources.lsp",
-						max_items = 50,
+						max_items = 50
 					},
 					lazydev = {
 						name = "LazyDev",
 						module = "lazydev.integrations.blink",
-						score_offset = 100,
-					},
-				},
+						score_offset = 100
+					}
+				}
 			},
 			cmdline = {
-				enabled = true,
+				enabled = true
 			},
 			completion = {
 				list = {
 					selection = {
 						preselect = false,
-						auto_insert = false,
-					},
+						auto_insert = false
+					}
 				},
 				accept = {
 					auto_brackets = {
-						enabled = false,
-					},
+						enabled = false
+					}
 				},
 				menu = {
 					border = "rounded",
@@ -77,13 +77,13 @@ return {
 						components = {
 							source_name = {
 								width = { max = 30 },
-								text = function(ctx)
+								text = function (ctx)
 									return "[" .. ctx.source_name .. "]"
 								end,
-								highlight = "BlinkCmpSource",
-							},
-						},
-					},
+								highlight = "BlinkCmpSource"
+							}
+						}
+					}
 				},
 				documentation = {
 					auto_show = true,
@@ -95,14 +95,14 @@ return {
 						max_height = 20,
 						direction_priority = {
 							menu_north = { 'e', 'w', 's', 'n' },
-							menu_south = { "e", "w" },
-						},
-					},
-				},
+							menu_south = { "e", "w" }
+						}
+					}
+				}
 			},
 			appearance = {
 				use_nvim_cmp_as_default = false,
-				nerd_font_variant = "mono",
+				nerd_font_variant = "mono"
 			},
 			keymap = {
 				["<C-space>"] = { "show", "show_documentation", "hide_documentation", "fallback" },
@@ -113,17 +113,16 @@ return {
 				["<C-b>"] = { "scroll_documentation_down", "fallback" },
 				["<C-f>"] = { "scroll_documentation_up", "fallback" },
 				["<C-l>"] = { "snippet_forward", "fallback" },
-				["<C-h>"] = { "snippet_backward", "fallback" },
-			},
+				["<C-h>"] = { "snippet_backward", "fallback" }
+			}
 		})
 	end,
 	dependencies = {
 		{
 			defer = true,
-			src = "https://github.com/nvim-lua/plenary.nvim",
-		},
+			src = "https://github.com/nvim-lua/plenary.nvim"
+		}
 	},
-	data = { build = "cargo build --release" },
 	defer = true,
 	src = "https://github.com/Saghen/blink.cmp",
 	version = vim.version.range("*")

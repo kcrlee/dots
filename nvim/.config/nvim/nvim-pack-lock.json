@@ -132,6 +132,10 @@
       "rev": "87db18b8d19c8b0eed399f52e4c527ce5afe4817",
       "src": "https://github.com/chomosuke/typst-preview.nvim"
     },
+    "unpack.nvim": {
+      "rev": "e4319bf3b429d3ef5ed99f1e7710597f65b187dd",
+      "src": "https://github.com/mezdelex/unpack.nvim"
+    },
     "wezterm-types": {
       "rev": "d8b1671db6de96e3c4e44ce5cfd1c9c31d3828bf",
       "src": "https://github.com/DrKJeff16/wezterm-types"

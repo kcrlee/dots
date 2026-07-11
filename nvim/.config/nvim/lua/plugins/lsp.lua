@@ -1,7 +1,7 @@
 return {
-	config = function()
+	config = function ()
 		require("mason").setup({
-			registries = { "github:crashdummyy/mason-registry", "github:mason-org/mason-registry" },
+			registries = { "github:crashdummyy/mason-registry", "github:mason-org/mason-registry" }
 		})
 		require("mason-lspconfig").setup()
 
@@ -12,12 +12,12 @@ return {
 						completionItem = {
 							snippetSupport = true,
 							resolveSupport = {
-								properties = { "documentation", "detail", "additionalTextEdits" },
-							},
-						},
-					},
-				},
-			}),
+								properties = { "documentation", "detail", "additionalTextEdits" }
+							}
+						}
+					}
+				}
+			})
 		})
 
 		vim.lsp.enable({
@@ -36,7 +36,7 @@ return {
 			"kulala_ls",
 			"rust_analyzer",
 			"graphql",
-			"vue_ls",
+			"vue_ls"
 		})
 
 		vim.lsp.config("lua_ls", {
@@ -44,9 +44,9 @@ return {
 				Lua = {
 					telemetry = { enable = false },
 					diagnostics = { globals = { "vim", "require" } },
-					workspace = { checkThirdParty = false },
-				},
-			},
+					workspace = { checkThirdParty = false }
+				}
+			}
 		})
 
 		vim.lsp.document_color.enable(false)
@@ -58,8 +58,8 @@ return {
 					[vim.diagnostic.severity.ERROR] = "",
 					[vim.diagnostic.severity.WARN] = "",
 					[vim.diagnostic.severity.INFO] = "",
-					[vim.diagnostic.severity.HINT] = "",
-				},
+					[vim.diagnostic.severity.HINT] = ""
+				}
 			},
 			update_in_insert = false,
 			underline = true,
@@ -70,20 +70,20 @@ return {
 				border = "rounded",
 				source = true,
 				header = "",
-				prefix = "",
-			},
+				prefix = ""
+			}
 		})
 	end,
 	defer = true,
 	dependencies = {
 		{
 			defer = true,
-			src = "https://github.com/williamboman/mason.nvim",
+			src = "https://github.com/williamboman/mason.nvim"
 		},
 		{
 			defer = true,
-			src = "https://github.com/williamboman/mason-lspconfig.nvim",
-		},
+			src = "https://github.com/williamboman/mason-lspconfig.nvim"
+		}
 	},
-	src = "https://github.com/neovim/nvim-lspconfig",
+	src = "https://github.com/neovim/nvim-lspconfig"
 }

@@ -8,6 +8,9 @@ return {
 			terminal = { enabled = true }
 		})
 	end,
-	defer = true,
+	-- Not deferred: claudecode.nvim is eager and its snacks terminal provider
+	-- caches `pcall(require, "snacks")` at setup time. If Snacks is deferred it
+	-- isn't on the runtimepath yet, so claudecode caches "snacks unavailable"
+	-- and warns on every cursor move. Loading Snacks eagerly fixes that.
 	src = "https://github.com/folke/snacks.nvim",
 }
