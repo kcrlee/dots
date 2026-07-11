@@ -1,5 +1,19 @@
 return {
 	config = function()
+		-- Neovim nightly's built-in filetype detection assigns `directory` to any
+		-- buffer whose name ends in `/` (runtime/lua/vim/filetype.lua). Oil's buffers
+		-- are named `oil://.../`, so this clobbers the `filetype=oil` oil sets, and
+		-- oil's parser bails ("Could not find entry under cursor") on every entry.
+		-- Re-assert `oil` when detection wrongly tags an oil buffer as `directory`.
+		vim.api.nvim_create_autocmd("FileType", {
+			pattern = "directory",
+			callback = function(ev)
+				if vim.startswith(vim.api.nvim_buf_get_name(ev.buf), "oil://") then
+					vim.bo[ev.buf].filetype = "oil"
+				end
+			end,
+		})
+
 		local oil = require("oil")
 		oil.setup({
 			default_file_explorer = true,
