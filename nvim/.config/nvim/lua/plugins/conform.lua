@@ -104,6 +104,7 @@ return {
 					"biome",
 					stop_after_first = true,
 				},
+				vue = { "prettier", stop_after_first = true },
 				sh = { "shfmt" },
 				bash = { "shfmt" },
 				zsh = { "shfmt" },
