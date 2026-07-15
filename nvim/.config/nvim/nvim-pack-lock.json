@@ -53,6 +53,10 @@
       "rev": "2a6940af80375532e5e9e7c1f2fc6319a1b7a69d",
       "src": "https://github.com/williamboman/mason.nvim"
     },
+    "neogit": {
+      "rev": "95295edaa26e8e8db5a9bc4119256e602311c6bc",
+      "src": "https://github.com/neogitorg/neogit"
+    },
     "noice.nvim": {
       "rev": "7bfd942",
       "src": "https://github.com/folke/noice.nvim"

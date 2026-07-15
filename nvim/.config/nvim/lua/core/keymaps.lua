@@ -22,3 +22,7 @@ end, { silent = true, noremap = true })
 map("n", "<leader>u", function()
 	require("undotree").open()
 end, { silent = true, noremap = true })
+
+map("n", "<leader>g", function()
+	require("neogit").open()
+end, { silent = true, noremap = true })
