@@ -22,7 +22,7 @@
       "src": "https://github.com/j-hui/fidget.nvim"
     },
     "foldTime": {
-      "rev": "b30f24ae5c0c7926ade709fad47d6aea37d9b3e8",
+      "rev": "573c49da94dfbf7a536e3a07ba5af9acde63a5da",
       "src": "https://github.com/fmaplabs/foldTime"
     },
     "fzf-lua": {
@@ -30,7 +30,7 @@
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
     "kulala.nvim": {
-      "rev": "91cf892008c773ce74ac392c4c12ddff775b7619",
+      "rev": "a9e17ae0236e886371671a7a9f01f070201a9cc1",
       "src": "https://github.com/mistweaverco/kulala.nvim"
     },
     "lazydev.nvim": {
@@ -54,7 +54,7 @@
       "src": "https://github.com/iamcco/markdown-preview.nvim"
     },
     "mason-lspconfig.nvim": {
-      "rev": "47059d71b42d74b0a1e9f61c1d99d301039c3b5b",
+      "rev": "a4068c3ebd4cb335b25239e5ea35c22ee6007962",
       "src": "https://github.com/williamboman/mason-lspconfig.nvim"
     },
     "mason.nvim": {
@@ -78,7 +78,7 @@
       "src": "https://github.com/mfussenegger/nvim-lint"
     },
     "nvim-lspconfig": {
-      "rev": "2c227d59589957fa4404b7de5f61d72c0a78a62d",
+      "rev": "d5b6e3db4c17b0146f63a2fc47e2027a754b2cb1",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-treesitter": {
@@ -96,7 +96,7 @@
       "version": "'main'"
     },
     "nvim-web-devicons": {
-      "rev": "09d1324e264c6950262dbe02a9bce2933a6800db",
+      "rev": "0ca28b61a04fe7426cefbdd52c2647ef0e335b5f",
       "src": "https://github.com/nvim-tree/nvim-web-devicons"
     },
     "oil.nvim": {
@@ -104,7 +104,7 @@
       "src": "https://github.com/stevearc/oil.nvim"
     },
     "pack-ui.nvim": {
-      "rev": "de6ebc6c883079983420f8d6a23317c6febc1ac8",
+      "rev": "608fe1139753bc12637837c621fb8e51988a564e",
       "src": "https://github.com/jtprogru/pack-ui.nvim"
     },
     "plenary.nvim": {
@@ -137,7 +137,7 @@
       "src": "https://github.com/dmmulroy/ts-error-translator.nvim"
     },
     "typst-preview.nvim": {
-      "rev": "87db18b8d19c8b0eed399f52e4c527ce5afe4817",
+      "rev": "1c2e19486397be1c580b560fc50ee36abe329c46",
       "src": "https://github.com/chomosuke/typst-preview.nvim"
     },
     "unpack.nvim": {
