@@ -22,5 +22,6 @@ require("nvim-web-devicons").setup({
 		[".env.development.local"] = env_icon,
 		[".env.production.local"] = env_icon,
 		[".env.test.local"] = env_icon,
+		["*.vars"] = env_icon,
 	},
 })
