@@ -1,5 +1,5 @@
 vim.loader.enable()
 require("core.options")
-require("core.unpack")
+require("core.plugins")
 require("core.autocmds")
 require("core.keymaps")

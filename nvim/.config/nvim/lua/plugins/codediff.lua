@@ -1,8 +1,4 @@
-return {
-	config = function()
-		-- local codediff = require("codediff.nvim")
-		-- codediff.setup({})
-	end,
-	defer = true,
-	src = "https://github.com/esmuellert/codediff.nvim",
-}
+vim.pack.add({ "https://github.com/esmuellert/codediff.nvim" })
+
+-- local codediff = require("codediff.nvim")
+-- codediff.setup({})

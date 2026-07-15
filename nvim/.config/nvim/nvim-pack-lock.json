@@ -5,10 +5,6 @@
       "src": "https://github.com/Saghen/blink.cmp",
       "version": ">=0.0.0"
     },
-    "claudecode.nvim": {
-      "rev": "2390c6e45c4789072c293ac69de051d169668b29",
-      "src": "https://github.com/coder/claudecode.nvim"
-    },
     "codediff.nvim": {
       "rev": "7608f3b436ce1f84a4888f75e53079caa981a2e9",
       "src": "https://github.com/esmuellert/codediff.nvim"
@@ -20,10 +16,6 @@
     "fidget.nvim": {
       "rev": "6f793b2bcd2d35e201c09520f698bb763220908a",
       "src": "https://github.com/j-hui/fidget.nvim"
-    },
-    "foldTime": {
-      "rev": "573c49da94dfbf7a536e3a07ba5af9acde63a5da",
-      "src": "https://github.com/fmaplabs/foldTime"
     },
     "fzf-lua": {
       "rev": "532d463f5c83595192fe740572d8fd6902b2217a",
@@ -61,10 +53,6 @@
       "rev": "2a6940af80375532e5e9e7c1f2fc6319a1b7a69d",
       "src": "https://github.com/williamboman/mason.nvim"
     },
-    "neogit": {
-      "rev": "a0847c4bea5a5f92a36e3f3bf7da99d7d685d3ac",
-      "src": "https://github.com/NeogitOrg/neogit"
-    },
     "noice.nvim": {
       "rev": "7bfd942",
       "src": "https://github.com/folke/noice.nvim"
@@ -90,11 +78,6 @@
       "rev": "b311b30818951d01f7b4bf650521b868b3fece16",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter-context"
     },
-    "nvim-treesitter-textobjects": {
-      "rev": "851e865342e5a4cb1ae23d31caf6e991e1c99f1e",
-      "src": "https://github.com/nvim-treesitter/nvim-treesitter-textobjects",
-      "version": "'main'"
-    },
     "nvim-web-devicons": {
       "rev": "0ca28b61a04fe7426cefbdd52c2647ef0e335b5f",
       "src": "https://github.com/nvim-tree/nvim-web-devicons"
@@ -102,10 +85,6 @@
     "oil.nvim": {
       "rev": "b73018b75affd13fa38e2fc94ef753b465f770d7",
       "src": "https://github.com/stevearc/oil.nvim"
-    },
-    "pack-ui.nvim": {
-      "rev": "608fe1139753bc12637837c621fb8e51988a564e",
-      "src": "https://github.com/jtprogru/pack-ui.nvim"
     },
     "plenary.nvim": {
       "rev": "74b06c6c75e4eeb3108ec01852001636d85a932b",
@@ -139,10 +118,6 @@
     "typst-preview.nvim": {
       "rev": "1c2e19486397be1c580b560fc50ee36abe329c46",
       "src": "https://github.com/chomosuke/typst-preview.nvim"
-    },
-    "unpack.nvim": {
-      "rev": "e4319bf3b429d3ef5ed99f1e7710597f65b187dd",
-      "src": "https://github.com/mezdelex/unpack.nvim"
     },
     "wezterm-types": {
       "rev": "d8b1671db6de96e3c4e44ce5cfd1c9c31d3828bf",

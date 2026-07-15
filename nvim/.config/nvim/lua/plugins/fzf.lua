@@ -1,8 +1,4 @@
-return {
-	config = function()
-		local fzf = require("fzf-lua")
-		fzf.setup({ "telescope" })
-	end,
-	defer = true,
-	src = "https://github.com/ibhagwan/fzf-lua",
-}
+vim.pack.add({ "https://github.com/ibhagwan/fzf-lua" })
+
+local fzf = require("fzf-lua")
+fzf.setup({ "telescope" })

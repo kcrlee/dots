@@ -1,7 +1,3 @@
-return {
-	config = function()
-		require("ledger").setup({})
-	end,
-	defer = true,
-	src = "https://github.com/fmaplabs/ledger",
-}
+vim.pack.add({ "https://github.com/fmaplabs/ledger" })
+
+require("ledger").setup({})
