@@ -16,7 +16,6 @@ vim.pack.add({
 -- 		end
 -- 	end,
 -- })
-
 local oil = require("oil")
 oil.setup({
 	default_file_explorer = true,

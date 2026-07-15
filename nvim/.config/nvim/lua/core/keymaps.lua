@@ -1,5 +1,4 @@
 local map = vim.keymap.set
-
 map("n", "<leader>i", ":Inspect <Enter>")
 
 map("n", "<leader>ff", ":FzfLua files<Enter>")
