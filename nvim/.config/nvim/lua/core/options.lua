@@ -1,5 +1,6 @@
 --global
 vim.g.mapleader = ","
+vim.g.loaded_nvim_dir_plugin = 1
 vim.o.spelllang = "en_us"
 vim.o.termguicolors = true
 vim.opt.completeopt = { "fuzzy", "menuone", "noselect" }

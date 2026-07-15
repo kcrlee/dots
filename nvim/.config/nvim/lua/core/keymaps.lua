@@ -18,3 +18,7 @@ end, { silent = true, noremap = true })
 map("n", "<leader>S", function()
 	require("snacks").scratch.select()
 end, { silent = true, noremap = true })
+
+map("n", "<leader>u", function()
+	require("undotree").open()
+end, { silent = true, noremap = true })
