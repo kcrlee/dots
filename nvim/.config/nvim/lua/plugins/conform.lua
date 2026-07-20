@@ -58,7 +58,7 @@ conform.setup({
 		swift = { "swiftformat" },
 		astro = { "prettier" },
 		sql = { "sqlfmt" },
-		lua = { "luaformatter" },
+		lua = { "stylua" },
 		typescript = {
 			"prettier",
 			"biome",
