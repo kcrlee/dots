@@ -7,7 +7,7 @@ local config = {
 		horizontal = "Left",
 		vertical = "Top",
 	},
-	hide_tab_bar_if_only_one_tab = false,
+	hide_tab_bar_if_only_one_tab = true,
 	automatically_reload_config = true,
 	enable_wayland = true,
 	font = font_config.get_fonts(),
@@ -20,9 +20,9 @@ local config = {
 		{
 			name = "pi",
 			remote_address = "100.100.94.39",
-			username = "kyle"
-		}
-	}
+			username = "kyle",
+		},
+	},
 }
 
 return config

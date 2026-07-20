@@ -23,14 +23,14 @@ function keybind_config.get_keybinds()
 
 		-- Spawning a new split (left-right)
 		{
-			key = "o",
+			key = "p",
 			mods = "ALT|SHIFT",
 			action = act({ SplitHorizontal = { domain = "CurrentPaneDomain" } }),
 		},
 
 		-- Spawning a new split (top-down)
 		{
-			key = "p",
+			key = "o",
 			mods = "ALT|SHIFT",
 			action = act({ SplitVertical = { domain = "CurrentPaneDomain" } }),
 		},
