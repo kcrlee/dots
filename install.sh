@@ -46,7 +46,8 @@ install_packages_macos() {
 
     # tree-sitter: CLI used by nvim-treesitter (main) / tree-sitter-manager to
     # build parsers; without it parser installs fail and retry every startup.
-    local packages=(stow fzf fd tmux direnv tree-sitter)
+    # gh + thefuck back their oh-my-zsh plugins; zsh ships with macOS.
+    local packages=(stow fzf fd tmux direnv tree-sitter gh thefuck)
 
     info "Installing packages via Homebrew…"
     brew install "${packages[@]}"
@@ -55,10 +56,13 @@ install_packages_macos() {
 install_packages_fedora() {
     # tree-sitter-cli: used by nvim-treesitter (main) / tree-sitter-manager to
     # build parsers; without it parser installs fail and retry every startup.
-    local packages=(stow fzf fd-find tmux direnv tree-sitter-cli)
+    # gh + thefuck back their oh-my-zsh plugins.
+    local packages=(stow fzf fd-find tmux direnv tree-sitter-cli zsh gh thefuck)
 
     info "Installing packages via dnf…"
-    sudo dnf install -y "${packages[@]}"
+    # --skip-unavailable: gh may live in a third-party repo that isn't
+    # configured yet; don't let one missing package abort the bootstrap.
+    sudo dnf install -y --skip-unavailable "${packages[@]}"
 }
 
 clone_if_missing() {
@@ -99,26 +103,48 @@ stow_packages() {
 }
 
 # ============================================================================
+# Zsh
+# ============================================================================
+setup_zsh() {
+    if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
+        info "Installing oh-my-zsh…"
+        # CHSH/RUNZSH: shell change is handled by set_default_shell; don't
+        # drop into zsh mid-script. KEEP_ZSHRC: we link our own below.
+        CHSH=no RUNZSH=no KEEP_ZSHRC=yes \
+            sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    fi
+
+    # zsh-vi-mode is a third-party plugin; oh-my-zsh only loads it if it has
+    # been cloned into $ZSH_CUSTOM/plugins first.
+    local zsh_custom="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"
+    clone_if_missing https://github.com/jeffreytse/zsh-vi-mode \
+        "$zsh_custom/plugins/zsh-vi-mode"
+
+    ln -sfn "$DOTS_DIR/.zshrc" "$HOME/.zshrc"
+    ok "Linked ~/.zshrc"
+}
+
+# ============================================================================
 # Set default shell
 # ============================================================================
 set_default_shell() {
-    local bash_path
-    bash_path="$(command -v bash)"
+    local zsh_path
+    zsh_path="$(command -v zsh)"
 
-    if [[ "$SHELL" == "$bash_path" ]]; then
-        ok "Default shell is already bash"
+    if [[ "$SHELL" == "$zsh_path" ]]; then
+        ok "Default shell is already zsh"
         return
     fi
 
-    # Ensure bash is in /etc/shells
-    if ! grep -qx "$bash_path" /etc/shells 2>/dev/null; then
-        info "Adding $bash_path to /etc/shells…"
-        echo "$bash_path" | sudo tee -a /etc/shells >/dev/null
+    # Ensure zsh is in /etc/shells
+    if ! grep -qx "$zsh_path" /etc/shells 2>/dev/null; then
+        info "Adding $zsh_path to /etc/shells…"
+        echo "$zsh_path" | sudo tee -a /etc/shells >/dev/null
     fi
 
-    info "Changing default shell to bash…"
-    chsh -s "$bash_path"
-    ok "Default shell set to bash (restart your terminal)"
+    info "Changing default shell to zsh…"
+    chsh -s "$zsh_path"
+    ok "Default shell set to zsh (restart your terminal)"
 }
 
 # ============================================================================
@@ -134,6 +160,9 @@ main() {
 
     # Symlink configs
     stow_packages "$os"
+
+    # Zsh config + plugins
+    setup_zsh
 
     # Shell
     set_default_shell

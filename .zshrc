@@ -3,8 +3,19 @@
 
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
-eval "$(/opt/homebrew/bin/brew shellenv)"
-export PATH="$PATH:/Users/kyle/.local/bin"
+
+# Homebrew (macOS only)
+if [[ -x /opt/homebrew/bin/brew ]]; then
+	eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
+export PATH="$PATH:$HOME/.local/bin"
+
+# bob-managed neovim
+if [[ -d "$HOME/.local/share/bob/nvim-bin" ]]; then
+	export PATH="$PATH:$HOME/.local/share/bob/nvim-bin"
+fi
+
 ZSH_THEME="robbyrussell"
 zvm_after_init_commands+=('source <(fzf --zsh)')
 
@@ -13,8 +24,12 @@ plugins=(
 	zsh-vi-mode
 	fzf
 	gh
-	thefuck
 )
+
+# thefuck's plugin prints an install nag on every startup if the command is missing
+if command -v thefuck &>/dev/null; then
+	plugins+=(thefuck)
+fi
 
 export MANPATH="/usr/local/man:$MANPATH"
 export LANG=en_US.UTF-8
@@ -29,7 +44,11 @@ fi
 source $ZSH/oh-my-zsh.sh
 
 # pnpm
-export PNPM_HOME="/Users/kyle/Library/pnpm"
+if [[ "$OSTYPE" == darwin* ]]; then
+	export PNPM_HOME="$HOME/Library/pnpm"
+else
+	export PNPM_HOME="$HOME/.local/share/pnpm"
+fi
 case ":$PATH:" in
   *":$PNPM_HOME/bin:"*) ;;
   *) export PATH="$PNPM_HOME/bin:$PATH" ;;
