@@ -14,7 +14,8 @@ return {
 	root_dir = function(bufnr, on_dir)
 		local fname = vim.api.nvim_buf_get_name(bufnr)
 		on_dir(
-			util.root_pattern("tsconfig.json", "jsconfig.json", "package.json")(fname)
+			util.root_pattern("package.json")(fname)
+			or util.root_pattern("tsconfig.json", "jsconfig.json")(fname)
 			or vim.fs.dirname(vim.fs.find(".git", { path = fname, upward = true })[1])
 		)
 	end,
@@ -29,8 +30,7 @@ return {
 				includePackageJsonAutoImports = "auto",
 				importModuleSpecifier = "shortest",
 				autoImportFileExcludePatterns = {
-					"**/node_modules/**",
-					"**/dist/**",
+					"dist/**",
 					"**/.tanstack/**",
 					"**/generated/**",
 					"**/packages/gql/dist/**",
