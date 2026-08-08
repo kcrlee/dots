@@ -11,7 +11,10 @@ fi
 
 export PATH="$PATH:$HOME/.local/bin"
 
-export PATH="$PATH:$HOME/.local/share/bob/nvim-bin"
+# bob-managed neovim
+if [[ -d "$HOME/.local/share/bob/nvim-bin" ]]; then
+	export PATH="$PATH:$HOME/.local/share/bob/nvim-bin"
+fi
 
 ZSH_THEME="robbyrussell"
 zvm_after_init_commands+=('source <(fzf --zsh)')
