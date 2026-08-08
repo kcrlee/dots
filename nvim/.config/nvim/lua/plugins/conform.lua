@@ -1,6 +1,24 @@
 vim.pack.add({ "https://github.com/stevearc/conform.nvim" })
 
 local conform = require("conform")
+
+-- In biome projects run biome + organize-imports; elsewhere keep the
+-- first-available-formatter behavior (stop_after_first can't express both).
+local function biome_project_chain(fallback)
+	return function(bufnr)
+		local dirname = vim.fs.dirname(vim.api.nvim_buf_get_name(bufnr))
+		local has_biome_config = vim.fs.find({ "biome.json", "biome.jsonc" }, {
+			upward = true,
+			path = dirname,
+			type = "file",
+		})[1]
+		if has_biome_config then
+			return { "biome", "biome-organize-imports" }
+		end
+		return fallback
+	end
+end
+
 conform.setup({
 	quiet = true,
 	formatters = {
@@ -59,29 +77,10 @@ conform.setup({
 		astro = { "prettier" },
 		sql = { "sqlfmt" },
 		lua = { "stylua" },
-		typescript = {
-			"prettier",
-			"biome",
-			"biome-organize-imports",
-			stop_after_first = true,
-		},
-		typescriptreact = {
-			"prettier",
-			"biome",
-			"biome-organize-imports",
-			stop_after_first = true,
-		},
-		javascript = {
-			"prettier",
-			"biome",
-			"biome-organize-imports",
-			stop_after_first = true,
-		},
-		javascriptreact = {
-			"biome",
-			"biome-organize-imports",
-			stop_after_first = true,
-		},
+		typescript = biome_project_chain({ "prettier", "biome", stop_after_first = true }),
+		typescriptreact = biome_project_chain({ "prettier", "biome", stop_after_first = true }),
+		javascript = biome_project_chain({ "prettier", "biome", stop_after_first = true }),
+		javascriptreact = biome_project_chain({ "biome" }),
 		json = {
 			"jq",
 			"biome",
