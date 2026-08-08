@@ -11,6 +11,11 @@ fi
 
 export PATH="$PATH:$HOME/.local/bin"
 
+# rust/cargo tools (bob, starship, uv, ...)
+if [[ -f "$HOME/.cargo/env" ]]; then
+	source "$HOME/.cargo/env"
+fi
+
 # bob-managed neovim
 if [[ -d "$HOME/.local/share/bob/nvim-bin" ]]; then
 	export PATH="$PATH:$HOME/.local/share/bob/nvim-bin"
