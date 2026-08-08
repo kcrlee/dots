@@ -11,10 +11,7 @@ fi
 
 export PATH="$PATH:$HOME/.local/bin"
 
-# bob-managed neovim
-if [[ -d "$HOME/.local/share/bob/nvim-bin" ]]; then
-	export PATH="$PATH:$HOME/.local/share/bob/nvim-bin"
-fi
+export PATH="$PATH:$HOME/.local/share/bob/nvim-bin"
 
 ZSH_THEME="robbyrussell"
 zvm_after_init_commands+=('source <(fzf --zsh)')
@@ -50,7 +47,7 @@ else
 	export PNPM_HOME="$HOME/.local/share/pnpm"
 fi
 case ":$PATH:" in
-  *":$PNPM_HOME/bin:"*) ;;
-  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
+*":$PNPM_HOME/bin:"*) ;;
+*) export PATH="$PNPM_HOME/bin:$PATH" ;;
 esac
 # pnpm end
