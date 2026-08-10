@@ -9,19 +9,9 @@ require("mason").setup({
 })
 require("mason-lspconfig").setup()
 
+-- blink.lua loads before this file (plugins load alphabetically)
 vim.lsp.config("*", {
-	capabilities = vim.tbl_deep_extend("force", vim.lsp.protocol.make_client_capabilities(), {
-		textDocument = {
-			completion = {
-				completionItem = {
-					snippetSupport = true,
-					resolveSupport = {
-						properties = { "documentation", "detail", "additionalTextEdits" },
-					},
-				},
-			},
-		},
-	}),
+	capabilities = require("blink.cmp").get_lsp_capabilities(),
 })
 
 vim.lsp.enable({
@@ -29,7 +19,6 @@ vim.lsp.enable({
 	"expert",
 	"hls",
 	"html",
-	"htmx",
 	"jsonls",
 	"lua_ls",
 	"svelte",
@@ -48,6 +37,7 @@ vim.lsp.enable({
 -- calls, not lsp/*.lua files: plugin lsp/ files win the runtimepath merge,
 -- while config() calls take precedence over all runtime files.
 vim.lsp.config("html", {
+	cmd = { "vscode-html-language-server", "--stdio" },
 	filetypes = { "html", "htmldjango" },
 })
 
