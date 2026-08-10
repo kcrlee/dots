@@ -91,7 +91,7 @@ conform.setup({
 			stop_after_first = true,
 		},
 		python = { "black" },
-		html = { "prettier" },
+		html = { "biome", "prettier", stop_after_first = true },
 		svg = { "prettier" },
 		svelte = { "biome", "biome-organize-imports" },
 		css = { "biome" },
