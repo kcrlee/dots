@@ -34,7 +34,7 @@ return {
 		end
 		return vim.lsp.rpc.start({ cmd, "--stdio" }, dispatchers)
 	end,
-	filetypes = { "html" },
+	filetypes = { "html", "htmldjango" },
 	root_markers = { "package.json", ".git" },
 	---@type lspconfig.settings.html
 	settings = {},
