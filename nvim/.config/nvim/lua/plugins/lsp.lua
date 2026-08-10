@@ -44,6 +44,72 @@ vim.lsp.enable({
 	"vue_ls",
 })
 
+-- Deltas for servers nvim-lspconfig ships. These must be vim.lsp.config()
+-- calls, not lsp/*.lua files: plugin lsp/ files win the runtimepath merge,
+-- while config() calls take precedence over all runtime files.
+vim.lsp.config("html", {
+	filetypes = { "html", "htmldjango" },
+})
+
+vim.lsp.config("hls", {
+	filetypes = { "haskell", "lhaskell", "cabal" },
+	settings = {
+		haskell = { formattingProvider = "fourmolu" },
+	},
+})
+
+vim.lsp.config("graphql", {
+	filetypes = { "typescript", "javascript", "graphql", "typescriptreact", "javascriptreact" },
+	root_dir = function(bufnr, on_dir)
+		local fname = vim.api.nvim_buf_get_name(bufnr)
+		local util = require("lspconfig.util")
+		on_dir(util.root_pattern(".graphqlrc*", ".graphql.config.*", "graphql.config.*", "package.json")(fname))
+	end,
+})
+
+vim.lsp.config("sourcekit", {
+	cmd = { "xcrun", "sourcekit-lsp" },
+})
+
+vim.lsp.config("tsgo", {
+	settings = {
+		typescript = {
+			tsserver = { maxTsServerMemory = 8192 },
+			preferences = {
+				includeCompletionsForModuleExports = true,
+				includeCompletionsForImportStatements = true,
+				includeCompletionsWithSnippetText = true,
+				includeCompletionsWithInsertText = true,
+				includePackageJsonAutoImports = "auto",
+				importModuleSpecifier = "shortest",
+				autoImportFileExcludePatterns = {
+					"dist/**",
+					"**/.tanstack/**",
+					"**/generated/**",
+					"**/packages/gql/dist/**",
+				},
+			},
+			suggest = {
+				completeFunctionCalls = true,
+				autoImports = true,
+			},
+			updateImportsOnFileMove = { enabled = "always" },
+		},
+		javascript = {
+			tsserver = { maxTsServerMemory = 8192 },
+			preferences = {
+				includeCompletionsForModuleExports = true,
+				includeCompletionsForImportStatements = true,
+				includeCompletionsWithSnippetText = true,
+				includeCompletionsWithInsertText = true,
+				includePackageJsonAutoImports = "auto",
+			},
+			suggest = { autoImports = true },
+			updateImportsOnFileMove = { enabled = "always" },
+		},
+	},
+})
+
 vim.lsp.config("lua_ls", {
 	settings = {
 		Lua = {
