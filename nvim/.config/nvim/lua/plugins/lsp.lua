@@ -5,7 +5,7 @@ vim.pack.add({
 })
 
 require("mason").setup({
-	registries = { "github:crashdummyy/mason-registry", "github:mason-org/mason-registry" }
+	registries = { "github:crashdummyy/mason-registry", "github:mason-org/mason-registry" },
 })
 require("mason-lspconfig").setup()
 
@@ -16,12 +16,12 @@ vim.lsp.config("*", {
 				completionItem = {
 					snippetSupport = true,
 					resolveSupport = {
-						properties = { "documentation", "detail", "additionalTextEdits" }
-					}
-				}
-			}
-		}
-	})
+						properties = { "documentation", "detail", "additionalTextEdits" },
+					},
+				},
+			},
+		},
+	}),
 })
 
 vim.lsp.enable({
@@ -29,6 +29,7 @@ vim.lsp.enable({
 	"expert",
 	"hls",
 	"html",
+	"htmx",
 	"jsonls",
 	"lua_ls",
 	"svelte",
@@ -40,7 +41,7 @@ vim.lsp.enable({
 	"kulala_ls",
 	"rust_analyzer",
 	"graphql",
-	"vue_ls"
+	"vue_ls",
 })
 
 vim.lsp.config("lua_ls", {
@@ -48,9 +49,9 @@ vim.lsp.config("lua_ls", {
 		Lua = {
 			telemetry = { enable = false },
 			diagnostics = { globals = { "vim", "require" } },
-			workspace = { checkThirdParty = false }
-		}
-	}
+			workspace = { checkThirdParty = false },
+		},
+	},
 })
 
 vim.lsp.document_color.enable(false)
@@ -62,8 +63,8 @@ vim.diagnostic.config({
 			[vim.diagnostic.severity.ERROR] = "",
 			[vim.diagnostic.severity.WARN] = "",
 			[vim.diagnostic.severity.INFO] = "",
-			[vim.diagnostic.severity.HINT] = ""
-		}
+			[vim.diagnostic.severity.HINT] = "",
+		},
 	},
 	update_in_insert = false,
 	underline = true,
@@ -74,6 +75,6 @@ vim.diagnostic.config({
 		border = "rounded",
 		source = true,
 		header = "",
-		prefix = ""
-	}
+		prefix = "",
+	},
 })
