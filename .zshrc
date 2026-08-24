@@ -59,3 +59,8 @@ case ":$PATH:" in
 *) export PATH="$PNPM_HOME/bin:$PATH" ;;
 esac
 # pnpm end
+
+# direnv — per-directory env vars (.envrc); keep this near the end of the file
+if command -v direnv &>/dev/null; then
+	eval "$(direnv hook zsh)"
+fi
