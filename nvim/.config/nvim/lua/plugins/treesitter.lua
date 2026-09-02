@@ -34,6 +34,6 @@ require("tree-sitter-manager").setup({
 		"yaml",
 		"vim",
 		"zig",
-	},         -- parsers to install at startup
+	}, -- parsers to install at startup
 	border = "rounded", -- border style for the TUI window
 })
