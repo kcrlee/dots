@@ -52,3 +52,11 @@ map({ "i", "s" }, "<C-h>", function()
 		vim.snippet.jump(-1)
 	end
 end)
+
+-- With the cmdline popup auto-shown, <Up>/<Down> would walk the matches.
+-- Close the menu first so they walk history as usual; <C-n>/<C-p> and
+-- <Tab>/<S-Tab> still move through matches.
+if vim.fn.exists("*wildtrigger") == 1 then
+	map("c", "<Up>", "<C-e><Up>")
+	map("c", "<Down>", "<C-e><Down>")
+end

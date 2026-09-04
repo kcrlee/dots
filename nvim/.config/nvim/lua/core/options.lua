@@ -12,6 +12,16 @@ if vim.fn.exists("+autocomplete") == 1 then
 	vim.o.autocomplete = true
 	vim.o.complete = "o,.,w,b"
 end
+-- Command-line completion: popup menu, fuzzy, nothing preselected so <CR>
+-- runs what was typed. See the CmdlineChanged autocmd for auto-trigger.
+vim.o.wildmenu = true
+vim.opt.wildoptions = { "pum", "fuzzy" }
+-- "noselect" arrived with wildtrigger(); older builds reject it.
+if vim.fn.exists("*wildtrigger") == 1 then
+	vim.o.wildmode = "noselect:lastused,full"
+else
+	vim.o.wildmode = "longest:full,full"
+end
 -- UI
 vim.o.rnu = true
 vim.o.statuscolumn = "%=%{v:lnum} %{v:relnum} %s"

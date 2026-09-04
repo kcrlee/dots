@@ -25,6 +25,22 @@ autocmd("PackChanged", {
 		end
 	end,
 })
+--- Trigger and retrigger characters of every signature-help capable client
+--- attached to `bufnr`, as a set.
+local function signature_trigger_chars(bufnr)
+	local chars = {}
+	for _, c in ipairs(vim.lsp.get_clients({ bufnr = bufnr, method = "textDocument/signatureHelp" })) do
+		local provider = c.server_capabilities.signatureHelpProvider or {}
+		for _, ch in ipairs(provider.triggerCharacters or {}) do
+			chars[ch] = true
+		end
+		for _, ch in ipairs(provider.retriggerCharacters or {}) do
+			chars[ch] = true
+		end
+	end
+	return chars
+end
+
 autocmd("LspAttach", {
 	group = group,
 	callback = function(args)
@@ -64,6 +80,36 @@ autocmd("LspAttach", {
 			vim.lsp.inlay_hint.enable(true, { bufnr = args.buf })
 		end
 
+		-- Auto signature help: open the float when a server trigger character
+		-- ("(", ",") is typed. One autocmd per buffer, reading trigger chars
+		-- from every attached client at call time. <C-s> still works manually.
+		if client:supports_method("textDocument/signatureHelp") and not vim.b[args.buf].lsp_signature_autotrigger then
+			vim.b[args.buf].lsp_signature_autotrigger = true
+			vim.api.nvim_create_autocmd("TextChangedI", {
+				group = vim.api.nvim_create_augroup(group, { clear = false }),
+				buffer = args.buf,
+				callback = function()
+					if vim.fn.pumvisible() == 1 then
+						return
+					end
+					local col = vim.api.nvim_win_get_cursor(0)[2]
+					local char = vim.api.nvim_get_current_line():sub(col, col)
+					if char == "" or not signature_trigger_chars(args.buf)[char] then
+						return
+					end
+					vim.lsp.buf.signature_help({
+						focusable = false,
+						focus = false,
+						silent = true,
+						anchor_bias = "above",
+						max_width = 80,
+						max_height = 12,
+						close_events = { "CursorMoved", "InsertLeave", "BufHidden" },
+					})
+				end,
+			})
+		end
+
 		if client:supports_method("textDocument/hover") then
 			vim.keymap.set("n", "K", function()
 				vim.lsp.buf.hover({
@@ -89,6 +135,18 @@ autocmd("LspAttach", {
 		end
 	end,
 })
+
+-- Command-line completion popup while typing (0.12 wildtrigger()). Older
+-- builds keep <Tab>-driven wildmenu with the same 'wildmode' settings.
+if vim.fn.exists("*wildtrigger") == 1 then
+	autocmd("CmdlineChanged", {
+		group = group,
+		pattern = ":",
+		callback = function()
+			vim.fn.wildtrigger()
+		end,
+	})
+end
 
 autocmd("FileType", {
 	group = group,
