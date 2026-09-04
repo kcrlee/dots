@@ -16,7 +16,9 @@ lualine.setup({
 				color = { fg = "#ff9e64" },
 			},
 			{
-				function() return require("ledger.lualine").get() end,
+				function()
+					return require("ledger.lualine").get()
+				end,
 				cond = function()
 					local ok, ft = pcall(require, "ledger.lualine")
 					return ok and ft.has()
@@ -24,5 +26,4 @@ lualine.setup({
 			},
 		},
 	},
-
 })
