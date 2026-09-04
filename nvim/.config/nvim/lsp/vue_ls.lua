@@ -1,6 +1,6 @@
 -- NOTE: vue_ls runs in hybrid mode and forwards TypeScript requests to a
 -- tsserver-based client (ts_ls or vtsls) via typescript.tsserverRequest.
--- tsgo does not implement that command, so with tsgo as the only TS server
+-- tsc does not implement that command, so with tsc as the only TS server
 -- this handler retries then logs an error, and Vue files get template-side
 -- features only. This mirrors what nvim-lspconfig does today.
 return {
