@@ -10,7 +10,7 @@ vim.lsp.enable({
 	"svelte",
 	"shopify_theme_ls",
 	"tailwindcss",
-	"tsgo",
+	"tsc",
 	"tombi",
 	"kulala_ls",
 	"rust_analyzer",

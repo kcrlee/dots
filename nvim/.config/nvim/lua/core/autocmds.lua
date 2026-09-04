@@ -115,7 +115,7 @@ local function apply_ts_source_actions(bufnr)
 		return
 	end
 
-	local clients = vim.lsp.get_clients({ bufnr = bufnr, name = "tsgo" })
+	local clients = vim.lsp.get_clients({ bufnr = bufnr, name = "tsc" })
 	local client = clients[1]
 	if not client then
 		return
