@@ -50,6 +50,20 @@ autocmd("LspAttach", {
 
 		local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
 
+		-- Native completion. On 0.12 'autocomplete' (options.lua) pops the menu
+		-- through the LSP omnifunc while typing; older builds fall back to
+		-- autotrigger on the server's trigger characters. <C-space>
+		-- (keymaps.lua) opens the menu anywhere.
+		if client:supports_method("textDocument/completion") then
+			vim.lsp.completion.enable(true, client.id, args.buf, {
+				autotrigger = vim.fn.exists("+autocomplete") == 0,
+			})
+		end
+
+		if client:supports_method("textDocument/inlayHint") then
+			vim.lsp.inlay_hint.enable(true, { bufnr = args.buf })
+		end
+
 		if client:supports_method("textDocument/hover") then
 			vim.keymap.set("n", "K", function()
 				vim.lsp.buf.hover({

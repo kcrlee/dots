@@ -1,13 +1,13 @@
 -- lua/core/lsp.lua
 vim.lsp.enable({
 	"bashls",
+	"eslint",
 	"expert",
 	"hls",
 	"html",
 	"jsonls",
 	"lua_ls",
 	"svelte",
-	"sourcekit",
 	"shopify_theme_ls",
 	"tailwindcss",
 	"tsgo",
@@ -19,6 +19,11 @@ vim.lsp.enable({
 })
 
 vim.lsp.document_color.enable(false)
+
+-- lua_ls, tsgo and rust_analyzer all enable lenses in their settings.
+if vim.lsp.codelens.enable then
+	vim.lsp.codelens.enable(true)
+end
 
 vim.diagnostic.config({
 	virtual_text = false,

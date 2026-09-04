@@ -3,7 +3,15 @@ vim.g.mapleader = ","
 vim.g.loaded_nvim_dir_plugin = 1
 vim.o.spelllang = "en_us"
 vim.o.termguicolors = true
-vim.opt.completeopt = { "fuzzy", "menuone", "noselect" }
+-- popup: show completion item docs in a floating window next to the menu.
+vim.opt.completeopt = { "menuone", "noselect", "fuzzy", "popup" }
+vim.o.pumheight = 12
+-- 0.12: pop the menu while typing using 'complete' sources; "o" is the LSP
+-- omnifunc, then current buffer, other windows, loaded buffers.
+if vim.fn.exists("+autocomplete") == 1 then
+	vim.o.autocomplete = true
+	vim.o.complete = "o,.,w,b"
+end
 -- UI
 vim.o.rnu = true
 vim.o.statuscolumn = "%=%{v:lnum} %{v:relnum} %s"
