@@ -20,10 +20,11 @@ vim.lsp.enable({
 
 vim.lsp.document_color.enable(false)
 
--- lua_ls, tsgo and rust_analyzer all enable lenses in their settings.
-if vim.lsp.codelens.enable then
-	vim.lsp.codelens.enable(true)
-end
+-- No ghost text from the LSP: inlay hints (`: Type`, `param:`) and code lens
+-- (`N references`). Toggle on demand with
+-- :lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+vim.lsp.inlay_hint.enable(false)
+vim.lsp.codelens.enable(false)
 
 vim.diagnostic.config({
 	virtual_text = false,

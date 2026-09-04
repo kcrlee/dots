@@ -76,10 +76,6 @@ autocmd("LspAttach", {
 			})
 		end
 
-		if client:supports_method("textDocument/inlayHint") then
-			vim.lsp.inlay_hint.enable(true, { bufnr = args.buf })
-		end
-
 		-- Auto signature help: open the float when a server trigger character
 		-- ("(", ",") is typed. One autocmd per buffer, reading trigger chars
 		-- from every attached client at call time. <C-s> still works manually.
