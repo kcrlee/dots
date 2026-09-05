@@ -25,7 +25,7 @@ vim.lsp.enable({
 	"sourcekit",
 	"shopify_theme_ls",
 	"tailwindcss",
-	"tsgo",
+	"tsc",
 	"tombi",
 	"kulala_ls",
 	"rust_analyzer",
@@ -61,7 +61,7 @@ vim.lsp.config("sourcekit", {
 	cmd = { "xcrun", "sourcekit-lsp" },
 })
 
-vim.lsp.config("tsgo", {
+vim.lsp.config("tsc", {
 	settings = {
 		typescript = {
 			tsserver = { maxTsServerMemory = 8192 },
