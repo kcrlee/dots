@@ -90,10 +90,13 @@ autocmd("FileType", {
 	end,
 })
 
--- Only auto-add missing imports on save. Removing unused / organizing imports
--- is intentionally skipped so in-progress code isn't pruned mid-edit.
+-- Apply the server's bulk auto-fixes on save. TypeScript 7 does not implement
+-- source.addMissingImports; source.fixAll is the nearest kind and currently
+-- covers missing imports, isolated-declarations, and class-implements fixes.
+-- Removing unused / organizing imports is a separate kind and is intentionally
+-- skipped so in-progress code isn't pruned mid-edit.
 local ts_save_kinds = {
-	"source.addMissingImports.ts",
+	"source.fixAll",
 }
 
 local function apply_ts_source_actions(bufnr)

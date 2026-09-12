@@ -62,15 +62,13 @@ vim.lsp.config("sourcekit", {
 })
 
 vim.lsp.config("tsc", {
+	-- Only keys the TypeScript 7 native server reads (see its js/ts,
+	-- typescript, javascript config sections). tsserver-era keys such as
+	-- maxTsServerMemory, updateImportsOnFileMove, and completeFunctionCalls
+	-- are ignored by the Go implementation.
 	settings = {
 		typescript = {
-			tsserver = { maxTsServerMemory = 8192 },
 			preferences = {
-				includeCompletionsForModuleExports = true,
-				includeCompletionsForImportStatements = true,
-				includeCompletionsWithSnippetText = true,
-				includeCompletionsWithInsertText = true,
-				includePackageJsonAutoImports = "auto",
 				importModuleSpecifier = "shortest",
 				autoImportFileExcludePatterns = {
 					"dist/**",
@@ -80,22 +78,16 @@ vim.lsp.config("tsc", {
 				},
 			},
 			suggest = {
-				completeFunctionCalls = true,
 				autoImports = true,
+				includeCompletionsForImportStatements = true,
 			},
-			updateImportsOnFileMove = { enabled = "always" },
 		},
 		javascript = {
-			tsserver = { maxTsServerMemory = 8192 },
-			preferences = {
-				includeCompletionsForModuleExports = true,
+			preferences = { importModuleSpecifier = "shortest" },
+			suggest = {
+				autoImports = true,
 				includeCompletionsForImportStatements = true,
-				includeCompletionsWithSnippetText = true,
-				includeCompletionsWithInsertText = true,
-				includePackageJsonAutoImports = "auto",
 			},
-			suggest = { autoImports = true },
-			updateImportsOnFileMove = { enabled = "always" },
 		},
 	},
 })

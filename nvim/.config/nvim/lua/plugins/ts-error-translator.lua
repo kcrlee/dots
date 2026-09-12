@@ -7,6 +7,6 @@ require("ts-error-translator").setup({
 	-- LSP server names to translate diagnostics for (default shown below)
 	servers = {
 		"svelte",
-		"ts_ls",
+		"tsc",
 	},
 })
