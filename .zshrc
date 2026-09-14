@@ -64,3 +64,9 @@ esac
 if command -v direnv &>/dev/null; then
 	eval "$(direnv hook zsh)"
 fi
+
+# Claude Code CLI — separate config dirs (login, sessions, memory) per account.
+# Both go through `env` so the inner `claude` is an argument, not a command word;
+# otherwise zsh alias-expands it and `claude-work` would strip its own CLAUDE_CONFIG_DIR.
+alias claude-work='env CLAUDE_CONFIG_DIR=$HOME/.claude-work claude' # A24 (klee_c@a24films.com)
+alias claude='env -u CLAUDE_CONFIG_DIR claude'                      # personal (kyle@fmaplabs.com)
