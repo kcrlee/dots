@@ -5,11 +5,6 @@
       "src": "https://github.com/Saghen/blink.cmp",
       "version": ">=0.0.0"
     },
-    "codecompanion.nvim": {
-      "rev": "e9dd704197ffb6969477d53cdf79772b92e717c9",
-      "src": "https://www.github.com/olimorris/codecompanion.nvim",
-      "version": "19.0.0 - 20.0.0"
-    },
     "codediff.nvim": {
       "rev": "09d9ebef2cc5a5c04db7a349cd6c61bdf84ecc8e",
       "src": "https://github.com/esmuellert/codediff.nvim"
