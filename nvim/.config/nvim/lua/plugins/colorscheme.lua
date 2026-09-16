@@ -4,7 +4,9 @@ vim.pack.add({
 	"https://github.com/kcrlee/tomorrow-min",
 	"https://github.com/rebelot/kanagawa.nvim",
 	"https://github.com/navarasu/onedark.nvim",
-	"https://github.com/RRethy/base16-nvim", -- backs colors/tomorrow-base16.lua
+	"https://github.com/RRethy/base16-nvim", -- backs colors/tomorrow-base16.lua,
+	"https://github.com/oskarnurm/koda.nvim",
+	"https://github.com/WTFox/luna.nvim",
 })
 
 vim.cmd([[colorscheme tomorrow-min]])
