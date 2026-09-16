@@ -104,3 +104,5 @@ oil.setup({
 		border = "rounded",
 	},
 })
+
+vim.keymap.set("n", "-", oil.open, { desc = "Oil open parent directory" })

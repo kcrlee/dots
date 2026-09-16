@@ -25,65 +25,6 @@ autocmd("PackChanged", {
 		end
 	end,
 })
-autocmd("LspAttach", {
-	group = group,
-	callback = function(args)
-		local bufopts = { noremap = true, silent = true, buffer = args.buf }
-		vim.keymap.set("n", "gd", function()
-			vim.lsp.buf.definition()
-		end, bufopts)
-		vim.keymap.set("n", "<leader>vws", function()
-			vim.lsp.buf.workspace_symbol()
-		end, bufopts)
-		vim.keymap.set("n", "M", function()
-			vim.diagnostic.open_float()
-		end, bufopts)
-		vim.keymap.set("n", "<leader>vca", function()
-			vim.lsp.buf.code_action()
-		end, bufopts)
-		vim.keymap.set("n", "<leader>vrr", function()
-			vim.lsp.buf.references()
-		end, bufopts)
-		vim.keymap.set("n", "<leader>vrn", function()
-			vim.lsp.buf.rename()
-		end, bufopts)
-
-		local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
-
-		if client:supports_method("textDocument/hover") then
-			vim.keymap.set("n", "K", function()
-				vim.lsp.buf.hover({
-					border = "rounded",
-					max_width = 80,
-					max_height = 20,
-				})
-			end, { buffer = args.buf, desc = "LSP hover" })
-		end
-
-		-- Copilot ghost-text completions. Accepted via <Tab> in blink.lua.
-		if client:supports_method("textDocument/inlineCompletion") then
-			vim.lsp.inline_completion.enable(true, { bufnr = args.buf })
-			vim.keymap.set("i", "<C-g>", vim.lsp.inline_completion.select, {
-				buffer = args.buf,
-				desc = "LSP: cycle inline completion",
-			})
-		end
-
-		if
-			not client:supports_method("textDocument/willSaveWaitUntil")
-			and client:supports_method("textDocument/formatting")
-		then
-			vim.api.nvim_create_autocmd("BufWritePre", {
-				group = vim.api.nvim_create_augroup(group, { clear = false }),
-				buffer = args.buf,
-				callback = function()
-					-- if we wanted LSP formatting
-					-- vim.lsp.buf.format({ bufnr = args.buf, id = client.id, timeout_ms = 1000 })
-				end,
-			})
-		end
-	end,
-})
 
 autocmd("FileType", {
 	group = group,

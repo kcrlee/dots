@@ -30,8 +30,7 @@ require("sidekick").setup({
 			claude = {
 				env = { CLAUDE_CONFIG_DIR = false },
 				is_proc = function(_, proc)
-					return proc.cmd:match("%f[%w]claude%f[%W]") ~= nil
-						and not proc.cmd:find("claude-work", 1, true)
+					return proc.cmd:match("%f[%w]claude%f[%W]") ~= nil and not proc.cmd:find("claude-work", 1, true)
 				end,
 			},
 			claude_work = claude_work,
