@@ -7,7 +7,9 @@ local by_filename = require("nvim-web-devicons.default.icons_by_filename")
 local by_extension = require("nvim-web-devicons.default.icons_by_file_extension")
 local env_icon = by_filename[".env"]
 local cabal_icon = vim.tbl_extend("force", {}, by_extension["hs"], { name = "Cabal" })
-require("nvim-web-devicons").setup({
+
+local dev_icons = require("nvim-web-devicons")
+dev_icons.setup({
 	override_by_extension = {
 		cabal = cabal_icon,
 	},
