@@ -27,7 +27,7 @@ blink.setup({
 	signature = {
 		enabled = true,
 		window = {
-			border = "rounded",
+			border = "single",
 			min_width = 10,
 			max_width = 80,
 			max_height = 80,

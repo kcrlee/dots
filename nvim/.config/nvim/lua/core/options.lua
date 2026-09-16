@@ -8,6 +8,7 @@ vim.opt.completeopt = { "fuzzy", "menuone", "noselect" }
 vim.o.rnu = true
 vim.o.statuscolumn = "%=%{v:lnum} %{v:relnum} %s"
 vim.o.winborder = "rounded"
+vim.o.pumborder = "rounded"
 vim.o.signcolumn = "yes"
 vim.o.cursorcolumn = false
 vim.o.scrolloff = 8 -- Ensures 8 lines above and below of the cursor
