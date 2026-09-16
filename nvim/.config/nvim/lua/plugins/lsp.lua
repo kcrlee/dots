@@ -16,6 +16,7 @@ vim.lsp.config("*", {
 
 vim.lsp.enable({
 	"bashls",
+	"copilot",
 	"expert",
 	"hls",
 	"html",

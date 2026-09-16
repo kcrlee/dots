@@ -60,6 +60,15 @@ autocmd("LspAttach", {
 			end, { buffer = args.buf, desc = "LSP hover" })
 		end
 
+		-- Copilot ghost-text completions. Accepted via <Tab> in blink.lua.
+		if client:supports_method("textDocument/inlineCompletion") then
+			vim.lsp.inline_completion.enable(true, { bufnr = args.buf })
+			vim.keymap.set("i", "<C-g>", vim.lsp.inline_completion.select, {
+				buffer = args.buf,
+				desc = "LSP: cycle inline completion",
+			})
+		end
+
 		if
 			not client:supports_method("textDocument/willSaveWaitUntil")
 			and client:supports_method("textDocument/formatting")
