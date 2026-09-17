@@ -116,16 +116,7 @@ blink.setup({
 		["<C-b>"] = { "scroll_documentation_down", "fallback" },
 		["<C-f>"] = { "scroll_documentation_up", "fallback" },
 		["<C-l>"] = { "snippet_forward", "fallback" },
-		["<Tab>"] = {
-			"snippet_forward",
-			function()
-				return require("sidekick").nes_jump_or_apply()
-			end,
-			function()
-				return vim.lsp.inline_completion.get()
-			end,
-			"fallback",
-		},
+		["<Tab>"] = { "snippet_forward", "fallback" },
 		["<C-h>"] = { "snippet_backward", "fallback" },
 	},
 })

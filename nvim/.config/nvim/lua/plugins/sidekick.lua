@@ -20,8 +20,7 @@ local claude_work = vim.tbl_deep_extend("force", claude_spec, {
 })
 
 require("sidekick").setup({
-	-- NES (Next Edit Suggestions) is served by copilot-language-server,
-	-- enabled in lsp.lua. Sign in once with :LspCopilotSignIn.
+	nes = { enabled = false },
 	cli = {
 		-- Runs the CLI in a Neovim split. Set enabled = true to hand the
 		-- session to tmux/zellij instead when running inside one.
@@ -42,14 +41,6 @@ local map = vim.keymap.set
 local cli = function()
 	return require("sidekick.cli")
 end
-
--- Insert-mode <Tab> is handled by blink.lua so it can chain with snippets
--- and inline completion.
-map("n", "<Tab>", function()
-	if not require("sidekick").nes_jump_or_apply() then
-		return "<Tab>"
-	end
-end, { expr = true, desc = "Sidekick goto/apply next edit suggestion" })
 
 map({ "n", "t", "i", "x" }, "<c-.>", function()
 	cli().focus()

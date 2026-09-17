@@ -16,7 +16,6 @@ vim.lsp.config("*", {
 
 vim.lsp.enable({
 	"bashls",
-	"copilot",
 	"expert",
 	"hls",
 	"html",
@@ -164,15 +163,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 					max_height = 20,
 				})
 			end, { buffer = args.buf, desc = "LSP hover" })
-		end
-
-		-- Copilot ghost-text completions. Accepted via <Tab> in blink.lua.
-		if client:supports_method("textDocument/inlineCompletion") then
-			vim.lsp.inline_completion.enable(true, { bufnr = args.buf })
-			vim.keymap.set("i", "<C-g>", vim.lsp.inline_completion.select, {
-				buffer = args.buf,
-				desc = "LSP: cycle inline completion",
-			})
 		end
 
 		if
