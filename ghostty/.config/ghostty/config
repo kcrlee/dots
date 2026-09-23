@@ -16,32 +16,20 @@ window-padding-y = 8
 
 # shell
 mouse-hide-while-typing = true
-font-family= "JetBrains Mono"
-# ensure TX-02 is used 
-# font-family = "JetBrainsMono Nerd Font"
-# font-family-bold = "TX-02-Variable"
-# font-family-italic = "TX-02-Variable"
+# Berkeley Mono ships as family "TX-02-Variable"
+font-family = "TX-02-Variable"
 
-
-# weight (font-style using named style syntax)
+# named instances (weights)
 # 400 Regular
 # 425 Book
 # 500 Medium
 # 600 SemiBold
 # 700 Bold
-
-# alternate syntax
-# Font slant (0 to -16)
-#   0 = Regular
-# -16 = Oblique
-# font-variation = slnt=0
-# font-variation = wght=425
-
-
-font-style =  Medium
-font-style-bold = ExtraBold 
-font-style-italic = Italic
-font-style-bold-italic = Bold Italic
+# italics are "<weight> Oblique"
+font-style = Medium
+font-style-bold = Bold
+font-style-italic = Medium Oblique
+font-style-bold-italic = Bold Oblique
 font-size = 16
 
 # bright works because of thicken
@@ -63,3 +51,6 @@ adjust-cell-width= -4%
 
 # quick term
 keybind = global:cmd+backquote=toggle_quick_terminal
+
+# machine-local overrides (gitignored; loaded last, so its values win)
+config-file = ?config.local

@@ -103,6 +103,40 @@ stow_packages() {
 }
 
 # ============================================================================
+# Fonts
+# ============================================================================
+# Berkeley Mono (TX-02) is licensed, so it can't be committed to this public
+# repo. Copy it from $DOTS_FONT_DIR (default ~/fonts) if it's there; otherwise
+# warn and move on — ghostty falls back to its bundled JetBrains Mono.
+install_fonts() {
+    local os="$1"
+    local font_file="TX-02-Variable.otf"
+    local src="${DOTS_FONT_DIR:-$HOME/fonts}/$font_file"
+
+    local dest_dir
+    case "$os" in
+        macos)  dest_dir="$HOME/Library/Fonts" ;;
+        fedora) dest_dir="$HOME/.local/share/fonts" ;;
+    esac
+
+    if [[ -f "$dest_dir/$font_file" ]]; then
+        ok "Font already installed: $font_file"
+        return
+    fi
+
+    if [[ -f "$src" ]]; then
+        info "Installing $font_file…"
+        mkdir -p "$dest_dir"
+        cp "$src" "$dest_dir/"
+        # fontconfig needs a cache refresh to pick up new fonts; macOS doesn't.
+        [[ "$os" == "fedora" ]] && fc-cache -f "$dest_dir" >/dev/null
+        ok "Installed $font_file"
+    else
+        warn "$font_file not found at $src — install it manually or set DOTS_FONT_DIR"
+    fi
+}
+
+# ============================================================================
 # Zsh
 # ============================================================================
 setup_zsh() {
@@ -160,6 +194,9 @@ main() {
 
     # Symlink configs
     stow_packages "$os"
+
+    # Fonts
+    install_fonts "$os"
 
     # Zsh config + plugins
     setup_zsh
