@@ -1,4 +1,4 @@
-theme="luna"
+theme="yesterday"
 # splits
 unfocused-split-opacity = 0.85
 keybind = alt+shift+]=goto_split:next
