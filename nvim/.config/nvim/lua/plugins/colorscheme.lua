@@ -1,15 +1,10 @@
 vim.pack.add({
 	"https://github.com/nvim-lua/plenary.nvim",
-	"https://github.com/rktjmp/lush.nvim", -- library tomorrow-min depends on
-	"https://github.com/kcrlee/tomorrow-min",
-	"https://github.com/rebelot/kanagawa.nvim",
-	"https://github.com/navarasu/onedark.nvim",
-	"https://github.com/RRethy/base16-nvim", -- backs colors/tomorrow-base16.lua,
-	"https://github.com/oskarnurm/koda.nvim",
 	"https://github.com/WTFox/luna.nvim",
+	"https://github.com/kcrlee/yesterday.nvim",
 })
 
-vim.cmd([[colorscheme luna]])
+vim.cmd([[colorscheme yesterday]])
 
 -- local function flatten_float_hls()
 -- 	vim.api.nvim_set_hl(0, "NormalFloat", { link = "Normal" })

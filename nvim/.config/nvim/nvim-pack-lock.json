@@ -167,6 +167,10 @@
     "xcodebuild.nvim": {
       "rev": "debf97b5e22359e35bc0328e6ce921f7a40574dd",
       "src": "https://github.com/wojciech-kulik/xcodebuild.nvim"
+    },
+    "yesterday.nvim": {
+      "rev": "bc2c2a151126476e04b466edfe412f9ce23c2f63",
+      "src": "https://github.com/kcrlee/yesterday.nvim"
     }
   }
 }
