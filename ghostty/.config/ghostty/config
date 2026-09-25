@@ -30,7 +30,7 @@ font-style = Medium
 font-style-bold = Bold
 font-style-italic = Medium Oblique
 font-style-bold-italic = Bold Oblique
-font-size = 16
+font-size = 18
 
 # bright works because of thicken
 font-thicken = true
