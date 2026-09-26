@@ -73,7 +73,7 @@ conform.setup({
 		},
 	},
 	formatters_by_ft = {
-		swift = { "swiftformat" },
+		elm = { "elm-format" },
 		astro = { "prettier" },
 		sql = { "sqlfmt" },
 		lua = { "stylua" },
