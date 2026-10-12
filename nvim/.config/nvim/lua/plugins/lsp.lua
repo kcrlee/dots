@@ -37,6 +37,7 @@ vim.lsp.enable({
 -- Deltas for servers nvim-lspconfig ships. These must be vim.lsp.config()
 -- calls, not lsp/*.lua files: plugin lsp/ files win the runtimepath merge,
 -- while config() calls take precedence over all runtime files.
+
 vim.lsp.config("html", {
 	cmd = { "vscode-html-language-server", "--stdio" },
 	filetypes = { "html", "htmldjango" },
@@ -60,6 +61,32 @@ vim.lsp.config("graphql", {
 
 vim.lsp.config("sourcekit", {
 	cmd = { "xcrun", "sourcekit-lsp" },
+})
+
+-- Dioxus: rsx! writes classes as `class: "..."`, so rust buffers are read as
+-- html and a classRegex points the server at the class lists.
+local tailwind = vim.lsp.config.tailwindcss
+vim.lsp.config("tailwindcss", {
+	-- list fields replace rather than merge, so extend the shipped filetypes
+	filetypes = vim.list_extend(vim.deepcopy(tailwind.filetypes), { "rust" }),
+	root_dir = function(bufnr, on_dir)
+		if vim.bo[bufnr].filetype ~= "rust" then
+			return tailwind.root_dir(bufnr, on_dir)
+		end
+		-- only Dioxus crates, not every rust project under .git
+		local root = vim.fs.root(bufnr, { "Dioxus.toml", "tailwind.css" })
+		if root then
+			on_dir(root)
+		end
+	end,
+	settings = {
+		tailwindCSS = {
+			includeLanguages = { rust = "html" },
+			experimental = {
+				classRegex = { [[class:\s*"([^"]*)"]] },
+			},
+		},
+	},
 })
 
 vim.lsp.config("tsc", {
