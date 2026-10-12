@@ -1,5 +1,9 @@
 {
   "plugins": {
+    "atlas.nvim": {
+      "rev": "fb40953462ff922c1084f1338072588c6e0eb0bf",
+      "src": "https://github.com/emrearmagan/atlas.nvim"
+    },
     "base16-nvim": {
       "rev": "7183774e90841f4bd27a47cb6e75cf532fd1192d",
       "src": "https://github.com/RRethy/base16-nvim"
