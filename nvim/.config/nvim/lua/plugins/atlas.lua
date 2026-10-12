@@ -2,5 +2,35 @@ vim.pack.add({
 	"https://github.com/emrearmagan/atlas.nvim",
 })
 
--- See Configuration below
-require("atlas").setup({})
+require("atlas").setup({
+	pulls = {
+		delete_notes = false,
+		default_merge_method = "merge",
+		git_transport = "https",
+	},
+	description = {
+		include_summary = true,
+		include_commit_hashes = true,
+		include_related = true,
+		include_diffstat = false,
+	},
+	diff = {
+		open_cmd = "auto",
+		comment_display = "virtual_lines",
+	},
+	lsp = {
+		enabled = true,
+		dir = nil,
+		link = {},
+	},
+	explorer = {
+		grouped = true, -- Group changed files by directory.
+		hidden = false,
+		show_commits = false, -- Set true to show commits below changed files initially.
+		width = 40,
+		initial_focus = "explorer", -- "explorer" or "diff".
+		preview = false, -- Show a file as soon as the explorer cursor moves onto it.
+		focus_on_select = false, -- Move into the diff after selecting a file.
+		ignore = { ".git/**", ".jj/**" },
+	},
+})
