@@ -3,6 +3,13 @@ vim.pack.add({
 })
 
 require("atlas").setup({
+	providers = {
+		---@type AtlasGitHubConfig
+		github = {
+			hostname = "github.com",
+			cache_ttl = 300, -- Seconds; 0 disables caching.
+		},
+	},
 	issues = {
 		---@type AtlasGitHubIssuesConfig
 		github = {
@@ -41,9 +48,33 @@ require("atlas").setup({
 	},
 	---@type AtlasPullsConfig
 	pulls = {
-		delete_notes = false,
-		default_merge_method = "merge",
-		git_transport = "https",
+		---@type AtlasGitHubPullsConfig
+		github = {
+			views = {
+				{
+					name = "Assigned",
+					key = "1",
+					layout = "compact", -- "compact" | "grouped" | "plain"
+					-- current_repo = true, -- Restrict the search to the current Git repository.
+					search = "is:pr assignee:@me archived:false",
+				},
+				{ name = "Authored", key = "2", search = "is:pr author:@me archived:false" },
+				{ name = "Reviewing", key = "3", search = "is:pr review-requested:@me archived:false" },
+				{ name = "Reviewed", key = "4", search = "is:pr reviewed-by:@me archived:false" },
+				{ name = "Mention", key = "5", search = "is:pr mentions:@me archived:false" },
+			},
+			bookmarks = {
+				-- key   = "S",      -- default
+				-- label = "Search", -- default
+				items = {
+					["Drafts"] = {
+						layout = "compact",
+						search = "is:pr is:draft author:@me",
+					},
+					["Recently merged"] = "is:pr is:merged author:@me sort:updated-desc",
+				},
+			},
+		},
 	},
 	description = {
 		include_summary = true,
