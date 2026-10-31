@@ -1,0 +1,51 @@
+{
+  "float": [
+    {
+      "class": "jetbrains-toolbox",
+      "disabled": true
+    },
+    {
+      "class": "jetbrains-webstorm",
+      "title": "Customize WebStorm",
+      "disabled": true
+    },
+    {
+      "class": "jetbrains-webstorm",
+      "title": "License Activation",
+      "disabled": true
+    },
+    {
+      "class": "krunner",
+      "disabled": true
+    },
+    {
+      "class": "org.mozilla.firefox",
+      "title": "Picture-in-Picture"
+    },
+    {
+      "class": "TelegramDesktop",
+      "title": "Media viewer",
+      "disabled": true
+    },
+    {
+      "class": "jetbrains-webstorm",
+      "title": "Welcome to WebStorm",
+      "disabled": true
+    },
+    {
+      "class": "Mozilla VPN",
+      "disabled": true
+    },
+    {
+      "class": "firefox-dev",
+      "title": "Picture-in-Picture"
+    },
+    {
+      "class": "firefox",
+      "title": "^(?!.*Mozilla Firefox).*$",
+      "disabled": true
+    }
+  ],
+  "skiptaskbarhidden": [],
+  "log_on_focus": true
+}

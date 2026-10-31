@@ -1,0 +1,7 @@
+# Only .config/ is meant to be symlinked into $HOME; the dconf snapshots and
+# sync script stay in the repo. (A local ignore file replaces stow's defaults,
+# so the usual suspects are repeated here.)
+^/dconf
+^/sync\.sh
+^/README.*
+\.git

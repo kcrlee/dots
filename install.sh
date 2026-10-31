@@ -57,7 +57,9 @@ install_packages_fedora() {
     # tree-sitter-cli: used by nvim-treesitter (main) / tree-sitter-manager to
     # build parsers; without it parser installs fail and retry every startup.
     # gh + thefuck back their oh-my-zsh plugins.
-    local packages=(stow fzf fd-find tmux direnv tree-sitter-cli zsh gh thefuck)
+    # gnome-shell-extension-pop-shell: tiling WM, configured by the gnome pkg.
+    local packages=(stow fzf fd-find tmux direnv tree-sitter-cli zsh gh thefuck
+                    gnome-shell-extension-pop-shell)
 
     info "Installing packages via dnf…"
     # --skip-unavailable: gh may live in a third-party repo that isn't
@@ -87,7 +89,7 @@ stow_packages() {
     # OS-specific packages
     case "$os" in
         macos)  packages+=(ghostty wezterm tmux) ;;
-        fedora) packages+=(ghostty tmux systemd) ;;
+        fedora) packages+=(ghostty tmux systemd gnome) ;;
     esac
 
     info "Stowing packages: ${packages[*]}"
@@ -100,6 +102,21 @@ stow_packages() {
             warn "Skipping $pkg (directory not found)"
         fi
     done
+}
+
+# ============================================================================
+# GNOME / Pop Shell (dconf)
+# ============================================================================
+# Keybindings, gaps, tiling etc. live in dconf, which stow can't link; restore
+# them from the committed snapshots. Snapshot changes with `gnome/sync.sh dump`.
+load_gnome_settings() {
+    if ! command_exists dconf || [[ -z "${DBUS_SESSION_BUS_ADDRESS:-}" ]]; then
+        warn "No dconf/desktop session — run gnome/sync.sh load after logging in"
+        return
+    fi
+    info "Loading GNOME window-management settings…"
+    "$DOTS_DIR/gnome/sync.sh" load
+    ok "Loaded GNOME settings"
 }
 
 # ============================================================================
@@ -194,6 +211,9 @@ main() {
 
     # Symlink configs
     stow_packages "$os"
+
+    # GNOME / Pop Shell settings (dconf)
+    [[ "$os" == "fedora" ]] && load_gnome_settings
 
     # Fonts
     install_fonts "$os"

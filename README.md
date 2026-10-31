@@ -10,6 +10,7 @@ Each top-level directory is a **stow package** — its contents mirror your home
 dots/
 ├── bob/          → ~/.config/bob/
 ├── ghostty/      → ~/.config/ghostty/
+├── gnome/        → ~/.config/pop-shell/  (+ dconf snapshots, see below)
 ├── nvim/         → ~/.config/nvim/
 ├── systemd/      → ~/.config/systemd/user/
 ├── tmux/         → ~/.config/tmux/
@@ -95,6 +96,20 @@ wezterm/
 ```
 
 `stow wezterm` symlinks the entire `wezterm/` directory under `~/.config/`.
+
+## GNOME / Pop Shell
+
+The `gnome` package covers the Pop Shell tiling setup on Fedora:
+
+- `gnome/.config/pop-shell/config.json` holds the float exceptions. It's stowed like any other config, so exceptions you add from the Pop Shell menu are written straight into the repo.
+- `gnome/dconf/*.ini` holds the gaps, tiling options and keybindings (Pop Shell, `wm`, `mutter` and shell keybindings). These live in dconf, which can't be symlinked, so they're kept as text snapshots.
+
+```sh
+gnome/sync.sh dump   # after changing settings: snapshot live dconf → repo, then commit
+gnome/sync.sh load   # on a new machine: apply snapshots (install.sh does this)
+```
+
+To track another dconf tree, add a line to `PATHS` in `gnome/sync.sh` and run `dump`. `.stow-local-ignore` stops stow from linking `dconf/` and `sync.sh` into `$HOME`.
 
 ## Dependencies
 
