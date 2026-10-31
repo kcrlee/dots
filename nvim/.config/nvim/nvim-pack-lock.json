@@ -45,10 +45,6 @@
       "rev": "ff2cbcba459b637ec3fd165a2be59b7bbaeedf0d",
       "src": "https://github.com/folke/lazydev.nvim"
     },
-    "ledger": {
-      "rev": "573c49da94dfbf7a536e3a07ba5af9acde63a5da",
-      "src": "https://github.com/fmaplabs/ledger"
-    },
     "lualine.nvim": {
       "rev": "221ce6b2d999187044529f49da6554a92f740a96",
       "src": "https://github.com/nvim-lualine/lualine.nvim"

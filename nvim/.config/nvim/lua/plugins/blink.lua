@@ -21,7 +21,6 @@ blink.setup({
 		},
 		prebuilt_binaries = {
 			download = true,
-			force_version = "1.*",
 		},
 	},
 	signature = {
