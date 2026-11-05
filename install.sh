@@ -64,7 +64,9 @@ install_packages_fedora() {
     info "Installing packages via dnf…"
     # --skip-unavailable: gh may live in a third-party repo that isn't
     # configured yet; don't let one missing package abort the bootstrap.
-    sudo dnf install -y --skip-unavailable "${packages[@]}"
+    # --exclude nodejs*: tree-sitter-cli recommends nodejs, which would pull
+    # in a system Node + npm alongside the pnpm-managed ones (see setup_node).
+    sudo dnf install -y --skip-unavailable --exclude='nodejs*' "${packages[@]}"
 }
 
 clone_if_missing() {
@@ -176,6 +178,56 @@ setup_zsh() {
 }
 
 # ============================================================================
+# Node (via pnpm)
+# ============================================================================
+# Node is managed by pnpm, not the system package manager: standalone pnpm
+# lives in $PNPM_HOME, and `pnpm runtime set --global` links a node binary into
+# $PNPM_HOME/bin, which .zshrc puts on PATH. npm/npx are pnpm globals there too.
+setup_node() {
+    local os="$1"
+
+    # Keep in sync with the pnpm block in .zshrc.
+    case "$os" in
+        macos)  export PNPM_HOME="$HOME/Library/pnpm" ;;
+        fedora) export PNPM_HOME="$HOME/.local/share/pnpm" ;;
+    esac
+    # pnpm expects its global bin dir on PATH when installing globally.
+    export PATH="$PNPM_HOME/bin:$PATH"
+
+    # Check the standalone binary, not `command -v pnpm`: a corepack or npm
+    # shim would satisfy that but can't be relied on before node exists.
+    if [[ -x "$PNPM_HOME/bin/pnpm" ]]; then
+        ok "Already installed: pnpm"
+    else
+        info "Installing pnpm…"
+        # PNPM_NO_MODIFY_PATH: .zshrc already has the PATH block. Without this
+        # the installer rewrites that block through the ~/.zshrc symlink and
+        # drops its macOS branch.
+        curl -fsSL https://get.pnpm.io/install.sh | PNPM_NO_MODIFY_PATH=1 sh -
+    fi
+
+    # Skip when present so re-running the bootstrap never changes the Node
+    # version; upgrade explicitly with `pnpm runtime set node lts -g`.
+    if [[ -x "$PNPM_HOME/bin/node" ]]; then
+        ok "Already installed: node $("$PNPM_HOME/bin/node" --version)"
+    else
+        info "Installing Node LTS via pnpm…"
+        "$PNPM_HOME/bin/pnpm" runtime set node lts --global
+        ok "Installed node $("$PNPM_HOME/bin/node" --version)"
+    fi
+
+    # pnpm's node runtime ships without npm/npx; install them as a pnpm global
+    # so they run on the pnpm-managed node.
+    if [[ -x "$PNPM_HOME/bin/npm" ]]; then
+        ok "Already installed: npm $("$PNPM_HOME/bin/npm" --version)"
+    else
+        info "Installing npm via pnpm…"
+        "$PNPM_HOME/bin/pnpm" add --global npm
+        ok "Installed npm $("$PNPM_HOME/bin/npm" --version)"
+    fi
+}
+
+# ============================================================================
 # Set default shell
 # ============================================================================
 set_default_shell() {
@@ -220,6 +272,9 @@ main() {
 
     # Zsh config + plugins
     setup_zsh
+
+    # pnpm + Node
+    setup_node "$os"
 
     # Shell
     set_default_shell

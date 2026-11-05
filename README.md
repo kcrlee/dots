@@ -31,7 +31,8 @@ The install script works on **macOS** and **Fedora Linux**. It will:
 
 1. Install system packages (`stow`, `fzf`, `fd`, `tmux`, `direnv`)
 2. Stow config packages (OS-appropriate selection)
-3. Set bash as your default shell
+3. Install [pnpm](https://pnpm.io/), then Node LTS and npm through it (no system Node)
+4. Set bash as your default shell
 
 ## Manual Usage
 
@@ -118,3 +119,4 @@ All handled by `install.sh`, but for reference:
 - [GNU Stow](https://www.gnu.org/software/stow/) — symlink manager
 - [fzf](https://github.com/junegunn/fzf) + [fd](https://github.com/sharkdp/fd) — fuzzy finder
 - [direnv](https://direnv.net/) — per-directory environment variables
+- [pnpm](https://pnpm.io/) — package manager; also manages Node. Change the global version with `pnpm runtime set node <version> -g`
