@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # ============================================================================
-# install.sh — bootstrap dotfiles on macOS or Fedora Linux
+# install.sh — bootstrap dotfiles on Fedora Linux
 # ============================================================================
 set -euo pipefail
 
@@ -14,22 +14,11 @@ ok()    { printf '\033[1;32m[ok]\033[0m    %s\n' "$*"; }
 warn()  { printf '\033[1;33m[warn]\033[0m  %s\n' "$*"; }
 err()   { printf '\033[1;31m[err]\033[0m   %s\n' "$*" >&2; }
 
-detect_os() {
-    case "$(uname -s)" in
-        Darwin) echo "macos" ;;
-        Linux)
-            if [[ -f /etc/fedora-release ]]; then
-                echo "fedora"
-            else
-                err "Unsupported Linux distro (only Fedora is supported)"
-                exit 1
-            fi
-            ;;
-        *)
-            err "Unsupported OS: $(uname -s)"
-            exit 1
-            ;;
-    esac
+require_fedora() {
+    if [[ ! -f /etc/fedora-release ]]; then
+        err "Unsupported OS (only Fedora Linux is supported)"
+        exit 1
+    fi
 }
 
 command_exists() { command -v "$1" &>/dev/null; }
@@ -37,23 +26,7 @@ command_exists() { command -v "$1" &>/dev/null; }
 # ============================================================================
 # Package installation
 # ============================================================================
-install_packages_macos() {
-    if ! command_exists brew; then
-        info "Installing Homebrew…"
-        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-        eval "$(/opt/homebrew/bin/brew shellenv)"
-    fi
-
-    # tree-sitter: CLI used by nvim-treesitter (main) / tree-sitter-manager to
-    # build parsers; without it parser installs fail and retry every startup.
-    # gh + thefuck back their oh-my-zsh plugins; zsh ships with macOS.
-    local packages=(stow fzf fd tmux direnv tree-sitter gh thefuck)
-
-    info "Installing packages via Homebrew…"
-    brew install "${packages[@]}"
-}
-
-install_packages_fedora() {
+install_packages() {
     # tree-sitter-cli: used by nvim-treesitter (main) / tree-sitter-manager to
     # build parsers; without it parser installs fail and retry every startup.
     # gh + thefuck back their oh-my-zsh plugins.
@@ -83,16 +56,7 @@ clone_if_missing() {
 # Stow packages
 # ============================================================================
 stow_packages() {
-    local os="$1"
-
-    # Packages to stow on all platforms
-    local packages=(nvim bob)
-
-    # OS-specific packages
-    case "$os" in
-        macos)  packages+=(ghostty wezterm tmux) ;;
-        fedora) packages+=(ghostty tmux systemd gnome) ;;
-    esac
+    local packages=(nvim bob ghostty tmux systemd gnome)
 
     info "Stowing packages: ${packages[*]}"
     cd "$DOTS_DIR"
@@ -128,15 +92,9 @@ load_gnome_settings() {
 # repo. Copy it from $DOTS_FONT_DIR (default ~/fonts) if it's there; otherwise
 # warn and move on — ghostty falls back to its bundled JetBrains Mono.
 install_fonts() {
-    local os="$1"
     local font_file="TX-02-Variable.otf"
     local src="${DOTS_FONT_DIR:-$HOME/fonts}/$font_file"
-
-    local dest_dir
-    case "$os" in
-        macos)  dest_dir="$HOME/Library/Fonts" ;;
-        fedora) dest_dir="$HOME/.local/share/fonts" ;;
-    esac
+    local dest_dir="$HOME/.local/share/fonts"
 
     if [[ -f "$dest_dir/$font_file" ]]; then
         ok "Font already installed: $font_file"
@@ -147,8 +105,8 @@ install_fonts() {
         info "Installing $font_file…"
         mkdir -p "$dest_dir"
         cp "$src" "$dest_dir/"
-        # fontconfig needs a cache refresh to pick up new fonts; macOS doesn't.
-        [[ "$os" == "fedora" ]] && fc-cache -f "$dest_dir" >/dev/null
+        # fontconfig needs a cache refresh to pick up new fonts.
+        fc-cache -f "$dest_dir" >/dev/null
         ok "Installed $font_file"
     else
         warn "$font_file not found at $src — install it manually or set DOTS_FONT_DIR"
@@ -184,13 +142,8 @@ setup_zsh() {
 # lives in $PNPM_HOME, and `pnpm runtime set --global` links a node binary into
 # $PNPM_HOME/bin, which .zshrc puts on PATH. npm/npx are pnpm globals there too.
 setup_node() {
-    local os="$1"
-
     # Keep in sync with the pnpm block in .zshrc.
-    case "$os" in
-        macos)  export PNPM_HOME="$HOME/Library/pnpm" ;;
-        fedora) export PNPM_HOME="$HOME/.local/share/pnpm" ;;
-    esac
+    export PNPM_HOME="$HOME/.local/share/pnpm"
     # pnpm expects its global bin dir on PATH when installing globally.
     export PATH="$PNPM_HOME/bin:$PATH"
 
@@ -201,8 +154,7 @@ setup_node() {
     else
         info "Installing pnpm…"
         # PNPM_NO_MODIFY_PATH: .zshrc already has the PATH block. Without this
-        # the installer rewrites that block through the ~/.zshrc symlink and
-        # drops its macOS branch.
+        # the installer rewrites that block through the ~/.zshrc symlink.
         curl -fsSL https://get.pnpm.io/install.sh | PNPM_NO_MODIFY_PATH=1 sh -
     fi
 
@@ -254,27 +206,25 @@ set_default_shell() {
 # Main
 # ============================================================================
 main() {
-    local os
-    os="$(detect_os)"
-    info "Detected OS: $os"
+    require_fedora
 
     # System packages
-    "install_packages_${os}"
+    install_packages
 
     # Symlink configs
-    stow_packages "$os"
+    stow_packages
 
     # GNOME / Pop Shell settings (dconf)
-    [[ "$os" == "fedora" ]] && load_gnome_settings
+    load_gnome_settings
 
     # Fonts
-    install_fonts "$os"
+    install_fonts
 
     # Zsh config + plugins
     setup_zsh
 
     # pnpm + Node
-    setup_node "$os"
+    setup_node
 
     # Shell
     set_default_shell

@@ -164,10 +164,6 @@
       "rev": "3aab2147e74890957785941f0c1ad87d0a44c15a",
       "src": "https://github.com/folke/which-key.nvim"
     },
-    "xcodebuild.nvim": {
-      "rev": "45cd4a8daabcc1c4716388fadc036e06732756bd",
-      "src": "https://github.com/wojciech-kulik/xcodebuild.nvim"
-    },
     "yesterday.nvim": {
       "rev": "133810239ec53bb0de27536a566a5ce438b7d27f",
       "src": "https://github.com/kcrlee/yesterday.nvim"

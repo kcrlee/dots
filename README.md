@@ -1,6 +1,6 @@
 # dots
 
-Dotfiles managed with [GNU Stow](https://www.gnu.org/software/stow/). Works on macOS and Fedora Linux.
+Dotfiles managed with [GNU Stow](https://www.gnu.org/software/stow/). Targets Fedora Linux.
 
 ## Structure
 
@@ -14,10 +14,10 @@ dots/
 ├── nvim/         → ~/.config/nvim/
 ├── systemd/      → ~/.config/systemd/user/
 ├── tmux/         → ~/.config/tmux/
-├── wezterm/      → ~/.config/wezterm/
+├── wezterm/      → ~/.config/wezterm/  (optional, not stowed by install.sh)
 ```
 
-A few bash files (`.bashrc`, `.bash_profile`, `.blerc`, `.fzf.bash`) live at the repo root and aren't managed by stow.
+`.zshrc` lives at the repo root and isn't managed by stow; `install.sh` symlinks it to `~/.zshrc`.
 
 ## Quick Start
 
@@ -27,12 +27,12 @@ cd ~/dots
 ./install.sh
 ```
 
-The install script works on **macOS** and **Fedora Linux**. It will:
+The install script targets **Fedora Linux**. It will:
 
 1. Install system packages (`stow`, `fzf`, `fd`, `tmux`, `direnv`)
-2. Stow config packages (OS-appropriate selection)
+2. Stow config packages (everything except `wezterm` — run `stow wezterm` if you use it)
 3. Install [pnpm](https://pnpm.io/), then Node LTS and npm through it (no system Node)
-4. Set bash as your default shell
+4. Set zsh as your default shell
 
 ## Manual Usage
 

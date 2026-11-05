@@ -4,11 +4,6 @@
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
-# Homebrew (macOS only)
-if [[ -x /opt/homebrew/bin/brew ]]; then
-	eval "$(/opt/homebrew/bin/brew shellenv)"
-fi
-
 export PATH="$PATH:$HOME/.local/bin"
 
 # rust/cargo tools (bob, starship, uv, ...)
@@ -49,11 +44,7 @@ fi
 source $ZSH/oh-my-zsh.sh
 
 # pnpm
-if [[ "$OSTYPE" == darwin* ]]; then
-	export PNPM_HOME="$HOME/Library/pnpm"
-else
-	export PNPM_HOME="$HOME/.local/share/pnpm"
-fi
+export PNPM_HOME="$HOME/.local/share/pnpm"
 case ":$PATH:" in
 *":$PNPM_HOME/bin:"*) ;;
 *) export PATH="$PNPM_HOME/bin:$PATH" ;;

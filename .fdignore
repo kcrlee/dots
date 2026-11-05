@@ -3,18 +3,14 @@
 share/*
 etc/*
 tmp/*
-Users/*
 Pictures/*
 Postman/*
 Public/*
-Library/*
-Applications/*
 MPCS/*
-Movies/*
+Videos/*
 Music/*
 bin/*
 lib/*
-Screen\ Studio\ Projects
 go/*
 Documents/*
 

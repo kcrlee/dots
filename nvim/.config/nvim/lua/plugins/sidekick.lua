@@ -5,9 +5,9 @@ vim.pack.add({ "https://github.com/folke/sidekick.nvim" })
 -- personal tool clears CLAUDE_CONFIG_DIR and the work tool sets it.
 --
 -- `is_proc` is what sidekick uses to attribute an already-running process in
--- a tmux pane to a tool. macOS no longer exposes other processes' environment
--- to `ps`, so the work tool runs through a non-exec `sh -c` wrapper whose
--- command line carries a "claude-work" marker that `is_proc` can see.
+-- a tmux pane to a tool. It matches on the command line, and both profiles
+-- run the same `claude` binary, so the work tool runs through a non-exec
+-- `sh -c` wrapper whose command line carries a "claude-work" marker.
 local work_config_dir = vim.env.HOME .. "/.claude-work"
 local claude_spec = dofile(vim.api.nvim_get_runtime_file("sk/cli/claude.lua", false)[1])
 
