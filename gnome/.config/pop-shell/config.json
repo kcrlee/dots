@@ -44,6 +44,16 @@
       "class": "firefox",
       "title": "^(?!.*Mozilla Firefox).*$",
       "disabled": true
+    },
+    {
+      "class": "io.github.bugaevc.wl-clipboard"
+    },
+    {
+      "class": "wl-clipboard"
+    },
+    {
+      "class": "google-chrome",
+      "title": "Welcome - Google Chrome"
     }
   ],
   "skiptaskbarhidden": [],
