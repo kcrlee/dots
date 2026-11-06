@@ -16,6 +16,7 @@ dots/
 ├── systemd/      → ~/.config/systemd/user/
 ├── tmux/         → ~/.config/tmux/
 ├── wezterm/      → ~/.config/wezterm/  (optional, not stowed by install.sh)
+└── scripts/      (not a stow package — standalone setup scripts, see below)
 ```
 
 `.zshrc` lives at the repo root and isn't managed by stow; `install.sh` symlinks it to `~/.zshrc`.
@@ -112,6 +113,17 @@ gnome/sync.sh load   # on a new machine: apply snapshots (install.sh does this)
 ```
 
 To track another dconf tree, add a line to `PATHS` in `gnome/sync.sh` and run `dump`. `.stow-local-ignore` stops stow from linking `dconf/` and `sync.sh` into `$HOME`.
+
+## Steam Deck
+
+`scripts/steamdeck-setup.sh` sets up a Steam Deck to SSH into ajax-iii over Tailscale. It installs Tailscale with [deck-tailscale](https://github.com/tailscale-dev/deck-tailscale), logs in to the tailnet, creates an SSH key, authorizes it on ajax-iii, and adds an `ajax` host to `~/.ssh/config`. Run it on the Deck in Desktop Mode (Konsole), as the `deck` user, after setting a password with `passwd`:
+
+```sh
+curl -fsSLO https://raw.githubusercontent.com/kcrlee/dots/main/scripts/steamdeck-setup.sh
+bash steamdeck-setup.sh
+```
+
+It's safe to re-run, for example if Tailscale stops working after a SteamOS update.
 
 ## Dependencies
 
