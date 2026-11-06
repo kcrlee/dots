@@ -56,7 +56,7 @@ clone_if_missing() {
 # Stow packages
 # ============================================================================
 stow_packages() {
-    local packages=(nvim bob ghostty tmux systemd gnome)
+    local packages=(nvim bob ssh ghostty tmux systemd gnome)
 
     info "Stowing packages: ${packages[*]}"
     cd "$DOTS_DIR"

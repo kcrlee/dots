@@ -12,6 +12,7 @@ dots/
 ├── ghostty/      → ~/.config/ghostty/
 ├── gnome/        → ~/.config/pop-shell/  (+ dconf snapshots, see below)
 ├── nvim/         → ~/.config/nvim/
+├── ssh/          → ~/.ssh/config
 ├── systemd/      → ~/.config/systemd/user/
 ├── tmux/         → ~/.config/tmux/
 ├── wezterm/      → ~/.config/wezterm/  (optional, not stowed by install.sh)
