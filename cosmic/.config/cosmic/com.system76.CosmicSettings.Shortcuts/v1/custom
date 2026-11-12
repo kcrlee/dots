@@ -1,9 +1,22 @@
 {
     (modifiers: [Super, Shift], key: "q"): Close,
-    (modifiers: [Super, Shift], key: "h"): Focus(Left),
-    (modifiers: [Super, Shift], key: "j"): Focus(Down),
-    (modifiers: [Super, Shift], key: "k"): Focus(Up),
-    (modifiers: [Super, Shift], key: "l"): Focus(Right),
+
+    // Pop Shell style: Super+Shift+Left/Right sends the window to another monitor,
+    // Super+Shift+Up/Down sends it to the previous/next workspace (and follows it).
+    (modifiers: [Super, Shift], key: "Left"): MoveToOutput(Left),
+    (modifiers: [Super, Shift], key: "Right"): MoveToOutput(Right),
+    (modifiers: [Super, Shift], key: "h"): MoveToOutput(Left),
+    (modifiers: [Super, Shift], key: "l"): MoveToOutput(Right),
+    (modifiers: [Super, Shift], key: "Up"): MoveToPreviousWorkspace,
+    (modifiers: [Super, Shift], key: "Down"): MoveToNextWorkspace,
+    (modifiers: [Super, Shift], key: "k"): MoveToPreviousWorkspace,
+    (modifiers: [Super, Shift], key: "j"): MoveToNextWorkspace,
+    // Monitors stacked vertically.
+    (modifiers: [Super, Shift, Ctrl], key: "Up"): MoveToOutput(Up),
+    (modifiers: [Super, Shift, Ctrl], key: "Down"): MoveToOutput(Down),
+    (modifiers: [Super, Shift, Ctrl], key: "k"): MoveToOutput(Up),
+    (modifiers: [Super, Shift, Ctrl], key: "j"): MoveToOutput(Down),
+
     (modifiers: [Super, Shift], key: "1"): MoveToWorkspace(1),
     (modifiers: [Super, Shift], key: "2"): MoveToWorkspace(2),
     (modifiers: [Super, Shift], key: "3"): MoveToWorkspace(3),

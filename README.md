@@ -117,16 +117,21 @@ To track another dconf tree, add a line to `PATHS` in `gnome/sync.sh` and run `d
 
 ## COSMIC
 
-`cosmic/` holds COSMIC desktop keyboard shortcuts and window rules. The shortcuts override the system defaults in `/usr/share/cosmic/com.system76.CosmicSettings.Shortcuts/v1/defaults`:
+`cosmic/` holds COSMIC desktop keyboard shortcuts and window rules, set up to match the Pop Shell config in `gnome/`. The shortcuts override the system defaults in `/usr/share/cosmic/com.system76.CosmicSettings.Shortcuts/v1/defaults`:
 
 - `Super+Shift+Q` closes the focused window.
-- `Super+Shift+H/J/K/L` moves focus to the window left/down/up/right. This replaces COSMIC's default of moving the window itself; `Super+Shift+arrows` still do that.
+- `Super+Shift+Left/Right` (or `H/L`) sends the focused window to the monitor on that side, like Pop Shell. `Super+Shift+Ctrl+Up/Down` (or `K/J`) does the same for monitors stacked vertically. COSMIC's own `Super+Shift+Alt+direction` shortcut for this still works.
+- `Super+Shift+Up/Down` (or `K/J`) moves the focused window to the previous/next workspace and switches you there with it, like Pop Shell.
 - `Super+Shift+1`–`9` moves the focused window to that workspace and switches you there with it. Use `SendToWorkspace(n)` instead to stay on the current workspace.
 - The terminal shortcut opens Ghostty (`system_actions` sets `Terminal`).
 
 `com.system76.CosmicSettings.WindowRules/v1/tiling_exception_custom` lists windows that always float instead of tiling. Each entry is `(appid: "<regex>", title: "<regex>", enabled: true)`, and both regexes must match. This is a different format from the defaults file, which uses `titles: [...]`. An entry in the defaults format makes the whole custom file fail to parse, and COSMIC drops it without logging anything. It adds to the system list in `/usr/share/cosmic/com.system76.CosmicSettings.WindowRules/v1/tiling_exception_defaults`:
 
 - Firefox's Picture-in-Picture window, for both the RPM (`firefox`) and Flatpak (`org.mozilla.firefox`) app IDs.
+- The rest of Pop Shell's float list: Chrome's welcome window and `wl-clipboard`.
+- An entry with the same app ID and title as a default overrides that default's `enabled`. The `enabled: false` entries switch off the defaults that were switched off in Pop Shell (JetBrains Toolbox and WebStorm dialogs, krunner, Mozilla VPN, Telegram's media viewer), so those windows tile.
+
+Not every Pop Shell setting has a COSMIC equivalent. Pop Shell's tile management mode (`Super+Return`) has none. COSMIC has `Super+X` to swap windows and `Super+R` to resize from the keyboard instead. Snap-to-grid and max window width have no equivalents either. Focus on `Super+arrows/HJKL`, the `Super+O/S/Y/G` toggles, autotiling and cursor-follows-focus already match COSMIC's defaults. The active-window hint (off in Pop Shell) and gaps belong to `com.system76.CosmicComp` and the theme, which aren't tracked here. Set those in Settings.
 
 Stow links the whole `com.system76.CosmicSettings.Shortcuts/` and `com.system76.CosmicSettings.WindowRules/` directories rather than the files inside them. cosmic-settings saves by atomic rename, which would replace a symlinked file with a plain copy. With the directories linked, changes you make in Settings are written straight into the repo. `install.sh` removes COSMIC's empty default directories before stowing so stow can link them.
 

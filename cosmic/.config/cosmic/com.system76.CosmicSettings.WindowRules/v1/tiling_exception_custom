@@ -1,5 +1,19 @@
 [
-    // Firefox Picture-in-Picture: always float (covers RPM and Flatpak app IDs).
     // Custom entries use singular `title` + `enabled`, unlike the defaults file's `titles: [...]`.
+    // An entry whose appid and title exactly match a default overrides that default's `enabled`.
+
+    // Ported from Pop Shell's float list (gnome/.config/pop-shell/config.json).
+    // Firefox Picture-in-Picture: always float (covers RPM and Flatpak app IDs).
     (appid: "^(firefox|org\\.mozilla\\.firefox)$", title: "^Picture-in-Picture$", enabled: true),
+    (appid: "google-chrome", title: "^Welcome - Google Chrome$", enabled: true),
+    (appid: "io.github.bugaevc.wl-clipboard", title: ".*", enabled: true),
+
+    // Defaults that were switched off in Pop Shell, so these windows tile.
+    (appid: "jetbrains-toolbox", title: ".*", enabled: false),
+    (appid: "jetbrains-webstorm", title: "Customize WebStorm", enabled: false),
+    (appid: "jetbrains-webstorm", title: "License Activation", enabled: false),
+    (appid: "jetbrains-webstorm", title: "Welcome to WebStorm", enabled: false),
+    (appid: "krunner", title: ".*", enabled: false),
+    (appid: "Mozilla VPN", title: ".*", enabled: false),
+    (appid: "TelegramDesktop", title: "Media viewer", enabled: false),
 ]
