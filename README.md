@@ -122,6 +122,7 @@ To track another dconf tree, add a line to `PATHS` in `gnome/sync.sh` and run `d
 - `Super+Shift+Q` closes the focused window.
 - `Super+Shift+H/J/K/L` moves focus to the window left/down/up/right. This replaces COSMIC's default of moving the window itself; `Super+Shift+arrows` still do that.
 - `Super+Shift+1`–`9` moves the focused window to that workspace and switches you there with it. Use `SendToWorkspace(n)` instead to stay on the current workspace.
+- The terminal shortcut opens Ghostty (`system_actions` sets `Terminal`).
 
 `com.system76.CosmicSettings.WindowRules/v1/tiling_exception_custom` lists windows that always float instead of tiling. Each entry is an app ID regex plus a list of title regexes, and both must match. It adds to the system list in `/usr/share/cosmic/com.system76.CosmicSettings.WindowRules/v1/tiling_exception_defaults`:
 
