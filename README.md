@@ -124,7 +124,7 @@ To track another dconf tree, add a line to `PATHS` in `gnome/sync.sh` and run `d
 - `Super+Shift+1`–`9` moves the focused window to that workspace and switches you there with it. Use `SendToWorkspace(n)` instead to stay on the current workspace.
 - The terminal shortcut opens Ghostty (`system_actions` sets `Terminal`).
 
-`com.system76.CosmicSettings.WindowRules/v1/tiling_exception_custom` lists windows that always float instead of tiling. Each entry is an app ID regex plus a list of title regexes, and both must match. It adds to the system list in `/usr/share/cosmic/com.system76.CosmicSettings.WindowRules/v1/tiling_exception_defaults`:
+`com.system76.CosmicSettings.WindowRules/v1/tiling_exception_custom` lists windows that always float instead of tiling. Each entry is `(appid: "<regex>", title: "<regex>", enabled: true)`, and both regexes must match. This is a different format from the defaults file, which uses `titles: [...]`. An entry in the defaults format makes the whole custom file fail to parse, and COSMIC drops it without logging anything. It adds to the system list in `/usr/share/cosmic/com.system76.CosmicSettings.WindowRules/v1/tiling_exception_defaults`:
 
 - Firefox's Picture-in-Picture window, for both the RPM (`firefox`) and Flatpak (`org.mozilla.firefox`) app IDs.
 

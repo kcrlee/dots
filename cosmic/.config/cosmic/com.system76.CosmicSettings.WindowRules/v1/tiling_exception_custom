@@ -1,4 +1,5 @@
 [
-    // Firefox Picture-in-Picture: always float (covers RPM and Flatpak app IDs)
-    (appid: "^(firefox|org\\.mozilla\\.firefox)$", titles: ["^Picture-in-Picture$"]),
+    // Firefox Picture-in-Picture: always float (covers RPM and Flatpak app IDs).
+    // Custom entries use singular `title` + `enabled`, unlike the defaults file's `titles: [...]`.
+    (appid: "^(firefox|org\\.mozilla\\.firefox)$", title: "^Picture-in-Picture$", enabled: true),
 ]
