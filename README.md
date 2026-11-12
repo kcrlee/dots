@@ -120,7 +120,7 @@ To track another dconf tree, add a line to `PATHS` in `gnome/sync.sh` and run `d
 `cosmic/` holds COSMIC desktop keyboard shortcuts. These override the system defaults in `/usr/share/cosmic/com.system76.CosmicSettings.Shortcuts/v1/defaults`:
 
 - `Super+Shift+Q` closes the focused window.
-- `Super+Shift+1`–`9` sends the focused window to that workspace. You stay on the current workspace; use `MoveToWorkspace(n)` instead to follow the window.
+- `Super+Shift+1`–`9` moves the focused window to that workspace and switches you there with it. Use `SendToWorkspace(n)` instead to stay on the current workspace.
 
 Stow links the whole `com.system76.CosmicSettings.Shortcuts/` directory rather than the `custom` file inside it. cosmic-settings saves by atomic rename, which would replace a symlinked file with a plain copy. With the directory linked, shortcuts you change in Settings → Keyboard are written straight into the repo. `install.sh` removes COSMIC's empty default directory before stowing so stow can link the directory.
 
