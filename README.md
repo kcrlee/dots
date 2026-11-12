@@ -9,6 +9,7 @@ Each top-level directory is a **stow package** — its contents mirror your home
 ```
 dots/
 ├── bob/          → ~/.config/bob/
+├── cosmic/       → ~/.config/cosmic/  (COSMIC keyboard shortcuts)
 ├── ghostty/      → ~/.config/ghostty/
 ├── gnome/        → ~/.config/pop-shell/  (+ dconf snapshots, see below)
 ├── nvim/         → ~/.config/nvim/
@@ -113,6 +114,15 @@ gnome/sync.sh load   # on a new machine: apply snapshots (install.sh does this)
 ```
 
 To track another dconf tree, add a line to `PATHS` in `gnome/sync.sh` and run `dump`. `.stow-local-ignore` stops stow from linking `dconf/` and `sync.sh` into `$HOME`.
+
+## COSMIC
+
+`cosmic/` holds COSMIC desktop keyboard shortcuts. These override the system defaults in `/usr/share/cosmic/com.system76.CosmicSettings.Shortcuts/v1/defaults`:
+
+- `Super+Shift+Q` closes the focused window.
+- `Super+Shift+1`–`9` sends the focused window to that workspace. You stay on the current workspace; use `MoveToWorkspace(n)` instead to follow the window.
+
+Stow links the whole `com.system76.CosmicSettings.Shortcuts/` directory rather than the `custom` file inside it. cosmic-settings saves by atomic rename, which would replace a symlinked file with a plain copy. With the directory linked, shortcuts you change in Settings → Keyboard are written straight into the repo. `install.sh` removes COSMIC's empty default directory before stowing so stow can link the directory.
 
 ## Steam Deck
 
