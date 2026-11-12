@@ -1,5 +1,9 @@
 {
     (modifiers: [Super, Shift], key: "q"): Close,
+    (modifiers: [Super, Shift], key: "h"): Focus(Left),
+    (modifiers: [Super, Shift], key: "j"): Focus(Down),
+    (modifiers: [Super, Shift], key: "k"): Focus(Up),
+    (modifiers: [Super, Shift], key: "l"): Focus(Right),
     (modifiers: [Super, Shift], key: "1"): MoveToWorkspace(1),
     (modifiers: [Super, Shift], key: "2"): MoveToWorkspace(2),
     (modifiers: [Super, Shift], key: "3"): MoveToWorkspace(3),
