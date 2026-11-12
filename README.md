@@ -117,13 +117,17 @@ To track another dconf tree, add a line to `PATHS` in `gnome/sync.sh` and run `d
 
 ## COSMIC
 
-`cosmic/` holds COSMIC desktop keyboard shortcuts. These override the system defaults in `/usr/share/cosmic/com.system76.CosmicSettings.Shortcuts/v1/defaults`:
+`cosmic/` holds COSMIC desktop keyboard shortcuts and window rules. The shortcuts override the system defaults in `/usr/share/cosmic/com.system76.CosmicSettings.Shortcuts/v1/defaults`:
 
 - `Super+Shift+Q` closes the focused window.
 - `Super+Shift+H/J/K/L` moves focus to the window left/down/up/right. This replaces COSMIC's default of moving the window itself; `Super+Shift+arrows` still do that.
 - `Super+Shift+1`–`9` moves the focused window to that workspace and switches you there with it. Use `SendToWorkspace(n)` instead to stay on the current workspace.
 
-Stow links the whole `com.system76.CosmicSettings.Shortcuts/` directory rather than the `custom` file inside it. cosmic-settings saves by atomic rename, which would replace a symlinked file with a plain copy. With the directory linked, shortcuts you change in Settings → Keyboard are written straight into the repo. `install.sh` removes COSMIC's empty default directory before stowing so stow can link the directory.
+`com.system76.CosmicSettings.WindowRules/v1/tiling_exception_custom` lists windows that always float instead of tiling. Each entry is an app ID regex plus a list of title regexes, and both must match. It adds to the system list in `/usr/share/cosmic/com.system76.CosmicSettings.WindowRules/v1/tiling_exception_defaults`:
+
+- Firefox's Picture-in-Picture window, for both the RPM (`firefox`) and Flatpak (`org.mozilla.firefox`) app IDs.
+
+Stow links the whole `com.system76.CosmicSettings.Shortcuts/` and `com.system76.CosmicSettings.WindowRules/` directories rather than the files inside them. cosmic-settings saves by atomic rename, which would replace a symlinked file with a plain copy. With the directories linked, changes you make in Settings are written straight into the repo. `install.sh` removes COSMIC's empty default directories before stowing so stow can link them.
 
 ## Steam Deck
 

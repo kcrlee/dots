@@ -60,12 +60,15 @@ stow_packages() {
 
     # cosmic-settings saves via atomic rename, which would replace a symlinked
     # file with a plain one. Stow only links the directory itself (so saves land
-    # in the repo) if it doesn't exist yet, so drop COSMIC's empty default one.
-    local cosmic_shortcuts="$HOME/.config/cosmic/com.system76.CosmicSettings.Shortcuts"
-    if [[ -d "$cosmic_shortcuts" && ! -L "$cosmic_shortcuts" ]] \
-        && [[ -z "$(find "$cosmic_shortcuts" -type f -print -quit)" ]]; then
-        rm -r "$cosmic_shortcuts"
-    fi
+    # in the repo) if it doesn't exist yet, so drop COSMIC's empty default ones.
+    local cosmic_dir
+    for cosmic_dir in com.system76.CosmicSettings.Shortcuts com.system76.CosmicSettings.WindowRules; do
+        cosmic_dir="$HOME/.config/cosmic/$cosmic_dir"
+        if [[ -d "$cosmic_dir" && ! -L "$cosmic_dir" ]] \
+            && [[ -z "$(find "$cosmic_dir" -type f -print -quit)" ]]; then
+            rm -r "$cosmic_dir"
+        fi
+    done
 
     info "Stowing packages: ${packages[*]}"
     cd "$DOTS_DIR"

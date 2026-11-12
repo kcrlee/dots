@@ -1,0 +1,4 @@
+[
+    // Firefox Picture-in-Picture: always float (covers RPM and Flatpak app IDs)
+    (appid: "^(firefox|org\\.mozilla\\.firefox)$", titles: ["^Picture-in-Picture$"]),
+]
