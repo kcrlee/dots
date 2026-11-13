@@ -54,5 +54,3 @@ keybind = global:super+backquote=toggle_quick_terminal
 # machine-local overrides (gitignored; loaded last, so its values win)
 config-file = ?config.local
 
-background-blur = true
-background-opacity = 0.25

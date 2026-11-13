@@ -4,7 +4,7 @@ vim.pack.add({
 	"https://github.com/kcrlee/yesterday.nvim",
 })
 
-require("yesterday").setup({ transparent = true })
+require("yesterday").setup({})
 vim.cmd([[colorscheme yesterday]])
 
 -- local function flatten_float_hls()

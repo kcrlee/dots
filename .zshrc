@@ -1,3 +1,6 @@
+# >>> lig pre >>>
+eval "$("/usr/bin/lig" init zsh pre)"
+# <<< lig pre <<<
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
@@ -61,3 +64,6 @@ fi
 # otherwise zsh alias-expands it and `claude-work` would strip its own CLAUDE_CONFIG_DIR.
 alias claude-work='env CLAUDE_CONFIG_DIR=$HOME/.claude-work claude'
 alias claude='env -u CLAUDE_CONFIG_DIR claude'
+# >>> lig post >>>
+eval "$("/usr/bin/lig" init zsh post)"
+# <<< lig post <<<
