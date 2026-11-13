@@ -1,6 +1,9 @@
 {
     (modifiers: [Super, Shift], key: "q"): Close,
 
+    // Match GNOME's show-screenshot-ui binding (macOS-style). Print stays bound via COSMIC defaults.
+    (modifiers: [Ctrl, Shift], key: "4"): System(Screenshot),
+
     // Pop Shell style: Super+Shift+Left/Right sends the window to another monitor,
     // Super+Shift+Up/Down sends it to the previous/next workspace (and follows it).
     (modifiers: [Super, Shift], key: "Left"): MoveToOutput(Left),
