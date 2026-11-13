@@ -17,7 +17,7 @@ dots/
 ├── systemd/      → ~/.config/systemd/user/
 ├── tmux/         → ~/.config/tmux/
 ├── wezterm/      → ~/.config/wezterm/  (optional, not stowed by install.sh)
-└── scripts/      (not a stow package — standalone setup scripts, see below)
+└── scripts/      (not a stow package — standalone scripts for other machines, see below)
 ```
 
 `.zshrc` lives at the repo root and isn't managed by stow; `install.sh` symlinks it to `~/.zshrc`.
@@ -145,6 +145,25 @@ bash steamdeck-setup.sh
 ```
 
 It's safe to re-run, for example if Tailscale stops working after a SteamOS update.
+
+## Raspberry Pi wake server
+
+`scripts/wake_on_lan_server.py` runs on the Raspberry Pi wired directly to ajax-iii's `enp69s0` port. It wakes ajax-iii with Wake-on-LAN and waits for it to answer ping. Then it unlocks the COSMIC lock screen over SSH, so you can start Steam Remote Play without typing the password. The Pi doesn't have this repo cloned, so copy the script over by hand:
+
+```sh
+scp scripts/wake_on_lan_server.py kyle@pi:
+ssh kyle@pi sudo python3 wake_on_lan_server.py   # --no-unlock to only wake
+```
+
+It exits with 0 if ajax-iii is awake and unlocked, 1 if it didn't wake, and 2 if it woke but the unlock failed.
+
+The unlock needs some one-time setup. The Pi has its own key, `~/.ssh/ajax_unlock_ed25519`, and pins ajax-iii's host key in `~/.ssh/ajax_known_hosts`. To pin it, write `ajax-iii ` followed by the contents of ajax-iii's `/etc/ssh/ssh_host_ed25519_key.pub`. On ajax-iii, `~/.ssh/authorized_keys` accepts the Pi's key only with a forced command, so the key can't do anything except unlock the desktop:
+
+```
+restrict,command="loginctl unlock-session $(loginctl show-user kyle -p Display --value)" ssh-ed25519 AAAA… pi: unlock ajax-iii desktop
+```
+
+The forced command uses `unlock-session <id>` rather than `unlock-sessions`. Logind allows a user to unlock their own session without asking polkit, but the plural form always checks polkit, and polkit wants an admin password from SSH callers. `show-user … -p Display` looks up the ID of the graphical session, which changes at every login. `cosmic-greeter` drops the lock screen when logind sends the unlock signal.
 
 ## Dependencies
 
