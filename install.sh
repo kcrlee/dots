@@ -58,11 +58,12 @@ clone_if_missing() {
 stow_packages() {
     local packages=(nvim bob ssh ghostty tmux systemd gnome cosmic)
 
-    # cosmic-settings saves via atomic rename, which would replace a symlinked
+    # COSMIC saves config via atomic rename, which would replace a symlinked
     # file with a plain one. Stow only links the directory itself (so saves land
     # in the repo) if it doesn't exist yet, so drop COSMIC's empty default ones.
     local cosmic_dir
-    for cosmic_dir in com.system76.CosmicSettings.Shortcuts com.system76.CosmicSettings.WindowRules; do
+    for cosmic_dir in com.system76.CosmicSettings.Shortcuts com.system76.CosmicSettings.WindowRules \
+                      com.system76.CosmicAppletBattery; do
         cosmic_dir="$HOME/.config/cosmic/$cosmic_dir"
         if [[ -d "$cosmic_dir" && ! -L "$cosmic_dir" ]] \
             && [[ -z "$(find "$cosmic_dir" -type f -print -quit)" ]]; then

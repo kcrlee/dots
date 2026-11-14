@@ -9,7 +9,7 @@ Each top-level directory is a **stow package** — its contents mirror your home
 ```
 dots/
 ├── bob/          → ~/.config/bob/
-├── cosmic/       → ~/.config/cosmic/  (COSMIC keyboard shortcuts)
+├── cosmic/       → ~/.config/cosmic/  (COSMIC shortcuts, window rules, panel applets)
 ├── ghostty/      → ~/.config/ghostty/
 ├── gnome/        → ~/.config/pop-shell/  (+ dconf snapshots, see below)
 ├── nvim/         → ~/.config/nvim/
@@ -133,7 +133,9 @@ To track another dconf tree, add a line to `PATHS` in `gnome/sync.sh` and run `d
 
 Not every Pop Shell setting has a COSMIC equivalent. Pop Shell's tile management mode (`Super+Return`) has none. COSMIC has `Super+X` to swap windows and `Super+R` to resize from the keyboard instead. Snap-to-grid and max window width have no equivalents either. Focus on `Super+arrows/HJKL`, the `Super+O/S/Y/G` toggles, autotiling and cursor-follows-focus already match COSMIC's defaults. The active-window hint (off in Pop Shell) and gaps belong to `com.system76.CosmicComp` and the theme, which aren't tracked here. Set those in Settings.
 
-Stow links the whole `com.system76.CosmicSettings.Shortcuts/` and `com.system76.CosmicSettings.WindowRules/` directories rather than the files inside them. cosmic-settings saves by atomic rename, which would replace a symlinked file with a plain copy. With the directories linked, changes you make in Settings are written straight into the repo. `install.sh` removes COSMIC's empty default directories before stowing so stow can link them.
+`com.system76.CosmicAppletBattery/v1/show_percentage` is `true`, so the panel's battery applet shows the charge percentage next to its icon.
+
+Stow links the whole `com.system76.CosmicSettings.Shortcuts/`, `com.system76.CosmicSettings.WindowRules/` and `com.system76.CosmicAppletBattery/` directories rather than the files inside them. COSMIC saves by atomic rename, which would replace a symlinked file with a plain copy. With the directories linked, changes you make in Settings or the applet are written straight into the repo. `install.sh` removes COSMIC's empty default directories before stowing so stow can link them.
 
 ## Steam Deck
 
