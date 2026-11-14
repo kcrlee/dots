@@ -2,3 +2,5 @@ tmux/.config/tmux/plugins
 ghostty/.config/ghostty/config.local
 .zcompdump-*
 .env
+cosmic/.config/cosmic/com.system76.CosmicComp/v1/*
+!cosmic/.config/cosmic/com.system76.CosmicComp/v1/autotile

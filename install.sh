@@ -71,6 +71,17 @@ stow_packages() {
         fi
     done
 
+    # CosmicComp is never empty in practice: next to the tracked autotile it
+    # holds per-machine state (pinned workspaces, keyboard layout) that
+    # .gitignore keeps out of the repo. Carry that state into the repo's copy,
+    # without overwriting tracked files, so the directory can still be linked.
+    local comp_dir="$HOME/.config/cosmic/com.system76.CosmicComp"
+    if [[ -d "$comp_dir" && ! -L "$comp_dir" ]]; then
+        cp -a --update=none "$comp_dir/." \
+            "$DOTS_DIR/cosmic/.config/cosmic/com.system76.CosmicComp/"
+        rm -r "$comp_dir"
+    fi
+
     info "Stowing packages: ${packages[*]}"
     cd "$DOTS_DIR"
     for pkg in "${packages[@]}"; do
