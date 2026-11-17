@@ -17,6 +17,7 @@ dots/
 ├── systemd/      → ~/.config/systemd/user/
 ├── tmux/         → ~/.config/tmux/
 ├── wezterm/      → ~/.config/wezterm/  (optional, not stowed by install.sh)
+├── keyd/         (not a stow package — copied to /etc/keyd/, see below)
 └── scripts/      (not a stow package — standalone scripts for other machines, see below)
 ```
 
@@ -34,8 +35,9 @@ The install script targets **Fedora Linux**. It will:
 
 1. Install system packages (`stow`, `fzf`, `fd`, `tmux`, `direnv`)
 2. Stow config packages (everything except `wezterm` — run `stow wezterm` if you use it)
-3. Install [pnpm](https://pnpm.io/), then Node LTS and npm through it (no system Node)
-4. Set zsh as your default shell
+3. Build [keyd](https://github.com/rvaiya/keyd) if it's missing and install its config to `/etc/keyd/`
+4. Install [pnpm](https://pnpm.io/), then Node LTS and npm through it (no system Node)
+5. Set zsh as your default shell
 
 ## Manual Usage
 
@@ -100,6 +102,23 @@ wezterm/
 ```
 
 `stow wezterm` symlinks the entire `wezterm/` directory under `~/.config/`.
+
+## keyd
+
+`keyd/default.conf` is the [keyd](https://github.com/rvaiya/keyd) key remapping config. It applies to every keyboard:
+
+- Caps Lock and Control are both Control when held and Escape when tapped.
+- `Ctrl+H/J/K/L` are the arrow keys.
+
+keyd is a system daemon that reads `/etc/keyd/`, so stow can't link this one. `install.sh` copies the file there instead. It's a copy and not a symlink because keyd runs as root and its config can run commands, so the live file stays root-owned. After editing `keyd/default.conf`, apply it by re-running `install.sh`, or by hand:
+
+```sh
+keyd check keyd/default.conf   # validate first
+sudo install -Dm644 keyd/default.conf /etc/keyd/default.conf
+sudo keyd reload
+```
+
+Fedora doesn't package keyd, so `install.sh` builds it from source when it isn't installed.
 
 ## GNOME / Pop Shell
 
@@ -176,4 +195,5 @@ All handled by `install.sh`, but for reference:
 - [GNU Stow](https://www.gnu.org/software/stow/) — symlink manager
 - [fzf](https://github.com/junegunn/fzf) + [fd](https://github.com/sharkdp/fd) — fuzzy finder
 - [direnv](https://direnv.net/) — per-directory environment variables
+- [keyd](https://github.com/rvaiya/keyd) — system-wide key remapping
 - [pnpm](https://pnpm.io/) — package manager; also manages Node. Change the global version with `pnpm runtime set node <version> -g`

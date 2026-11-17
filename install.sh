@@ -95,6 +95,61 @@ stow_packages() {
 }
 
 # ============================================================================
+# keyd (key remapping)
+# ============================================================================
+# keyd is a root daemon that reads /etc/keyd, which stow can't reach. The
+# config is copied, not symlinked: keyd can run commands as root, so its config
+# shouldn't be a file the user account can write. Re-run this script after
+# editing keyd/default.conf.
+setup_keyd() {
+    local src="$DOTS_DIR/keyd/default.conf"
+    local dest="/etc/keyd/default.conf"
+
+    if command_exists keyd; then
+        ok "Already installed: keyd"
+    else
+        # Fedora doesn't package keyd, so build it. `make install` also adds
+        # the keyd group and the systemd unit.
+        info "Building keyd from source…"
+        sudo dnf install -y gcc make
+        local build_dir
+        build_dir="$(mktemp -d)"
+        git clone --depth 1 https://github.com/rvaiya/keyd "$build_dir"
+        make -C "$build_dir"
+        sudo make -C "$build_dir" install
+        rm -rf "$build_dir"
+        ok "Installed keyd"
+    fi
+
+    # A config with errors still loads, minus the bad lines, which can leave
+    # the keyboard half-remapped. keyd check prints the errors on stdout.
+    if ! keyd check "$src"; then
+        warn "keyd/default.conf has errors — leaving $dest untouched"
+        return
+    fi
+
+    local changed=false
+    if cmp -s "$src" "$dest"; then
+        ok "keyd config already up to date"
+    else
+        info "Installing keyd config to $dest…"
+        sudo install -Dm644 "$src" "$dest"
+        changed=true
+    fi
+
+    if systemctl is-active --quiet keyd; then
+        # A running daemon only re-reads its config when told to.
+        if [[ "$changed" == true ]]; then
+            sudo keyd reload
+            ok "Reloaded keyd"
+        fi
+    else
+        sudo systemctl enable --now keyd
+        ok "Enabled keyd"
+    fi
+}
+
+# ============================================================================
 # GNOME / Pop Shell (dconf)
 # ============================================================================
 # Keybindings, gaps, tiling etc. live in dconf, which stow can't link; restore
@@ -237,6 +292,9 @@ main() {
 
     # Symlink configs
     stow_packages
+
+    # Key remapping (system-wide, /etc/keyd)
+    setup_keyd
 
     # GNOME / Pop Shell settings (dconf)
     load_gnome_settings
